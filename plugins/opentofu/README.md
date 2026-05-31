@@ -3,7 +3,7 @@
 ## Installation
 
 ```sh
-claude plugin install opentofu@ki-marketplace
+claude plugin install opentofu@bunch-of-plugins
 ```
 
 ## MCP Servers
@@ -15,4 +15,4 @@ OpenTofu MCP server source code lives on their [**GitHub**](https://github.com/o
 
 ## Compatibility
 
-This plugin was tested with Claude and Copilot.
+This plugin is expected to work with Claude and Copilot.

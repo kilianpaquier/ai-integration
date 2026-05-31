@@ -12,11 +12,14 @@
 A curated list of plugins, either remotely included to avoid adding many marketplace on our Claude, Copilot, etc. installation
 or locally defined to enhance our AI capabilities.
 
+This marketplace sole purpose is to have plugins compatible while the broadest range of AI assistants, from Claude to Copilot, and more.
+That's why it may redefine plugins already available in the official marketplace, unofficial but well-known, etc. yet not compatible with only one assistant.
+
 ## Installation
 
 ```sh
-claude plugin marketplace add https://gitlab.com/kilianpaquier/ai-marketplace
-claude plugin install <plugin_name>@ki-marketplace
+claude plugin marketplace add https://gitlab.com/kilianpaquier/ai-marketplace.git
+claude plugin install <plugin_name>@bunch-of-plugins
 ```
 
 ## Plugin structure
@@ -43,5 +46,9 @@ plugin-name/
 | Name                                         | Description                                                                     | Tools  |
 | -------------------------------------------- | ------------------------------------------------------------------------------- | ------ |
 | [codegraph](plugins/codegraph)               | CodeGraph MCP server for accessing local CodeGraph indexed code knowledge graph | MCP    |
+| [gopls](plugins/gopls)                       | Go language server for code intelligence and refactoring                        | LSP    |
+| [jdtls](plugins/jdtls)                       | Java language server (Eclipse JDT.LS) for code intelligence                     | LSP    |
+| [kotlin-lsp](plugins/kotlin-lsp)             | Kotlin language server for code intelligence                                    | LSP    |
 | [opentofu](plugins/opentofu)                 | OpenTofu MCP Server for accessing the OpenTofu Registry                         | MCP    |
 | [schema-converter](plugins/schema-converter) | Convert JSON schemas to other formats (Go structs, TypeScript interfaces, etc.) | Skills |
+| [typescript-lsp](plugins/typescript-lsp)     | TypeScript/JavaScript language server for enhanced code intelligence            | LSP    |

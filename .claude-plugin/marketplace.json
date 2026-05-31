@@ -6,7 +6,7 @@
         "url": "https://kilianpaquier.dev"
     },
 
-    "name": "ki-marketplace",
+    "name": "bunch-of-plugins",
     "description": "An humble marketplace for AI plugins",
     "version": "0.1.0",
 
@@ -16,12 +16,28 @@
             "source": "./plugins/codegraph"
         },
         {
+            "name": "gopls",
+            "source": "./plugins/gopls"
+        },
+        {
+            "name": "jdtls",
+            "source": "./plugins/jdtls"
+        },
+        {
+            "name": "kotlin-lsp",
+            "source": "./plugins/kotlin-lsp"
+        },
+        {
             "name": "opentofu",
             "source": "./plugins/opentofu"
         },
         {
             "name": "schema-converter",
             "source": "./plugins/schema-converter"
+        },
+        {
+            "name": "typescript-lsp",
+            "source": "./plugins/typescript-lsp"
         }
     ]
 }

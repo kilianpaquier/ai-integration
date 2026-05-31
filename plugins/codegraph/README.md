@@ -6,7 +6,7 @@ Before being able to use this plugin, you must install [**CodeGraph**](https://g
 since the MCP server runs locally.
 
 ```sh
-claude plugin install codegraph@ki-marketplace
+claude plugin install codegraph@bunch-of-plugins
 ```
 
 ## MCP Servers
@@ -18,4 +18,4 @@ CodeGraph source code (an MCP server source code) live on their [**GitHub**](htt
 
 ## Compatibility
 
-This plugin was tested with Claude and Copilot.
+This plugin is expected to work with Claude and Copilot.

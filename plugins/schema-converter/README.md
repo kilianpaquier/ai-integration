@@ -5,7 +5,7 @@ A simple plugin to convert JSON schemas into its languages equivalent.
 ## Installation
 
 ```sh
-claude plugin install schema-converter@ki-marketplace
+claude plugin install schema-converter@bunch-of-plugins
 ```
 
 ## Skills
@@ -20,4 +20,4 @@ The skill needs the following arguments:
 
 ## Compatibility
 
-This plugin was tested with Claude and Copilot.
+This plugin is expected to work with Claude and Copilot.
