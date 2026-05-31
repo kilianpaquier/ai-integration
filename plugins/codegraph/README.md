@@ -2,9 +2,6 @@
 
 ## Installation
 
-Before being able to use this plugin, you must install [**CodeGraph**](https://github.com/colbymchenry/codegraph) on your local system
-since the MCP server runs locally.
-
 ```sh
 claude plugin install codegraph@bunch-of
 ```

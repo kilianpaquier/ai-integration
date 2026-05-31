@@ -32,7 +32,6 @@ plugin-name/
 │   └── plugin.json      # Plugin metadata (required)
 ├── .github/plugin
 │   └── plugin.json      # Plugin metadata (optional, required if plugin schema changes between Claude and Copilot)
-├── .lsp.json            # LSP server configuration (optional)
 ├── .mcp.json            # MCP server configuration (optional)
 ├── agents/              # Agent definitions (optional)
 ├── commands/            # Slash commands (optional, only compatible with Claude)
