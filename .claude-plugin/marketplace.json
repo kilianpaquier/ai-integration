@@ -16,6 +16,18 @@
             "source": "./plugins/codegraph"
         },
         {
+            "name": "context7",
+            "source": "./plugins/context7"
+        },
+        {
+            "name": "github",
+            "source": "./plugins/github"
+        },
+        {
+            "name": "gitlab",
+            "source": "./plugins/gitlab"
+        },
+        {
             "name": "gopls",
             "source": "./plugins/gopls"
         },
@@ -30,6 +42,10 @@
         {
             "name": "opentofu",
             "source": "./plugins/opentofu"
+        },
+        {
+            "name": "playwright",
+            "source": "./plugins/playwright"
         },
         {
             "name": "schema-converter",
