@@ -1,6 +1,4 @@
 {
-    "$schema": "https://json.schemastore.org/claude-code-plugin-manifest.json",
-
     "name": "typescript-lsp",
     "description": "TypeScript/JavaScript language server for enhanced code intelligence",
     "version": "0.1.0",
@@ -11,10 +9,7 @@
     "lspServers": {
         "typescript": {
             "command": "typescript-language-server",
-            "args": [
-                "--stdio"
-            ],
-            "extensionToLanguage": {
+            "fileExtensions": {
                 ".cjs": "javascript",
                 ".cts": "typescript",
                 ".js": "javascript",

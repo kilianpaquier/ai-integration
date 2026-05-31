@@ -1,6 +1,4 @@
 {
-    "$schema": "https://json.schemastore.org/claude-code-plugin-manifest.json",
-
     "name": "jdtls",
     "description": "Java language server (Eclipse JDT.LS) for code intelligence",
     "version": "0.1.0",
@@ -11,10 +9,9 @@
     "lspServers": {
         "jdtls": {
             "command": "jdtls",
-            "extensionToLanguage": {
+            "fileExtensions": {
                 ".java": "java"
-            },
-            "startupTimeout": 120000
+            }
         }
     }
 }

@@ -1,6 +1,4 @@
 {
-    "$schema": "https://json.schemastore.org/claude-code-plugin-manifest.json",
-
     "name": "kotlin-lsp",
     "description": "Kotlin language server for code intelligence",
     "version": "0.1.0",
@@ -11,14 +9,10 @@
     "lspServers": {
         "kotlin-lsp": {
             "command": "kotlin-lsp",
-            "args": [
-                "--stdio"
-            ],
-            "extensionToLanguage": {
+            "fileExtensions": {
                 ".kt": "kotlin",
                 ".kts": "kotlin"
-            },
-            "startupTimeout": 120000
+            }
         }
     }
 }
