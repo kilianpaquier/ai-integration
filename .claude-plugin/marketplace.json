@@ -1,0 +1,27 @@
+{
+    "$schema": "https://json.schemastore.org/claude-code-marketplace.json",
+
+    "owner": {
+        "name": "Kilian PAQUIER",
+        "url": "https://kilianpaquier.dev"
+    },
+
+    "name": "ki-marketplace",
+    "description": "An humble marketplace for AI plugins",
+    "version": "0.1.0",
+
+    "plugins": [
+        {
+            "name": "codegraph",
+            "source": "./plugins/codegraph"
+        },
+        {
+            "name": "opentofu",
+            "source": "./plugins/opentofu"
+        },
+        {
+            "name": "schema-converter",
+            "source": "./plugins/schema-converter"
+        }
+    ]
+}

@@ -1,0 +1,21 @@
+# CodeGraph MCP
+
+## Installation
+
+Before being able to use this plugin, you must install [**CodeGraph**](https://github.com/colbymchenry/codegraph) on your local system
+since the MCP server runs locally.
+
+```sh
+claude plugin install codegraph@ki-marketplace
+```
+
+## MCP Servers
+
+As the plugin title, this plugin includes the CodeGraph MCP server with the local bin version.
+It is pretty much only a wrapper to share the MCP configuration.
+
+CodeGraph source code (an MCP server source code) live on their [**GitHub**](https://github.com/colbymchenry/codegraph).
+
+## Compatibility
+
+This plugin was tested with Claude and Copilot.
