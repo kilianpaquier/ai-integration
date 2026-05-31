@@ -6,7 +6,7 @@ Before being able to use this plugin, you must install [**gopls**](https://go.de
 since the LSP server runs locally.
 
 ```sh
-claude plugin install gopls@bunch-of-plugins
+claude plugin install gopls@bunch-of
 ```
 
 ## LSP Servers

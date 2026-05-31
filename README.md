@@ -19,7 +19,7 @@ That's why it may redefine plugins already available in the official marketplace
 
 ```sh
 claude plugin marketplace add https://gitlab.com/kilianpaquier/ai-marketplace.git
-claude plugin install <plugin_name>@bunch-of-plugins
+claude plugin install <plugin_name>@bunch-of
 ```
 
 ## Plugin structure

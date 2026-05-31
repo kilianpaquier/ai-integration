@@ -5,7 +5,7 @@ A simple plugin to convert JSON schemas into its languages equivalent.
 ## Installation
 
 ```sh
-claude plugin install schema-converter@bunch-of-plugins
+claude plugin install schema-converter@bunch-of
 ```
 
 ## Skills

@@ -6,7 +6,7 @@ Before being able to use this plugin, you must install [**typescript-language-se
 since the LSP server runs locally.
 
 ```sh
-claude plugin install typescript-lsp@bunch-of-plugins
+claude plugin install typescript-lsp@bunch-of
 ```
 
 ## LSP Servers

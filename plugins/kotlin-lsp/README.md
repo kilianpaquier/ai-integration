@@ -13,7 +13,7 @@ ln -sf "$HOME/.local/share/kotlin-lsp/bin/intellij-server" "$HOME/.local/bin/kot
 ```
 
 ```sh
-claude plugin install kotlin-lsp@bunch-of-plugins
+claude plugin install kotlin-lsp@bunch-of
 ```
 
 ## LSP Servers

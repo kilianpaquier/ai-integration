@@ -6,7 +6,7 @@ Before being able to use this plugin, you must install [**CodeGraph**](https://g
 since the MCP server runs locally.
 
 ```sh
-claude plugin install codegraph@bunch-of-plugins
+claude plugin install codegraph@bunch-of
 ```
 
 ## MCP Servers

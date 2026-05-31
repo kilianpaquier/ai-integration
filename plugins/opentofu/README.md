@@ -3,7 +3,7 @@
 ## Installation
 
 ```sh
-claude plugin install opentofu@bunch-of-plugins
+claude plugin install opentofu@bunch-of
 ```
 
 ## MCP Servers
