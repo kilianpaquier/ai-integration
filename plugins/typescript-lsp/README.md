@@ -1,4 +1,4 @@
-# Gopls LSP
+# TypeScript LSP
 
 ## Installation
 

@@ -7,12 +7,16 @@
     "homepage": "https://gitlab.com/kilianpaquier/ai-marketplace/plugins/kotlin-lsp",
 
     "lspServers": {
-        "kotlin-lsp": {
+        "kotlin": {
             "command": "kotlin-lsp",
+            "args": [
+                "--stdio"
+            ],
             "fileExtensions": {
                 ".kt": "kotlin",
                 ".kts": "kotlin"
-            }
+            },
+            "startupTimeout": 120000
         }
     }
 }

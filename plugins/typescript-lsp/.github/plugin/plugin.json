@@ -9,6 +9,9 @@
     "lspServers": {
         "typescript": {
             "command": "typescript-language-server",
+            "args": [
+                "--stdio"
+            ],
             "fileExtensions": {
                 ".cjs": "javascript",
                 ".cts": "typescript",

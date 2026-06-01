@@ -1,4 +1,4 @@
-# Gopls LSP
+# Java (Eclipse JDT.LS) LSP
 
 ## Installation
 
