@@ -1,8 +1,9 @@
 {
     "mcpServers": {
         "opentofu": {
-            "type": "sse",
-            "url": "https://mcp.opentofu.org/sse"
+            "type": "stdio",
+            "command": "npx",
+            "args": ["-y", "@opentofu/opentofu-mcp-server"]
         }
     }
 }
