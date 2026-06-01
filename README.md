@@ -42,16 +42,17 @@ plugin-name/
 
 ## Plugins
 
-| Name                                         | Description                                                                     | Tools  |
-| -------------------------------------------- | ------------------------------------------------------------------------------- | ------ |
-| [codegraph](plugins/codegraph)               | CodeGraph MCP server for accessing local CodeGraph indexed code knowledge graph | MCP    |
-| [context7](plugins/context7)                 | Upstash Context7 MCP server for up-to-date library documentation lookup         | MCP    |
-| [github](plugins/github)                     | Official GitHub MCP server for repository management, issues, and pull requests | MCP    |
-| [gitlab](plugins/gitlab)                     | GitLab MCP server for repository management, merge requests, and CI/CD          | MCP    |
-| [gopls](plugins/gopls)                       | Go language server for code intelligence and refactoring                        | LSP    |
-| [jdtls](plugins/jdtls)                       | Java language server (Eclipse JDT.LS) for code intelligence                     | LSP    |
-| [kotlin-lsp](plugins/kotlin-lsp)             | Kotlin language server for code intelligence                                    | LSP    |
-| [opentofu](plugins/opentofu)                 | OpenTofu MCP Server for accessing the OpenTofu Registry                         | MCP    |
-| [playwright](plugins/playwright)             | Microsoft Playwright MCP server for browser automation and end-to-end testing   | MCP    |
-| [schema-converter](plugins/schema-converter) | Convert JSON schemas to other formats (Go structs, TypeScript interfaces, etc.) | Skills |
-| [typescript-lsp](plugins/typescript-lsp)     | TypeScript/JavaScript language server for enhanced code intelligence            | LSP    |
+| Name                                         | Description                                                                     | Tools         |
+| -------------------------------------------- | ------------------------------------------------------------------------------- | ------------- |
+| [codegraph](plugins/codegraph)               | CodeGraph MCP server for accessing local CodeGraph indexed code knowledge graph | MCP           |
+| [context7](plugins/context7)                 | Upstash Context7 MCP server for up-to-date library documentation lookup         | MCP           |
+| [github](plugins/github)                     | Official GitHub MCP server for repository management, issues, and pull requests | MCP           |
+| [gitlab](plugins/gitlab)                     | GitLab MCP server for repository management, merge requests, and CI/CD          | MCP           |
+| [gopls](plugins/gopls)                       | Go language server for code intelligence and refactoring                        | LSP           |
+| [jdtls](plugins/jdtls)                       | Java language server (Eclipse JDT.LS) for code intelligence                     | LSP           |
+| [kotlin-lsp](plugins/kotlin-lsp)             | Kotlin language server for code intelligence                                    | LSP           |
+| [opentofu](plugins/opentofu)                 | OpenTofu MCP Server for accessing the OpenTofu Registry                         | MCP           |
+| [playwright](plugins/playwright)             | Microsoft Playwright MCP server for browser automation and end-to-end testing   | MCP           |
+| [remember](plugins/remember)                 | Continuous memory for Claude Code with tiered daily logs                        | Hooks, Skills |
+| [schema-converter](plugins/schema-converter) | Convert JSON schemas to other formats (Go structs, TypeScript interfaces, etc.) | Skills        |
+| [typescript-lsp](plugins/typescript-lsp)     | TypeScript/JavaScript language server for enhanced code intelligence            | LSP           |
