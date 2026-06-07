@@ -1,7 +1,7 @@
 {
     "$schema": "https://json.schemastore.org/claude-code-plugin-manifest.json",
 
-    "name": "jdtls",
+    "name": "jdtls-lsp",
     "description": "Java language server (Eclipse JDT.LS) for code intelligence",
     "version": "0.1.0",
     "license": "MIT",

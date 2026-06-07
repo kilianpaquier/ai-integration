@@ -12,7 +12,7 @@ ln -sf "$HOME/.local/share/jdtls/bin/jdtls" "$HOME/.local/bin/jdtls"
 ```
 
 ```sh
-claude plugin install jdtls@bunch-of
+claude plugin install jdtls-lsp@bunch-of
 ```
 
 ## LSP Servers

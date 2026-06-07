@@ -48,8 +48,8 @@ plugin-name/
 | [context7](plugins/context7)                 | Upstash Context7 MCP server for up-to-date library documentation lookup         | MCP           |
 | [github](plugins/github)                     | Official GitHub MCP server for repository management, issues, and pull requests | MCP           |
 | [gitlab](plugins/gitlab)                     | GitLab MCP server for repository management, merge requests, and CI/CD          | MCP           |
-| [gopls](plugins/gopls)                       | Go language server for code intelligence and refactoring                        | LSP           |
-| [jdtls](plugins/jdtls)                       | Java language server (Eclipse JDT.LS) for code intelligence                     | LSP           |
+| [gopls-lsp](plugins/gopls-lsp)               | Go language server for code intelligence and refactoring                        | LSP           |
+| [jdtls-lsp](plugins/jdtls-lsp)               | Java language server (Eclipse JDT.LS) for code intelligence                     | LSP           |
 | [kotlin-lsp](plugins/kotlin-lsp)             | Kotlin language server for code intelligence                                    | LSP           |
 | [opentofu](plugins/opentofu)                 | OpenTofu MCP Server for accessing the OpenTofu Registry                         | MCP           |
 | [playwright](plugins/playwright)             | Microsoft Playwright MCP server for browser automation and end-to-end testing   | MCP           |

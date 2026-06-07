@@ -28,12 +28,12 @@
             "source": "./plugins/gitlab"
         },
         {
-            "name": "gopls",
-            "source": "./plugins/gopls"
+            "name": "gopls-lsp",
+            "source": "./plugins/gopls-lsp"
         },
         {
-            "name": "jdtls",
-            "source": "./plugins/jdtls"
+            "name": "jdtls-lsp",
+            "source": "./plugins/jdtls-lsp"
         },
         {
             "name": "kotlin-lsp",

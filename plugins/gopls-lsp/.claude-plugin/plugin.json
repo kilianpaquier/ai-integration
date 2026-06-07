@@ -1,5 +1,7 @@
 {
-    "name": "gopls",
+    "$schema": "https://json.schemastore.org/claude-code-plugin-manifest.json",
+
+    "name": "gopls-lsp",
     "description": "Go language server for code intelligence and refactoring",
     "version": "0.1.0",
     "license": "MIT",
@@ -9,7 +11,7 @@
     "lspServers": {
         "gopls": {
             "command": "gopls",
-            "fileExtensions": {
+            "extensionToLanguage": {
                 ".go": "go"
             }
         }
