@@ -6,6 +6,10 @@
 claude plugin install codegraph@bunch-of
 ```
 
+```sh
+copilot plugin install codegraph@bunch-of
+```
+
 ## MCP Servers
 
 As the plugin title, this plugin includes the CodeGraph MCP server with the local bin version.

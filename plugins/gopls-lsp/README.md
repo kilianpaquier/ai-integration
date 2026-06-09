@@ -9,6 +9,10 @@ since the LSP server runs locally.
 claude plugin install gopls-lsp@bunch-of
 ```
 
+```sh
+copilot plugin install gopls-lsp@bunch-of
+```
+
 ## LSP Servers
 
 As the plugin title, this plugin includes the gopls LSP server with the local bin version.

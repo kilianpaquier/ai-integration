@@ -6,6 +6,10 @@
 claude plugin install gitlab@bunch-of
 ```
 
+```sh
+copilot plugin install gitlab@bunch-of
+```
+
 ## MCP Servers
 
 This plugin includes the native GitLab MCP server, which enables repository

@@ -15,6 +15,10 @@ ln -sf "$HOME/.local/share/jdtls/bin/jdtls" "$HOME/.local/bin/jdtls"
 claude plugin install jdtls-lsp@bunch-of
 ```
 
+```sh
+copilot plugin install jdtls-lsp@bunch-of
+```
+
 ## LSP Servers
 
 As the plugin title, this plugin includes the jdtls LSP server with the local bin version.

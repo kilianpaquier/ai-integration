@@ -9,6 +9,10 @@ since the LSP server runs locally.
 claude plugin install typescript-lsp@bunch-of
 ```
 
+```sh
+copilot plugin install typescript-lsp@bunch-of
+```
+
 ## LSP Servers
 
 As the plugin title, this plugin includes the typescript-language-server LSP server with the local bin version.

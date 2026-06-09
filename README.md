@@ -22,6 +22,11 @@ claude plugin marketplace add https://gitlab.com/kilianpaquier/ai-marketplace.gi
 claude plugin install <plugin_name>@bunch-of
 ```
 
+```sh
+copilot plugin marketplace add https://gitlab.com/kilianpaquier/ai-marketplace.git
+copilot plugin install <plugin_name>@bunch-of
+```
+
 ## Plugin structure
 
 Each plugin follows a standard structure:

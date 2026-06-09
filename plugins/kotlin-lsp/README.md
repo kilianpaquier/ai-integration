@@ -16,6 +16,10 @@ ln -sf "$HOME/.local/share/kotlin-lsp/bin/intellij-server" "$HOME/.local/bin/kot
 claude plugin install kotlin-lsp@bunch-of
 ```
 
+```sh
+copilot plugin install kotlin-lsp@bunch-of
+```
+
 ## LSP Servers
 
 As the plugin title, this plugin includes the kotlin-lsp LSP server with the local bin version.

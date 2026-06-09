@@ -6,6 +6,10 @@
 claude plugin install playwright@bunch-of
 ```
 
+```sh
+copilot plugin install playwright@bunch-of
+```
+
 ## MCP Servers
 
 This plugin includes the Microsoft Playwright MCP server, which enables browser

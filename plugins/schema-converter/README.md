@@ -8,6 +8,10 @@ A simple plugin to convert JSON schemas into its languages equivalent.
 claude plugin install schema-converter@bunch-of
 ```
 
+```sh
+copilot plugin install schema-converter@bunch-of
+```
+
 ## Skills
 
 ### `schema-to-go`

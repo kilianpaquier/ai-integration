@@ -10,6 +10,10 @@ Environment variable `GITHUB_PERSONAL_ACCESS_TOKEN` should be set to the value o
 claude plugin install github@bunch-of
 ```
 
+```sh
+copilot plugin install github@bunch-of
+```
+
 ## MCP Servers
 
 This plugin includes the official GitHub MCP server, which enables repository

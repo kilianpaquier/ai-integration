@@ -6,6 +6,10 @@
 claude plugin install context7@bunch-of
 ```
 
+```sh
+copilot plugin install context7@bunch-of
+```
+
 ## MCP Servers
 
 This plugin includes the Upstash Context7 MCP server, which resolves library IDs

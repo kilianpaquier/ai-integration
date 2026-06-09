@@ -6,6 +6,10 @@
 claude plugin install opentofu@bunch-of
 ```
 
+```sh
+copilot plugin install opentofu@bunch-of
+```
+
 ## MCP Servers
 
 As the plugin title, this plugin includes the OpenTofu MCP server with its SSE mode.
