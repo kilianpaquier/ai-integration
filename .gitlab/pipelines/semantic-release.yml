@@ -11,7 +11,6 @@ include:
       hooks-dir: scripts
       info-on: all
       release-disabled: "true"
-      required-plugins-file: .gitlab/semrel-plugins.txt
       tag-format: v$${version}
 
 .semrel-base:
