@@ -1,0 +1,9 @@
+{
+    "mcpServers": {
+        "lean-ctx": {
+            "type": "stdio",
+            "command": "lean-ctx",
+            "args": ["mcp"]
+        }
+    }
+}

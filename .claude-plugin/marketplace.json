@@ -13,39 +13,43 @@
     "plugins": [
         {
             "name": "codegraph",
-            "source": "./plugins/codegraph"
+            "source": "./plugins/mcp/codegraph"
         },
         {
             "name": "context7",
-            "source": "./plugins/context7"
+            "source": "./plugins/mcp/context7"
         },
         {
             "name": "github",
-            "source": "./plugins/github"
+            "source": "./plugins/mcp/github"
         },
         {
             "name": "gitlab",
-            "source": "./plugins/gitlab"
+            "source": "./plugins/mcp/gitlab"
         },
         {
             "name": "gopls-lsp",
-            "source": "./plugins/gopls-lsp"
+            "source": "./plugins/lsp/gopls-lsp"
         },
         {
             "name": "jdtls-lsp",
-            "source": "./plugins/jdtls-lsp"
+            "source": "./plugins/lsp/jdtls-lsp"
         },
         {
             "name": "kotlin-lsp",
-            "source": "./plugins/kotlin-lsp"
+            "source": "./plugins/lsp/kotlin-lsp"
+        },
+        {
+            "name": "lean-ctx",
+            "source": "./plugins/mcp/lean-ctx"
         },
         {
             "name": "opentofu",
-            "source": "./plugins/opentofu"
+            "source": "./plugins/mcp/opentofu"
         },
         {
             "name": "playwright",
-            "source": "./plugins/playwright"
+            "source": "./plugins/mcp/playwright"
         },
         {
             "name": "remember",
@@ -61,7 +65,7 @@
         },
         {
             "name": "typescript-lsp",
-            "source": "./plugins/typescript-lsp"
+            "source": "./plugins/lsp/typescript-lsp"
         }
     ]
 }
