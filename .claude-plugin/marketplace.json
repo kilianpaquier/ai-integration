@@ -40,10 +40,6 @@
             "source": "./plugins/lsp/kotlin-lsp"
         },
         {
-            "name": "lean-ctx",
-            "source": "./plugins/mcp/lean-ctx"
-        },
-        {
             "name": "opentofu",
             "source": "./plugins/mcp/opentofu"
         },

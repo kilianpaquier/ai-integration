@@ -56,7 +56,6 @@ plugin-name/
 | [gopls-lsp](plugins/gopls-lsp)                 | Go language server for code intelligence and refactoring                        | LSP           |
 | [jdtls-lsp](plugins/jdtls-lsp)                 | Java language server (Eclipse JDT.LS) for code intelligence                     | LSP           |
 | [kotlin-lsp](plugins/kotlin-lsp)               | Kotlin language server for code intelligence                                    | LSP           |
-| [lean-ctx](https://github.com/yvgude/lean-ctx) | Context intelligence layer — controls what AI reads, remembers, and touches     | MCP           |
 | [opentofu](plugins/opentofu)                   | OpenTofu MCP Server for accessing the OpenTofu Registry                         | MCP           |
 | [playwright](plugins/playwright)               | Microsoft Playwright MCP server for browser automation and end-to-end testing   | MCP           |
 | [remember](plugins/remember)                   | Continuous memory for Claude Code with tiered daily logs                        | Hooks, Skills |
