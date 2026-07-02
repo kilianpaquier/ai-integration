@@ -1,67 +1,84 @@
 {
-    "$schema": "https://json.schemastore.org/claude-code-marketplace.json",
-
-    "owner": {
-        "name": "Kilian PAQUIER",
-        "url": "https://kilianpaquier.dev"
+  "name": "bunch-of",
+  "owner": {
+    "name": "Kilian PAQUIER",
+    "url": "https://kilianpaquier.dev"
+  },
+  "plugins": [
+    {
+      "name": "claude-5h-window-spread",
+      "source": {
+        "source": "github",
+        "repo": "Digital-Process-Tools/claude-5h-window-spread",
+        "ref": "v0.2.1",
+        "sha": "c9b491714e1a860e3355e1715b61a59a0bb9f624"
+      }
     },
-
-    "name": "bunch-of",
-    "description": "An humble marketplace for AI plugins",
-    "version": "0.1.0",
-
-    "plugins": [
-        {
-            "name": "codegraph",
-            "source": "./plugins/mcp/codegraph"
-        },
-        {
-            "name": "context7",
-            "source": "./plugins/mcp/context7"
-        },
-        {
-            "name": "github",
-            "source": "./plugins/mcp/github"
-        },
-        {
-            "name": "gitlab",
-            "source": "./plugins/mcp/gitlab"
-        },
-        {
-            "name": "gopls-lsp",
-            "source": "./plugins/lsp/gopls-lsp"
-        },
-        {
-            "name": "jdtls-lsp",
-            "source": "./plugins/lsp/jdtls-lsp"
-        },
-        {
-            "name": "kotlin-lsp",
-            "source": "./plugins/lsp/kotlin-lsp"
-        },
-        {
-            "name": "opentofu",
-            "source": "./plugins/mcp/opentofu"
-        },
-        {
-            "name": "playwright",
-            "source": "./plugins/mcp/playwright"
-        },
-        {
-            "name": "remember",
-            "source": {
-                "source": "url",
-                "url": "https://github.com/Digital-Process-Tools/claude-remember.git",
-                "ref": "v0.7.2"
-            }
-        },
-        {
-            "name": "schema-converter",
-            "source": "./plugins/schema-converter"
-        },
-        {
-            "name": "typescript-lsp",
-            "source": "./plugins/lsp/typescript-lsp"
-        }
-    ]
+    {
+      "name": "codebase-memory-mcp",
+      "source": "./plugins/mcp/codebase-memory-mcp"
+    },
+    {
+      "name": "codegraph",
+      "source": "./plugins/mcp/codegraph"
+    },
+    {
+      "name": "context7",
+      "source": "./plugins/mcp/context7"
+    },
+    {
+      "name": "github",
+      "source": "./plugins/mcp/github"
+    },
+    {
+      "name": "gitlab",
+      "source": "./plugins/mcp/gitlab"
+    },
+    {
+      "name": "gopls-lsp",
+      "source": "./plugins/lsp/gopls-lsp"
+    },
+    {
+      "name": "jdtls-lsp",
+      "source": "./plugins/lsp/jdtls-lsp"
+    },
+    {
+      "name": "kotlin-lsp",
+      "source": "./plugins/lsp/kotlin-lsp"
+    },
+    {
+      "name": "mempalace",
+      "source": {
+        "source": "github",
+        "repo": "MemPalace/mempalace",
+        "ref": "v3.5.0",
+        "sha": "2c08bb251d2649057c2e7a48fa725fed9a89ddc6"
+      }
+    },
+    {
+      "name": "opentofu",
+      "source": "./plugins/mcp/opentofu"
+    },
+    {
+      "name": "playwright",
+      "source": "./plugins/mcp/playwright"
+    },
+    {
+      "name": "remember",
+      "source": {
+        "source": "github",
+        "repo": "Digital-Process-Tools/claude-remember",
+        "ref": "v0.7.2",
+        "sha": "48845f649e2e10af70d9fe9a49cc0b35e92bb7a1"
+      }
+    },
+    {
+      "name": "schema-converter",
+      "source": "./plugins/schema-converter"
+    },
+    {
+      "name": "typescript-lsp",
+      "source": "./plugins/lsp/typescript-lsp"
+    }
+  ]
 }

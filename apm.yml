@@ -1,0 +1,65 @@
+# yaml-language-server: $schema=https://microsoft.github.io/apm/specs/schemas/manifest-v0.1.schema.json
+
+name: bunch-of
+version: 0.1.0
+
+author: Kilian PAQUIER
+description: An humble marketplace for AI plugins
+license: MIT
+
+marketplace:
+  outputs:
+    claude: {}
+
+  owner:
+    name: Kilian PAQUIER
+    url: https://kilianpaquier.dev
+
+  packages:
+    - name: claude-5h-window-spread
+      ref: v0.2.1
+      source: Digital-Process-Tools/claude-5h-window-spread
+
+    - name: codebase-memory-mcp
+      source: ./plugins/mcp/codebase-memory-mcp
+
+    - name: codegraph
+      source: ./plugins/mcp/codegraph
+
+    - name: context7
+      source: ./plugins/mcp/context7
+
+    - name: github
+      source: ./plugins/mcp/github
+
+    - name: gitlab
+      source: ./plugins/mcp/gitlab
+
+    - name: gopls-lsp
+      source: ./plugins/lsp/gopls-lsp
+
+    - name: jdtls-lsp
+      source: ./plugins/lsp/jdtls-lsp
+
+    - name: kotlin-lsp
+      source: ./plugins/lsp/kotlin-lsp
+
+    - name: mempalace
+      ref: v3.5.0
+      source: MemPalace/mempalace
+
+    - name: opentofu
+      source: ./plugins/mcp/opentofu
+
+    - name: playwright
+      source: ./plugins/mcp/playwright
+
+    - name: remember
+      ref: v0.7.2
+      source: Digital-Process-Tools/claude-remember
+
+    - name: schema-converter
+      source: ./plugins/schema-converter
+
+    - name: typescript-lsp
+      source: ./plugins/lsp/typescript-lsp

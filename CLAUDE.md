@@ -27,6 +27,10 @@ This plugins marketplace aims to get shared compatibility for a bunch-of plugins
 - https://docs.github.com/en/copilot/how-tos/copilot-cli/customize-copilot/plugins-creating
 - https://docs.github.com/en/copilot/reference/copilot-cli-reference/cli-plugin-reference
 
+## Adding a plugin
+
+- Always use the provider description when importing a plugin from another marketplace or declaring a plugin for an external tool (MCP, LSP, etc.).
+
 ---
 
 @README.md

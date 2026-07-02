@@ -1,0 +1,10 @@
+{
+    "$schema": "https://json.schemastore.org/claude-code-plugin-manifest.json",
+
+    "name": "codebase-memory-mcp",
+    "description": "Fast code intelligence engine for AI coding agents — single static binary MCP server",
+    "version": "0.1.0",
+    "license": "MIT",
+    "repository": "https://github.com/DeusData/codebase-memory-mcp",
+    "homepage": "https://gitlab.com/kilianpaquier/ai-marketplace/plugins/codebase-memory-mcp"
+}

@@ -27,6 +27,11 @@ copilot plugin marketplace add https://gitlab.com/kilianpaquier/ai-marketplace.g
 copilot plugin install <plugin_name>@bunch-of
 ```
 
+```sh
+apm marketplace add gitlab.com/kilianpaquier/ai-marketplace --name bunch-of
+apm install <plugin_name>@bunch-of
+```
+
 ## Plugin structure
 
 Each plugin follows a standard structure:
@@ -47,17 +52,27 @@ plugin-name/
 
 ## Plugins
 
-| Name                                           | Description                                                                     | Tools         |
-| ---------------------------------------------- | ------------------------------------------------------------------------------- | ------------- |
-| [codegraph](plugins/codegraph)                 | CodeGraph MCP server for accessing local CodeGraph indexed code knowledge graph | MCP           |
-| [context7](plugins/context7)                   | Upstash Context7 MCP server for up-to-date library documentation lookup         | MCP           |
-| [github](plugins/github)                       | Official GitHub MCP server for repository management, issues, and pull requests | MCP           |
-| [gitlab](plugins/gitlab)                       | GitLab MCP server for repository management, merge requests, and CI/CD          | MCP           |
-| [gopls-lsp](plugins/gopls-lsp)                 | Go language server for code intelligence and refactoring                        | LSP           |
-| [jdtls-lsp](plugins/jdtls-lsp)                 | Java language server (Eclipse JDT.LS) for code intelligence                     | LSP           |
-| [kotlin-lsp](plugins/kotlin-lsp)               | Kotlin language server for code intelligence                                    | LSP           |
-| [opentofu](plugins/opentofu)                   | OpenTofu MCP Server for accessing the OpenTofu Registry                         | MCP           |
-| [playwright](plugins/playwright)               | Microsoft Playwright MCP server for browser automation and end-to-end testing   | MCP           |
-| [remember](plugins/remember)                   | Continuous memory for Claude Code with tiered daily logs                        | Hooks, Skills |
-| [schema-converter](plugins/schema-converter)   | Convert JSON schemas to other formats (Go structs, TypeScript interfaces, etc.) | Skills        |
-| [typescript-lsp](plugins/typescript-lsp)       | TypeScript/JavaScript language server for enhanced code intelligence            | LSP           |
+| Name                                                                                        | Description                                                                          | Tools         |
+| ------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------ | ------------- |
+| [claude-5h-window-spread](https://github.com/Digital-Process-Tools/claude-5h-window-spread) | Stop hitting your Claude Pro/Max 5h cap by spreading usage across more windows       | Skills        |
+| [codebase-memory-mcp](plugins/codebase-memory-mcp)                                          | Fast code intelligence engine for AI coding agents — single static binary MCP server | MCP           |
+| [codegraph](plugins/codegraph)                                                              | CodeGraph MCP server for accessing local CodeGraph indexed code knowledge graph      | MCP           |
+| [context7](plugins/context7)                                                                | Upstash Context7 MCP server for up-to-date library documentation lookup              | MCP           |
+| [github](plugins/github)                                                                    | Official GitHub MCP server for repository management, issues, and pull requests      | MCP           |
+| [gitlab](plugins/gitlab)                                                                    | GitLab MCP server for repository management, merge requests, and CI/CD               | MCP           |
+| [gopls-lsp](plugins/gopls-lsp)                                                              | Go language server for code intelligence and refactoring                             | LSP           |
+| [jdtls-lsp](plugins/jdtls-lsp)                                                              | Java language server (Eclipse JDT.LS) for code intelligence                          | LSP           |
+| [kotlin-lsp](plugins/kotlin-lsp)                                                            | Kotlin language server for code intelligence                                         | LSP           |
+| [opentofu](plugins/opentofu)                                                                | OpenTofu MCP Server for accessing the OpenTofu Registry                              | MCP           |
+| [playwright](plugins/playwright)                                                            | Microsoft Playwright MCP server for browser automation and end-to-end testing        | MCP           |
+| [remember](plugins/remember)                                                                | Continuous memory for Claude Code with tiered daily logs                             | Hooks, Skills |
+| [schema-converter](plugins/schema-converter)                                                | Convert JSON schemas to other formats (Go structs, TypeScript interfaces, etc.)      | Skills        |
+| [typescript-lsp](plugins/typescript-lsp)                                                    | TypeScript/JavaScript language server for enhanced code intelligence                 | LSP           |
+
+## Maintaining
+
+[apm.yml](apm.yml) is the source of truth for the marketplace listing. After editing it, regenerate [.claude-plugin/marketplace.json](.claude-plugin/marketplace.json) by running:
+
+```sh
+apm pack
+```
