@@ -17,7 +17,7 @@ marketplace:
 
   packages:
     - name: claude-5h-window-spread
-      ref: v0.2.1
+      ref: 75b4763c7773142f270967c3cd7f8d8f86c65372
       source: Digital-Process-Tools/claude-5h-window-spread
 
     - name: codebase-memory-mcp

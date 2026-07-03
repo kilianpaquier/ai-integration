@@ -10,8 +10,8 @@
       "source": {
         "source": "github",
         "repo": "Digital-Process-Tools/claude-5h-window-spread",
-        "ref": "v0.2.1",
-        "sha": "c9b491714e1a860e3355e1715b61a59a0bb9f624"
+        "ref": "75b4763c7773142f270967c3cd7f8d8f86c65372",
+        "sha": "75b4763c7773142f270967c3cd7f8d8f86c65372"
       }
     },
     {
