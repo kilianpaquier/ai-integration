@@ -38,10 +38,8 @@ Each plugin follows a standard structure:
 
 ```
 plugin-name/
-├── .claude-plugin/
-│   └── plugin.json      # Plugin metadata (required)
-├── .github/plugin
-│   └── plugin.json      # Plugin metadata (optional, required if plugin schema changes between Claude and Copilot)
+├── .plugin/
+│   └── plugin.json      # Plugin metadata (Open Plugin Spec, required)
 ├── .mcp.json            # MCP server configuration (optional)
 ├── agents/              # Agent definitions (optional)
 ├── commands/            # Slash commands (optional, only compatible with Claude)
@@ -65,6 +63,7 @@ plugin-name/
 | [kotlin-lsp](plugins/kotlin-lsp)                                                            | Kotlin language server for code intelligence                                         | LSP           |
 | [opentofu](plugins/opentofu)                                                                | OpenTofu MCP Server for accessing the OpenTofu Registry                              | MCP           |
 | [playwright](plugins/playwright)                                                            | Microsoft Playwright MCP server for browser automation and end-to-end testing        | MCP           |
+| [protected-paths](plugins/hooks/protected-paths)                                            | Blocks reads/writes to credential and config directories via a PreToolUse hook       | Hooks         |
 | [remember](plugins/remember)                                                                | Continuous memory for Claude Code with tiered daily logs                             | Hooks, Skills |
 | [schema-converter](plugins/schema-converter)                                                | Convert JSON schemas to other formats (Go structs, TypeScript interfaces, etc.)      | Skills        |
 | [typescript-lsp](plugins/typescript-lsp)                                                    | TypeScript/JavaScript language server for enhanced code intelligence                 | LSP           |

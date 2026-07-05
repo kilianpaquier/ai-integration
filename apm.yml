@@ -9,57 +9,76 @@ license: MIT
 
 marketplace:
   outputs:
-    claude: {}
+    codex: {}
 
   owner:
     name: Kilian PAQUIER
     url: https://kilianpaquier.dev
 
   packages:
-    - name: claude-5h-window-spread
+    - category: hybrid
+      name: claude-5h-window-spread
       ref: 75b4763c7773142f270967c3cd7f8d8f86c65372
       source: Digital-Process-Tools/claude-5h-window-spread
 
-    - name: codebase-memory-mcp
+    - category: mcp
+      name: codebase-memory-mcp
       source: ./plugins/mcp/codebase-memory-mcp
 
-    - name: codegraph
+    - category: mcp
+      name: codegraph
       source: ./plugins/mcp/codegraph
 
-    - name: context7
+    - category: mcp
+      name: context7
       source: ./plugins/mcp/context7
 
-    - name: github
+    - category: mcp
+      name: github
       source: ./plugins/mcp/github
 
-    - name: gitlab
+    - category: mcp
+      name: gitlab
       source: ./plugins/mcp/gitlab
 
-    - name: gopls-lsp
+    - category: lsp
+      name: gopls-lsp
       source: ./plugins/lsp/gopls-lsp
 
-    - name: jdtls-lsp
+    - category: lsp
+      name: jdtls-lsp
       source: ./plugins/lsp/jdtls-lsp
 
-    - name: kotlin-lsp
+    - category: lsp
+      name: kotlin-lsp
       source: ./plugins/lsp/kotlin-lsp
 
-    - name: mempalace
+    - category: hybrid
+      name: mempalace
       ref: v3.5.0
       source: MemPalace/mempalace
 
-    - name: opentofu
+    - category: mcp
+      name: opentofu
       source: ./plugins/mcp/opentofu
 
-    - name: playwright
+    - category: mcp
+      name: playwright
       source: ./plugins/mcp/playwright
 
-    - name: remember
+    - category: hooks
+      name: protected-paths
+      source: ./plugins/protected-paths
+
+    - category: hybrid
+      name: remember
       ref: v0.7.2
       source: Digital-Process-Tools/claude-remember
 
-    - name: schema-converter
+    - category: skills
+      name: schema-converter
       source: ./plugins/schema-converter
 
-    - name: typescript-lsp
+    - category: lsp
+      name: typescript-lsp
       source: ./plugins/lsp/typescript-lsp

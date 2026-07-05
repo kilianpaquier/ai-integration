@@ -1,0 +1,8 @@
+{
+    "name": "protected-paths",
+    "description": "Blocks tool calls from reading or writing credential and config directories (SSH keys, cloud credentials, kube/docker configs) via a PreToolUse hook",
+    "version": "0.1.0",
+    "license": "MIT",
+    "repository": "https://gitlab.com/kilianpaquier/ai-marketplace",
+    "homepage": "https://gitlab.com/kilianpaquier/ai-marketplace/plugins/protected-paths"
+}
