@@ -9,6 +9,7 @@ license: MIT
 
 marketplace:
   outputs:
+    claude: {}
     codex: {}
 
   owner:
