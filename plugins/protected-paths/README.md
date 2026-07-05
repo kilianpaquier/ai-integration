@@ -12,8 +12,8 @@ copilot plugin install protected-paths@bunch-of
 
 ## Hooks
 
-This plugin registers a `PreToolUse` hook that inspects every tool call's `file_path` and `command`
-fields and blocks any that touch a credential or configuration directory:
+This plugin registers a `PreToolUse` hook that inspects every tool call and blocks any that touch a
+protected directory:
 
 - `~/.aws`
 - `~/.azure`
