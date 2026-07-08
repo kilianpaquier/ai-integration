@@ -10,7 +10,7 @@
       "source": {
         "source": "github",
         "repo": "JuliusBrussee/cavekit",
-        "ref": "v4.1.0",
+        "ref": "c322f0bb6db82163041930467f3ce32754d42827",
         "sha": "c322f0bb6db82163041930467f3ce32754d42827"
       }
     },
@@ -19,7 +19,7 @@
       "source": {
         "source": "github",
         "repo": "JuliusBrussee/caveman",
-        "ref": "v1.9.1",
+        "ref": "033f918602bd5319931256a537c4bd9ea7a48c25",
         "sha": "033f918602bd5319931256a537c4bd9ea7a48c25"
       }
     },
@@ -69,7 +69,7 @@
       "source": {
         "source": "github",
         "repo": "MemPalace/mempalace",
-        "ref": "v3.5.0",
+        "ref": "2c08bb251d2649057c2e7a48fa725fed9a89ddc6",
         "sha": "2c08bb251d2649057c2e7a48fa725fed9a89ddc6"
       }
     },
@@ -90,7 +90,7 @@
       "source": {
         "source": "github",
         "repo": "Digital-Process-Tools/claude-remember",
-        "ref": "v0.7.2",
+        "ref": "48845f649e2e10af70d9fe9a49cc0b35e92bb7a1",
         "sha": "48845f649e2e10af70d9fe9a49cc0b35e92bb7a1"
       }
     },

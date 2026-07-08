@@ -19,16 +19,19 @@ marketplace:
   packages:
     - category: hybrid
       name: cavekit
-      ref: v4.1.0
+      # renovate: datasource=github-tags packageName=JuliusBrussee/cavekit depName=cavekit
+      ref: c322f0bb6db82163041930467f3ce32754d42827 # v4.1.0
       source: JuliusBrussee/cavekit
 
     - category: hybrid
       name: caveman
-      ref: v1.9.1
+      # renovate: datasource=github-tags packageName=JuliusBrussee/caveman depName=caveman
+      ref: 033f918602bd5319931256a537c4bd9ea7a48c25 # v1.9.1
       source: JuliusBrussee/caveman
 
     - category: hybrid
       name: claude-5h-window-spread
+      # renovate: datasource=github-tags packageName=Digital-Process-Tools/claude-5h-window-spread depName=claude-5h-window-spread
       ref: 75b4763c7773142f270967c3cd7f8d8f86c65372
       source: Digital-Process-Tools/claude-5h-window-spread
 
@@ -66,7 +69,8 @@ marketplace:
 
     - category: hybrid
       name: mempalace
-      ref: v3.5.0
+      # renovate: datasource=github-tags packageName=MemPalace/mempalace depName=mempalace
+      ref: 2c08bb251d2649057c2e7a48fa725fed9a89ddc6 # v3.5.0
       source: MemPalace/mempalace
 
     - category: mcp
@@ -83,7 +87,8 @@ marketplace:
 
     - category: hybrid
       name: remember
-      ref: v0.7.2
+      # renovate: datasource=github-tags packageName=Digital-Process-Tools/claude-remember depName=remember
+      ref: 48845f649e2e10af70d9fe9a49cc0b35e92bb7a1 # v0.7.2
       source: Digital-Process-Tools/claude-remember
 
     - category: skills
