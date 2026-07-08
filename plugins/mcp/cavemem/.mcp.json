@@ -2,8 +2,8 @@
     "mcpServers": {
         "cavemem": {
             "type": "stdio",
-            "command": "npx",
-            "args": ["-y", "cavemem", "mcp"]
+            "command": "cavemem",
+            "args": ["mcp"]
         }
     }
 }
