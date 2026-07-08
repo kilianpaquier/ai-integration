@@ -2,6 +2,13 @@
 
 ## Installation
 
+Before being able to use the CodeGraph plugin, you need to initialize the graph in each
+project you want indexed. Without this step, the MCP tools have no graph to query.
+
+```sh
+npx -y @colbymchenry/codegraph init --index
+```
+
 ```sh
 claude plugin install codegraph@bunch-of
 ```

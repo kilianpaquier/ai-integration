@@ -2,6 +2,16 @@
 
 ## Installation
 
+Before being able to use the cavemem plugin, you need to install the cavemem CLI and wire
+its capture hooks for your assistant. Without this step, the MCP server queries an empty
+database.
+
+```sh
+npm install -g node-gyp cavemem
+cavemem install               # Claude Code
+cavemem install --ide copilot # GitHub Copilot
+```
+
 ```sh
 claude plugin install cavemem@bunch-of
 ```
