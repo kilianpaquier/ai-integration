@@ -24,6 +24,10 @@
       }
     },
     {
+      "name": "cavemem",
+      "source": "./plugins/mcp/cavemem"
+    },
+    {
       "name": "claude-5h-window-spread",
       "source": {
         "source": "github",

@@ -33,6 +33,18 @@
       "category": "hybrid"
     },
     {
+      "name": "cavemem",
+      "source": {
+        "source": "local",
+        "path": "./plugins/mcp/cavemem"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "mcp"
+    },
+    {
       "name": "claude-5h-window-spread",
       "source": {
         "source": "url",

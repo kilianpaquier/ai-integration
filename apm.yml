@@ -29,6 +29,10 @@ marketplace:
       ref: 0d95a81d35a9f2d123a5e9430d1cfc43d55f1bb0 # v1.9.1
       source: JuliusBrussee/caveman
 
+    - category: mcp
+      name: cavemem
+      source: ./plugins/mcp/cavemem
+
     - category: hybrid
       name: claude-5h-window-spread
       # renovate: datasource=github-tags packageName=Digital-Process-Tools/claude-5h-window-spread depName=claude-5h-window-spread
