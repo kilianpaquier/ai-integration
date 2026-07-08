@@ -39,12 +39,12 @@ Every absolute-path-looking token in the tool call is resolved with `realpath -m
 segments, symlinks, and redundant slashes) before being compared against the allow/deny lists, so
 comparisons are exact path-prefix checks rather than raw text matching. A resolved path is denied if it
 is inside (or equal to) a denied directory and not inside an allowed subpath, **or** if it is itself an
-ancestor of a denied directory — the latter catches recursive tools (`grep -r`, `find`, `tar`, `rsync`,
+ancestor of a denied directory - the latter catches recursive tools (`grep -r`, `find`, `tar`, `rsync`,
 `ls -R`, ...) and bare references like `cd ~` that could reach a protected directory without ever naming
 it directly, without needing to recognize the specific recursive flag or command in use.
 
 This does not track `cd`/`cwd` changes across chained commands, so a relative path used after an
-earlier `cd` into a subdirectory is not resolved against that new working directory — a known,
+earlier `cd` into a subdirectory is not resolved against that new working directory - a known,
 accepted gap rather than something this hook attempts to fully model.
 
 A blocked call prints an explanatory message on stderr and exits `0` with a `permissionDecision: "deny"`

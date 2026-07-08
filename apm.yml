@@ -18,6 +18,16 @@ marketplace:
 
   packages:
     - category: hybrid
+      name: cavekit
+      ref: v4.1.0
+      source: JuliusBrussee/cavekit
+
+    - category: hybrid
+      name: caveman
+      ref: v1.9.1
+      source: JuliusBrussee/caveman
+
+    - category: hybrid
       name: claude-5h-window-spread
       ref: 75b4763c7773142f270967c3cd7f8d8f86c65372
       source: Digital-Process-Tools/claude-5h-window-spread

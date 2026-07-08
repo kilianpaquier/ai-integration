@@ -6,6 +6,24 @@
   },
   "plugins": [
     {
+      "name": "cavekit",
+      "source": {
+        "source": "github",
+        "repo": "JuliusBrussee/cavekit",
+        "ref": "v4.1.0",
+        "sha": "c322f0bb6db82163041930467f3ce32754d42827"
+      }
+    },
+    {
+      "name": "caveman",
+      "source": {
+        "source": "github",
+        "repo": "JuliusBrussee/caveman",
+        "ref": "v1.9.1",
+        "sha": "033f918602bd5319931256a537c4bd9ea7a48c25"
+      }
+    },
+    {
       "name": "claude-5h-window-spread",
       "source": {
         "source": "github",

@@ -52,8 +52,10 @@ plugin-name/
 
 | Name                                                                                        | Description                                                                          | Tools         |
 | ------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------ | ------------- |
+| [cavekit](https://github.com/JuliusBrussee/cavekit)                                         | Skills-based spec-driven development tool                                            | Skills        |
+| [caveman](https://github.com/JuliusBrussee/caveman)                                         | Ultra-compressed communication mode for reduced output tokens                        | Hooks, Skills |
 | [claude-5h-window-spread](https://github.com/Digital-Process-Tools/claude-5h-window-spread) | Stop hitting your Claude Pro/Max 5h cap by spreading usage across more windows       | Skills        |
-| [codebase-memory-mcp](plugins/codebase-memory-mcp)                                          | Fast code intelligence engine for AI coding agents — single static binary MCP server | MCP           |
+| [codebase-memory-mcp](plugins/codebase-memory-mcp)                                          | Fast code intelligence engine for AI coding agents - single static binary MCP server | MCP           |
 | [codegraph](plugins/codegraph)                                                              | CodeGraph MCP server for accessing local CodeGraph indexed code knowledge graph      | MCP           |
 | [context7](plugins/context7)                                                                | Upstash Context7 MCP server for up-to-date library documentation lookup              | MCP           |
 | [github](plugins/github)                                                                    | Official GitHub MCP server for repository management, issues, and pull requests      | MCP           |
@@ -67,6 +69,13 @@ plugin-name/
 | [remember](plugins/remember)                                                                | Continuous memory for Claude Code with tiered daily logs                             | Hooks, Skills |
 | [schema-converter](plugins/schema-converter)                                                | Convert JSON schemas to other formats (Go structs, TypeScript interfaces, etc.)      | Skills        |
 | [typescript-lsp](plugins/typescript-lsp)                                                    | TypeScript/JavaScript language server for enhanced code intelligence                 | LSP           |
+
+## Recommended external tools
+
+| Name                                                |
+| --------------------------------------------------- |
+| [cavemem](https://github.com/JuliusBrussee/cavemem) |
+| [rtk](https://github.com/rtk-ai/rtk)                |
 
 ## Maintaining
 
