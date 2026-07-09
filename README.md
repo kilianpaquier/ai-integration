@@ -15,6 +15,9 @@ or locally defined to enhance our AI capabilities.
 This marketplace sole purpose is to have plugins compatible while the broadest range of AI assistants, from Claude to Copilot, and more.
 That's why it may redefine plugins already available in the official marketplace, unofficial but well-known, etc. yet not compatible with only one assistant.
 
+Full documentation - concepts, Agent Skills compliance, Agent Package Manager, and recommended external tools -
+lives on the [documentation website](https://ai.kilianpaquier.dev).
+
 ## Installation
 
 ```sh
@@ -71,125 +74,6 @@ plugin-name/
 | [protected-paths](plugins/protected-paths)             | Blocks reads/writes to credential and config directories via a PreToolUse hook       | Hooks  |
 | [schema-converter](plugins/schema-converter)           | Convert JSON schemas to other formats (Go structs, TypeScript interfaces, etc.)      | Skills |
 | [typescript-lsp](plugins/lsp/typescript-lsp)           | TypeScript/JavaScript language server for enhanced code intelligence                 | LSP    |
-
-## Recommended
-
-Plugins and tools not included in this marketplace but worth installing separately.
-
-### [**cavekit**](https://github.com/JuliusBrussee/cavekit)
-
-Skills-based spec-driven development tool.
-
-```sh
-claude plugin marketplace add JuliusBrussee/cavekit
-claude plugin install ck@cavekit-marketplace
-```
-
-```sh
-copilot plugin marketplace add JuliusBrussee/cavekit
-copilot plugin install ck@cavekit-marketplace
-```
-
-```sh
-npx skills add JuliusBrussee/cavekit -s '*' -g
-```
-
-```sh
-apm marketplace add JuliusBrussee/cavekit
-apm install ck@cavekit-marketplace
-```
-
-### [**caveman**](https://github.com/JuliusBrussee/caveman)
-
-Ultra-compressed communication mode for reduced output tokens.
-
-```sh
-claude plugin marketplace add JuliusBrussee/caveman
-claude plugin install caveman@caveman
-```
-
-```sh
-npx skills add JuliusBrussee/caveman -s '*' -g
-```
-
-```sh
-apm marketplace add JuliusBrussee/caveman
-apm install caveman@caveman
-```
-
-*Note: when using Copilot, either you use installation scripts provided by **caveman** repository
-or you can use `caveman-autostart` plugin to automatically register caveman mode on session (new, resume, etc.).*
-
-### [**claude-5h-window-spread**](https://github.com/Digital-Process-Tools/claude-5h-window-spread)
-
-Stop hitting your Claude Pro/Max 5h cap by spreading usage across more windows.
-
-```sh
-claude plugin marketplace add Digital-Process-Tools/claude-marketplace
-claude plugin install claude-5h-window-spread@dpt-plugins
-```
-
-```sh
-npx skills add Digital-Process-Tools/claude-5h-window-spread -s '*' -g
-```
-
-```sh
-apm marketplace add Digital-Process-Tools/claude-marketplace
-apm install claude-5h-window-spread@dpt-plugins
-```
-
-### [**mempalace**](https://github.com/MemPalace/mempalace)
-
-Give your AI a memory - mine projects and conversations into a searchable palace.
-
-```sh
-claude plugin marketplace add MemPalace/mempalace
-claude plugin install mempalace@mempalace
-```
-
-```sh
-copilot plugin marketplace add MemPalace/mempalace
-copilot plugin install mempalace@mempalace
-```
-
-```sh
-npx skills add MemPalace/mempalace -s '*' -g
-```
-
-```sh
-apm marketplace add MemPalace/mempalace
-apm install mempalace@mempalace
-```
-
-### [**remember**](https://github.com/Digital-Process-Tools/claude-remember)
-
-Continuous memory for Claude Code with tiered daily logs.
-
-```sh
-claude plugin marketplace add Digital-Process-Tools/claude-marketplace
-claude plugin install remember@dpt-plugins
-```
-
-```sh
-copilot plugin marketplace add Digital-Process-Tools/claude-marketplace
-copilot plugin install remember@dpt-plugins
-```
-
-```sh
-apm marketplace add Digital-Process-Tools/claude-marketplace
-apm install remember@dpt-plugins
-```
-
-### [**rtk**](https://github.com/rtk-ai/rtk)
-
-Token-optimized CLI proxy for reduced dev operation costs.
-Installation documented on their **Github**.
-Easy step with [**mise**](https://mise.jdx.dev/):
-
-```sh
-mise use -g github:rtk-ai/rtk
-rtk init -g # --agent or --<agent> may be provided to install for a specific agent
-```
 
 ## Maintaining
 

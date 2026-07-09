@@ -9,7 +9,7 @@ This plugins marketplace aims to get shared compatibility for a bunch-of plugins
 - LSP Servers: Copilot uses `fileExtensions` while Claude uses `extensionToLanguage`. Both are set side by side in the same `lspServers` entry.
 - MCP Servers: Copilot needs `type` while Claude doesn't always.
 - Plugins: Copilot doesn't support yet `source.source=git-subdir` based plugins (works fine with `url`).
-- Manifest: plugins use a single vendor-neutral `.plugin/plugin.json` manifest (Open Plugin Spec) instead of maintaining separate Claude/Copilot manifests.
+- Manifest: plugins use a single agent-neutral `.plugin/plugin.json` manifest (Open Plugin Spec) instead of maintaining separate Claude/Copilot manifests.
 
 ## Concepts support
 

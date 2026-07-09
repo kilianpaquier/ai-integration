@@ -11,3 +11,7 @@ license: mit
 maintainers:
   - name: u.kilianpaquier
 platform: gitlab
+website:
+  auto: true
+  directory: docs
+  hosting: netlify

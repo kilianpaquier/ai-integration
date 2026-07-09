@@ -1,0 +1,5 @@
+[[redirects]]
+  force = true
+  from = "https://ai-kilianpaquier.netlify.app/*"
+  status = 301
+  to = "https://ai.kilianpaquier.dev/:splat"

@@ -1,0 +1,25 @@
+{{- /*
+A shortcode listing a page's children (subsections and regular pages) as Hextra cards.
+
+@param {string} cols The number of columns (defaults to 3, same as the cards shortcode).
+
+@example {{< children >}}
+*/ -}}
+
+{{- $pages := .Page.Pages -}}
+{{- $cols := .Get "cols" | default 3 -}}
+
+{{- with $pages -}}
+<div class="children-cards hextra-cards hx:mt-4 hx:gap-4 hx:grid not-prose" style="--hextra-cards-grid-cols: {{ $cols }};">
+  {{- range . -}}
+    {{- $subtitle := .Params.description | default .Summary | truncate 80 | plainify -}}
+    {{- partial "shortcodes/card" (dict
+      "page"     .
+      "link"     .RelPermalink
+      "title"    .Title
+      "icon"     (.Params.icon | default "")
+      "subtitle" $subtitle
+    ) -}}
+  {{- end -}}
+</div>
+{{- end -}}

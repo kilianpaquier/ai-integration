@@ -4,9 +4,6 @@
 dist/
 reports/
 
-# Local Netlify folder
-.netlify
-
 # Created by https://www.toptal.com/developers/gitignore/api/hugo,dotenv
 # Edit at https://www.toptal.com/developers/gitignore?templates=hugo,dotenv
 

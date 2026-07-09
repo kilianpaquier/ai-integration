@@ -1,0 +1,71 @@
+baseURL: /
+
+defaultContentLanguage: en
+
+module:
+  imports:
+    - path: github.com/imfing/hextra
+      # renovate: datasource=github-tags packageName=imfing/hextra depName=hextra
+      version: 8e53e7a7ef3e24348edbac276e03cb9fecf66d0c # v0.12.3
+
+languages:
+  en:
+    label: English
+    title: AI Integration
+    weight: 1
+  fr:
+    label: Français
+    title: Intégration IA
+    weight: 2
+
+markup:
+  goldmark:
+    renderer:
+      unsafe: true
+  highlight:
+    noClasses: false
+
+menu:
+  main:
+    - name: Search
+      params:
+        type: search
+      weight: 1
+    - name: Language Switcher
+      params:
+        type: language-switch
+      weight: 2
+    - name: GitLab
+      params:
+        icon: gitlab
+      url: https://gitlab.com/kilianpaquier/ai-marketplace
+      weight: 3
+
+params:
+  search:
+    enable: true
+    type: flexsearch
+  footer:
+    displayCopyright: true
+    displayPoweredBy: true
+  imageZoom:
+    enable: true
+  page:
+    displayPagination: false
+  # banner:
+  #   key: unique-key # handle closed previous notifications by users
+  #   message: |
+  #     Some news with emotes handled (or not)
+  navbar:
+    displayTitle: true
+    displayLogo: true
+    logo:
+      path: logo/10-rounded.webp
+      dark: logo/10-rounded.webp
+      width: 30
+      height: 30
+
+outputs:
+  home: [html, llms]
+  page: [html, llms]
+  section: [html, llms]
