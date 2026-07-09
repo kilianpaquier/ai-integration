@@ -17,88 +17,62 @@ marketplace:
     url: https://kilianpaquier.dev
 
   packages:
-    - category: hybrid
-      name: cavekit
-      # renovate: datasource=github-tags packageName=JuliusBrussee/cavekit depName=cavekit
-      ref: c322f0bb6db82163041930467f3ce32754d42827 # v4.1.0
-      source: JuliusBrussee/cavekit
+  - category: hooks
+    name: caveman-autostart
+    source: ./plugins/caveman-autostart
 
-    - category: hybrid
-      name: caveman
-      # renovate: datasource=github-tags packageName=JuliusBrussee/caveman depName=caveman
-      ref: 0d95a81d35a9f2d123a5e9430d1cfc43d55f1bb0 # v1.9.1
-      source: JuliusBrussee/caveman
+  - category: mcp
+    name: cavemem
+    source: ./plugins/mcp/cavemem
 
-    - category: mcp
-      name: cavemem
-      source: ./plugins/mcp/cavemem
+  - category: mcp
+    name: codebase-memory-mcp
+    source: ./plugins/mcp/codebase-memory-mcp
 
-    - category: hybrid
-      name: claude-5h-window-spread
-      # renovate: datasource=github-tags packageName=Digital-Process-Tools/claude-5h-window-spread depName=claude-5h-window-spread
-      ref: 75b4763c7773142f270967c3cd7f8d8f86c65372
-      source: Digital-Process-Tools/claude-5h-window-spread
+  - category: mcp
+    name: codegraph
+    source: ./plugins/mcp/codegraph
 
-    - category: mcp
-      name: codebase-memory-mcp
-      source: ./plugins/mcp/codebase-memory-mcp
+  - category: mcp
+    name: context7
+    source: ./plugins/mcp/context7
 
-    - category: mcp
-      name: codegraph
-      source: ./plugins/mcp/codegraph
+  - category: mcp
+    name: github
+    source: ./plugins/mcp/github
 
-    - category: mcp
-      name: context7
-      source: ./plugins/mcp/context7
+  - category: mcp
+    name: gitlab
+    source: ./plugins/mcp/gitlab
 
-    - category: mcp
-      name: github
-      source: ./plugins/mcp/github
+  - category: lsp
+    name: gopls-lsp
+    source: ./plugins/lsp/gopls-lsp
 
-    - category: mcp
-      name: gitlab
-      source: ./plugins/mcp/gitlab
+  - category: lsp
+    name: jdtls-lsp
+    source: ./plugins/lsp/jdtls-lsp
 
-    - category: lsp
-      name: gopls-lsp
-      source: ./plugins/lsp/gopls-lsp
+  - category: lsp
+    name: kotlin-lsp
+    source: ./plugins/lsp/kotlin-lsp
 
-    - category: lsp
-      name: jdtls-lsp
-      source: ./plugins/lsp/jdtls-lsp
+  - category: mcp
+    name: opentofu
+    source: ./plugins/mcp/opentofu
 
-    - category: lsp
-      name: kotlin-lsp
-      source: ./plugins/lsp/kotlin-lsp
+  - category: mcp
+    name: playwright
+    source: ./plugins/mcp/playwright
 
-    - category: hybrid
-      name: mempalace
-      # renovate: datasource=github-tags packageName=MemPalace/mempalace depName=mempalace
-      ref: 2c08bb251d2649057c2e7a48fa725fed9a89ddc6 # v3.5.0
-      source: MemPalace/mempalace
+  - category: hooks
+    name: protected-paths
+    source: ./plugins/protected-paths
 
-    - category: mcp
-      name: opentofu
-      source: ./plugins/mcp/opentofu
+  - category: skills
+    name: schema-converter
+    source: ./plugins/schema-converter
 
-    - category: mcp
-      name: playwright
-      source: ./plugins/mcp/playwright
-
-    - category: hooks
-      name: protected-paths
-      source: ./plugins/protected-paths
-
-    - category: hybrid
-      name: remember
-      # renovate: datasource=github-tags packageName=Digital-Process-Tools/claude-remember depName=remember
-      ref: 48845f649e2e10af70d9fe9a49cc0b35e92bb7a1 # v0.7.2
-      source: Digital-Process-Tools/claude-remember
-
-    - category: skills
-      name: schema-converter
-      source: ./plugins/schema-converter
-
-    - category: lsp
-      name: typescript-lsp
-      source: ./plugins/lsp/typescript-lsp
+  - category: lsp
+    name: typescript-lsp
+    source: ./plugins/lsp/typescript-lsp

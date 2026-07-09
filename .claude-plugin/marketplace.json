@@ -6,35 +6,12 @@
   },
   "plugins": [
     {
-      "name": "cavekit",
-      "source": {
-        "source": "github",
-        "repo": "JuliusBrussee/cavekit",
-        "ref": "c322f0bb6db82163041930467f3ce32754d42827",
-        "sha": "c322f0bb6db82163041930467f3ce32754d42827"
-      }
-    },
-    {
-      "name": "caveman",
-      "source": {
-        "source": "github",
-        "repo": "JuliusBrussee/caveman",
-        "ref": "0d95a81d35a9f2d123a5e9430d1cfc43d55f1bb0",
-        "sha": "0d95a81d35a9f2d123a5e9430d1cfc43d55f1bb0"
-      }
+      "name": "caveman-autostart",
+      "source": "./plugins/caveman-autostart"
     },
     {
       "name": "cavemem",
       "source": "./plugins/mcp/cavemem"
-    },
-    {
-      "name": "claude-5h-window-spread",
-      "source": {
-        "source": "github",
-        "repo": "Digital-Process-Tools/claude-5h-window-spread",
-        "ref": "75b4763c7773142f270967c3cd7f8d8f86c65372",
-        "sha": "75b4763c7773142f270967c3cd7f8d8f86c65372"
-      }
     },
     {
       "name": "codebase-memory-mcp",
@@ -69,15 +46,6 @@
       "source": "./plugins/lsp/kotlin-lsp"
     },
     {
-      "name": "mempalace",
-      "source": {
-        "source": "github",
-        "repo": "MemPalace/mempalace",
-        "ref": "2c08bb251d2649057c2e7a48fa725fed9a89ddc6",
-        "sha": "2c08bb251d2649057c2e7a48fa725fed9a89ddc6"
-      }
-    },
-    {
       "name": "opentofu",
       "source": "./plugins/mcp/opentofu"
     },
@@ -88,15 +56,6 @@
     {
       "name": "protected-paths",
       "source": "./plugins/protected-paths"
-    },
-    {
-      "name": "remember",
-      "source": {
-        "source": "github",
-        "repo": "Digital-Process-Tools/claude-remember",
-        "ref": "48845f649e2e10af70d9fe9a49cc0b35e92bb7a1",
-        "sha": "48845f649e2e10af70d9fe9a49cc0b35e92bb7a1"
-      }
     },
     {
       "name": "schema-converter",
