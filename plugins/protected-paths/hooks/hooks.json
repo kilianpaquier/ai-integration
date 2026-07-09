@@ -6,7 +6,7 @@
                 "hooks": [
                     {
                         "type": "command",
-                        "command": "${PLUGIN_ROOT:-${CLAUDE_PLUGIN_ROOT}}/scripts/protected-paths.sh"
+                        "command": "node ${PLUGIN_ROOT:-${CLAUDE_PLUGIN_ROOT}}/scripts/protected-paths.js"
                     }
                 ]
             }
