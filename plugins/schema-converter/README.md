@@ -12,6 +12,10 @@ claude plugin install schema-converter@bunch-of
 copilot plugin install schema-converter@bunch-of
 ```
 
+```sh
+npx skills add https://gitlab.com/kilianpaquier/ai-marketplace -s schema-to-go -g
+```
+
 ## Skills
 
 ### `schema-to-go`
