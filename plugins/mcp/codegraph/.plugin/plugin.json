@@ -3,6 +3,7 @@
     "description": "CodeGraph MCP server for accessing local CodeGraph indexed code knowledge graph",
     "version": "0.1.0",
     "license": "MIT",
+
     "repository": "https://github.com/colbymchenry/codegraph",
     "homepage": "https://gitlab.com/kilianpaquier/ai-marketplace/plugins/codegraph"
 }

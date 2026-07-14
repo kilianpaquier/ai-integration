@@ -1,0 +1,18 @@
+# yaml-language-server: $schema=https://microsoft.github.io/apm/specs/schemas/manifest-v0.1.schema.json
+
+name: cavemem
+version: 0.1.0
+
+author: Kilian PAQUIER
+description: Cross-agent persistent memory MCP server - compressed SQLite store with search, timeline and observation retrieval tools
+license: MIT
+
+dependencies:
+  mcp:
+    - name: cavemem
+      registry: "false"
+      transport: stdio
+      command: cavemem
+      args: ["mcp"]
+
+# targets: [claude, codex, copilot, cursor, gemini, kiro, opencode, windsurf]

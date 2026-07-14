@@ -1,10 +1,12 @@
 {
     "name": "jdtls-lsp",
-    "description": "Java language server (Eclipse JDT.LS) for code intelligence",
+    "description": "Java language server (Eclipse JDT.LS) activation for code intelligence",
     "version": "0.1.0",
     "license": "MIT",
+
     "repository": "https://github.com/eclipse-jdtls/eclipse.jdt.ls",
     "homepage": "https://gitlab.com/kilianpaquier/ai-marketplace/plugins/jdtls",
+
     "lspServers": {
         "jdtls": {
             "command": "jdtls",

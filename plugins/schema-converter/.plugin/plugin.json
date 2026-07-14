@@ -3,6 +3,7 @@
     "description": "Convert JSON schemas to other formats (Go structs, TypeScript interfaces, etc.)",
     "version": "0.1.0",
     "license": "MIT",
+
     "repository": "https://gitlab.com/kilianpaquier/ai-marketplace",
     "homepage": "https://gitlab.com/kilianpaquier/ai-marketplace/plugins/schema-converter",
 

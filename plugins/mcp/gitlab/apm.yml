@@ -1,0 +1,17 @@
+# yaml-language-server: $schema=https://microsoft.github.io/apm/specs/schemas/manifest-v0.1.schema.json
+
+name: gitlab
+version: 0.1.0
+
+author: Kilian PAQUIER
+description: GitLab DevOps platform integration. Manage repositories, merge requests, CI/CD pipelines, issues, and wikis. Full access to GitLab's comprehensive DevOps lifecycle tools.
+license: MIT
+
+dependencies:
+  mcp:
+    - name: gitlab
+      registry: "false"
+      transport: http
+      url: https://gitlab.com/api/v4/mcp
+
+# targets: [claude, codex, copilot, cursor, gemini, kiro, opencode, windsurf]

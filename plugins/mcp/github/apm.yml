@@ -1,0 +1,19 @@
+# yaml-language-server: $schema=https://microsoft.github.io/apm/specs/schemas/manifest-v0.1.schema.json
+
+name: github
+version: 0.1.0
+
+author: Kilian PAQUIER
+description: Official GitHub MCP server for repository management. Create issues, manage pull requests, review code, search repositories, and interact with GitHub's full API.
+license: MIT
+
+dependencies:
+  mcp:
+    - name: github
+      registry: "false"
+      transport: http
+      url: https://api.githubcopilot.com/mcp/
+      headers:
+        Authorization: "Bearer ${GITHUB_PERSONAL_ACCESS_TOKEN}"
+
+# targets: [claude, codex, copilot, cursor, gemini, kiro, opencode, windsurf]

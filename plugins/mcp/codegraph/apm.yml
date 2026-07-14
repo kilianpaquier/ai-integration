@@ -1,0 +1,18 @@
+# yaml-language-server: $schema=https://microsoft.github.io/apm/specs/schemas/manifest-v0.1.schema.json
+
+name: codegraph
+version: 0.1.0
+
+author: Kilian PAQUIER
+description: CodeGraph MCP server for accessing local CodeGraph indexed code knowledge graph
+license: MIT
+
+dependencies:
+  mcp:
+    - name: codegraph
+      registry: "false"
+      transport: stdio
+      command: npx
+      args: ["-y", "@colbymchenry/codegraph", "serve", "--mcp"]
+
+# targets: [claude, codex, copilot, cursor, gemini, kiro, opencode, windsurf]

@@ -1,0 +1,18 @@
+# yaml-language-server: $schema=https://microsoft.github.io/apm/specs/schemas/manifest-v0.1.schema.json
+
+name: playwright
+version: 0.1.0
+
+author: Kilian PAQUIER
+description: Browser automation and end-to-end testing MCP server by Microsoft. Enables AI assistants to interact with web pages, take screenshots, fill forms, click elements, and perform automated browser testing workflows.
+license: MIT
+
+dependencies:
+  mcp:
+    - name: playwright
+      registry: "false"
+      transport: stdio
+      command: npx
+      args: ["-y", "@playwright/mcp"]
+
+# targets: [claude, codex, copilot, cursor, gemini, kiro, opencode, windsurf]

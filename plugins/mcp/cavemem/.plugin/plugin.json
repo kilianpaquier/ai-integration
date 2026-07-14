@@ -3,6 +3,7 @@
     "description": "Cross-agent persistent memory MCP server - compressed SQLite store with search, timeline and observation retrieval tools",
     "version": "0.1.0",
     "license": "MIT",
+
     "repository": "https://github.com/JuliusBrussee/cavemem",
     "homepage": "https://gitlab.com/kilianpaquier/ai-marketplace/plugins/cavemem"
 }

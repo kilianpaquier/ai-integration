@@ -1,10 +1,12 @@
 {
     "name": "typescript-lsp",
-    "description": "TypeScript/JavaScript language server for enhanced code intelligence",
+    "description": "TypeScript/JavaScript language server activation for enhanced code intelligence",
     "version": "0.1.0",
     "license": "MIT",
+
     "repository": "https://github.com/typescript-language-server/typescript-language-server",
     "homepage": "https://gitlab.com/kilianpaquier/ai-marketplace/plugins/typescript-lsp",
+
     "lspServers": {
         "typescript": {
             "command": "typescript-language-server",

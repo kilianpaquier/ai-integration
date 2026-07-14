@@ -1,8 +1,9 @@
 {
     "name": "gopls-lsp",
-    "description": "Go language server for code intelligence and refactoring",
+    "description": "Go language server activation for code intelligence and refactoring",
     "version": "0.1.0",
     "license": "MIT",
+
     "repository": "https://go.dev/gopls",
     "homepage": "https://gitlab.com/kilianpaquier/ai-marketplace/plugins/gopls",
 
