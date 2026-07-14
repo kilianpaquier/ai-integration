@@ -1,5 +1,29 @@
+/* text on top of children cards */
 .children-cards .hextra-card > .hx\:mt-auto {
   margin-top: 0;
+}
+
+/* remove margin top from notes, warning, etc. when it's the first tab child */
+.hextra-tabs-panel > .hx\:overflow-x-auto.hx\:mt-6 {
+  margin-top: 0;
+}
+
+/* wrap tab labels onto multiple lines instead of horizontal scroll when many tabs */
+[role="tablist"] {
+  width: 100% !important;
+  flex-wrap: wrap !important;
+}
+
+/* spread tables to the whole width available */
+.content table {
+  display: table;
+  width: 100%;
+}
+
+/* full-width Mermaid diagram wrapper used on section landing pages */
+.mermaid-diagram .mermaid svg {
+  width: 100% !important;
+  max-width: none !important;
 }
 
 /* @media (min-width: 48rem) {

@@ -4,18 +4,11 @@ title: Plugin
 weight: 20
 ---
 
-*Introduced by Anthropic.*
+A plugin is a Git repository capable of sharing at once a bundle of components.
 
-A plugin is a Git repository containing
-[agents](../../concepts/agent),
-[commands](../../concepts/command),
-[hooks](../../concepts/hook),
-[LSPs](../../concepts/lsp),
-[MCPs](../../concepts/mcp) and
-[skills](../../concepts/skill) (availability may depend on the agent installing it).
-
-A plugin by itself cannot really be used, it is expected to be bundle within a [marketplace](../marketplace),
-either containing only the plugin or with others (larger marketplaces).
+A plugin by itself cannot really be used (expect for some agents like
+[**goose**](https://goose-docs.ai/docs/guides/context-engineering/plugins/#install-a-plugin)),
+it is expected to be bundle within a [marketplace](/share/marketplace), either containing only the plugin or with others (larger marketplaces).
 
 ## Structure
 
@@ -24,8 +17,10 @@ A plugin is identified by a `plugin.json` file. Its place and content (small var
 {{< tabs >}}
 
 {{< tab name="Open Plugin" >}}
-- **Format**: [Open Plugin Spec](https://open-plugins.com/plugin-builders/specification)
-- **Compatibility**: Claude Code, Copilot (additional compatibility to be verified)
+- **Format**: [**Open Plugin**](https://open-plugins.com/plugin-builders/specification)
+- **Read by**: **Claude Code** (partial), **Copilot** (partial)
+- **Environment variables**:
+  - `PLUGIN_ROOT` (plugin directory)
 
 ```tree
 repository/
@@ -37,6 +32,8 @@ repository/
 │   └── special.md
 ├── hooks/
 │   └── hooks.json
+├── rules/
+│   └── prefer-const.mdc
 ├── skills/
 │   └── skill-name/
 │       └── SKILL.md
@@ -46,8 +43,14 @@ repository/
 {{< /tab >}}
 
 {{< tab name="Claude Code" >}}
-- **Format**: [Claude Code](https://code.claude.com/docs/en/plugins-reference)
-- **Compatibility**: Codex, Copilot (additional compatibility to be verified)
+- **Format**: [**Claude Code**](https://code.claude.com/docs/en/plugins-reference)
+- **Also read by**: **Codex** (partial), **Copilot** (partial)
+- **Environment variables**:
+  - `CLAUDE_PLUGIN_ROOT` (plugin directory)
+  - `CLAUDE_PLUGIN_DATA` (plugin data directory)
+  - `CLAUDE_PROJECT_DIR` (workspace directory)
+  - `CLAUDE_PLUGIN_OPTION_<KEY>` ([`userConfig`](https://code.claude.com/docs/en/plugins-reference#user-configuration) values,
+    compatible with **Claude Code** only)
 
 ```tree
 repository/
@@ -70,8 +73,11 @@ repository/
 {{< /tab >}}
 
 {{< tab name="Codex" >}}
-- **Format**: [Codex](https://learn.chatgpt.com/codex/build-plugins)
-- **Compatibility**: Codex (additional compatibility to be verified)
+- **Format**: [**Codex**](https://learn.chatgpt.com/codex/build-plugins)
+- **Environment variables**:
+  - `PLUGIN_ROOT` (plugin root directory)
+  - `PLUGIN_DATA` (plugin data directory)
+  - `CLAUDE_PLUGIN_ROOT` / `CLAUDE_PLUGIN_DATA` (aliases kept for compatibility)
 
 ```tree
 repository/
@@ -88,8 +94,10 @@ repository/
 {{< /tab >}}
 
 {{< tab name="Copilot" >}}
-- **Format**: [Copilot](https://docs.github.com/en/copilot/how-tos/copilot-cli/customize-copilot/plugins-creating)
-- **Compatibility**: Copilot (additional compatibility to be verified)
+- **Format**: [**Copilot**](https://docs.github.com/en/copilot/how-tos/copilot-cli/customize-copilot/plugins-creating)
+- **Environment variables**:
+  - `PLUGIN_ROOT` (plugin directory)
+  - `COPILOT_PLUGIN_DATA` (plugin data directory, aliased as `CLAUDE_PLUGIN_DATA`)
 
 ```tree
 repository/
@@ -104,29 +112,6 @@ repository/
 ```
 {{< /tab >}}
 
-{{< tab name="Cursor" >}}
-- **Format**: [Cursor](https://cursor.com/docs/reference/plugins)
-- **Compatibility**: specific to the agent
-
-```tree
-repository/
-├── .cursor-plugin/
-│   └── plugin.json
-├── agents/
-│   └── reviewer.md
-├── commands/
-│   └── special.md
-├── skills/
-│   └── skill-name/
-│       └── SKILL.md
-├── rules/
-│   └── prefer-const.mdc
-├── hooks/
-│   └── hooks.json
-└── mcp.json
-```
-{{< /tab >}}
-
 {{< /tabs >}}
 
 ## Limitations
@@ -134,7 +119,7 @@ repository/
 ### LSP format
 
 While LSPs can be defined in `.lsp.json`, a preferable way is to define them inline in `plugin.json`
-because its format varies between agents and validation fails if unknown keys are present (unlike `.mcp.json` where unknown keys are just ignored).
+because [its format varies between agents](/components/lsp).
 
 ### Hooks environment variables
 

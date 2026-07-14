@@ -1,32 +1,3 @@
-# cavemem MCP
+# Cavemem MCP
 
-## Installation
-
-Before being able to use the cavemem plugin, you need to install the cavemem CLI and wire
-its capture hooks for your assistant. Without this step, the MCP server queries an empty
-database.
-
-```sh
-npm install -g node-gyp cavemem
-cavemem install               # Claude Code
-cavemem install --ide copilot # GitHub Copilot
-```
-
-```sh
-claude plugin install cavemem@bunch-of
-```
-
-```sh
-copilot plugin install cavemem@bunch-of
-```
-
-## MCP Servers
-
-As the plugin title, this plugin includes the cavemem MCP server.
-It is pretty much only a wrapper to share the MCP configuration.
-
-cavemem MCP server source code lives on their [**GitHub**](https://github.com/JuliusBrussee/cavemem).
-
-## Compatibility
-
-This plugin is expected to work with Claude and Copilot.
+See [website documentation](https://ai.kilianpaquier.dev/tooling/memory).

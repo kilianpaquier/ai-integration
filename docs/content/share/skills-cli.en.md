@@ -4,14 +4,12 @@ title: Skills CLI
 weight: 10
 ---
 
-*Introduced by Vercel.*
-
 The [Skills CLI](https://github.com/vercel-labs/skills) provide the ability to download any skills
-from Git repositories provided they are conform with the [Agents Skills](https://agentskills.io) standard
-(more information in [concepts](../../concepts/skill)).
+from Git repositories provided they are conform with the [**Agent Skills**](https://agentskills.io) standard
+(more information in [components](/components/skill)).
 
 Skills may be discovered from [various places](https://github.com/vercel-labs/skills#skill-discovery) within Git repositories
-and is compatible with skills defined within [plugins](../plugin) or [marketplaces](../marketplace).
+and is compatible with skills defined within [plugins](/share/plugin) or [marketplaces](/share/marketplace).
 
 ## Usage
 

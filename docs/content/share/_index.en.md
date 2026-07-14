@@ -1,29 +1,27 @@
 ---
-description: Ways to share AI components (packages, plugins, skills CLI).
 title: Share components
 weight: 20
 ---
 
-Sharing AI components (agents, hooks, LSP, MCP, skills, etc.) can be done through multiple ways.
+Stop sharing components through copy/paste,
+use real implementation tooling to ease maintainance, updates and enforce security.
 
-Because while the simple way of just copying / pasting an instruction is fine,
-is has limitations regarding updates, security, discovery and naming conflits.
-It is also not optimal when many components are shared within a company or even a project.
-
-That's why AI companies (mainly) introduced some concepts to share components that are nowadays available through the majority of agents:
+## Explore
 
 {{< children >}}
 
 ## Mental Map
 
-<div style="width: 70%; margin: 0 auto;">
+<div class="mermaid-diagram">
 
 ```mermaid
 flowchart TD
-    Plugin["Plugin"]
+    APM["Agent Package Manager"]
+    Components["Components<br/>(agents, hooks, LSP, MCP, skills, etc.)"]
     Marketplace["Marketplace"]
     Package["Package"]
-    Components["Components<br/>(agents, hooks, LSP, MCP, skills, etc.)"]
+    Plugin["Plugin"]
+    SkillsCLI["Skills CLI"]
 
     Marketplace -->|bundles| Plugin
     Plugin -->|bundles| Components
@@ -32,17 +30,17 @@ flowchart TD
     Package -->|apm pack| Plugin
     Package -->|apm pack| Marketplace
 
-    APM["Agent Package Manager"] -->|apm install| Package
+    APM -->|apm install| Package
     APM -->|apm marketplace add| Marketplace
 
-    SkillsCLI["Skills CLI"] -->|"npx skills add (only skills)"| Components
+    SkillsCLI -->|"npx skills add (only skills)"| Components
 ```
 
 </div>
 
 <style>
-.mermaid svg {
-  width: 100% !important;
-  max-width: none !important;
+.mermaid-diagram {
+  width: 75%;
+  margin: 0 auto;
 }
 </style>

@@ -1,7 +1,7 @@
 ---
 description: Frameworks to accelerate developments or softwares lifecycle.
 title: Accelerate
-weight: 40
+weight: 50
 ---
 
 Within this new AI world, there're some ways companies try to accelerate developments or the whole softwares lifecycle.

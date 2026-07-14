@@ -31,7 +31,7 @@ apm install caveman@caveman
 {{< /tab >}}
 
 {{< tab name="Cavekit" >}}
-A [skill suite](https://github.com/JuliusBrussee/cavekit) to use the [Spec Driven Development (SSD)](../../accelerate) framework.
+A [skill suite](https://github.com/JuliusBrussee/cavekit) to use the [Spec Driven Development (SDD)](/accelerate) framework.
 
 ```sh
 my-agent plugin marketplace add JuliusBrussee/cavekit
@@ -49,7 +49,7 @@ apm install ck@cavekit-marketplace
 {{< /tab >}}
 
 {{< tab name="Caveman Code" >}}
-A [whole agent](https://github.com/JuliusBrussee/caveman-code) to use instead of Claude Code, Copilot, etc.
+A [whole agent](https://github.com/JuliusBrussee/caveman-code) to use instead of **Claude Code**, **Copilot**, etc.
 It includes the whole caveman stack and uses subscriptions keys to connect to preferred or subscribed models.
 
 This documentation won't provide more information on this because it is a whole agent
@@ -69,7 +69,7 @@ with its proxied version.
 A [MCP server](https://github.com/JuliusBrussee/cavemem) to store session memories (compressed using caveman constraints)
 and reuse them in later sessions.
 
-More information about this server in [memory](../memory).
+More information about this server in [memory](/tooling/memory).
 {{< /tab >}}
 
 {{< /tabs >}}
@@ -79,5 +79,6 @@ More information about this server in [memory](../memory).
 ### Caveman Hooks
 
 As stated before, caveman talking way can be enabled through hooks.
-However those seem to only work with Claude Code by default,
-as such I'm providing [simili-mirrored hooks](TBD) run with node to broaden agents compatibility.
+However those seem to only work with **Claude Code** by default,
+as such I'm providing [simili-mirrored hooks](/interoperability/ai-integration/caveman-autostart)
+run with node to broaden agents compatibility.

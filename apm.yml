@@ -1,6 +1,6 @@
 # yaml-language-server: $schema=https://microsoft.github.io/apm/specs/schemas/manifest-v0.1.schema.json
 
-name: bunch-of
+name: one-for-all
 version: 0.1.0
 
 author: Kilian PAQUIER

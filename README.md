@@ -9,30 +9,28 @@
 
 ---
 
-A curated list of plugins, either remotely included to avoid adding many marketplace on our Claude, Copilot, etc. installation
-or locally defined to enhance our AI capabilities.
+A simple and humble repository sharing components with as much standardization as possible
+and with the sole purpose to have as many agents as possible compatible with what's being shared.
 
-This marketplace sole purpose is to have plugins compatible while the broadest range of AI assistants, from Claude to Copilot, and more.
-That's why it may redefine plugins already available in the official marketplace, unofficial but well-known, etc. yet not compatible with only one assistant.
-
-Full documentation - concepts, Agent Skills compliance, Agent Package Manager, and recommended external tools -
-lives on the [documentation website](https://ai.kilianpaquier.dev).
+This is also the source repository for [AI Integration](https://ai.kilianpaquier.dev),
+simple and humble documentation explaining AI components, how to properly share them
+and some optimization recommendation.
 
 ## Installation
 
 ```sh
 claude plugin marketplace add https://gitlab.com/kilianpaquier/ai-marketplace.git
-claude plugin install <plugin_name>@bunch-of
+claude plugin install <plugin_name>@one-for-all
 ```
 
 ```sh
 copilot plugin marketplace add https://gitlab.com/kilianpaquier/ai-marketplace.git
-copilot plugin install <plugin_name>@bunch-of
+copilot plugin install <plugin_name>@one-for-all
 ```
 
 ```sh
 apm marketplace add gitlab.com/kilianpaquier/ai-marketplace
-apm install <plugin_name>@bunch-of
+apm install <plugin_name>@one-for-all
 ```
 
 ```sh
@@ -41,39 +39,44 @@ npx skills add https://gitlab.com/kilianpaquier/ai-marketplace -g
 
 ## Plugin structure
 
-Each plugin follows a standard structure:
-
-```
-plugin-name/
-├── .plugin/
-│   └── plugin.json      # Plugin metadata (Open Plugin Spec, required)
-├── .mcp.json            # MCP server configuration (optional)
-├── agents/              # Agent definitions (optional)
-├── commands/            # Slash commands (optional, only compatible with Claude)
-├── hooks/               # Hooks definitions (optional)
-├── skills/              # Skill definitions (optional)
-└── README.md            # Documentation
-```
+This repository follows the [**Open Plugin**](https://open-plugins.com/plugin-builders/specification) to structure its plugins.
 
 ## Plugins
 
-| Name                                                   | Description                                                                          | Tools  |
-| ------------------------------------------------------ | ------------------------------------------------------------------------------------ | ------ |
-| [caveman-autostart](plugins/caveman-autostart)         | Auto-enables caveman ultra-compressed communication mode via a SessionStart hook     | Hooks  |
-| [cavemem](plugins/mcp/cavemem)                         | Cross-agent persistent memory MCP server - compressed SQLite store                   | MCP    |
-| [codebase-memory-mcp](plugins/mcp/codebase-memory-mcp) | Fast code intelligence engine for AI coding agents - single static binary MCP server | MCP    |
-| [codegraph](plugins/mcp/codegraph)                     | CodeGraph MCP server for accessing local CodeGraph indexed code knowledge graph      | MCP    |
-| [context7](plugins/mcp/context7)                       | Upstash Context7 MCP server for up-to-date library documentation lookup              | MCP    |
-| [github](plugins/mcp/github)                           | Official GitHub MCP server for repository management, issues, and pull requests      | MCP    |
-| [gitlab](plugins/mcp/gitlab)                           | GitLab MCP server for repository management, merge requests, and CI/CD               | MCP    |
-| [gopls-lsp](plugins/lsp/gopls-lsp)                     | Go language server for code intelligence and refactoring                             | LSP    |
-| [jdtls-lsp](plugins/lsp/jdtls-lsp)                     | Java language server (Eclipse JDT.LS) for code intelligence                          | LSP    |
-| [kotlin-lsp](plugins/lsp/kotlin-lsp)                   | Kotlin language server for code intelligence                                         | LSP    |
-| [opentofu](plugins/mcp/opentofu)                       | OpenTofu MCP Server for accessing the OpenTofu Registry                              | MCP    |
-| [playwright](plugins/mcp/playwright)                   | Microsoft Playwright MCP server for browser automation and end-to-end testing        | MCP    |
-| [protected-paths](plugins/protected-paths)             | Blocks reads/writes to credential and config directories via a PreToolUse hook       | Hooks  |
-| [schema-converter](plugins/schema-converter)           | Convert JSON schemas to other formats (Go structs, TypeScript interfaces, etc.)      | Skills |
-| [typescript-lsp](plugins/lsp/typescript-lsp)           | TypeScript/JavaScript language server for enhanced code intelligence                 | LSP    |
+### Hooks
+
+| Name                                           | Description                                                                      |
+| ---------------------------------------------- | -------------------------------------------------------------------------------- |
+| [caveman-autostart](plugins/caveman-autostart) | Auto-enables caveman ultra-compressed communication mode via a SessionStart hook |
+| [protected-paths](plugins/protected-paths)     | Blocks reads/writes to credential and config directories via a PreToolUse hook   |
+
+### LSP
+
+| Name                                         | Description                                                          |
+| -------------------------------------------- | -------------------------------------------------------------------- |
+| [gopls-lsp](plugins/lsp/gopls-lsp)           | Go language server for code intelligence and refactoring             |
+| [jdtls-lsp](plugins/lsp/jdtls-lsp)           | Java language server (Eclipse JDT.LS) for code intelligence          |
+| [kotlin-lsp](plugins/lsp/kotlin-lsp)         | Kotlin language server for code intelligence                         |
+| [typescript-lsp](plugins/lsp/typescript-lsp) | TypeScript/JavaScript language server for enhanced code intelligence |
+
+### MCP
+
+| Name                                                   | Description                                                                          |
+| ------------------------------------------------------ | ------------------------------------------------------------------------------------ |
+| [cavemem](plugins/mcp/cavemem)                         | Cross-agent persistent memory MCP server - compressed SQLite store                   |
+| [codebase-memory-mcp](plugins/mcp/codebase-memory-mcp) | Fast code intelligence engine for AI coding agents - single static binary MCP server |
+| [codegraph](plugins/mcp/codegraph)                     | CodeGraph MCP server for accessing local CodeGraph indexed code knowledge graph      |
+| [context7](plugins/mcp/context7)                       | Upstash Context7 MCP server for up-to-date library documentation lookup              |
+| [github](plugins/mcp/github)                           | Official GitHub MCP server for repository management, issues, and pull requests      |
+| [gitlab](plugins/mcp/gitlab)                           | GitLab MCP server for repository management, merge requests, and CI/CD               |
+| [opentofu](plugins/mcp/opentofu)                       | OpenTofu MCP Server for accessing the OpenTofu Registry                              |
+| [playwright](plugins/mcp/playwright)                   | Microsoft Playwright MCP server for browser automation and end-to-end testing        |
+
+### Skills
+
+| Name                                         | Description                                                                     |
+| -------------------------------------------- | ------------------------------------------------------------------------------- |
+| [schema-converter](plugins/schema-converter) | Convert JSON schemas to other formats (Go structs, TypeScript interfaces, etc.) |
 
 ## Maintaining
 

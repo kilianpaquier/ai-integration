@@ -4,12 +4,10 @@ title: Agent Package Manager
 weight: 50
 ---
 
-*Introduced by Microsoft.*
-
-The [Agent Package Manager](https://github.com/microsoft/apm) (APM) distributes and installs
-[packages](../package),
-[plugins](../plugin) or
-[marketplaces](../marketplace).
+The [**Agent Package Manager**](https://github.com/microsoft/apm) (APM) installs
+[packages](/share/package),
+[plugins](/share/plugin) or
+[marketplaces](/share/marketplace).
 
 Unlike plugins installed through marketplaces, installations are done directly within known agents directories.
 
@@ -21,7 +19,7 @@ and not agents companies to adjust their agents for standards compatibility (eve
 The APM CLI must be installed to be able to install packages, once installed it works pretty much the same way as marketplaces.
 
 Installation can be made within repositories (to have dependencies or plugins scoped to a repository)
-or globally. Scope management is done through the `--global`/`-g` flag.
+or globally. Scope management is done through the `--global` / `-g` flag.
 
 To install components for only specific agents,
 use the [`target(s)`](https://microsoft.github.io/apm/reference/targets-matrix/) property.
@@ -46,7 +44,7 @@ dependencies:
   mcp: []
   lsp: []
 
-targets: [claude, codex, copilot, cursor, gemini, kiro, opencode, windsurf]
+targets: [claude, codex, copilot, gemini, kiro, opencode, windsurf]
 ```
 
 {{< /tab >}}
@@ -81,16 +79,9 @@ repository/
 
 ## Limitations
 
-### Marketplaces
-
-While APM packages can be packed into plugins or marketplaces,
-shared components in such case are only those available through [marketplaces](../marketplace).
-
-Moreover, installations through plugins loses features like lockfile, drift detection or security scanning.
-
 ### Namespacing
 
-When installed the APM way (`apm install`), commands, skills and all slash-like concepts `/skill-name` lose what plugins brought to the table,
-where calls to skills are namespaced (e.g. `/plugin:skill-name`).
+When installed with APM (`apm install`), commands, skills and all slash-like components `/skill-name` lose what plugins brought to the table,
+where calls to skills are namespaced (e.g. `/plugin-name:skill-name`).
 
-The former is as such subject to name conflicts.
+Slash-like components are as such subjects to name conflicts.

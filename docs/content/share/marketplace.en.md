@@ -4,9 +4,7 @@ title: Marketplace
 weight: 30
 ---
 
-*Introduced by Anthropic.*
-
-Marketplaces are (also) Git repositories, their purpose is to ship [plugins](../plugin).
+Marketplaces are (also) Git repositories, their purpose is to ship [plugins](/share/plugin).
 
 Shipped plugins can be:
 - Local to the same Git repository (see [structure](#structure))
@@ -14,14 +12,14 @@ Shipped plugins can be:
 
 ## Structure
 
-A marketplace is identified by its `marketplace.json` (index) referencing one or more [plugins](../plugin).
+A marketplace is identified by its `marketplace.json` (index) referencing one or more plugins.
 The place of a marketplace index depends on target agent(s) audience.
 
 {{< tabs >}}
 
 {{< tab name="Open Plugin" >}}
-- **Format**: [Open Plugin Spec](https://open-plugins.com/plugin-builders/marketplace)
-- **Compatibility**: Claude Code, Copilot (additional compatibility to be verified)
+- **Format**: [**Open Plugin**](https://open-plugins.com/plugin-builders/marketplace)
+- **Read by**: **Claude Code**, **Copilot**
 
 ```tree
 repository/
@@ -35,8 +33,8 @@ repository/
 {{< /tab >}}
 
 {{< tab name="Claude Code" >}}
-- **Format**: [Claude Code](https://code.claude.com/docs/en/plugin-marketplaces)
-- **Compatibility**: Codex, Copilot (additional compatibility to be verified)
+- **Format**: [**Claude Code**](https://code.claude.com/docs/en/plugin-marketplaces)
+- **Also read by**: **Codex**, **Copilot** (partial)
 
 ```tree
 repository/
@@ -49,8 +47,7 @@ repository/
 {{< /tab >}}
 
 {{< tab name="Codex" >}}
-- **Format**: [Codex](https://learn.chatgpt.com/codex/build-plugins)
-- **Compatibility**: Codex (additional compatibility to be verified)
+- **Format**: [**Codex**](https://learn.chatgpt.com/codex/build-plugins)
 
 ```tree
 repository/
@@ -64,8 +61,7 @@ repository/
 {{< /tab >}}
 
 {{< tab name="Copilot" >}}
-- **Format**: [Copilot](https://docs.github.com/en/copilot/how-tos/copilot-cli/customize-copilot/plugins-marketplace)
-- **Compatibility**: Copilot (additional compatibility to be verified)
+- **Format**: [**Copilot**](https://docs.github.com/en/copilot/how-tos/copilot-cli/customize-copilot/plugins-marketplace)
 
 ```tree
 repository/
@@ -78,23 +74,7 @@ repository/
 ```
 {{< /tab >}}
 
-{{< tab name="Cursor" >}}
-- **Format**: [Cursor](https://cursor.com/docs/reference/plugins)
-- **Compatibility**: Cursor (additional compatibility to be verified)
-
-```tree
-repository/
-├── .cursor-plugin/
-│   └── marketplace.json
-└── plugins/
-    └── plugin-name/
-        └── ...
-```
-{{< /tab >}}
-
 {{< /tabs >}}
-
-See [plugin](../plugin) for what a `plugin-name/` entry actually contains.
 
 ## Usage
 
@@ -140,20 +120,14 @@ copilot plugin uninstall <plugin-name>
 Plugins installation and traçing (which plugins, which marketplaces) is managed under `~/.copilot/installed-plugins`.
 {{< /tab >}}
 
-{{< tab name="Cursor" >}}
-Marketplace addition and plugins instalaltion go through Cursor UI.
-
-Plugins installation and traçing (which plugins, which marketplaces) is managed under `~/.cursor/plugins`.
-{{< /tab >}}
-
 {{< /tabs >}}
 
 ## Limitations
 
 ### Remote plugins
 
-Remote plugins referenced through `git-subdir` source aren't yet supported by Copilot
+Remote plugins referenced through `git-subdir` source aren't yet supported by **Copilot**
 ([github/copilot-cli#3376](https://github.com/github/copilot-cli/issues/3376)),
 so such plugins must be cloned and maintained locally as a workaround until then.
 
-Beware that Copilot will refect the whole marketplace if it contains a `git-subdir` plugin.
+Beware that **Copilot** will reject the whole marketplace if it contains a `git-subdir` plugin.

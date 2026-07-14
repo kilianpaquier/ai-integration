@@ -4,22 +4,13 @@ title: Package
 weight: 40
 ---
 
-*Introduced by Microsoft.*
+A package is a Git repository capable of sharing at once a bundle of components.
 
-A package is a Git repository shipping a bit more components than [plugins](../plugin),
-it can contain
-[agents](../../concepts/agent),
-[commands](../../concepts/command),
-[hooks](../../concepts/hook),
-[instructions](../../concepts/instruction),
-[LSPs](../../concepts/lsp),
-[MCPs](../../concepts/mcp),
-[prompts](../../concepts/command) and
-[skills](../../concepts/skill).
+Packages can be shipped through the [Agent Package Manager](/share/agent-package-manager), a simple CLI capable of installing
+and keeping track of which packages are installed in repositories or globally on a machine.
 
-Packages are shipped through the [Agent Package Manager](../agent-package-manager),
-a simple CLI capable of installing and keeping track of which packages are installed in repositories
-or globally on a machine.
+Package can also be shipped through [plugins](/share/plugin) or [marketplaces](/share/marketplace),
+see below [distribution](#distribution).
 
 ## Structure
 
@@ -45,8 +36,8 @@ repository/
 
 ## Distribution
 
-One of the advantages of packages, is that they can be shipped as [plugins](../plugin) or [marketplaces](../marketplace)
-(uncompatible components removed) with the help of `apm pack` command (of the [Agent Package Manager](../agent-package-manager)).
+One of the advantages of packages against plugins, is that they can be shipped as the latter or marketplaces
+(**uncompatible components removed**) with the help of `apm pack` command (of the Agent Package Manager).
 
 ```sh
 mise use -g github:microsoft/apm
@@ -66,7 +57,7 @@ author: Author Name
 description: Package example
 license: <LICENSE>
 
-targets: [claude, codex, copilot, cursor, gemini, kiro, opencode, windsurf]
+targets: [claude, codex, copilot, gemini, kiro, opencode, windsurf]
 ```
 
 *This [property](https://microsoft.github.io/apm/reference/targets-matrix/) is also used in consumer mode
@@ -75,7 +66,7 @@ to install components in the right directory.*
 
 {{< tab name="Marketplace" >}}
 By providing a `marketplace` definition within the `apm.yml`, a `marketplace.json` file is automatically generated
-(Claude Code and Codex format only).
+(**Claude Code** and **Codex** format only).
 
 ```yaml
 name: my-project
