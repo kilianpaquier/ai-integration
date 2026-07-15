@@ -12,7 +12,7 @@ the project files (because the agent read them) and the user request.
 To counter potential invalid code and ease code navigation, LSPs can be connected to agents, like [MCP](/components/mcp),
 it offers them access to tools like ensuring code compile, who call functions, etc.
 
-Combined with [codebases indexing](/tooling/code-indexing), an agent can be by far faster to navigate code
+Combined with [codebase indexing](/tooling/code-indexing), an agent can be by far faster to navigate code
 and find what it needs to implement its task(s).
 
 {{< tabs >}}

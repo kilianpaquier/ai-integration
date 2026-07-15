@@ -1,5 +1,5 @@
 ---
-description: Codebases indexing through graph-based database helps navigating them faster.
+description: Codebase indexing through graph-based database helps navigating them faster.
 title: Index your codebases
 ---
 
