@@ -14,7 +14,7 @@ const main = () => {
     const rulesPath = path.join(pluginRoot(), 'rules', 'caveman-activate.md')
     let additionalContext = fs.readFileSync(rulesPath, 'utf8').trim()
 
-    const level = (process.env.CAVEMAN_LEVEL ?? '').trim()
+    const level = (process.env.CAVEMAN_LEVEL ?? 'full').trim()
     if (level) {
         additionalContext += `\n\nActive level: ${level}`
     }
