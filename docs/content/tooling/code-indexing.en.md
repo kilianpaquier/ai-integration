@@ -33,12 +33,12 @@ codebase-memory-mcp install
 Pre-defined MCP server plugin:
 
 ```sh
-my-agent plugin marketplace add https://gitlab.com/kilianpaquier/ai-marketplace
+my-agent plugin marketplace add https://gitlab.com/kilianpaquier/ai-integration
 my-agent plugin install codebase-memory-mcp@one-for-all
 ```
 
 ```sh
-apm marketplace add https://gitlab.com/kilianpaquier/ai-marketplace
+apm marketplace add https://gitlab.com/kilianpaquier/ai-integration
 apm install codebase-memory-mcp@one-for-all
 ```
 {{< /tab >}}
@@ -58,12 +58,12 @@ codegraph init --index # in the repository
 Pre-defined MCP server plugin:
 
 ```sh
-my-agent plugin marketplace add https://gitlab.com/kilianpaquier/ai-marketplace
+my-agent plugin marketplace add https://gitlab.com/kilianpaquier/ai-integration
 my-agent plugin install codegraph@one-for-all
 ```
 
 ```sh
-apm marketplace add https://gitlab.com/kilianpaquier/ai-marketplace
+apm marketplace add https://gitlab.com/kilianpaquier/ai-integration
 apm install codegraph@one-for-all
 ```
 {{< /tab >}}

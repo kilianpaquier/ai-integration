@@ -21,49 +21,49 @@ marketplace:
     name: caveman-autostart
     source: ./plugins/caveman-autostart
 
-  - category: mcp
-    name: cavemem
-    source: ./plugins/mcp/cavemem
+  # - category: mcp
+  #   name: cavemem
+  #   source: ./plugins/mcp/cavemem
 
-  - category: mcp
-    name: codebase-memory-mcp
-    source: ./plugins/mcp/codebase-memory-mcp
+  # - category: mcp
+  #   name: codebase-memory-mcp
+  #   source: ./plugins/mcp/codebase-memory-mcp
 
-  - category: mcp
-    name: codegraph
-    source: ./plugins/mcp/codegraph
+  # - category: mcp
+  #   name: codegraph
+  #   source: ./plugins/mcp/codegraph
 
-  - category: mcp
-    name: context7
-    source: ./plugins/mcp/context7
+  # - category: mcp
+  #   name: context7
+  #   source: ./plugins/mcp/context7
 
-  - category: mcp
-    name: github
-    source: ./plugins/mcp/github
+  # - category: mcp
+  #   name: github
+  #   source: ./plugins/mcp/github
 
-  - category: mcp
-    name: gitlab
-    source: ./plugins/mcp/gitlab
+  # - category: mcp
+  #   name: gitlab
+  #   source: ./plugins/mcp/gitlab
 
-  - category: lsp
-    name: gopls-lsp
-    source: ./plugins/lsp/gopls-lsp
+  # - category: lsp
+  #   name: gopls-lsp
+  #   source: ./plugins/lsp/gopls-lsp
 
-  - category: lsp
-    name: jdtls-lsp
-    source: ./plugins/lsp/jdtls-lsp
+  # - category: lsp
+  #   name: jdtls-lsp
+  #   source: ./plugins/lsp/jdtls-lsp
 
-  - category: lsp
-    name: kotlin-lsp
-    source: ./plugins/lsp/kotlin-lsp
+  # - category: lsp
+  #   name: kotlin-lsp
+  #   source: ./plugins/lsp/kotlin-lsp
 
-  - category: mcp
-    name: opentofu
-    source: ./plugins/mcp/opentofu
+  # - category: mcp
+  #   name: opentofu
+  #   source: ./plugins/mcp/opentofu
 
-  - category: mcp
-    name: playwright
-    source: ./plugins/mcp/playwright
+  # - category: mcp
+  #   name: playwright
+  #   source: ./plugins/mcp/playwright
 
   - category: hooks
     name: protected-paths
@@ -73,6 +73,6 @@ marketplace:
     name: schema-converter
     source: ./plugins/schema-converter
 
-  - category: lsp
-    name: typescript-lsp
-    source: ./plugins/lsp/typescript-lsp
+  # - category: lsp
+  #   name: typescript-lsp
+  #   source: ./plugins/lsp/typescript-lsp

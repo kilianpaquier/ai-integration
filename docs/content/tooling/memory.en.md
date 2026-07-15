@@ -35,7 +35,7 @@ cavemem install
 Pre-defined MCP server plugin:
 
 ```sh
-my-agent plugin marketplace add https://gitlab.com/kilianpaquier/ai-marketplace
+my-agent plugin marketplace add https://gitlab.com/kilianpaquier/ai-integration
 my-agent plugin install cavemem@one-for-all
 ```
 {{< /tab >}}

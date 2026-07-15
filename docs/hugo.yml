@@ -38,7 +38,7 @@ menu:
     - name: GitLab
       params:
         icon: gitlab
-      url: https://gitlab.com/kilianpaquier/ai-marketplace
+      url: https://gitlab.com/kilianpaquier/ai-integration
       weight: 3
 
 params:

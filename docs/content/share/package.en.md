@@ -34,6 +34,10 @@ repository/
             └── SKILL.md
 ```
 
+> [!warning]
+> Even with only a `.gitkeep` within it,
+> the `.apm` must be present for a given package for its installation through `apm install` to work.
+
 ## Distribution
 
 One of the advantages of packages against plugins, is that they can be shipped as the latter or marketplaces

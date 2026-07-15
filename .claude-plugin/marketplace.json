@@ -10,60 +10,12 @@
       "source": "./plugins/caveman-autostart"
     },
     {
-      "name": "cavemem",
-      "source": "./plugins/mcp/cavemem"
-    },
-    {
-      "name": "codebase-memory-mcp",
-      "source": "./plugins/mcp/codebase-memory-mcp"
-    },
-    {
-      "name": "codegraph",
-      "source": "./plugins/mcp/codegraph"
-    },
-    {
-      "name": "context7",
-      "source": "./plugins/mcp/context7"
-    },
-    {
-      "name": "github",
-      "source": "./plugins/mcp/github"
-    },
-    {
-      "name": "gitlab",
-      "source": "./plugins/mcp/gitlab"
-    },
-    {
-      "name": "gopls-lsp",
-      "source": "./plugins/lsp/gopls-lsp"
-    },
-    {
-      "name": "jdtls-lsp",
-      "source": "./plugins/lsp/jdtls-lsp"
-    },
-    {
-      "name": "kotlin-lsp",
-      "source": "./plugins/lsp/kotlin-lsp"
-    },
-    {
-      "name": "opentofu",
-      "source": "./plugins/mcp/opentofu"
-    },
-    {
-      "name": "playwright",
-      "source": "./plugins/mcp/playwright"
-    },
-    {
       "name": "protected-paths",
       "source": "./plugins/protected-paths"
     },
     {
       "name": "schema-converter",
       "source": "./plugins/schema-converter"
-    },
-    {
-      "name": "typescript-lsp",
-      "source": "./plugins/lsp/typescript-lsp"
     }
   ]
 }

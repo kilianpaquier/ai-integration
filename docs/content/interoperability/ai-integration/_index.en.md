@@ -9,12 +9,12 @@ without fighting official potential uncompatible plugins or manual installation.
 Before being able to use AI Integration plugins, the marketplace must be installed.
 
 ```sh
-my-agent plugin marketplace add https://gitlab.com/kilianpaquier/ai-marketplace.git
+my-agent plugin marketplace add https://gitlab.com/kilianpaquier/ai-integration.git
 my-agent plugin install <plugin_name>@one-for-all
 ```
 
 ```sh
-apm marketplace add gitlab.com/kilianpaquier/ai-marketplace
+apm marketplace add gitlab.com/kilianpaquier/ai-integration
 apm install <plugin_name>@one-for-all
 ```
 
