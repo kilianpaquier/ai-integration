@@ -86,5 +86,3 @@ repository/
 {{< /tab >}}
 
 {{< /tabs >}}
-
-## Ready to use
