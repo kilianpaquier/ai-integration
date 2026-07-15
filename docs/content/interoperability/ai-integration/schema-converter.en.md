@@ -11,6 +11,10 @@ A simple plugin to convert JSON schemas into its languages equivalent.
 my-agent plugin install schema-converter@one-for-all
 ```
 
+```sh
+npx skills add https://gitlab.com/kilianpaquier/ai-integration -g
+```
+
 ## Skills
 
 ### `schema-to-go`
