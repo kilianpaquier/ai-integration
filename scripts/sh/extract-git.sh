@@ -5,14 +5,14 @@ set -e
 repository="$1"
 element="$2"
 destination="$3"
-ref="$4"
+rev="$4"
 
 if [ -z "$repository" ] || [ -z "$element" ] || [ -z "$destination" ]; then
-  echo "Usage: $0 <repository> <element> <destination> [ref]"
+  echo "Usage: $0 <repository> <element> <destination> [rev]"
   exit 1
 fi
 
-echo "Extracting $element from $repository${ref:+@$ref} to $destination"
+echo "Extracting $element from $repository${rev:+@$rev} to $destination"
 
 tmp_dir="$(mktemp -d)"
 cleanup() {
@@ -20,8 +20,8 @@ cleanup() {
 }
 trap cleanup EXIT
 
-if [ -n "$ref" ]; then
-  git clone --depth=1 --branch "$ref" "$repository" "$tmp_dir"
+if [ -n "$rev" ]; then
+  git clone --depth=1 "$repository" "$tmp_dir" && git -C "$tmp_dir" checkout -q "$rev"
 else
   git clone --depth=1 "$repository" "$tmp_dir"
 fi

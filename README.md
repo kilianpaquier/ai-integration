@@ -19,12 +19,12 @@ and some optimization recommendation.
 ## Installation
 
 ```sh
-claude plugin marketplace add https://gitlab.com/kilianpaquier/ai-integration.git
+claude plugin marketplace add https://gitlab.com/kilianpaquier/ai-integration
 claude plugin install <plugin_name>@one-for-all
 ```
 
 ```sh
-copilot plugin marketplace add https://gitlab.com/kilianpaquier/ai-integration.git
+copilot plugin marketplace add https://gitlab.com/kilianpaquier/ai-integration
 copilot plugin install <plugin_name>@one-for-all
 ```
 
@@ -61,6 +61,10 @@ This repository follows the [**Open Plugin**](https://open-plugins.com/plugin-bu
 
 ### MCP
 
+> [!warning]
+> Depending on your company restriction regarding MCP servers execution,
+> those plugins are not the right one to use since they're all based on `npx` run.
+
 | Name                                                   | Description                                                                          |
 | ------------------------------------------------------ | ------------------------------------------------------------------------------------ |
 | [cavemem](plugins/mcp/cavemem)                         | Cross-agent persistent memory MCP server - compressed SQLite store                   |
@@ -78,10 +82,11 @@ This repository follows the [**Open Plugin**](https://open-plugins.com/plugin-bu
 | -------------------------------------------- | ------------------------------------------------------------------------------- |
 | [schema-converter](plugins/schema-converter) | Convert JSON schemas to other formats (Go structs, TypeScript interfaces, etc.) |
 
-## Maintaining
+## Developing
 
-[apm.yml](apm.yml) is the source of truth for the marketplace listing. After editing it, regenerate [.claude-plugin/marketplace.json](.claude-plugin/marketplace.json) by running:
+- When updating `README.md` from plugins, the script `./scripts/sh/docs.sh` must be run to update all documentation references.
+- The [apm.yml](apm.yml) is the source of truth for the marketplace listing. After editing it, regenerate all `marketplace.json` by running:
 
-```sh
-apm pack
-```
+  ```sh
+  apm pack
+  ```

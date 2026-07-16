@@ -7,7 +7,7 @@ and [packages](/share/package) to ensure components on suggested tools within th
 without fighting official potential uncompatible plugins or manual installation.
 
 ```sh
-my-agent plugin marketplace add https://gitlab.com/kilianpaquier/ai-integration.git
+my-agent plugin marketplace add https://gitlab.com/kilianpaquier/ai-integration
 my-agent plugin install <plugin_name>@one-for-all
 ```
 
