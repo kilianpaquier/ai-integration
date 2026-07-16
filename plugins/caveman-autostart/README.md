@@ -1,1 +1,0 @@
-../../docs/content/interoperability/ai-integration/caveman-autostart.en.md

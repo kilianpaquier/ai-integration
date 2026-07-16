@@ -1,1 +1,0 @@
-../../docs/content/interoperability/ai-integration/protected-paths.en.md

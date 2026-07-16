@@ -1,1 +1,0 @@
-../../docs/content/interoperability/ai-integration/schema-converter.en.md

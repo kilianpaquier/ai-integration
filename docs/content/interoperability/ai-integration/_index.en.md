@@ -3,7 +3,7 @@ title: AI Integration
 ---
 
 AI Integration provides a number of [plugins](/share/plugin) (following the [**Open Plugin**](https://open-plugins.com/specification) Spec)
-and [packages](/share/packages) to ensure components on suggested tools within this documentation can be accessed by a high number of agents
+and [packages](/share/package) to ensure components on suggested tools within this documentation can be accessed by a high number of agents
 without fighting official potential uncompatible plugins or manual installation.
 
 ```sh
