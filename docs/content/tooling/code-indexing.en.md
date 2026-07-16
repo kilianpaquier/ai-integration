@@ -47,7 +47,7 @@ apm install codebase-memory-mcp@one-for-all
 {{< tab name="Codegraph" >}}
 A [CLI and MCP server](https://github.com/colbymchenry/codegraph).
 - **Indexing**: through the CLI
-- **Navigation**: through the MCP server, or the CLI
+- **Navigation**: through the MCP server or the CLI
 
 CLI installation:
 
