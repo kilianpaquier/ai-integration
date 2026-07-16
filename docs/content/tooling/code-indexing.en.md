@@ -14,14 +14,15 @@ To fix this behavior, codebases can be indexed through graph-based databases ins
 By doing this, an agent can use an MCP server, a CLI, a skill
 to easily retrieve through one request all interactions regarding a class, a function, a method, etc.
 
-And since recently, it's not just languages-based codebases that can be indexed,
+And it's not just languages-based codebases that can be indexed,
 it can also be used for Helm charts, Terraform modules, markdown references, etc. (still depends on the features the used tool offers).
 
 {{< tabs >}}
 
 {{< tab name="Codebase Memory MCP" >}}
-A [CLI and MCP server](https://github.com/DeusData/codebase-memory-mcp) indexing a codebase locally and exposing symbols,
-references and call graphs through the MCP server.
+A [CLI and MCP server](https://github.com/DeusData/codebase-memory-mcp).
+- **Indexing**: through the MCP server or the CLI
+- **Navigation**: through the MCP server or the CLI
 
 CLI installation:
 
@@ -44,8 +45,9 @@ apm install codebase-memory-mcp@one-for-all
 {{< /tab >}}
 
 {{< tab name="Codegraph" >}}
-A [CLI and MCP server](https://github.com/colbymchenry/codegraph) indexing a codebase into a local knowledge graph,
-exposed through the MCP server.
+A [CLI and MCP server](https://github.com/colbymchenry/codegraph).
+- **Indexing**: through the CLI
+- **Navigation**: through the MCP server, or the CLI
 
 CLI installation:
 
@@ -65,6 +67,17 @@ my-agent plugin install codegraph@one-for-all
 ```sh
 apm marketplace add https://gitlab.com/kilianpaquier/ai-integration
 apm install codegraph@one-for-all
+```
+{{< /tab >}}
+
+{{< tab name="Graphify" >}}
+A [hook, MCP server and skill](https://github.com/Graphify-Labs/graphify).
+- **Indexing**: through the skill or the CLI
+- **Navigation**: through the MCP server, the skill, or the CLI
+
+```sh
+uv tool install graphifyy
+graphify install
 ```
 {{< /tab >}}
 

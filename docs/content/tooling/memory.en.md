@@ -66,7 +66,7 @@ A simple [**Claude Code** plugin](https://github.com/Digital-Process-Tools/claud
 Hooks take care of automatically saving sessions memories and restoring on new sessions.
 
 **Limitations**:
-- Sessions memories are really short and scoped to the concerned repository, no transversal possible.
+- Sessions memories are really short and scoped to the concerned repository, no transversal possible
 
 ```sh
 my-agent plugin marketplace add Digital-Process-Tools/claude-marketplace
