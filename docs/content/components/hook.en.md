@@ -172,15 +172,11 @@ repository/
 {{< /tab >}}
 
 {{< tab name="Mistral Vibe" >}}
-> [!warning]
-> Hooks are experimental in **Mistral Vibe** and require activation through `enable_experimental_hooks = true` in Vibe's config
-> or `VIBE_ENABLE_EXPERIMENTAL_HOOKS=true` environment variable.
-
-- **Format**: [**Mistral Vibe**](https://github.com/mistralai/mistral-vibe/blob/main/README.md#hooks-experimental)
+- **Format**: [**Mistral Vibe**](https://github.com/mistralai/mistral-vibe/blob/main/README.md#hooks)
 - **Deep dive**:
-  [events](https://github.com/mistralai/mistral-vibe/blob/main/README.md#post_agent_turn),
-  [matchers](https://github.com/mistralai/mistral-vibe/blob/main/README.md#hooks-experimental),
-  [actions](https://github.com/mistralai/mistral-vibe/blob/main/README.md#post_agent_turn)
+  [events](https://github.com/mistralai/mistral-vibe/blob/main/README.md#hooks),
+  [matchers](https://github.com/mistralai/mistral-vibe/blob/main/README.md#hooks),
+  [actions](https://github.com/mistralai/mistral-vibe/blob/main/README.md#hooks)
 
 ```tree
 repository/
