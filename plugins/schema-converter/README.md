@@ -7,9 +7,18 @@ A simple plugin to convert JSON schemas into its languages equivalent.
 
 ## Installation
 
+**Agent plugin**:
 ```sh
 my-agent plugin install schema-converter@one-for-all
 ```
+
+**Agent Package Manager plugin**:
+```sh
+apm marketplace add https://gitlab.com/kilianpaquier/ai-integration
+apm install schema-converter@one-for-all -g
+```
+
+**Skills CLI**:
 
 ```sh
 npx skills add https://gitlab.com/kilianpaquier/ai-integration -g
@@ -24,7 +33,3 @@ The skill needs the following arguments:
 - Schema path
 - Go package path to generate files into
 - Go package name for generated files
-
-## Compatibility
-
-This plugin is expected to work with any agent since it can also be simply used with the skills CLI.
