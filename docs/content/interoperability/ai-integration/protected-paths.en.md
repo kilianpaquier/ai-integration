@@ -7,8 +7,18 @@ Stop your agent from accessing unwanted or sensitive directories.
 
 ## Installation
 
+> [!warning]
+> Nodejs is needed in `PATH` environment variable to work.
+
+**Agent plugin**:
 ```sh
 my-agent plugin install protected-paths@one-for-all
+```
+
+**Agent Package Manager plugin**:
+```sh
+apm marketplace add https://gitlab.com/kilianpaquier/ai-integration
+apm install protected-paths@one-for-all -g
 ```
 
 ## Hooks
@@ -43,11 +53,6 @@ A blocked call prints an explanatory message and denies the tool call, across Cl
 
 > [!warning]
 > A relative path used after a `cd` earlier in the same command is not resolved against that new directory.
-
-## Compatibility
-
-This plugin is expected to work with Claude, Copilot, and Codex.
-It requires `node` to be available on `PATH`.
 
 ## Tests
 

@@ -63,7 +63,7 @@ This repository follows the [**Open Plugin**](https://open-plugins.com/plugin-bu
 
 > [!warning]
 > Depending on your company restriction regarding MCP servers execution,
-> those plugins are not the right one to use since they're all based on `npx` run.
+> those plugins are not the right one to use since they're not `docker` based.
 
 | Name                                                   | Description                                                                          |
 | ------------------------------------------------------ | ------------------------------------------------------------------------------------ |

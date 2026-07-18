@@ -7,15 +7,21 @@
   "plugins": [
     {
       "name": "caveman-autostart",
-      "source": "./plugins/caveman-autostart"
+      "description": "Automatically enables caveman's ultra-compressed communication mode at session start via a SessionStart hook that injects the vendored ruleset directly",
+      "version": "0.1.0",
+      "source": "./plugins/hooks/caveman-autostart"
     },
     {
       "name": "protected-paths",
-      "source": "./plugins/protected-paths"
+      "description": "Blocks tool calls from reading or writing credential and config directories (SSH keys, cloud credentials, kube/docker configs) via a PreToolUse hook",
+      "version": "0.1.0",
+      "source": "./plugins/hooks/protected-paths"
     },
     {
       "name": "schema-converter",
-      "source": "./plugins/schema-converter"
+      "description": "Convert JSON schemas to other formats (Go structs, TypeScript interfaces, etc.)",
+      "version": "0.1.0",
+      "source": "./plugins/skills/schema-converter"
     }
   ]
 }

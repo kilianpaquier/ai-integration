@@ -1,0 +1,11 @@
+# yaml-language-server: $schema=https://microsoft.github.io/apm/specs/schemas/manifest-v0.1.schema.json
+
+name: schema-converter
+version: 0.1.0
+type: skill
+
+author: Kilian PAQUIER
+description: Convert JSON schemas to other formats (Go structs, TypeScript interfaces, etc.)
+license: MIT
+
+targets: []

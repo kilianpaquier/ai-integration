@@ -9,8 +9,8 @@ const path = require('node:path')
 const { test } = require('node:test')
 
 const PLUGIN_ROOT = path.join(__dirname, '..')
-const HOOK = path.join(PLUGIN_ROOT, 'scripts', 'caveman-autostart.js')
-const RULES = fs.readFileSync(path.join(PLUGIN_ROOT, 'rules', 'caveman-activate.md'), 'utf8').trim()
+const HOOK = path.join(PLUGIN_ROOT, 'scripts', 'caveman-autostart')
+const RULES = fs.readFileSync(path.join(PLUGIN_ROOT, 'rules', 'caveman.md'), 'utf8').trim()
 
 const runHook = (env) => spawnSync(process.execPath, [HOOK], {
     env: { ...process.env, PLUGIN_ROOT, CLAUDE_PLUGIN_ROOT: '', CAVEMAN_LEVEL: '', ...env },

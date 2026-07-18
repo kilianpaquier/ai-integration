@@ -8,7 +8,7 @@
       "name": "caveman-autostart",
       "source": {
         "source": "local",
-        "path": "./plugins/caveman-autostart"
+        "path": "./plugins/hooks/caveman-autostart"
       },
       "policy": {
         "installation": "AVAILABLE",
@@ -20,7 +20,7 @@
       "name": "protected-paths",
       "source": {
         "source": "local",
-        "path": "./plugins/protected-paths"
+        "path": "./plugins/hooks/protected-paths"
       },
       "policy": {
         "installation": "AVAILABLE",
@@ -32,7 +32,7 @@
       "name": "schema-converter",
       "source": {
         "source": "local",
-        "path": "./plugins/schema-converter"
+        "path": "./plugins/skills/schema-converter"
       },
       "policy": {
         "installation": "AVAILABLE",

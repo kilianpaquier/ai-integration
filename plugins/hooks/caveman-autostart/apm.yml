@@ -1,0 +1,10 @@
+# yaml-language-server: $schema=https://microsoft.github.io/apm/specs/schemas/manifest-v0.1.schema.json
+
+name: caveman-autostart
+version: 0.1.0
+
+author: Kilian PAQUIER
+description: Automatically enables caveman's ultra-compressed communication mode at session start via a SessionStart hook that injects the vendored ruleset directly
+license: MIT
+
+targets: []

@@ -9,6 +9,7 @@ A simple plugin to convert JSON schemas into its languages equivalent.
 
 **Agent plugin**:
 ```sh
+my-agent plugin marketplace add https://gitlab.com/kilianpaquier/ai-integration
 my-agent plugin install schema-converter@one-for-all
 ```
 
@@ -29,7 +30,7 @@ npx skills add https://gitlab.com/kilianpaquier/ai-integration -g
 ### `schema-to-go`
 
 Activated to transform a given JSON schema into it's Go equivalent.
-The skill needs the following arguments:
+The skill needs the following arguments when running (it will be asked otherwise):
 - Schema path
 - Go package path to generate files into
 - Go package name for generated files

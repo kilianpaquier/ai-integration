@@ -4,15 +4,15 @@ set -e
 
 repository="$1"
 element="$2"
-destination="$3"
+destinations="$3"
 rev="$4"
 
-if [ -z "$repository" ] || [ -z "$element" ] || [ -z "$destination" ]; then
-  echo "Usage: $0 <repository> <element> <destination> [rev]"
+if [ -z "$repository" ] || [ -z "$element" ] || [ -z "$destinations" ]; then
+  echo "Usage: $0 <repository> <element> <destinations> [rev]"
   exit 1
 fi
 
-echo "Extracting $element from $repository${rev:+@$rev} to $destination"
+echo "Extracting $element from $repository${rev:+@$rev}"
 
 tmp_dir="$(mktemp -d)"
 cleanup() {
@@ -25,5 +25,8 @@ if [ -n "$rev" ]; then
 else
   git clone --depth=1 "$repository" "$tmp_dir"
 fi
-rm -rf "$destination"
-cp -r "$tmp_dir/$element" "$destination"
+
+for dest in $destinations; do
+  rm -rf "$dest"
+  cp -r "$tmp_dir/$element" "$dest"
+done

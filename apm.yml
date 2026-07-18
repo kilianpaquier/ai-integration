@@ -7,6 +7,8 @@ author: Kilian PAQUIER
 description: An humble marketplace for AI plugins
 license: MIT
 
+# targets: [claude, codex, copilot, cursor, gemini, kiro, opencode, windsurf]
+
 marketplace:
   outputs:
     claude: {}
@@ -19,7 +21,7 @@ marketplace:
   packages:
   - category: hooks
     name: caveman-autostart
-    source: ./plugins/caveman-autostart
+    source: ./plugins/hooks/caveman-autostart
 
   # - category: mcp
   #   name: cavemem
@@ -67,11 +69,11 @@ marketplace:
 
   - category: hooks
     name: protected-paths
-    source: ./plugins/protected-paths
+    source: ./plugins/hooks/protected-paths
 
   - category: skills
     name: schema-converter
-    source: ./plugins/schema-converter
+    source: ./plugins/skills/schema-converter
 
   # - category: lsp
   #   name: typescript-lsp

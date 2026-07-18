@@ -11,7 +11,7 @@ const path = require('node:path')
 const pluginRoot = () => process.env.PLUGIN_ROOT || process.env.CLAUDE_PLUGIN_ROOT
 
 const main = () => {
-    const rulesPath = path.join(pluginRoot(), 'rules', 'caveman-activate.md')
+    const rulesPath = path.join(pluginRoot(), 'rules', 'caveman.md')
     let additionalContext = fs.readFileSync(rulesPath, 'utf8').trim()
 
     const level = (process.env.CAVEMAN_LEVEL ?? 'full').trim()
