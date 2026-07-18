@@ -84,4 +84,4 @@ repository/
 When installed with APM (`apm install`), commands, skills and all slash-like components `/skill-name` lose what plugins brought to the table,
 where calls to skills are namespaced (e.g. `/plugin-name:skill-name`).
 
-Slash-like components are as such subjects to name conflicts.
+Slash-like components are as such subjects to [name conflicts](https://github.com/microsoft/apm/issues/739).
