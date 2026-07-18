@@ -1,0 +1,15 @@
+{
+    "description": "Block tool calls that read or write credential/config directories",
+    "hooks": {
+        "PreToolUse": [
+            {
+                "hooks": [
+                    {
+                        "type": "command",
+                        "command": "node ./scripts/protected-paths"
+                    }
+                ]
+            }
+        ]
+    }
+}
