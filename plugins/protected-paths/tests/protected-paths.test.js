@@ -7,7 +7,7 @@ const { spawnSync } = require('node:child_process');
 const path = require('node:path');
 const { test } = require('node:test');
 
-const HOOK = path.join(__dirname, '..', 'scripts', 'protected-paths.js');
+const HOOK = path.join(__dirname, '..', 'scripts', 'protected-paths');
 const TEST_HOME = '/home/tester';
 
 const runHook = (input) => spawnSync(process.execPath, [HOOK], {
