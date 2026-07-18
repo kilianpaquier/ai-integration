@@ -45,10 +45,10 @@ This repository follows the [**Open Plugin**](https://open-plugins.com/plugin-bu
 
 ### Hooks
 
-| Name                                           | Description                                                                      |
-| ---------------------------------------------- | -------------------------------------------------------------------------------- |
-| [caveman-autostart](plugins/caveman-autostart) | Auto-enables caveman ultra-compressed communication mode via a SessionStart hook |
-| [protected-paths](plugins/protected-paths)     | Blocks reads/writes to credential and config directories via a PreToolUse hook   |
+| Name                                                 | Description                                                                      |
+| ---------------------------------------------------- | -------------------------------------------------------------------------------- |
+| [caveman-autostart](plugins/hooks/caveman-autostart) | Auto-enables caveman ultra-compressed communication mode via a SessionStart hook |
+| [protected-paths](plugins/hooks/protected-paths)     | Blocks reads/writes to credential and config directories via a PreToolUse hook   |
 
 ### LSP
 
