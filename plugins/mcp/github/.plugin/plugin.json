@@ -5,5 +5,5 @@
     "license": "MIT",
 
     "repository": "https://github.com/github/github-mcp-server",
-    "homepage": "https://gitlab.com/kilianpaquier/ai-integration/plugins/github"
+    "homepage": "https://gitlab.com/kilianpaquier/ai-integration/-/tree/main/plugins/mcp/github"
 }

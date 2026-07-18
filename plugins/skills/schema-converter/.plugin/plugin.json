@@ -5,7 +5,7 @@
     "license": "MIT",
 
     "repository": "https://gitlab.com/kilianpaquier/ai-integration",
-    "homepage": "https://gitlab.com/kilianpaquier/ai-integration/plugins/schema-converter",
+    "homepage": "https://gitlab.com/kilianpaquier/ai-integration/-/tree/main/plugins/skills/schema-converter",
 
     "skills": ["./skills"]
 }

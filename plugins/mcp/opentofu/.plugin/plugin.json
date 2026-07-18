@@ -5,5 +5,5 @@
     "license": "MIT",
 
     "repository": "https://github.com/opentofu/opentofu-mcp-server",
-    "homepage": "https://gitlab.com/kilianpaquier/ai-integration/plugins/opentofu"
+    "homepage": "https://gitlab.com/kilianpaquier/ai-integration/-/tree/main/plugins/mcp/opentofu"
 }

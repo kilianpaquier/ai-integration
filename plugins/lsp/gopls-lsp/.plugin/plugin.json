@@ -5,7 +5,7 @@
     "license": "MIT",
 
     "repository": "https://go.dev/gopls",
-    "homepage": "https://gitlab.com/kilianpaquier/ai-integration/plugins/gopls",
+    "homepage": "https://gitlab.com/kilianpaquier/ai-integration/-/tree/main/plugins/lsp/gopls",
 
     "lspServers": {
         "gopls": {

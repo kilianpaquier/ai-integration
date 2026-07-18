@@ -5,7 +5,7 @@
     "license": "MIT",
 
     "repository": "https://github.com/eclipse-jdtls/eclipse.jdt.ls",
-    "homepage": "https://gitlab.com/kilianpaquier/ai-integration/plugins/jdtls",
+    "homepage": "https://gitlab.com/kilianpaquier/ai-integration/-/tree/main/plugins/lsp/jdtls",
 
     "lspServers": {
         "jdtls": {
