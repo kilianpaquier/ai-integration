@@ -43,7 +43,7 @@ As indicated above, packages can be distributed through plugins or marketplaces 
 Incompatible components are automatically filtered out during [consumer installation](/share/agent-package-manager#usage) (e.g. instructions).
 
 ```sh
-mise use -g github:microsoft/apm
+mise use -g apm
 apm pack
 ```
 

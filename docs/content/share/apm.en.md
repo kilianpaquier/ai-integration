@@ -26,7 +26,7 @@ Install any package [from anywhere](https://microsoft.github.io/apm/consumer/man
 (Git repository, local directory, remote component, etc.).
 
 ```sh
-mise use -g github:microsoft/apm
+mise use -g apm
 apm install <path_to_primitive>
 apm install --mcp <path_to_primitive>
 ```
@@ -54,7 +54,7 @@ targets: [claude, codex, copilot, gemini, kiro, opencode, windsurf]
 Install any plugin from any marketplace (unsupported formats unclear), either user-scoped or repository-scoped.
 
 ```sh
-mise use -g github:microsoft/apm
+mise use -g apm
 apm marketplace add <owner>/<repo>
 apm install <package-name>@<marketplace-name>
 ```

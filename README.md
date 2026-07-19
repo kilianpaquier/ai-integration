@@ -69,16 +69,16 @@ This repository follows the [**Open Plugin**](https://open-plugins.com/plugin-bu
 > Depending on your company restriction regarding MCP servers execution,
 > those plugins are not the right one to use since they're not `docker` based.
 
-| Name                                                   | Description                                                                          |
-| ------------------------------------------------------ | ------------------------------------------------------------------------------------ |
-| [cavemem](plugins/mcp/cavemem)                         | Cross-agent persistent memory MCP server - compressed SQLite store                   |
-| [codebase-memory-mcp](plugins/mcp/codebase-memory-mcp) | Fast code intelligence engine for AI coding agents - single static binary MCP server |
-| [codegraph](plugins/mcp/codegraph)                     | CodeGraph MCP server for accessing local CodeGraph indexed code knowledge graph      |
-| [context7](plugins/mcp/context7)                       | Upstash Context7 MCP server for up-to-date library documentation lookup              |
-| [github](plugins/mcp/github)                           | Official GitHub MCP server for repository management, issues, and pull requests      |
-| [gitlab](plugins/mcp/gitlab)                           | GitLab MCP server for repository management, merge requests, and CI/CD               |
-| [opentofu](plugins/mcp/opentofu)                       | OpenTofu MCP Server for accessing the OpenTofu Registry                              |
-| [playwright](plugins/mcp/playwright)                   | Microsoft Playwright MCP server for browser automation and end-to-end testing        |
+| Name                                                   | Description                                                                                                              |
+| ------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------ |
+| [cavemem](plugins/mcp/cavemem)                         | Cross-agent persistent memory MCP server - compressed SQLite store with search, timeline and observation retrieval tools |
+| [codebase-memory-mcp](plugins/mcp/codebase-memory-mcp) | Fast code intelligence engine for AI coding agents - single static binary MCP server                                     |
+| [codegraph](plugins/mcp/codegraph)                     | CodeGraph MCP server for accessing local CodeGraph indexed code knowledge graph                                          |
+| [context7](plugins/mcp/context7)                       | Upstash Context7 MCP server for up-to-date library documentation lookup                                                  |
+| [github](plugins/mcp/github)                           | Official GitHub MCP server for repository management, issues, and pull requests                                          |
+| [gitlab](plugins/mcp/gitlab)                           | GitLab MCP server for repository management, merge requests, and CI/CD                                                   |
+| [opentofu](plugins/mcp/opentofu)                       | OpenTofu MCP Server for accessing the OpenTofu Registry                                                                  |
+| [playwright](plugins/mcp/playwright)                   | Microsoft Playwright MCP server for browser automation and end-to-end testing                                            |
 
 ### Skills
 
