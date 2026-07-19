@@ -17,5 +17,5 @@ comparison examples to better switch to other agents when needed (e.g. data resi
 
 ## Contributing
 
-This documentation is open to [contributions](https://github.com/kilianpaquier/ai-integration), whether it be new components,
+This documentation is open to [contributions](https://gitlab.com/kilianpaquier/ai-integration), whether it be new components,
 optimizations, more distribution ways, frameworks to quote or interoperability tips.

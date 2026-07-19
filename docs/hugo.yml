@@ -35,6 +35,11 @@ menu:
       params:
         type: language-switch
       weight: 2
+    - name: GitHub
+      params:
+        icon: github
+      url: https://github.com/kilianpaquier/ai-integration
+      weight: 3
     - name: GitLab
       params:
         icon: gitlab

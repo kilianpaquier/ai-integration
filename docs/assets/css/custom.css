@@ -26,20 +26,7 @@
   max-width: none !important;
 }
 
-/* @media (min-width: 48rem) {
-  .hextra-sidebar-container {
-    width: 18rem;
-  }
+/* shrink navbar icons */
+.hextra-nav-container svg {
+  height: 1.35em;
 }
-
-@media (min-width: 64rem) {
-  .hextra-sidebar-container {
-    width: 20rem;
-  }
-}
-
-@media (min-width: 80rem) {
-  .hextra-sidebar-container {
-    width: 22rem;
-  }
-} */

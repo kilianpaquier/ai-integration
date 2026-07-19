@@ -19,22 +19,17 @@ and some optimization recommendation.
 ## Installation
 
 ```sh
-claude plugin marketplace add kilianpaquier/ai-integration
-claude plugin install <plugin_name>@one-for-all
+my-agent plugin marketplace add kilianpaquier/ai-integration
+my-agent plugin install <plugin_name>@one-for-all
 ```
 
 ```sh
-copilot plugin marketplace add kilianpaquier/ai-integration
-copilot plugin install <plugin_name>@one-for-all
+apm marketplace add kilianpaquier/ai-integration
+apm install <plugin_name>@one-for-all -g
 ```
 
 ```sh
-apm marketplace add gitlab.com/kilianpaquier/ai-integration
-apm install <plugin_name>@one-for-all
-```
-
-```sh
-apm install kilianpaquier/ai-integration/plugins/<plugin_path>
+apm install kilianpaquier/ai-integration/plugins/<plugin_path> -g
 ```
 
 ```sh
