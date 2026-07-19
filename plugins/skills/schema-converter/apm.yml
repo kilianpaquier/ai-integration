@@ -7,5 +7,3 @@ type: skill
 author: Kilian PAQUIER
 description: Convert JSON schemas to other formats (Go structs, TypeScript interfaces, etc.)
 license: MIT
-
-targets: []

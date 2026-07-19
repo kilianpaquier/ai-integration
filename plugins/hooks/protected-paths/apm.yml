@@ -6,5 +6,3 @@ version: 0.1.0
 author: Kilian PAQUIER
 description: Blocks tool calls from reading or writing credential and config directories (SSH keys, cloud credentials, kube/docker configs) via a PreToolUse hook
 license: MIT
-
-targets: []
