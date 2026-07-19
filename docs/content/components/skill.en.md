@@ -2,13 +2,13 @@
 title: Skill
 ---
 
-*In the beginning there was commands and prompts, then skills.*
+*In the beginning there were commands and prompts, then skills.*
 
-Agents within their tasks may need to know how to handle specific smaller action, transforming a file,
-building a commit message, summarizing whatever, etc. and sometimes users may also need to run such specific smaller actions.
+Within their tasks, agents may need to know how to handle specific smaller actions: transforming a file,
+building a commit message, summarizing whatever, etc. Sometimes users may also need to run such actions themselves.
 
-That's when enters skills, small recipes useable by both users and machines with still the availability to constraint usage
-to either one of them.
+That's when skills enter the picture: small recipes usable by both users and machines, while still allowing usage
+to be restricted to either one of them.
 
 {{< tabs >}}
 

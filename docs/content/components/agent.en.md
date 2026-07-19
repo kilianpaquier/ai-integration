@@ -2,11 +2,14 @@
 title: (Custom) Agent
 ---
 
-A custom agent (or subagent) is expected to be dedicated to one task type (review, investigation, build, etc.),
+Sessions handling review, investigation, build, or other varied tasks all within the same conversation
+can quickly flood the main context.
+
+That's when custom agents (or subagents) come into play: each dedicated to one task type,
 with its own model, tool access and system prompt.
 
-Its usefulness enters into account to delegate tasks or run parallel tasks during a session without flooding the main context
-or initiating a new session with a pre-destined agent.
+They allow delegating tasks or running parallel work during a session without flooding the main context,
+or without having to initiate a new session with a pre-configured agent.
 
 {{< tabs >}}
 

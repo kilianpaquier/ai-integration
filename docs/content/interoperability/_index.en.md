@@ -1,15 +1,15 @@
 ---
-description: How to reduce vendors dependency and easily switch between LLM providers.
+description: How to reduce vendor dependency and easily switch between LLM providers.
 title: Interoperability
 weight: 40
 ---
 
-In this section, focus is made on what can be done to reduce vendors dependency, easy switch between LLM providers.
+In this section, focus is made on what can be done to reduce vendor dependency and easily switch between LLM providers.
 
 ## Use standards
 
-Whenever possible, use standards to reduce vendors dependency and ensure easier switches to competitors or self-hosted
-without loosing time on teams re-setup.
+Whenever possible, use standards to reduce vendor dependency and ensure easier switches to competitors or self-hosted alternatives
+without losing time on team re-setup.
 
 - [**Agent Client Protocol**](https://agentclientprotocol.com/get-started/introduction): Any LLM on any editor (or extension), switch LLM providers without changing your setup.
 - [**Agent Skills**](https://agentskills.io/home): Build standardized skills for all agents to use.
@@ -25,7 +25,7 @@ components definition and agents to only change the underlying models when switc
 - [**agentgateway**](https://agentgateway.dev): Open source proxy for MCP, Agent-to-Agent, LLM and API traffic, providing drop-in security, observability and governance.
 - [**Goose**](https://goose-docs.ai): Open source, extensible AI agent (CLI, desktop app, API) that works with any LLM provider.
 
-Both projects live under the [**Agentic AI Foundation**](https://aaif.io) (AAIF), a newly (founded in December 2025) neutral foundation,
-Linux Foundation-backed for open agentic AI standards and projects.
+Both projects live under the [**Agentic AI Foundation**](https://aaif.io) (AAIF), a newly founded (December 2025) neutral foundation,
+Linux Foundation-backed, for open agentic AI standards and projects.
 
 What's starting here is very similar to the [**Cloud Native Computing Foundation**](https://www.cncf.io/) (CNCF).

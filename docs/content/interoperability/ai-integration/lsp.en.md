@@ -4,7 +4,7 @@ title: LSPs
 draft: true
 ---
 
-[Language Server Protocol](/components/lsp) servers exposing code intelligence (completion, navigation, diagnostics).
+[**Language Server Protocol**](/components/lsp) servers exposing code intelligence (completion, navigation, diagnostics).
 
 > [!warning]
 > Documentation in progress here.

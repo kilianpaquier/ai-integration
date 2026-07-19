@@ -5,7 +5,7 @@ title: Components
 weight: 10
 ---
 
-Existing components to architect and optimize agents behavioral work.
+Existing components to architect and optimize agents' behavioral work.
 
 ## Explore
 

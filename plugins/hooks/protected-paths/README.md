@@ -10,14 +10,19 @@ Stop your agent from accessing unwanted or sensitive directories.
 > [!warning]
 > Nodejs is needed in `PATH` environment variable to work.
 
-**Agent plugin**:
+**Native plugin**:
 ```sh
 my-agent plugin install protected-paths@one-for-all
 ```
 
-**Agent Package Manager plugin**:
+**APM package (recommended)**:
 ```sh
-apm marketplace add https://gitlab.com/kilianpaquier/ai-integration
+apm install kilianpaquier/ai-integration/plugins/hooks/protected-paths -g
+```
+
+**APM plugin**:
+```sh
+apm marketplace add kilianpaquier/ai-integration
 apm install protected-paths@one-for-all -g
 ```
 
@@ -49,7 +54,7 @@ An allow-list carves out specific subpaths needed for plugins and instructions t
 The hook also catches recursive tools (`grep -r`, `find`, `tar`, `rsync`, `ls -R`, ...) and bare
 references like `cd ~` that could reach a protected directory without naming it directly.
 
-A blocked call prints an explanatory message and denies the tool call, across Claude, Copilot, and Codex.
+A blocked call prints an explanatory message and denies the tool call across **Claude Code**, **Copilot**, and **Codex**.
 
 > [!warning]
 > A relative path used after a `cd` earlier in the same command is not resolved against that new directory.

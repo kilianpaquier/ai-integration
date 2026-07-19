@@ -5,8 +5,8 @@ title: Monitor
 Long-running or external processes (e.g. a deployment rolling out, a log file growing, a polled status endpoint)
 stay invisible to an agent until the user explicitly asks about them.
 
-That's when monitors enter the dance, a shell command that the agent starts automatically
-once active where every stdout line produced by it is delivered back as a notification during the session.
+That's when monitors enter the dance: a shell command the agent starts automatically,
+with every stdout line it produces delivered back as a notification during the session.
 
 > [!warning]
 > Monitors are only definable within [plugins](/share/plugin) for now.

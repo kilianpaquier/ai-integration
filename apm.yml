@@ -19,9 +19,9 @@ marketplace:
     url: https://kilianpaquier.dev
 
   packages:
-  - category: hooks
-    name: caveman-autostart
-    source: ./plugins/hooks/caveman-autostart
+    - category: hooks
+      name: caveman-autostart
+      source: ./plugins/hooks/caveman-autostart
 
   # - category: mcp
   #   name: cavemem
@@ -67,13 +67,13 @@ marketplace:
   #   name: playwright
   #   source: ./plugins/mcp/playwright
 
-  - category: hooks
-    name: protected-paths
-    source: ./plugins/hooks/protected-paths
+    - category: hooks
+      name: protected-paths
+      source: ./plugins/hooks/protected-paths
 
-  - category: skills
-    name: schema-converter
-    source: ./plugins/skills/schema-converter
+    - category: skills
+      name: schema-converter
+      source: ./plugins/skills/schema-converter
 
   # - category: lsp
   #   name: typescript-lsp

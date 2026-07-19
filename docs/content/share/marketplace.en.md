@@ -4,16 +4,15 @@ title: Marketplace
 weight: 30
 ---
 
-Marketplaces are (also) Git repositories, their purpose is to ship [plugins](/share/plugin).
+Marketplaces are (also) Git repositories with the sole purpose of publishing and giving access to [plugins](/share/plugin).
 
-Shipped plugins can be:
-- Local to the same Git repository (see [structure](#structure))
-- Remote references to other plugins (useful to group plugins within one *to rule them all* marketplace).
+Shipped plugins can be local references to the same Git repository or
+remote references to other plugins (useful to group plugins within one *to rule them all* marketplace, but has some [limitations](#limitations)).
 
 ## Structure
 
 A marketplace is identified by its `marketplace.json` (index) referencing one or more plugins.
-The place of a marketplace index depends on target agent(s) audience.
+The place of a marketplace index depends on the target agent(s).
 
 {{< tabs >}}
 
@@ -97,7 +96,7 @@ claude plugin install <plugin-name>@<marketplace-name>
 claude plugin uninstall <plugin-name>@<marketplace-name>
 ```
 
-Plugins installation and traçing (which plugins, which marketplaces) is managed under `~/.claude/plugins`.
+Plugin installation and tracing (which plugins, which marketplaces) is managed under `~/.claude/plugins`.
 {{< /tab >}}
 
 {{< tab name="Codex" >}}
@@ -107,7 +106,7 @@ codex plugin marketplace add <owner>/<repo>
 
 Plugin install/uninstall goes through the ChatGPT app's `/plugins` browser once the marketplace is added.
 
-Plugins installation and traçing (which plugins, which marketplaces) is managed under `~/.codex/plugins`.
+Plugin installation and tracing (which plugins, which marketplaces) is managed under `~/.codex/plugins`.
 {{< /tab >}}
 
 {{< tab name="Copilot" >}}
@@ -117,17 +116,15 @@ copilot plugin install <plugin-name>@<marketplace-name>
 copilot plugin uninstall <plugin-name>
 ```
 
-Plugins installation and traçing (which plugins, which marketplaces) is managed under `~/.copilot/installed-plugins`.
+Plugin installation and tracing (which plugins, which marketplaces) is managed under `~/.copilot/installed-plugins`.
 {{< /tab >}}
 
 {{< /tabs >}}
 
 ## Limitations
 
-### Remote plugins
-
-Remote plugins referenced through `git-subdir` source aren't yet supported by **Copilot**
-([github/copilot-cli#3376](https://github.com/github/copilot-cli/issues/3376)),
-so such plugins must be cloned and maintained locally as a workaround until then.
-
-Beware that **Copilot** will reject the whole marketplace if it contains a `git-subdir` plugin.
+> [!warning]Remote plugins
+> Remote plugins referenced through `git-subdir` source aren't yet supported by **Copilot**
+> ([github/copilot-cli#3376](https://github.com/github/copilot-cli/issues/3376)).
+>
+> Any marketplace containing a `git-subdir` plugin will be rejected by **Copilot**.

@@ -4,7 +4,7 @@ weight: 20
 ---
 
 Stop sharing components through copy/paste,
-use real implementation tooling to ease maintainance, updates and enforce security.
+use real implementation tooling to ease maintenance, updates and enforce security.
 
 ## Explore
 

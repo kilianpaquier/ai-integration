@@ -3,24 +3,24 @@ description: Codebase indexing through graph-based database helps navigating the
 title: Index your codebases
 ---
 
-Codebases might sometime be a lot of files, with various structures, interactions and architectures.
+Codebases might sometimes hold a lot of files, with various structures, interactions and architectures.
 When an agent searches something inside of a codebase,
-its primarily action is to either read all files it needs when searching (blindly)
-or running commands to filter files based on their content.
+its primary action is to either read all files it needs when searching (blindly)
+or run commands to filter files based on their content.
 
-It's even more visible when searching code dependencies, *who call this function*, *who uses this class or struct*, etc.
+It's even more visible when searching code dependencies, *what calls this function*, *what uses this class or struct*, etc.
 
 To fix this behavior, codebases can be indexed through graph-based databases instead.
-By doing this, an agent can use an MCP server, a CLI, a skill
-to easily retrieve through one request all interactions regarding a class, a function, a method, etc.
+By doing this, an agent can use an MCP server, a CLI, or a skill
+to easily retrieve all interactions regarding a class, a function, a method, etc. through a single request.
 
-And it's not just languages-based codebases that can be indexed,
-it can also be used for Helm charts, Terraform modules, markdown references, etc. (still depends on the features the used tool offers).
+And it's not just language-based codebases that can be indexed:
+it can also be used for Helm charts, Terraform modules, markdown references, etc. (still depends on each tool's feature set).
 
 {{< tabs >}}
 
 {{< tab name="Codebase Memory MCP" >}}
-A [CLI and MCP server](https://github.com/DeusData/codebase-memory-mcp).
+- **Upstream**: <https://github.com/DeusData/codebase-memory-mcp>
 - **Indexing**: through the MCP server or the CLI
 - **Navigation**: through the MCP server or the CLI
 
@@ -31,21 +31,23 @@ mise use -g github:DeusData/codebase-memory-mcp
 codebase-memory-mcp install
 ```
 
-Pre-defined MCP server plugin:
-
 ```sh
-my-agent plugin marketplace add https://gitlab.com/kilianpaquier/ai-integration
+my-agent plugin marketplace add kilianpaquier/ai-integration
 my-agent plugin install codebase-memory-mcp@one-for-all
 ```
 
 ```sh
-apm marketplace add https://gitlab.com/kilianpaquier/ai-integration
+apm marketplace add kilianpaquier/ai-integration
 apm install codebase-memory-mcp@one-for-all
+```
+
+```sh
+apm install kilianpaquier/ai-integration/plugins/mcp/codebase-memory-mcp
 ```
 {{< /tab >}}
 
 {{< tab name="Codegraph" >}}
-A [CLI and MCP server](https://github.com/colbymchenry/codegraph).
+- **Upstream**: <https://github.com/colbymchenry/codegraph>
 - **Indexing**: through the CLI
 - **Navigation**: through the MCP server or the CLI
 
@@ -60,18 +62,22 @@ codegraph init --index # in the repository
 Pre-defined MCP server plugin:
 
 ```sh
-my-agent plugin marketplace add https://gitlab.com/kilianpaquier/ai-integration
+my-agent plugin marketplace add kilianpaquier/ai-integration
 my-agent plugin install codegraph@one-for-all
 ```
 
 ```sh
-apm marketplace add https://gitlab.com/kilianpaquier/ai-integration
+apm marketplace add kilianpaquier/ai-integration
 apm install codegraph@one-for-all
+```
+
+```sh
+apm install kilianpaquier/ai-integration/plugins/mcp/codegraph
 ```
 {{< /tab >}}
 
 {{< tab name="Graphify" >}}
-A [hook, MCP server and skill](https://github.com/Graphify-Labs/graphify).
+- **Upstream**: <https://github.com/Graphify-Labs/graphify>
 - **Indexing**: through the skill or the CLI
 - **Navigation**: through the MCP server, the skill, or the CLI
 

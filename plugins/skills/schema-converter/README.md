@@ -1,35 +1,40 @@
 ---
-description: A simple plugin to convert JSON schemas into its languages equivalent.
+description: A simple plugin to convert JSON schemas into their language equivalents.
 title: Schema Converter
 ---
 
-A simple plugin to convert JSON schemas into its languages equivalent.
+A simple plugin to convert JSON schemas into their language equivalents.
 
 ## Installation
 
-**Agent plugin**:
+**Native plugin**:
 ```sh
-my-agent plugin marketplace add https://gitlab.com/kilianpaquier/ai-integration
+my-agent plugin marketplace add kilianpaquier/ai-integration
 my-agent plugin install schema-converter@one-for-all
 ```
 
-**Agent Package Manager plugin**:
+**APM package (recommended)**:
 ```sh
-apm marketplace add https://gitlab.com/kilianpaquier/ai-integration
+apm install kilianpaquier/ai-integration/plugins/skills/schema-converter
+```
+
+**APM plugin**:
+```sh
+apm marketplace add kilianpaquier/ai-integration
 apm install schema-converter@one-for-all -g
 ```
 
-**Skills CLI**:
+**Skills CLI (recommended)**:
 
 ```sh
-npx skills add https://gitlab.com/kilianpaquier/ai-integration -g
+npx skills add kilianpaquier/ai-integration -g
 ```
 
 ## Skills
 
 ### `schema-to-go`
 
-Activated to transform a given JSON schema into it's Go equivalent.
+Activated to transform a given JSON schema into its Go equivalent.
 The skill needs the following arguments when running (it will be asked otherwise):
 - Schema path
 - Go package path to generate files into

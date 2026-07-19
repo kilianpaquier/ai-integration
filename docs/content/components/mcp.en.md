@@ -2,13 +2,13 @@
 title: Model Context Protocol
 ---
 
-When in need of documentation regarding tools, languages features, interactions with platforms (**Jira**, **GitHub**, **GitLab** and many more), etc.
-an agent will either use it's training informations, run searches or fetches (through tools, `curl`, `wget`, etc.).
+When in need of documentation regarding tools, language features, interactions with platforms (**Jira**, **GitHub**, **GitLab** and many more), etc.,
+an agent will either use its training information, or run searches or fetches (through tools, `curl`, `wget`, etc.).
 
-Fetches and searches returns a variable number of information that will probably not be useful for the session going forward, flooding the context.
+Fetches and searches return a variable amount of information that will probably not be useful for the session going forward, flooding the context.
 
-That's when [Model Context Protocols (MCP)](https://modelcontextprotocol.io/docs/getting-started/intro) enter the dance,
-with them interaction with outside world (i.e. outside your repository) is eased,
+That's when [**Model Context Protocols (MCP)**](https://modelcontextprotocol.io/docs/getting-started/intro) enter the dance,
+easing interaction with the outside world (i.e. outside your repository):
 databases, **Jira** issues, **GitHub** or **GitLab** code search, up-to-date documentation, **Figma** designs, etc.
 
 {{< tabs >}}

@@ -6,13 +6,13 @@ weight: 20
 
 A plugin is a Git repository capable of sharing at once a bundle of components.
 
-A plugin by itself cannot really be used (expect for some agents like
-[**goose**](https://goose-docs.ai/docs/guides/context-engineering/plugins/#install-a-plugin)),
-it is expected to be bundle within a [marketplace](/share/marketplace), either containing only the plugin or with others (larger marketplaces).
+Plugins are usually bundled within [marketplaces](/share/marketplace) to be installed by agents,
+but they can also be installed directly through the [**Agent Package Manager**](/share/apm)
+or some agents (like [**goose**](https://goose-docs.ai/docs/guides/context-engineering/plugins/#install-a-plugin)).
 
 ## Structure
 
-A plugin is identified by a `plugin.json` file. Its place and content (small variations) depends on the target agent(s) audience.
+A plugin is identified by a `plugin.json` file. Its place and content (with small variations) depend on the target agent(s).
 
 {{< tabs >}}
 
@@ -116,16 +116,14 @@ repository/
 
 ## Limitations
 
-### LSP format
+> [!warning]LSP format
+> While LSPs can be defined in `.lsp.json`, a preferable way is to define them inline in `plugin.json`
+> because [its format varies between agents](/components/lsp).
 
-While LSPs can be defined in `.lsp.json`, a preferable way is to define them inline in `plugin.json`
-because [its format varies between agents](/components/lsp).
-
-### Hooks environment variables
-
-In most cases, hooks call custom scripts (shell, powershell, bash, js, etc.)
-and they use predefined environment variables to pinpoint those (e.g. `PLUGIN_ROOT`, `CLAUDE_PLUGIN_ROOT`, `CLAUDE_PLUGIN_DATA`, etc.).
-
-However with some agents (e.g. VSCode Chat), those variables are not correctly set on remote environments (e.g. WSL or SSH)
-when the host OS isn't the same as the remote's: a Windows host path gets injected as-is into the remote Linux shell,
-which mangles it ([microsoft/vscode#313201](https://github.com/microsoft/vscode/issues/313201)).
+> [!warning]Hooks environment variables
+> In most cases, hooks call custom scripts (shell, powershell, bash, js, etc.)
+> and use predefined environment variables to pinpoint those (e.g. `PLUGIN_ROOT`, `CLAUDE_PLUGIN_ROOT`, `CLAUDE_PLUGIN_DATA`, etc.).
+>
+> However, with some agents (e.g. VSCode Chat), those variables are not correctly set on remote environments (e.g. WSL or SSH) when the host OS isn't the same as the remote's.
+>
+> See [microsoft/vscode#313201](https://github.com/microsoft/vscode/issues/313201) and [microsoft/vscode#326166](https://github.com/microsoft/vscode/issues/326166) for more details.

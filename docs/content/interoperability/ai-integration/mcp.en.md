@@ -4,7 +4,7 @@ title: MCPs
 draft: true
 ---
 
-[Model Context Protocol](/components/mcp) servers exposing tools or resources to agents.
+[**Model Context Protocol**](/components/mcp) servers exposing tools or resources to agents.
 
 > [!warning]
 > Documentation in progress here.

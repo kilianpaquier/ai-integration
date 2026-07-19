@@ -5,11 +5,11 @@ title: AI Integration
 type: docs
 ---
 
-Simple and humble documentation explaining AI components, how to properly share them, some optimization recommendation and
-comparison examples to better switch onto other agents when needed (e.g. data residency).
+Simple and humble documentation explaining AI components, how to properly share them, some optimization recommendations and
+comparison examples to better switch to other agents when needed (e.g. data residency).
 
 > [!note]
-> This documentation is non-exhaustive, evolutive based on investigation, findings, preferences and optimization works.
+> This documentation is non-exhaustive and evolves based on investigation, findings, preferences, and optimization work.
 
 ## Explore
 
@@ -17,10 +17,5 @@ comparison examples to better switch onto other agents when needed (e.g. data re
 
 ## Contributing
 
-Of course, this documentation is open to contributions, whichever it may be new components,
-optimization,
-more distribution ways,
-frameworks to quote or
-interoperability tips.
-
-Contributions go through the **GitLab** link.
+This documentation is open to [contributions](https://github.com/kilianpaquier/ai-integration), whether it be new components,
+optimizations, more distribution ways, frameworks to quote or interoperability tips.

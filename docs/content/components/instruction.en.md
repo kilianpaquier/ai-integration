@@ -2,14 +2,14 @@
 title: Instruction / Rule
 ---
 
-Instructions are known to be the global rules an agents must respect when acting,
+Instructions are known to be the global rules an agent must respect when acting,
 whether it be practices to apply, how to develop, naming conventions, etc.
 
-But it's not just that, to avoid flooding the context with all instructions specific to languages or file types (markdown, java, go, etc.),
-specific instructions files can be created.
+But it's not just that: to avoid flooding the context with all instructions specific to languages or file types (markdown, java, go, etc.),
+specific instruction files can be created.
 
-By doing that, the agent only has the frontmatter content loading into its context at the beginning of a session
-and will only load specific instructions when working with concerned files.
+By doing that, the agent only loads the frontmatter content into its context at the beginning of a session,
+and loads specific instructions only when working with the concerned files.
 
 To avoid duplicating instructions between agents or files, `@filepath` references can be used within instructions
 to load specific files (e.g. `@README.md`, `@AGENTS.md`).

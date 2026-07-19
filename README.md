@@ -19,12 +19,12 @@ and some optimization recommendation.
 ## Installation
 
 ```sh
-claude plugin marketplace add https://gitlab.com/kilianpaquier/ai-integration
+claude plugin marketplace add kilianpaquier/ai-integration
 claude plugin install <plugin_name>@one-for-all
 ```
 
 ```sh
-copilot plugin marketplace add https://gitlab.com/kilianpaquier/ai-integration
+copilot plugin marketplace add kilianpaquier/ai-integration
 copilot plugin install <plugin_name>@one-for-all
 ```
 
@@ -34,7 +34,11 @@ apm install <plugin_name>@one-for-all
 ```
 
 ```sh
-npx skills add https://gitlab.com/kilianpaquier/ai-integration -g
+apm install kilianpaquier/ai-integration/plugins/<plugin_path>
+```
+
+```sh
+npx skills add kilianpaquier/ai-integration -g
 ```
 
 ## Plugin structure

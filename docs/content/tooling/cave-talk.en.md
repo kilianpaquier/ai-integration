@@ -1,17 +1,22 @@
 ---
-description: Cut verbose agent output - chat, docs, commits, code review - down to essentials.
+description: Cut verbose agent output (chat, docs, commits, code review) down to essentials.
 title: Talk like cave humans
 ---
 
-Agents tend to write a lot, from subagents spawning context, MCP requests / outputs to outputs to users, this increase tokens consumption.
+Agents tend to write a lot, from subagents spawning context and MCP requests/outputs to outputs shown to users, which increases token consumption.
 
-To counter this, there's the [caveman](https://github.com/JuliusBrussee/caveman) stack that act at different places within agents runtime.
+To counter this, there's the [caveman](https://github.com/JuliusBrussee/caveman) stack that acts at different places within agents' runtime.
 
 {{< tabs >}}
 
 {{< tab name="Caveman" >}}
-A [skill suite](https://github.com/JuliusBrussee/caveman) for compressed outputs, primarily for chat output, documentation, commits, code review
-and [hooks](https://github.com/JuliusBrussee/caveman/tree/main/src/hooks) to automatically activate chat output mode.
+> [!warning]
+> Hooks activation is limited to **Claude Code** by default,
+> but [simili-mirrored hooks](/interoperability/ai-integration/caveman) can be used to broaden agent compatibility.
+
+- **Upstream**: <https://github.com/JuliusBrussee/caveman>
+- **What is it**: A skill suite for compressed outputs, primarily for chat output, documentation, commits, code review,
+and hooks to automatically activate chat output mode.
 
 ```sh
 my-agent plugin marketplace add JuliusBrussee/caveman
@@ -24,14 +29,17 @@ npx skills add JuliusBrussee/caveman
 
 ```sh
 apm marketplace add JuliusBrussee/caveman
-apm install caveman@caveman
+apm install caveman@caveman -g
 ```
 
-*Hook it once and forget it's even on - see [limitation](#caveman-hooks) below.*
+```sh
+apm install JuliusBrussee/caveman -g
+```
 {{< /tab >}}
 
 {{< tab name="Cavekit" >}}
-A [skill suite](https://github.com/JuliusBrussee/cavekit) to use the [Spec Driven Development (SDD)](/accelerate) framework.
+- **Upstream**: <https://github.com/JuliusBrussee/cavekit>
+- **What is it**: A skill suite to use the [**Spec Driven Development**](/accelerate) framework.
 
 ```sh
 my-agent plugin marketplace add JuliusBrussee/cavekit
@@ -44,41 +52,38 @@ npx skills add JuliusBrussee/cavekit
 
 ```sh
 apm marketplace add JuliusBrussee/cavekit
-apm install ck@cavekit-marketplace
+apm install ck@cavekit-marketplace -g
+```
+
+```sh
+apm install JuliusBrussee/cavekit -g
 ```
 {{< /tab >}}
 
 {{< tab name="Caveman Code" >}}
-A [whole agent](https://github.com/JuliusBrussee/caveman-code) to use instead of **Claude Code**, **Copilot**, etc.
-It includes the whole caveman stack and uses subscriptions keys to connect to preferred or subscribed models.
+> [!note]
+> Since it's not a shareable component or pluggeable to mainstream agents,
+> this documentation won't go into details about it.
 
-This documentation won't provide more information on this because it is a whole agent
-and not just shareable content.
+- **Upstream**: <https://github.com/JuliusBrussee/caveman-code>
+- **What is it**: A whole agent to use instead of **Claude Code**, **Copilot**, etc.,
+  including the whole caveman stack, and using subscription keys to connect to preferred or subscribed models.
 {{< /tab >}}
 
 {{< tab name="Caveman Shrink" >}}
-A [MCP proxy server](https://github.com/JuliusBrussee/caveman/tree/main/src/mcp-servers/caveman-shrink) to reduce agents inputs
-and outputs to and from MCP servers.
+> [!note]
+> Since the integration can be complex in multi-MCP server environments, this documentation won't go into details about it.
 
-While the idea is good, its use can be quite complex when an user has multiple MCP servers.
-The proxy needs to be placed on every MCP server, which mean that every MCP server plugin must be duplicated
-with its proxied version.
+- **Upstream**: <https://github.com/JuliusBrussee/caveman/tree/main/src/mcp-servers/caveman-shrink>
+- **What is it**: An MCP proxy server to reduce agents' inputs and outputs to and from MCP servers.
 {{< /tab >}}
 
 {{< tab name="Cavemem" >}}
-A [MCP server](https://github.com/JuliusBrussee/cavemem) to store session memories (compressed using caveman constraints)
-and reuse them in later sessions.
+> [!note]
+> More information about this server in [memory](/tooling/memory).
 
-More information about this server in [memory](/tooling/memory).
+- **Upstream**: <https://github.com/JuliusBrussee/cavemem>
+- **What is it**: An MCP server to store session memories (compressed using caveman constraints) and reuse them in subsequent sessions.
 {{< /tab >}}
 
 {{< /tabs >}}
-
-## Limitations
-
-### Caveman Hooks
-
-As stated before, caveman talking way can be enabled through hooks.
-However those seem to only work with **Claude Code** by default,
-as such I'm providing [simili-mirrored hooks](/interoperability/ai-integration/caveman-autostart)
-run with node to broaden agents compatibility.

@@ -29,4 +29,8 @@ fi
 for dest in $destinations; do
   rm -rf "$dest"
   cp -r "$tmp_dir/$element" "$dest"
+
+  if [ -f "$dest" ] && [ -n "$(tail -c1 "$dest")" ]; then
+    printf '\n' >> "$dest"
+  fi
 done

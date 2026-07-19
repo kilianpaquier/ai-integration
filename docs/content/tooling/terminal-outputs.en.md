@@ -4,15 +4,15 @@ title: Filter terminal outputs
 ---
 
 Some terminal commands are known to provide a lot of outputs.
-While this is useful for humans, this pollutes agents contextes.
+While this is useful for humans, this pollutes agent context.
 
 Multiple tools exist to counter this context pollution.
 
 {{< tabs >}}
 
 {{< tab name="Rust Token Killer" >}}
-A [simple CLI](https://github.com/rtk-ai/rtk) that wraps calls to real commands (passthrough arguments).
-Easy to install and direct results.
+A CLI wrapping calls to real commands (arguments are passed through, not all commands are supported).
+- **Upstream**: <https://github.com/rtk-ai/rtk>
 
 ```sh
 mise use -g github:rtk-ai/rtk

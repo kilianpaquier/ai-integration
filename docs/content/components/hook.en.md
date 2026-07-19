@@ -2,17 +2,15 @@
 title: Hook
 ---
 
-Hooks are deterministic configuration to execute a command, a prompt, a webhook call, etc.
+Hooks are deterministic configurations to execute a command, a prompt, a webhook call, etc.
 when an event is fired during the session runtime.
 
-Events are triggered at various point, a session start (`SessionStart`),
-an user submittion an instruction (`UserPromptSubmit`),
+Events are triggered at various points: a session start (`SessionStart`),
+a user submitting an instruction (`UserPromptSubmit`),
 before a tool execution (`PreToolUse`), and many other cases (diversity depends on the agent being used).
 
-Typical use-cases for hooks can be access limitation to files,
-commands guarding to avoid destructive actions,
-telemetry actions, code lint, or even
-automatic save or restoration of session(s) memories.
+Typical hook use cases include limiting access to files, guarding commands to avoid destructive actions,
+telemetry, code linting, or even automatically saving and restoring session memories.
 
 {{< tabs >}}
 
