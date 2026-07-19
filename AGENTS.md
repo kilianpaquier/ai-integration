@@ -15,11 +15,6 @@ This plugins marketplace aims to get shared compatibility for a bunch-of plugins
 
 - Claude and Copilot support `agents`, `commands`, `hooks`, `LSP Servers`, `MCP Servers`, and `skills`.
 
-## Workaround rules
-
-- Until [`CLAUDE_PLUGIN_ROOT`](https://github.com/microsoft/vscode/issues/313201) is correctly valorized in VSCode, additional changes must be made to plugins using this variable for Copilot compatibility.
-- Until [`git-subdir`](https://github.com/github/copilot-cli/issues/3376) is supported by Copilot, plugins under other marketplace must be cloned and maintained through automated scripts here.
-
 ## Plugins format documentation
 
 - https://code.claude.com/docs/en/hooks

@@ -43,7 +43,10 @@ npx skills add kilianpaquier/ai-integration -g
 
 ## Plugin structure
 
-This repository follows the [**Open Plugin**](https://open-plugins.com/plugin-builders/specification) to structure its plugins.
+This repository follows various standards to structure its components:
+- [**Agent Package Manager**](https://microsoft.github.io/apm/producer/author-primitives/)
+- [**Agent Skills**](https://agentskills.io/home)
+- [**Open Plugin**](https://open-plugins.com/plugin-builders/specification)
 
 ## Plugins
 
