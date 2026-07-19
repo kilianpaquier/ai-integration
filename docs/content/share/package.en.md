@@ -40,7 +40,7 @@ repository/
 ## Distribution
 
 As indicated above, packages can be distributed through plugins or marketplaces with the help of the `apm pack` command.
-Incompatible components are automatically filtered out during [consumer installation](/share/agent-package-manager#usage) (e.g. instructions).
+Incompatible components are automatically filtered out during [consumer installation](/share/apm#usage) (e.g. instructions).
 
 ```sh
 mise use -g apm

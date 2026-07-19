@@ -1,5 +1,5 @@
 ---
-description: Frameworks to accelerate developments or softwares lifecycle.
+description: Frameworks to accelerate developments or software lifecycles.
 title: Accelerate
 weight: 50
 ---

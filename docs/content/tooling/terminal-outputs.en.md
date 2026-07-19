@@ -1,5 +1,5 @@
 ---
-description: Filter outputs from terminal to only give agents what really mean.
+description: Filter outputs from terminal to only give agents what really matters.
 title: Filter terminal outputs
 ---
 
