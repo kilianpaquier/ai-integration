@@ -1,11 +1,10 @@
 # caveman-autostart
 
-Automatically enable [**caveman**](https://github.com/JuliusBrussee/caveman)'s ultra-compressed
-communication mode at the start of every new session, without having to say "caveman mode" first.
+Automatically enable [**caveman**](https://github.com/JuliusBrussee/caveman) mode, no skill or prompt invocation needed.
 
 ## Installation
 
-<!-- docs-tab:start -->
+<!-- docs-sync:start -->
 
 > [!warning]
 > Nodejs is needed in `PATH` environment variable to work.
@@ -27,7 +26,7 @@ apm marketplace add kilianpaquier/ai-integration
 apm install caveman-autostart@one-for-all -g
 ```
 
-<!-- docs-tab:end -->
+<!-- docs-sync:end -->
 
 ## Hooks
 

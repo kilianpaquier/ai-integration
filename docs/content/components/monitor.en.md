@@ -2,7 +2,7 @@
 title: Monitor
 ---
 
-Long-running or external processes (e.g. a deployment rolling out, a log file growing, a polled status endpoint)
+Long-running or external processes (e.g. a deployment rolling out, a log file growing, an healthcheck endpoint)
 stay invisible to an agent until the user explicitly asks about them.
 
 That's when monitors enter the dance: a shell command the agent starts automatically,

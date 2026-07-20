@@ -1,3 +1,4 @@
+title: AI Integration
 baseURL: /
 
 defaultContentLanguage: en
@@ -11,11 +12,9 @@ module:
 languages:
   en:
     label: English
-    title: AI Integration
     weight: 1
   fr:
     label: Français
-    title: Intégration IA
     weight: 2
 
 markup:

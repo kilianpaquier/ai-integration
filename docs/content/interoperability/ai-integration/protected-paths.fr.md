@@ -1,11 +1,11 @@
 ---
-description: Stop your agent from accessing unwanted or sensitive directories.
+description: Protégez l'accès aux dossiers sensibles aux agents.
 title: Protected Paths
 ---
 
 - **Upstream**:
   [https://gitlab.com/kilianpaquier/ai-integration](https://gitlab.com/kilianpaquier/ai-integration/-/tree/main/plugins/hooks/protected-paths)
-- **Description**: Stop your agent from accessing unwanted or sensitive directories.
+- **Description**: Protégez l'accès aux dossiers sensibles aux agents.
 
 <!-- docs-sync:hook:start -->
 

@@ -9,7 +9,7 @@ from Git repositories, provided they conform with the [**Agent Skills**](https:/
 (more information in [components](/components/skill)).
 
 Skills can be discovered from [various places](https://github.com/vercel-labs/skills#skill-discovery) within Git repositories,
-and the CLI is compatible with skills defined within [plugins](/share/plugin) or [marketplaces](/share/marketplace).
+and the CLI is compatible with skills defined within [plugins](/share/plugin).
 
 ## Usage
 
@@ -46,5 +46,5 @@ even non-referenced skills or repositories can be used (e.g. private skills).
 
 ## Limitations
 
-- It can obviously only install skills, which limits agent optimization.
-- It loses skill namespaces (e.g. `/plugin:skill-name`) and can be subject to skill naming conflicts.
+- Only skills can be installed through the CLI, limiting agent optimization.
+- Skills installed through the CLI aren't namespaced (e.g. `/plugin:skill-name`) and can be subject to naming conflicts.

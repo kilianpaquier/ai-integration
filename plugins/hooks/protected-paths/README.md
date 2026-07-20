@@ -1,11 +1,10 @@
----
-description: Stop your agent from accessing unwanted or sensitive directories.
-title: Protected Paths
----
+# protected-paths
 
 Stop your agent from accessing unwanted or sensitive directories.
 
 ## Installation
+
+<!-- docs-sync:start -->
 
 > [!warning]
 > Nodejs is needed in `PATH` environment variable to work.
@@ -25,6 +24,8 @@ apm install kilianpaquier/ai-integration/plugins/hooks/protected-paths -g
 apm marketplace add kilianpaquier/ai-integration
 apm install protected-paths@one-for-all -g
 ```
+
+<!-- docs-sync:end -->
 
 ## Hooks
 

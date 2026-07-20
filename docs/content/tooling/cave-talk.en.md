@@ -12,15 +12,15 @@ To counter this, there's the [caveman](https://github.com/JuliusBrussee/caveman)
 {{< tab name="Caveman" >}}
 > [!warning]
 > Hooks activation is limited to **Claude Code** by default,
-> but [simili-mirrored hooks](/interoperability/ai-integration/caveman) can be used to broaden agent compatibility.
+> but a [simili-mirrored hook](/interoperability/ai-integration/caveman) can be used to broaden agent compatibility.
 
 - **Upstream**: <https://github.com/JuliusBrussee/caveman>
 - **What is it**: A skill suite for compressed outputs, primarily for chat output, documentation, commits, code review,
-and hooks to automatically activate chat output mode.
+and hooks to automatically activate caveman output mode.
 
 ```sh
-my-agent plugin marketplace add JuliusBrussee/caveman
-my-agent plugin install caveman@caveman
+claude plugin marketplace add JuliusBrussee/caveman
+claude plugin install caveman@caveman
 ```
 
 ```sh
@@ -67,7 +67,7 @@ apm install JuliusBrussee/cavekit -g
 
 - **Upstream**: <https://github.com/JuliusBrussee/caveman-code>
 - **What is it**: A whole agent to use instead of **Claude Code**, **Copilot**, etc.,
-  including the whole caveman stack, and using subscription keys to connect to preferred or subscribed models.
+  including the whole caveman stack, and using subscriptionss to connect to LLMs.
 {{< /tab >}}
 
 {{< tab name="Caveman Shrink" >}}

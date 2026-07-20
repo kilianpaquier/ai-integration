@@ -8,7 +8,7 @@ In this section, focus is made on what can be done to reduce vendor dependency a
 
 ## Use standards
 
-Whenever possible, use standards to reduce vendor dependency and ensure easier switches to competitors or self-hosted alternatives
+Use standards to reduce vendor dependency and ensure easier switches to competitors or self-hosted alternatives
 without losing time on team re-setup.
 
 - [**Agent Client Protocol**](https://agentclientprotocol.com/get-started/introduction): Any LLM on any editor (or extension), switch LLM providers without changing your setup.
@@ -19,8 +19,7 @@ without losing time on team re-setup.
 
 ## Favor Open Source
 
-Whenever possible, favor Open Source projects (included in foundations is preferable),
-components definition and agents to only change the underlying models when switching between LLM providers.
+Favor Open Source projects, components, agents and tools with no LLM provider lock-in.
 
 - [**agentgateway**](https://agentgateway.dev): Open source proxy for MCP, Agent-to-Agent, LLM and API traffic, providing drop-in security, observability and governance.
 - [**Goose**](https://goose-docs.ai): Open source, extensible AI agent (CLI, desktop app, API) that works with any LLM provider.

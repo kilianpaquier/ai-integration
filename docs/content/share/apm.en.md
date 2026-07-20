@@ -51,7 +51,7 @@ targets: [claude, codex, copilot, gemini, kiro, opencode, windsurf]
 > Plugin installation should be considered only as a retro-compatibility feature
 > for existing plugins (or marketplaces) without APM manifest (no `apm.yml` or `.apm`).
 
-Install any plugin from any marketplace (unsupported formats unclear), either user-scoped or repository-scoped.
+Install any plugin from any marketplace, either user-scoped or repository-scoped.
 
 ```sh
 mise use -g apm
@@ -83,7 +83,5 @@ repository/
 ## Limitations
 
 > [!warning]Namespacing
-> When installed with APM (`apm install`), all slash-like components are accessed through `/skill-name`
-> while with plugins they are accessed through `/plugin-name:skill-name`.
->
-> Slash-like components are therefore subject to [name conflicts](https://github.com/microsoft/apm/issues/739).
+> Slash-like components installed through APM aren't namespaced (e.g. `/plugin:skill-name`)
+> and can be subject to [naming conflicts](https://github.com/microsoft/apm/issues/739).

@@ -1,11 +1,11 @@
 ---
-description: Automatically enable caveman mode, no skill or prompt invocation needed.
+description: Active automatiquement le mode ultra-compressé de caveman sans avoir à dire "caveman mode" d'abord.
 title: Caveman
 ---
 
 - **Upstream**:
   [https://gitlab.com/kilianpaquier/ai-integration](https://gitlab.com/kilianpaquier/ai-integration/-/tree/main/plugins/hooks/protected-paths)
-- **Description**: Automatically enable [**caveman**](https://github.com/JuliusBrussee/caveman) mode, no skill or prompt invocation needed.
+- **Description**: Activation automatique du mode [**caveman**](https://github.com/JuliusBrussee/caveman), pas de *skill* ou prompt requis.
 
 <!-- docs-sync:hook:start -->
 

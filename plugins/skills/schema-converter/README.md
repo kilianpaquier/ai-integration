@@ -1,11 +1,10 @@
----
-description: A simple plugin to convert JSON schemas into their language equivalents.
-title: Schema Converter
----
+# schema-converter
 
-A simple plugin to convert JSON schemas into their language equivalents.
+A skill suite to transform JSON schemas into their language equivalents.
 
 ## Installation
+
+<!-- docs-sync:start -->
 
 **Native plugin**:
 ```sh
@@ -15,7 +14,7 @@ my-agent plugin install schema-converter@one-for-all
 
 **APM package (recommended)**:
 ```sh
-apm install kilianpaquier/ai-integration/plugins/skills/schema-converter
+apm install kilianpaquier/ai-integration/plugins/skills/schema-converter -g
 ```
 
 **APM plugin**:
@@ -24,11 +23,13 @@ apm marketplace add kilianpaquier/ai-integration
 apm install schema-converter@one-for-all -g
 ```
 
-**Skills CLI (recommended)**:
+**Skills CLI**:
 
 ```sh
 npx skills add kilianpaquier/ai-integration -g
 ```
+
+<!-- docs-sync:end -->
 
 ## Skills
 

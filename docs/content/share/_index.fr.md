@@ -1,15 +1,16 @@
 ---
-title: Share components
+title: Partager des composants
 weight: 20
 ---
 
-Stop sharing components through copy/paste, use real tools to ease maintenance, updates and enforce security.
+Arrêtez de partager des composants par copier-coller,
+utilisez de vrais outils pour faciliter la maintenance, les mises à jour et renforcer la sécurité.
 
-## Explore
+## Explorer
 
 {{< children >}}
 
-## Mental Map
+## Carte mentale
 
 <div class="mermaid-diagram">
 

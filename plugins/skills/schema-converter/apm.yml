@@ -5,5 +5,5 @@ version: 0.1.0
 type: skill
 
 author: Kilian PAQUIER
-description: Convert JSON schemas to other formats (Go structs, TypeScript interfaces, etc.)
+description: A skill suite to transform JSON schemas into their language equivalents
 license: MIT

@@ -1,18 +1,18 @@
 ---
-description: Codebase indexing through graph-based database helps navigate them faster.
+description: Codebase indexing through graph-based database makes navigation faster.
 title: Index your codebases
 ---
 
 Codebases might sometimes hold a lot of files, with various structures, interactions and architectures.
 When an agent searches something inside of a codebase,
 its primary action is to either read all files it needs when searching (blindly)
-or run commands to filter files based on their content.
+or run commands (e.g. `grep`)s to filter files based on their content.
 
 It's even more visible when searching code dependencies, *what calls this function*, *what uses this class or struct*, etc.
 
 To fix this behavior, codebases can be indexed through graph-based databases instead.
 By doing this, an agent can use an MCP server, a CLI, or a skill
-to easily retrieve all interactions regarding a class, a function, a method, etc. through a single request.
+to easily retrieve all interactions regarding a class, a function, a method, etc. with a single request.
 
 And it's not just language-based codebases that can be indexed:
 it can also be used for Helm charts, Terraform modules, markdown references, etc. (still depends on each tool's feature set).

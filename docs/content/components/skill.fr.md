@@ -2,20 +2,20 @@
 title: Skill
 ---
 
-Within their tasks, agents may need to handle specific smaller actions: transforming a file, building a commit message,
-summarizing whatever, etc. The same actions are sometimes needed by users too, but on demand rather than as part of an
-autonomous task.
+Dans leurs tâches, les agents peuvent avoir besoin de gérer des actions plus petites et spécifiques : transformer un fichier,
+construire un message de commit, résumer quelque chose, etc.
+Ces mêmes actions sont parfois aussi nécessaires aux utilisateurs, mais à la demande plutôt que dans le cadre d'une tâche autonome.
 
-That's when skills enter the picture: recipes usable by both users and machines, while still allowing usage
-to be restricted to either one of them.
+C'est là que les *skills* entrent en scène : des recettes utilisables à la fois par les utilisateurs et les machines,
+tout en gardant la possibilité de restreindre leur usage à l'un ou l'autre.
 
 {{< tabs >}}
 
 {{< tab name="Agent Skills" >}}
 > [!note]
-> Skills must still be placed under the right agent directory in this format (e.g. `.agents`, `.claude`, `.vibe`).
+> Dans ce format, les skills doivent tout de même être placés sous le bon répertoire d'agent (par exemple `.agents`, `.claude`, `.vibe`).
 
-- **Format**:
+- **Format** :
   [**Agent Skills**](https://agentskills.io/specification),
   [**Open Plugin**](https://open-plugins.com/agent-builders/components/skills)
 
@@ -39,8 +39,8 @@ Skill instructions body (the prompt the agent follows when invoked).
 {{< /tab >}}
 
 {{< tab name="Claude Code" >}}
-- **Format**: [**Claude Code**](https://code.claude.com/docs/en/skills#frontmatter-reference)
-- **Compatibility**: **Copilot** (only repository level)
+- **Format** : [**Claude Code**](https://code.claude.com/docs/en/skills#frontmatter-reference)
+- **Compatibilité** : **Copilot** (niveau dépôt uniquement)
 
 ```tree
 repository/
@@ -72,7 +72,7 @@ Skill instructions body (the prompt the agent follows when invoked).
 {{< /tab >}}
 
 {{< tab name="Codex" >}}
-- **Format**: [**Codex**](https://learn.chatgpt.com/docs/build-skills#optional-metadata)
+- **Format** : [**Codex**](https://learn.chatgpt.com/docs/build-skills#optional-metadata)
 
 ```tree
 repository/
@@ -103,7 +103,7 @@ Skill instructions body (the prompt the agent follows when invoked).
 {{< /tab >}}
 
 {{< tab name="Copilot" >}}
-- **Format**: [**Copilot**](https://docs.github.com/en/copilot/how-tos/copilot-cli/customize-copilot/add-skills#example-skillmd-file)
+- **Format** : [**Copilot**](https://docs.github.com/en/copilot/how-tos/copilot-cli/customize-copilot/add-skills#example-skillmd-file)
 
 ```tree
 repository/
@@ -141,7 +141,7 @@ Skill instructions body (the prompt the agent follows when invoked).
 {{< /tab >}}
 
 {{< tab name="Mistral Vibe" >}}
-- **Format**: [**Mistral Vibe**](https://docs.mistral.ai/vibe/code/cli/skills#skill-format)
+- **Format** : [**Mistral Vibe**](https://docs.mistral.ai/vibe/code/cli/skills#skill-format)
 
 ```tree
 repository/

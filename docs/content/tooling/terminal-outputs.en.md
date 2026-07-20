@@ -11,8 +11,11 @@ Multiple tools exist to counter this context pollution.
 {{< tabs >}}
 
 {{< tab name="Rust Token Killer" >}}
-A CLI wrapping calls to real commands (arguments are passed through, not all commands are supported).
+> [!note]
+> Not all commands are supported.
+
 - **Upstream**: <https://github.com/rtk-ai/rtk>
+- **Description**: A CLI wrapping calls to real commands (arguments are passed through).
 
 ```sh
 mise use -g github:rtk-ai/rtk

@@ -47,16 +47,16 @@ This repository follows various standards to structure its components:
 
 ### Hooks
 
-| Name                                                 | Description                                                                      |
-| ---------------------------------------------------- | -------------------------------------------------------------------------------- |
-| [caveman-autostart](plugins/hooks/caveman-autostart) | Auto-enables caveman ultra-compressed communication mode via a SessionStart hook |
-| [protected-paths](plugins/hooks/protected-paths)     | Blocks reads/writes to credential and config directories via a PreToolUse hook   |
+| Name                                                 | Description                                                                                                             |
+| ---------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------- |
+| [caveman-autostart](plugins/hooks/caveman-autostart) | Automatically enable [**caveman**](https://github.com/JuliusBrussee/caveman) mode, no skill or prompt invocation needed |
+| [protected-paths](plugins/hooks/protected-paths)     | Stop your agent from accessing unwanted or sensitive directories                                                        |
 
 ### Skills
 
-| Name                                         | Description                                                                     |
-| -------------------------------------------- | ------------------------------------------------------------------------------- |
-| [schema-converter](plugins/schema-converter) | Convert JSON schemas to other formats (Go structs, TypeScript interfaces, etc.) |
+| Name                                         | Description                                                             |
+| -------------------------------------------- | ----------------------------------------------------------------------- |
+| [schema-converter](plugins/schema-converter) | A skill suite to transform JSON schemas into their language equivalents |
 
 ## Developing
 

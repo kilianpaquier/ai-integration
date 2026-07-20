@@ -1,6 +1,6 @@
 {
     "name": "caveman-autostart",
-    "description": "Automatically enables caveman's ultra-compressed communication mode at session start via a SessionStart hook that injects the vendored ruleset directly",
+    "description": "Automatically enable caveman mode, no skill or prompt invocation needed",
     "version": "0.1.0",
     "license": "MIT",
 

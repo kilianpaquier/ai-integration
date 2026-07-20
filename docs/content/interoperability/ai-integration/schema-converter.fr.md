@@ -1,11 +1,11 @@
 ---
-description: A simple plugin to convert JSON schemas into their language equivalents.
+description: Une suite de *skills* pour transformer les schémas JSON dans un langage.
 title: Schema Converter
 ---
 
 - **Upstream**:
   [https://gitlab.com/kilianpaquier/ai-integration](https://gitlab.com/kilianpaquier/ai-integration/-/tree/main/plugins/skills/schema-converter)
-- **Description**: A skill suite to transform JSON schemas into their language equivalents.
+- **Description**: Une suite de *skills* pour transformer les schémas JSON dans un langage.
 
 <!-- docs-sync:skill:start -->
 
