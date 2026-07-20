@@ -3,8 +3,8 @@
 set -e
 
 dir="$(realpath "$(dirname "$0")")"
-src_start='<!-- docs-tab:start -->'
-src_end='<!-- docs-tab:end -->'
+src_start='<!-- docs-sync:start -->'
+src_end='<!-- docs-sync:end -->'
 
 tmp_files=""
 cleanup() {
@@ -33,9 +33,22 @@ sync_tab() {
   sed -i "/$start/r $body" "$out"
 }
 
-caveman_out="$dir/../../docs/content/interoperability/ai-integration/caveman.en.md"
-sync_tab "$dir/../../plugins/hooks/caveman-autostart/README.md" "$caveman_out" hook
+out=
 
-# keep docs sections up-to-date with README.md
-cp "$dir/../../plugins/hooks/protected-paths/README.md" "$dir/../../docs/content/interoperability/ai-integration/protected-paths.en.md"
-cp "$dir/../../plugins/skills/schema-converter/README.md" "$dir/../../docs/content/interoperability/ai-integration/schema-converter.en.md"
+# caveman autostart synchronization in doc
+out="$dir/../../docs/content/interoperability/ai-integration/caveman.en.md"
+sync_tab "$dir/../../plugins/hooks/caveman-autostart/README.md" "$out" hook
+out="$dir/../../docs/content/interoperability/ai-integration/caveman.fr.md"
+sync_tab "$dir/../../plugins/hooks/caveman-autostart/README.md" "$out" hook
+
+# protected-paths synchronization in doc
+out="$dir/../../docs/content/interoperability/ai-integration/protected-paths.en.md"
+sync_tab "$dir/../../plugins/hooks/protected-paths/README.md" "$out" hook
+out="$dir/../../docs/content/interoperability/ai-integration/protected-paths.fr.md"
+sync_tab "$dir/../../plugins/hooks/protected-paths/README.md" "$out" hook
+
+# schema-converter synchronization in doc
+out="$dir/../../docs/content/interoperability/ai-integration/schema-converter.en.md"
+sync_tab "$dir/../../plugins/skills/schema-converter/README.md" "$out" skill
+out="$dir/../../docs/content/interoperability/ai-integration/schema-converter.fr.md"
+sync_tab "$dir/../../plugins/skills/schema-converter/README.md" "$out" skill
