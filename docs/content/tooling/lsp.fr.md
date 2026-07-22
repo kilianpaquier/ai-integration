@@ -76,9 +76,12 @@ apm install vtsls@claude-code-lsps -g
 
 **Serveur** (nécessite Java 21+) :
 ```sh
-curl -LO http://download.eclipse.org/jdtls/snapshots/jdt-language-server-latest.tar.gz
-mkdir -p ~/.local/jdtls && tar -xzf jdt-language-server-latest.tar.gz -C ~/.local/jdtls
-ln -sf ~/.local/jdtls/bin/jdtls ~/.local/bin/jdtls
+curl -fSL http://download.eclipse.org/jdtls/snapshots/jdt-language-server-latest.tar.gz | (
+  mkdir -p $HOME/.local/share/jdtls
+  cd $HOME/.local/share/jdtls
+  tar -xz
+)
+ln -sf $HOME/.local/share/jdtls/bin/jdtls $HOME/.local/bin/jdtls
 ```
 
 **Claude plugin**:
@@ -131,9 +134,13 @@ apm install bash-language-server@claude-code-lsps -g
 **Serveur** (nécessite Java 17+) :
 ```sh
 # téléchargez l'archive standalone pour votre plateforme depuis https://github.com/Kotlin/kotlin-lsp/releases
-mkdir -p ~/.local/kotlin-lsp && tar -xzf kotlin-server-*.tar.gz -C ~/.local/kotlin-lsp
-chmod +x ~/.local/kotlin-lsp/kotlin-lsp.sh
-ln -sf ~/.local/kotlin-lsp/kotlin-lsp.sh ~/.local/bin/kotlin-lsp
+cat kotlin-server-*.tar.gz | (
+  mkdir -p $HOME/.local/share/kotlin-lsp
+  cd $HOME/.local/share/kotlin-lsp
+  tar -xz
+)
+chmod +x $HOME/.local/share/kotlin-lsp/kotlin-lsp.sh
+ln -sf $HOME/.local/share/kotlin-lsp/kotlin-lsp.sh $HOME/.local/bin/kotlin-lsp
 ```
 
 **Claude plugin**:
