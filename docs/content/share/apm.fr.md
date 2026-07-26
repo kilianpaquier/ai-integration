@@ -26,7 +26,7 @@ Installez n'importe quel *package* [depuis n'importe où](https://microsoft.gith
 (dépôt Git, répertoire local, composant distant, etc.).
 
 ```sh
-mise use -g apm
+curl -fSL https://aka.ms/apm-unix | sh
 apm install <path_to_primitive>
 apm install --mcp <path_to_primitive>
 ```
@@ -54,7 +54,7 @@ targets: [claude, codex, copilot, gemini, kiro, opencode, windsurf]
 Installez n'importe quel plugin depuis n'importe quel marketplace, à l'échelle utilisateur ou dépôt.
 
 ```sh
-mise use -g apm
+curl -fSL https://aka.ms/apm-unix | sh
 apm marketplace add <owner>/<repo>
 apm install <package-name>@<marketplace-name>
 ```

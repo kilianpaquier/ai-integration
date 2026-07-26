@@ -44,7 +44,7 @@ Comme indiqué ci-dessus, les *packages* peuvent être distribués via des plugi
 Les composants incompatibles sont automatiquement filtrés lors de l'[installation côté consommateur](/share/apm#usage) (par exemple les instructions).
 
 ```sh
-mise use -g apm
+curl -fSL https://aka.ms/apm-unix | sh
 apm pack
 ```
 

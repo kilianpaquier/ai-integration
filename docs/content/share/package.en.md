@@ -43,7 +43,7 @@ As indicated above, packages can be distributed through plugins or marketplaces 
 Incompatible components are automatically filtered out during [consumer installation](/share/apm#usage) (e.g. instructions).
 
 ```sh
-mise use -g apm
+curl -fSL https://aka.ms/apm-unix | sh
 apm pack
 ```
 
