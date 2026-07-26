@@ -18,7 +18,11 @@ Multiple tools exist to counter this context pollution.
 - **Description**: A CLI wrapping calls to real commands (arguments are passed through).
 
 ```sh
-mise use -g github:rtk-ai/rtk
+brew install rtk
+```
+
+```sh
+mise use -g rtk@latest
 # use '--agent' or '--<agent>' to install the RTK instructions
 # and hooks for a specific agent
 rtk init -g

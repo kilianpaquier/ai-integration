@@ -18,7 +18,11 @@ Plusieurs outils existent pour contrer cette pollution du contexte.
 - **Description**: Un CLI enveloppant des appels vers de vraies commandes (les arguments sont transmis tels quels).
 
 ```sh
-mise use -g github:rtk-ai/rtk
+brew install rtk
+```
+
+```sh
+mise use -g rtk@latest
 # use '--agent' or '--<agent>' to install the RTK instructions
 # and hooks for a specific agent
 rtk init -g

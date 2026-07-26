@@ -27,7 +27,12 @@ it can also be used for Helm charts, Terraform modules, markdown references, etc
 CLI installation:
 
 ```sh
-mise use -g github:DeusData/codebase-memory-mcp
+<npm|pnpm|bun> install -g codebase-memory-mcp
+codebase-memory-mcp install
+```
+
+```sh
+mise use -g github:DeusData/codebase-memory-mcp@latest
 codebase-memory-mcp install
 ```
 
@@ -54,7 +59,7 @@ apm install kilianpaquier/ai-integration/plugins/mcp/codebase-memory-mcp
 CLI installation:
 
 ```sh
-mise use -g github:colbymchenry/codegraph
+mise use -g github:colbymchenry/codegraph@latest
 codegraph install
 codegraph init --index # in the repository
 ```

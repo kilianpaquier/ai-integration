@@ -17,7 +17,11 @@ The Skills CLI only needs `npx` to be used, can install skills at both repositor
 and supports [a lot of agents](https://github.com/vercel-labs/skills#supported-agents).
 
 ```sh
-mise use -g npx
+brew install node@24
+```
+
+```sh
+mise use -g node@24
 npx skills add <repository_path>
 ```
 

@@ -28,7 +28,12 @@ cela peut aussi être utilisé pour des charts Helm, des modules Terraform, des 
 Installation du CLI :
 
 ```sh
-mise use -g github:DeusData/codebase-memory-mcp
+<npm|pnpm|bun> install -g codebase-memory-mcp
+codebase-memory-mcp install
+```
+
+```sh
+mise use -g github:DeusData/codebase-memory-mcp@latest
 codebase-memory-mcp install
 ```
 
@@ -55,7 +60,7 @@ apm install kilianpaquier/ai-integration/plugins/mcp/codebase-memory-mcp
 Installation du CLI :
 
 ```sh
-mise use -g github:colbymchenry/codegraph
+mise use -g github:colbymchenry/codegraph@latest
 codegraph install
 codegraph init --index # in the repository
 ```
