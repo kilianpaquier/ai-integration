@@ -25,6 +25,7 @@ const ALLOW_LIST = [
     `${HOME}/.claude/output-styles`,
     `${HOME}/.claude/plans`,
     `${HOME}/.claude/plugins`,
+    `${HOME}/.claude/projects`,
     `${HOME}/.claude/rules`,
     `${HOME}/.claude/skills`,
     `${HOME}/.claude/workflows`,
