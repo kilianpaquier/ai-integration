@@ -19,89 +19,6 @@ et faciliter la navigation, en complément de [l'indexation de bases de code](/t
 
 {{< tabs >}}
 
-{{< tab name="Golang" >}}
-- **Upstream** : <https://github.com/golang/tools/tree/master/gopls>
-
-**Serveur** :
-```sh
-go install golang.org/x/tools/gopls@latest
-```
-
-**Claude plugin**:
-```sh
-claude plugin marketplace add Piebald-AI/claude-code-lsps
-claude plugin install gopls@claude-code-lsps
-```
-
-**APM package (recommended)**:
-```sh
-apm install Piebald-AI/claude-code-lsps/gopls -g
-```
-
-**APM plugin**:
-```sh
-apm marketplace add Piebald-AI/claude-code-lsps
-apm install gopls@claude-code-lsps -g
-```
-{{< /tab >}}
-
-{{< tab name="TypeScript" >}}
-- **Upstream** : <https://github.com/yioneko/vtsls>
-
-**Serveur** :
-```sh
-<npm|pnpm|bun> install -g @vtsls/language-server typescript
-```
-
-**Claude plugin**:
-```sh
-claude plugin marketplace add Piebald-AI/claude-code-lsps
-claude plugin install vtsls@claude-code-lsps
-```
-
-**APM package (recommended)**:
-```sh
-apm install Piebald-AI/claude-code-lsps/vtsls -g
-```
-
-**APM plugin**:
-```sh
-apm marketplace add Piebald-AI/claude-code-lsps
-apm install vtsls@claude-code-lsps -g
-```
-{{< /tab >}}
-
-{{< tab name="Java" >}}
-- **Upstream** : <https://github.com/eclipse-jdtls/eclipse.jdt.ls>
-
-**Serveur** (nécessite Java 21+) :
-```sh
-curl -fSL http://download.eclipse.org/jdtls/snapshots/jdt-language-server-latest.tar.gz | (
-  mkdir -p $HOME/.local/share/jdtls
-  cd $HOME/.local/share/jdtls
-  tar -xz
-)
-ln -sf $HOME/.local/share/jdtls/bin/jdtls $HOME/.local/bin/jdtls
-```
-
-**Claude plugin**:
-```sh
-claude plugin marketplace add Piebald-AI/claude-code-lsps
-claude plugin install jdtls@claude-code-lsps
-```
-
-**APM package (recommended)**:
-```sh
-apm install Piebald-AI/claude-code-lsps/jdtls -g
-```
-
-**APM plugin**:
-```sh
-apm marketplace add Piebald-AI/claude-code-lsps
-apm install jdtls@claude-code-lsps -g
-```
-{{< /tab >}}
-
 {{< tab name="Bash" >}}
 - **Upstream** : <https://github.com/bash-lsp/bash-language-server>
 
@@ -128,19 +45,72 @@ apm install bash-language-server@claude-code-lsps -g
 ```
 {{< /tab >}}
 
+{{< tab name="Golang" >}}
+- **Upstream** : <https://github.com/golang/tools/tree/master/gopls>
+
+**Serveur** :
+```sh
+go install golang.org/x/tools/gopls@latest
+```
+
+**Claude plugin**:
+```sh
+claude plugin marketplace add Piebald-AI/claude-code-lsps
+claude plugin install gopls@claude-code-lsps
+```
+
+**APM package (recommended)**:
+```sh
+apm install Piebald-AI/claude-code-lsps/gopls -g
+```
+
+**APM plugin**:
+```sh
+apm marketplace add Piebald-AI/claude-code-lsps
+apm install gopls@claude-code-lsps -g
+```
+{{< /tab >}}
+
+{{< tab name="Java" >}}
+- **Upstream** : <https://github.com/eclipse-jdtls/eclipse.jdt.ls>
+
+**Serveur** (nécessite Java 21+) :
+```sh
+brew install jdtls
+```
+
+```sh
+mise use -g "http:jdtls[url=https://download.eclipse.org/jdtls/snapshots/jdt-language-server-latest.tar.gz]@0.0.0"
+```
+
+**Claude plugin**:
+```sh
+claude plugin marketplace add Piebald-AI/claude-code-lsps
+claude plugin install jdtls@claude-code-lsps
+```
+
+**APM package (recommended)**:
+```sh
+apm install Piebald-AI/claude-code-lsps/jdtls -g
+```
+
+**APM plugin**:
+```sh
+apm marketplace add Piebald-AI/claude-code-lsps
+apm install jdtls@claude-code-lsps -g
+```
+{{< /tab >}}
+
 {{< tab name="Kotlin" >}}
 - **Upstream** : <https://github.com/Kotlin/kotlin-lsp>
 
 **Serveur** (nécessite Java 17+) :
 ```sh
-# téléchargez l'archive standalone pour votre plateforme depuis https://github.com/Kotlin/kotlin-lsp/releases
-cat kotlin-server-*.tar.gz | (
-  mkdir -p $HOME/.local/share/kotlin-lsp
-  cd $HOME/.local/share/kotlin-lsp
-  tar -xz
-)
-chmod +x $HOME/.local/share/kotlin-lsp/kotlin-lsp.sh
-ln -sf $HOME/.local/share/kotlin-lsp/kotlin-lsp.sh $HOME/.local/bin/kotlin-lsp
+brew install kotlin-lsp
+```
+
+```sh
+mise use -g "github:Kotlin/kotlin-lsp@latest"
 ```
 
 **Claude plugin**:
@@ -158,6 +128,92 @@ apm install Piebald-AI/claude-code-lsps/kotlin-lsp -g
 ```sh
 apm marketplace add Piebald-AI/claude-code-lsps
 apm install kotlin-lsp@claude-code-lsps -g
+```
+{{< /tab >}}
+
+{{< tab name="OpenTofu" >}}
+- **Upstream** : <https://github.com/opentofu/tofu-ls>
+
+**Serveur** :
+```sh
+brew install tofu-ls
+```
+
+```sh
+mise use -g "github:opentofu/tofu-ls@latest"
+```
+
+**Claude plugin**:
+```sh
+claude plugin marketplace add Piebald-AI/claude-code-lsps
+claude plugin install tofu-ls@claude-code-lsps
+```
+
+**APM package (recommended)**:
+```sh
+apm install Piebald-AI/claude-code-lsps/tofu-ls -g
+```
+
+**APM plugin**:
+```sh
+apm marketplace add Piebald-AI/claude-code-lsps
+apm install tofu-ls@claude-code-lsps -g
+```
+{{< /tab >}}
+
+{{< tab name="Terraform" >}}
+- **Upstream** : <https://github.com/hashicorp/terraform-ls>
+
+**Serveur** :
+```sh
+brew install terraform-ls
+```
+
+```sh
+mise use -g terraform-ls@latest
+```
+
+**Claude plugin**:
+```sh
+claude plugin marketplace add Piebald-AI/claude-code-lsps
+claude plugin install terraform-ls@claude-code-lsps
+```
+
+**APM package (recommended)**:
+```sh
+apm install Piebald-AI/claude-code-lsps/terraform-ls -g
+```
+
+**APM plugin**:
+```sh
+apm marketplace add Piebald-AI/claude-code-lsps
+apm install terraform-ls@claude-code-lsps -g
+```
+{{< /tab >}}
+
+{{< tab name="TypeScript" >}}
+- **Upstream** : <https://github.com/typescript-language-server/typescript-language-server>
+
+**Serveur** :
+```sh
+<npm|pnpm|bun> install -g typescript-language-server typescript
+```
+
+**Claude plugin**:
+```sh
+claude plugin marketplace add Piebald-AI/claude-code-lsps
+claude plugin install typescript-language-server@claude-code-lsps
+```
+
+**APM package (recommended)**:
+```sh
+apm install Piebald-AI/claude-code-lsps/typescript-language-server -g
+```
+
+**APM plugin**:
+```sh
+apm marketplace add Piebald-AI/claude-code-lsps
+apm install typescript-language-server@claude-code-lsps -g
 ```
 {{< /tab >}}
 
