@@ -42,30 +42,42 @@ menu:
       weight: 3
 
 params:
-  search:
+  # banner:
+  #   key: unique-key # handle closed previous notifications by users
+  #   message: |
+  #     Some news with emotes handled (or not)
+  dateFormat: "January 2, 2006"
+  displayUpdatedAuthor: true
+  displayUpdatedDate: true
+  editURL:
+    base: https://gitlab.com/kilianpaquier/ai-integration/-/edit/main/docs/content
     enable: true
-    type: flexsearch
+  externalLinkDecoration: true
   footer:
     displayCopyright: true
     displayPoweredBy: true
   imageZoom:
     enable: true
-  page:
-    displayPagination: false
-  # banner:
-  #   key: unique-key # handle closed previous notifications by users
-  #   message: |
-  #     Some news with emotes handled (or not)
   navbar:
-    displayTitle: true
     displayLogo: true
+    displayTitle: true
     logo:
-      path: logo/10-rounded.webp
       dark: logo/10-rounded.webp
-      width: 30
       height: 30
+      path: logo/10-rounded.webp
+      width: 30
+  page:
+    contextMenu:
+      enable: true
+    displayPagination: false
+  search:
+    enable: true
+    type: flexsearch
+  theme:
+    default: system
+    displayToggle: true
 
 outputs:
   home: [html, llms]
-  page: [html, llms]
-  section: [html, llms]
+  page: [html, llms, markdown]
+  section: [html, llms, markdown]

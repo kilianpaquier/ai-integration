@@ -1,5 +1,5 @@
 ---
-title: Model Context Protocol
+title: MCP
 ---
 
 Lorsqu'il a besoin de documentation concernant des outils, des fonctionnalités de langage, des interactions avec des plateformes

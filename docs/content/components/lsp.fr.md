@@ -1,5 +1,5 @@
 ---
-title: Language Server Protocol
+title: LSP
 ---
 
 Les **Language Server Protocol (LSP)** [existaient déjà](https://microsoft.github.io/language-server-protocol)

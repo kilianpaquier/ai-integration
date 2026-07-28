@@ -1,5 +1,5 @@
 ---
-title: Model Context Protocol
+title: MCP
 ---
 
 When in need of documentation regarding tools, language features, interactions with platforms (**Jira**, **GitHub**, **GitLab** and many more), etc.,
