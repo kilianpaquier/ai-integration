@@ -1,8 +1,0 @@
-# yaml-language-server: $schema=https://microsoft.github.io/apm/specs/schemas/manifest-v0.1.schema.json
-
-name: caveman-autostart
-version: 0.1.0
-
-author: Kilian PAQUIER
-description: Automatically enable caveman mode, no skill or prompt invocation needed
-license: MIT

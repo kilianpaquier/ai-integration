@@ -1,9 +1,0 @@
-{
-    "name": "caveman-autostart",
-    "description": "Automatically enable caveman mode, no skill or prompt invocation needed",
-    "version": "0.1.0",
-    "license": "MIT",
-
-    "repository": "https://gitlab.com/kilianpaquier/ai-integration",
-    "homepage": "https://gitlab.com/kilianpaquier/ai-integration/-/tree/main/plugins/hooks/caveman-autostart"
-}

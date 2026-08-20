@@ -47,10 +47,9 @@ This repository follows various standards to structure its components:
 
 ### Hooks
 
-| Name                                                 | Description                                                                                                             |
-| ---------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------- |
-| [caveman-autostart](plugins/hooks/caveman-autostart) | Automatically enable [**caveman**](https://github.com/JuliusBrussee/caveman) mode, no skill or prompt invocation needed |
-| [protected-paths](plugins/hooks/protected-paths)     | Stop your agent from accessing unwanted or sensitive directories                                                        |
+| Name                                             | Description                                                      |
+| ------------------------------------------------ | ---------------------------------------------------------------- |
+| [protected-paths](plugins/hooks/protected-paths) | Stop your agent from accessing unwanted or sensitive directories |
 
 ### Skills
 

@@ -17,7 +17,7 @@ my-agent plugin install schema-converter@one-for-all
 
 **APM package (recommended)**:
 ```sh
-apm install kilianpaquier/ai-integration/plugins/skills/schema-converter
+apm install kilianpaquier/ai-integration/plugins/skills/schema-converter -g
 ```
 
 **APM plugin**:

@@ -41,15 +41,6 @@ codebase-memory-mcp install
 my-agent plugin marketplace add kilianpaquier/ai-integration
 my-agent plugin install codebase-memory-mcp@one-for-all
 ```
-
-```sh
-apm marketplace add kilianpaquier/ai-integration
-apm install codebase-memory-mcp@one-for-all
-```
-
-```sh
-apm install kilianpaquier/ai-integration/plugins/mcp/codebase-memory-mcp
-```
 {{< /tab >}}
 
 {{< tab name="Codegraph" >}}
@@ -70,15 +61,6 @@ Plugin serveur MCP préconfiguré :
 ```sh
 my-agent plugin marketplace add kilianpaquier/ai-integration
 my-agent plugin install codegraph@one-for-all
-```
-
-```sh
-apm marketplace add kilianpaquier/ai-integration
-apm install codegraph@one-for-all
-```
-
-```sh
-apm install kilianpaquier/ai-integration/plugins/mcp/codegraph
 ```
 {{< /tab >}}
 

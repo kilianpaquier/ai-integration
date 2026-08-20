@@ -20,11 +20,6 @@ marketplace:
 
   packages:
     - category: hooks
-      name: caveman-autostart
-      source: ./plugins/hooks/caveman-autostart
-
-
-    - category: hooks
       name: protected-paths
       source: ./plugins/hooks/protected-paths
 

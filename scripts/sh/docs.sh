@@ -35,12 +35,6 @@ sync_tab() {
 
 out=
 
-# caveman autostart synchronization in doc
-out="$dir/../../docs/content/interoperability/ai-integration/caveman.en.md"
-sync_tab "$dir/../../plugins/hooks/caveman-autostart/README.md" "$out" hook
-out="$dir/../../docs/content/interoperability/ai-integration/caveman.fr.md"
-sync_tab "$dir/../../plugins/hooks/caveman-autostart/README.md" "$out" hook
-
 # protected-paths synchronization in doc
 out="$dir/../../docs/content/interoperability/ai-integration/protected-paths.en.md"
 sync_tab "$dir/../../plugins/hooks/protected-paths/README.md" "$out" hook
