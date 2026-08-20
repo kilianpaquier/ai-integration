@@ -1,9 +1,0 @@
-{
-    "name": "codebase-memory-mcp",
-    "description": "Fast code intelligence engine for AI coding agents - single static binary MCP server",
-    "version": "0.1.0",
-    "license": "MIT",
-
-    "repository": "https://github.com/DeusData/codebase-memory-mcp",
-    "homepage": "https://gitlab.com/kilianpaquier/ai-integration/-/tree/main/plugins/mcp/codebase-memory-mcp"
-}

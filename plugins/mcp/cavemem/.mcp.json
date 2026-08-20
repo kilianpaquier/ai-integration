@@ -1,9 +1,0 @@
-{
-    "mcpServers": {
-        "cavemem": {
-            "type": "stdio",
-            "command": "cavemem",
-            "args": ["mcp"]
-        }
-    }
-}

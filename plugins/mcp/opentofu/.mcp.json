@@ -1,9 +1,0 @@
-{
-    "mcpServers": {
-        "opentofu": {
-            "type": "stdio",
-            "command": "npx",
-            "args": ["-y", "@opentofu/opentofu-mcp-server"]
-        }
-    }
-}
