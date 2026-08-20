@@ -36,11 +36,6 @@ codebase-memory-mcp install
 mise use -g github:DeusData/codebase-memory-mcp@latest
 codebase-memory-mcp install
 ```
-
-```sh
-my-agent plugin marketplace add kilianpaquier/ai-integration
-my-agent plugin install codebase-memory-mcp@one-for-all
-```
 {{< /tab >}}
 
 {{< tab name="Codegraph" >}}
@@ -54,13 +49,6 @@ Installation du CLI :
 mise use -g github:colbymchenry/codegraph@latest
 codegraph install
 codegraph init --index # in the repository
-```
-
-Plugin serveur MCP préconfiguré :
-
-```sh
-my-agent plugin marketplace add kilianpaquier/ai-integration
-my-agent plugin install codegraph@one-for-all
 ```
 {{< /tab >}}
 
