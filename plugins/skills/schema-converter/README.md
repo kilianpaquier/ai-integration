@@ -4,7 +4,7 @@ A skill suite to transform JSON schemas into their language equivalents.
 
 ## Installation
 
-<!-- docs-sync:start -->
+<!-- docs:start -->
 
 **Native plugin**:
 ```sh
@@ -29,7 +29,7 @@ apm install schema-converter@one-for-all -g
 npx skills add kilianpaquier/ai-integration -g
 ```
 
-<!-- docs-sync:end -->
+<!-- docs:end -->
 
 ## Skills
 

@@ -7,7 +7,7 @@ title: Schema Converter
   [https://gitlab.com/kilianpaquier/ai-integration](https://gitlab.com/kilianpaquier/ai-integration/-/tree/main/plugins/skills/schema-converter)
 - **Description**: Une suite de *skills* pour transformer les schémas JSON dans un langage.
 
-<!-- docs-sync:skill:start -->
+<!-- docs:skill:start -->
 
 **Native plugin**:
 ```sh
@@ -32,4 +32,4 @@ apm install schema-converter@one-for-all -g
 npx skills add kilianpaquier/ai-integration -g
 ```
 
-<!-- docs-sync:skill:end -->
+<!-- docs:skill:end -->

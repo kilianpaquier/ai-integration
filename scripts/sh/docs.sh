@@ -3,8 +3,8 @@
 set -e
 
 dir="$(realpath "$(dirname "$0")")"
-src_start='<!-- docs-sync:start -->'
-src_end='<!-- docs-sync:end -->'
+src_start='<!-- docs:start -->'
+src_end='<!-- docs:end -->'
 
 tmp_files=""
 cleanup() {
@@ -13,15 +13,15 @@ cleanup() {
 }
 trap cleanup EXIT
 
-# replaces the content between "<!-- docs-sync:$section:start -->" and
-# "<!-- docs-sync:$section:end -->" markers in $out with the content between
+# replaces the content between "<!-- docs:$section:start -->" and
+# "<!-- docs:$section:end -->" markers in $out with the content between
 # $src_start and $src_end in $src (i.e. $src's plugin-specific body).
 sync_tab() {
   src="$1"
   out="$2"
   section="$3"
-  start="<!-- docs-sync:$section:start -->"
-  end="<!-- docs-sync:$section:end -->"
+  start="<!-- docs:$section:start -->"
+  end="<!-- docs:$section:end -->"
 
   # read the plugin-specific body out of $src, between its own markers
   body="$(mktemp)"

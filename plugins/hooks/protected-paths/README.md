@@ -4,7 +4,7 @@ Stop your agent from accessing unwanted or sensitive directories.
 
 ## Installation
 
-<!-- docs-sync:start -->
+<!-- docs:start -->
 
 > [!warning]
 > Nodejs is needed in `PATH` environment variable to work.
@@ -25,7 +25,7 @@ apm marketplace add kilianpaquier/ai-integration
 apm install protected-paths@one-for-all -g
 ```
 
-<!-- docs-sync:end -->
+<!-- docs:end -->
 
 ## Hooks
 

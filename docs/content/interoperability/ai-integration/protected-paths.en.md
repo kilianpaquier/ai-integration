@@ -7,7 +7,7 @@ title: Protected Paths
   [https://gitlab.com/kilianpaquier/ai-integration](https://gitlab.com/kilianpaquier/ai-integration/-/tree/main/plugins/hooks/protected-paths)
 - **Description**: Stop your agent from accessing unwanted or sensitive directories.
 
-<!-- docs-sync:hook:start -->
+<!-- docs:hook:start -->
 
 > [!warning]
 > Nodejs is needed in `PATH` environment variable to work.
@@ -28,4 +28,4 @@ apm marketplace add kilianpaquier/ai-integration
 apm install protected-paths@one-for-all -g
 ```
 
-<!-- docs-sync:hook:end -->
+<!-- docs:hook:end -->
