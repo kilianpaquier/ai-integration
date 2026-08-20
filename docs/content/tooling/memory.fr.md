@@ -36,6 +36,17 @@ cavemem install
 - **Description** : des agents pour segmenter les souvenirs, des *hooks* pour stocker, un serveur MCP ou des *skills* pour récupérer
 les informations de session dans une base SQLite locale.
 
+**CLI** (nécessite `uv` ou `pipx`) :
+```sh
+mise use -g 'pipx:mempalace'
+```
+
+```sh
+brew install uv
+uv tool install mempalace
+```
+
+**Plugin** :
 ```sh
 my-agent plugin marketplace add MemPalace/mempalace
 my-agent plugin install mempalace@mempalace

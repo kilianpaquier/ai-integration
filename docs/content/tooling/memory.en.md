@@ -34,6 +34,18 @@ cavemem install
 - **Upstream**: <https://github.com/MemPalace/mempalace>
 - **What is it**: Agents to segment memories, hooks to store, an MCP server or skills to retrieve session information in a local SQLite database.
 
+**CLI** (requires `uv` or `pipx`):
+```sh
+mise use -g uv@latest
+mise use -g 'pipx:mempalace@latest'
+```
+
+```sh
+brew install uv
+uv tool install mempalace
+```
+
+**Plugin**:
 ```sh
 my-agent plugin marketplace add MemPalace/mempalace
 my-agent plugin install mempalace@mempalace
