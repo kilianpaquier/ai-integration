@@ -35,3 +35,4 @@ This plugins marketplace aims to get shared compatibility for a bunch-of plugins
 ---
 
 @README.md
+@CONTRIBUTING.md
