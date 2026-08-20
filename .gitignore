@@ -2,30 +2,15 @@
 
 # Various build / compile directories
 dist/
+logs/
+public/
 reports/
+tmp/
 
-# Local Netlify folder
-.netlify
-
-# Created by https://www.toptal.com/developers/gitignore/api/hugo,dotenv
-# Edit at https://www.toptal.com/developers/gitignore?templates=hugo,dotenv
+# Created by https://www.toptal.com/developers/gitignore/api/dotenv
+# Edit at https://www.toptal.com/developers/gitignore?templates=dotenv
 
 ### dotenv ###
 .env
 
-### Hugo ###
-# Generated files by hugo
-/public/
-/resources/_gen/
-/assets/jsconfig.json
-hugo_stats.json
-
-# Executable may be added to repository
-hugo.exe
-hugo.darwin
-hugo.linux
-
-# Temporary lock file while building
-/.hugo_build.lock
-
-# End of https://www.toptal.com/developers/gitignore/api/hugo,dotenv
+# End of https://www.toptal.com/developers/gitignore/api/dotenv
