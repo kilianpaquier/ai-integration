@@ -20,11 +20,10 @@ cleanup() {
 }
 trap cleanup EXIT
 
-if [ -n "$rev" ]; then
-  git clone --depth=1 "$repository" "$tmp_dir" && git -C "$tmp_dir" checkout -q "$rev"
-else
-  git clone --depth=1 "$repository" "$tmp_dir"
-fi
+git init -q "$tmp_dir"
+git -C "$tmp_dir" remote add origin "$repository"
+git -C "$tmp_dir" fetch --depth=1 -q origin "${rev:-HEAD}"
+git -C "$tmp_dir" checkout -q FETCH_HEAD
 
 for dest in $destinations; do
   rm -rf "$dest"

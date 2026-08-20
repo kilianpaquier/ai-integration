@@ -53,9 +53,9 @@ This repository follows various standards to structure its components:
 
 ### Skills
 
-| Name                                         | Description                                                             |
-| -------------------------------------------- | ----------------------------------------------------------------------- |
-| [schema-converter](plugins/schema-converter) | A skill suite to transform JSON schemas into their language equivalents |
+| Name                                                | Description                                                             |
+| --------------------------------------------------- | ----------------------------------------------------------------------- |
+| [schema-converter](plugins/skills/schema-converter) | A skill suite to transform JSON schemas into their language equivalents |
 
 ## Developing
 
