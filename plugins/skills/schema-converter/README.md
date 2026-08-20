@@ -2,9 +2,19 @@
 
 A skill suite to transform JSON schemas into their language equivalents.
 
-## Installation
-
 <!-- docs:start -->
+
+## Skills
+
+### `schema-to-go`
+
+Activated to transform a given JSON schema into its Go equivalent.
+The skill needs the following arguments when running (it will be asked otherwise):
+- Schema path
+- Go package path to generate files into
+- Go package name for generated files
+
+## Installation
 
 **Native plugin**:
 ```sh
@@ -30,13 +40,3 @@ npx skills add kilianpaquier/ai-integration -g
 ```
 
 <!-- docs:end -->
-
-## Skills
-
-### `schema-to-go`
-
-Activated to transform a given JSON schema into its Go equivalent.
-The skill needs the following arguments when running (it will be asked otherwise):
-- Schema path
-- Go package path to generate files into
-- Go package name for generated files

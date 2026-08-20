@@ -9,6 +9,18 @@ title: Schema Converter
 
 <!-- docs:skill:start -->
 
+## Skills
+
+### `schema-to-go`
+
+Activated to transform a given JSON schema into its Go equivalent.
+The skill needs the following arguments when running (it will be asked otherwise):
+- Schema path
+- Go package path to generate files into
+- Go package name for generated files
+
+## Installation
+
 **Native plugin**:
 ```sh
 my-agent plugin marketplace add kilianpaquier/ai-integration

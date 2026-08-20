@@ -32,7 +32,7 @@ codebase-memory-mcp install
 ```
 
 ```sh
-mise use -g github:DeusData/codebase-memory-mcp@latest
+mise use -g 'github:DeusData/codebase-memory-mcp@latest'
 codebase-memory-mcp install
 ```
 {{< /tab >}}
@@ -45,7 +45,7 @@ codebase-memory-mcp install
 CLI installation:
 
 ```sh
-mise use -g github:colbymchenry/codegraph@latest
+mise use -g 'github:colbymchenry/codegraph@latest'
 codegraph install
 codegraph init --index # in the repository
 ```

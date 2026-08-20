@@ -80,7 +80,7 @@ brew install jdtls
 ```
 
 ```sh
-mise use -g "http:jdtls[url=https://download.eclipse.org/jdtls/snapshots/jdt-language-server-latest.tar.gz]@0.0.0"
+mise use -g 'http:jdtls[url=https://download.eclipse.org/jdtls/snapshots/jdt-language-server-latest.tar.gz]@0.0.0'
 ```
 
 **Claude plugin**:
@@ -110,7 +110,7 @@ brew install kotlin-lsp
 ```
 
 ```sh
-mise use -g "github:Kotlin/kotlin-lsp@latest"
+mise use -g 'github:Kotlin/kotlin-lsp@latest'
 ```
 
 **Claude plugin**:
@@ -140,7 +140,7 @@ brew install tofu-ls
 ```
 
 ```sh
-mise use -g "github:opentofu/tofu-ls@latest"
+mise use -g 'github:opentofu/tofu-ls@latest'
 ```
 
 **Claude plugin**:
