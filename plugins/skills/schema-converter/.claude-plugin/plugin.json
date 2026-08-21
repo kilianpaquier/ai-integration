@@ -3,7 +3,7 @@
 
     "name": "schema-converter",
     "description": "A skill suite to transform JSON schemas into their language equivalents",
-    "version": "0.1.0",
+    "version": "0.2.0",
     "license": "MIT",
 
     "repository": "https://gitlab.com/kilianpaquier/ai-integration",

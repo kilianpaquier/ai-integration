@@ -8,14 +8,14 @@
     {
       "name": "protected-paths",
       "description": "Stop your agent from accessing unwanted or sensitive directories",
-      "version": "0.1.0",
+      "version": "0.2.0",
       "category": "hooks",
       "source": "./plugins/hooks/protected-paths"
     },
     {
       "name": "schema-converter",
       "description": "A skill suite to transform JSON schemas into their language equivalents",
-      "version": "0.1.0",
+      "version": "0.2.0",
       "category": "skills",
       "source": "./plugins/skills/schema-converter"
     }
