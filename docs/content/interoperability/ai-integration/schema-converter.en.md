@@ -21,13 +21,13 @@ The skill needs the following arguments when running (it will be asked otherwise
 
 ## Installation
 
-**Native plugin**:
+**Native plugin (recommended)**:
 ```sh
 my-agent plugin marketplace add kilianpaquier/ai-integration
 my-agent plugin install schema-converter@one-for-all
 ```
 
-**APM package (recommended)**:
+**APM package**:
 ```sh
 apm install kilianpaquier/ai-integration/plugins/skills/schema-converter -g
 ```

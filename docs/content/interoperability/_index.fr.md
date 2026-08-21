@@ -16,7 +16,7 @@ plus faciles vers des concurrents ou des alternatives auto-hébergées sans perd
 - [**Agent Skills**](https://agentskills.io/home) : construisez des *skills* standardisés utilisables par tous les agents.
 - [**AGENTS.md**](https://agents.md) : un nom de fichier d'instructions simple pour tous les agents (ou presque).
 - [**Model Context Protocol**](https://modelcontextprotocol.io/docs/getting-started/intro) : connectez n'importe quel agent à n'importe quel système externe compatible.
-- [**Open Plugin**](https://open-plugins.com) : partagez des composants dans un seul format utilisable par tous les agents.
+- [**Agent Plugins**](https://agent-plugins.org) : partagez des composants dans un seul format utilisable par tous les agents.
 
 ## Privilégier l'Open Source
 

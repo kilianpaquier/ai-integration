@@ -17,7 +17,7 @@ tout en gardant la possibilité de restreindre leur usage à l'un ou l'autre.
 
 - **Format** :
   [**Agent Skills**](https://agentskills.io/specification),
-  [**Open Plugin**](https://open-plugins.com/agent-builders/components/skills)
+  [**Agent Plugins**](https://agent-plugins.org/plugin-authors/skills)
 
 ```tree
 skill-name/

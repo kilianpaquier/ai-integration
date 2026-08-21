@@ -15,7 +15,7 @@ without losing time on team re-setup.
 - [**Agent Skills**](https://agentskills.io/home): Build standardized skills for all agents to use.
 - [**AGENTS.md**](https://agents.md): A simple instruction filename for all agents (well almost).
 - [**Model Context Protocol**](https://modelcontextprotocol.io/docs/getting-started/intro): Connect any agent to any compatible external system.
-- [**Open Plugin**](https://open-plugins.com): Share components in one format for all agents to use.
+- [**Agent Plugins**](https://agent-plugins.org): Share components in one format for all agents to use.
 
 ## Favor Open Source
 

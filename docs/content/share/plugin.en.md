@@ -16,30 +16,27 @@ A plugin is identified by a `plugin.json` file. Its place and content (with smal
 
 {{< tabs >}}
 
-{{< tab name="Open Plugin" >}}
-- **Format**: [**Open Plugin**](https://open-plugins.com/plugin-builders/specification)
-- **Read by**: **Claude Code** (partial), **Copilot** (partial)
+{{< tab name="Agent Plugins" >}}
+- **Format**: [**Agent Plugins**](https://agent-plugins.org/specification)
+- **Read by**: **Cursor**, **VSCode**
 - **Environment variables**:
   - `PLUGIN_ROOT` (plugin directory)
+  - `PLUGIN_DATA` (plugin data directory)
 
 ```tree
 repository/
-├── .plugin/
-│   └── plugin.json
-├── agents/
-│   └── reviewer.md
-├── commands/
-│   └── special.md
-├── hooks/
-│   └── hooks.json
-├── rules/
-│   └── prefer-const.mdc
+├── plugin.json
 ├── skills/
 │   └── skill-name/
 │       └── SKILL.md
-├── .mcp.json
-└── .lsp.json
+├── mcp.json
+└── com.example.client/
 ```
+
+The `com.example.client` directory is a client extension.
+It contains components in an agent-specific format (hooks, MCP servers, skills, etc.).
+
+- **VSCode**: `com.github.copilot/`
 {{< /tab >}}
 
 {{< tab name="Claude Code" >}}

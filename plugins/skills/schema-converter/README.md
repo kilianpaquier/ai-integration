@@ -16,13 +16,13 @@ The skill needs the following arguments when running (it will be asked otherwise
 
 ## Installation
 
-**Native plugin**:
+**Native plugin (recommended)**:
 ```sh
 my-agent plugin marketplace add kilianpaquier/ai-integration
 my-agent plugin install schema-converter@one-for-all
 ```
 
-**APM package (recommended)**:
+**APM package**:
 ```sh
 apm install kilianpaquier/ai-integration/plugins/skills/schema-converter -g
 ```
@@ -40,3 +40,17 @@ npx skills add kilianpaquier/ai-integration -g
 ```
 
 <!-- docs:end -->
+
+## Compatibility table
+
+| Agent                | Manifest                     | Skills    |
+| -------------------- | ---------------------------- | --------- |
+| **APM**              | `apm.yml`                    | `skills/` |
+| **Claude Code**      | `.claude-plugin/plugin.json` | `skills/` |
+| **Codex**            | `.claude-plugin/plugin.json` | `skills/` |
+| **Copilot**          | `plugin.json`                | `skills/` |
+| **Cursor**           | `plugin.json`                | `skills/` |
+
+> [!note]
+> **APM** copies `skills/` to the agent directory
+> (`~/.claude/skills/` for **Claude Code**, `~/.agents/skills/`, etc.).

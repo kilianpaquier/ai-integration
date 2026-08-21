@@ -1,11 +1,11 @@
 {
+    "$schema": "https://www.schemastore.org/claude-code-plugin-manifest.json",
+
     "name": "schema-converter",
     "description": "A skill suite to transform JSON schemas into their language equivalents",
     "version": "0.1.0",
     "license": "MIT",
 
     "repository": "https://gitlab.com/kilianpaquier/ai-integration",
-    "homepage": "https://gitlab.com/kilianpaquier/ai-integration/-/tree/main/plugins/skills/schema-converter",
-
-    "skills": ["./skills"]
+    "homepage": "https://gitlab.com/kilianpaquier/ai-integration/-/tree/main/plugins/skills/schema-converter"
 }

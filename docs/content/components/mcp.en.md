@@ -13,15 +13,15 @@ databases, **Jira** issues, **GitHub** or **GitLab** code search, up-to-date doc
 
 {{< tabs >}}
 
-{{< tab name="Open Plugin" >}}
+{{< tab name="Agent Plugins" >}}
 > [!note]
 > This format can only be provided within [plugins](/share/plugin).
 
-- **Format**: [**Open Plugin**](https://open-plugins.com/agent-builders/components/mcp-servers)
+- **Format**: [**Agent Plugins**](https://agent-plugins.org/plugin-authors/mcp-servers)
 
 ```tree
 repository/
-└── .mcp.json
+└── mcp.json
 ```
 
 ```json

@@ -19,27 +19,6 @@ et trouver ce dont il a besoin pour accomplir sa (ou ses) tâche(s).
 
 {{< tabs >}}
 
-{{< tab name="Open Plugin" >}}
-> [!note]
-> Ce format ne peut être fourni que via des [plugins](/share/plugin).
-
-- **Format** : [**Open Plugin**](https://open-plugins.com/agent-builders/components/lsp-servers)
-
-```tree
-repository/
-└── .lsp.json
-```
-
-```json
-{
-    "go": {
-        "command": "gopls",
-        "extensionToLanguage": { ".go": "go" }
-    }
-}
-```
-{{< /tab >}}
-
 {{< tab name="Claude Code" >}}
 - **Format** : [**Claude Code**](https://code.claude.com/docs/en/plugins-reference#lsp-servers)
 

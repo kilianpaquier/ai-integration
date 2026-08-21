@@ -13,28 +13,6 @@ sans avoir à démarrer une nouvelle session avec un agent préconfiguré.
 
 {{< tabs >}}
 
-{{< tab name="Open Plugin" >}}
-> [!note]
-> Ce format ne peut être fourni que via des [plugins](/share/plugin).
-
-- **Format** : [**Open Plugin**](https://open-plugins.com/agent-builders/components/agents)
-
-```tree
-repository/
-└── agents/
-    └── agent-name.md
-```
-
-```yaml
----
-name: agent-name
-description: What this agent specializes in and when it should be invoked
----
-
-Detailed system prompt for the agent describing its role, expertise and behavior.
-```
-{{< /tab >}}
-
 {{< tab name="Claude Code" >}}
 - **Format** : [**Claude Code**](https://code.claude.com/docs/en/sub-agents#supported-frontmatter-fields)
 

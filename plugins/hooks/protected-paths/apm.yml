@@ -6,3 +6,5 @@ version: 0.1.0
 author: Kilian PAQUIER
 description: Stop your agent from accessing unwanted or sensitive directories
 license: MIT
+
+# targets: [claude, codex, copilot, cursor, gemini, kiro, opencode, windsurf]

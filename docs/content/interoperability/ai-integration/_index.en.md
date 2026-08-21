@@ -2,7 +2,7 @@
 title: AI Integration
 ---
 
-AI Integration provides a number of [plugins](/share/plugin) (following the [**Open Plugin**](https://open-plugins.com/specification) Spec)
+AI Integration provides a number of [plugins](/share/plugin) (following the [**Agent Plugins**](https://agent-plugins.org/specification) Spec)
 and [packages](/share/package) to ensure real useful components can be accessed by a high number of agents
 without fighting potentially incompatible official plugins or manual installation.
 

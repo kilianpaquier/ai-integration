@@ -14,40 +14,9 @@ la télémétrie, le lint de code, ou même la sauvegarde et la restauration aut
 
 {{< tabs >}}
 
-{{< tab name="Open Plugin" >}}
-> [!note]
-> Ce format ne peut être fourni que via des [plugins](/share/plugin).
-
-- **Format** : [**Open Plugin**](https://open-plugins.com/agent-builders/components/hooks)
-
-```tree
-repository/
-└── hooks/
-    └── hooks.json
-```
-
-```json
-{
-    "hooks": {
-        "PreToolUse": [
-            {
-                "matcher": "Bash",
-                "hooks": [
-                    {
-                        "type": "command",
-                        "command": "${PLUGIN_ROOT}/hooks/lint-check.sh"
-                    }
-                ]
-            }
-        ]
-    }
-}
-```
-{{< /tab >}}
-
 {{< tab name="Claude Code" >}}
 - **Format** : [**Claude Code**](https://code.claude.com/docs/en/hooks#configuration)
-- **Également lu par** : **Copilot** (niveau dépôt uniquement)
+- **Lu par** : **Copilot** (niveau dépôt uniquement)
 - **Pour aller plus loin** :
   [events](https://code.claude.com/docs/en/hooks#hook-events),
   [matchers](https://code.claude.com/docs/en/hooks#matcher-patterns),

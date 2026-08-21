@@ -66,14 +66,25 @@ const DENY_LIST = [
 // every absolute-path-looking token in a scanned field stops at whitespace/quotes/shell metacharacters
 const TOKEN_PATTERN = /\/[^\]\s"\\;|&()<>,}]*/g
 
-// tool-argument fields, across Claude/Codex/Copilot's built-in tools, that can carry a filesystem
-// path. A field or tool not listed here (eg. a custom MCP tool's own argument shape) is not scanned -
-// the accepted tradeoff for parsing known JSON fields instead of scanning the raw payload text.
-const KNOWN_FIELDS = ['command', 'file_path', 'path', 'notebook_path', 'pattern', 'glob', 'directory']
+// tool-argument fields, across Claude/Codex/Copilot/Cursor/Gemini's built-in tools, that can carry a filesystem path.
+//
+// A field or tool not listed here (eg. a custom MCP tool's own argument shape) is not scanned.
+// An accepted tradeoff for parsing known JSON fields instead of scanning the raw payload text.
+const KNOWN_FIELDS = [
+    'absolute_path',
+    'command',
+    'directory',
+    'file_path',
+    'glob',
+    'notebook_path',
+    'path',
+    'pattern',
+    'working_directory',
+]
 
-// toolInputOf returns the tool-call argument object of a hook payload, regardless of which agent
-// sent it: Claude/Codex use tool_input, Copilot uses toolArgs - sometimes as a plain object,
-// sometimes double-encoded as an escaped JSON string.
+// toolInputOf returns the tool-call argument object of a hook payload, regardless of which agent sent it:
+//  - Claude/Codex/Cursor/Gemini use tool_input
+//  - Copilot uses toolArgs - sometimes as a plain object, sometimes double-encoded as an escaped JSON string.
 const toolInputOf = (payload) => {
     let toolInput = payload.tool_input ?? payload.toolArgs ?? {}
     if (typeof toolInput === 'string') {
@@ -89,10 +100,10 @@ const toolInputOf = (payload) => {
 // isPrefix reports whether prefix is target itself, or an ancestor directory of target.
 const isPrefix = (prefix, target) => target === prefix || target.startsWith(`${prefix}/`)
 
-// resolvePath mimics `realpath -m`: it canonicalizes every existing leading segment
-// (resolving symlinks) then lexically appends whatever doesn't exist, without requiring
-// the full path to exist - so a reference to a not-yet-created file under a protected
-// directory is still caught.
+// resolvePath mimics `realpath -m`: it canonicalizes every existing leading segment (resolving symlinks)
+// then lexically appends whatever doesn't exist, without requiring the full path to exist.
+//
+// A reference to a not-yet-created file under a protected directory is still caught.
 const resolvePath = (target) => {
     const segments = path.resolve(target).split(path.sep).filter(Boolean)
 
@@ -127,10 +138,22 @@ const denyReasonFor = (resolved) => {
 }
 
 // deny prints an explanatory message on stderr and a deny decision on stdout, then exits 0.
-// The JSON body merges Claude/Codex's hookSpecificOutput wrapper with Copilot's flat shape,
-// since exiting with an error code alone isn't enough for Copilot to block the tool call.
+//
+// The JSON body merges every agent's own deny shape:
+//  - Claude/Codex's hookSpecificOutput wrapper
+//  - Copilot/Codex's flat permissionDecision
+//  - Cursor's permission and Gemini's decision
+//
+// Exiting with an error code alone isn't enough for some of them to block the tool call.
+//
+// Unknown keys are ignored by each agent, so a single body covers them all.
 const deny = (reason) => {
     const body = JSON.stringify({
+        decision: 'block',
+        reason,
+        permission: 'deny',
+        user_message: `blocked: ${reason}`,
+        agent_message: reason,
         permissionDecision: 'deny',
         permissionDecisionReason: reason,
         hookSpecificOutput: {

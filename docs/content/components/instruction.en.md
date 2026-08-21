@@ -29,30 +29,6 @@ repository/
 ```
 {{< /tab >}}
 
-{{< tab name="Open Plugin" >}}
-> [!note]
-> This format can only be provided within [plugins](/share/plugin).
-
-- **Format**: [**Open Plugin**](https://open-plugins.com/agent-builders/components/rules)
-
-```tree
-repository/
-└── rules/
-    └── prefer-const.mdc
-```
-
-```yaml
----
-description: Prefer const over let. Never use var.
-alwaysApply: true
-globs: "**/*.{js,ts,jsx,tsx}"
----
-
-Always use `const` for variables that are never reassigned.
-Use `let` only when reassignment is necessary. Never use `var`.
-```
-{{< /tab >}}
-
 {{< tab name="Claude Code" >}}
 - **Format**: [**Claude Code**](https://code.claude.com/docs/en/memory#path-specific-rules)
 

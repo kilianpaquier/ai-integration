@@ -14,37 +14,6 @@ telemetry, code linting, or even automatically saving and restoring session memo
 
 {{< tabs >}}
 
-{{< tab name="Open Plugin" >}}
-> [!note]
-> This format can only be provided within [plugins](/share/plugin).
-
-- **Format**: [**Open Plugin**](https://open-plugins.com/agent-builders/components/hooks)
-
-```tree
-repository/
-└── hooks/
-    └── hooks.json
-```
-
-```json
-{
-    "hooks": {
-        "PreToolUse": [
-            {
-                "matcher": "Bash",
-                "hooks": [
-                    {
-                        "type": "command",
-                        "command": "${PLUGIN_ROOT}/hooks/lint-check.sh"
-                    }
-                ]
-            }
-        ]
-    }
-}
-```
-{{< /tab >}}
-
 {{< tab name="Claude Code" >}}
 - **Format**: [**Claude Code**](https://code.claude.com/docs/en/hooks#configuration)
 - **Also read by**: **Copilot** (only repository level)

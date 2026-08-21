@@ -16,7 +16,7 @@ An allow-list carves out specific subpaths needed for plugins and instructions t
 The hook also catches recursive tools (`grep -r`, `find`, `tar`, `rsync`, `ls -R`, ...) and bare
 references like `cd ~` that could reach a protected directory without naming it directly.
 
-A blocked call prints an explanatory message and denies the tool call across **Claude Code**, **Copilot**, and **Codex**.
+A blocked call prints an explanatory message and denies the tool call across **Claude Code**, **Codex** and **Copilot**.
 
 > [!warning]
 > A relative path used after a `cd` earlier in the same command is not resolved against that new directory.
@@ -26,12 +26,12 @@ A blocked call prints an explanatory message and denies the tool call across **C
 > [!warning]
 > Nodejs is needed in `PATH` environment variable to work.
 
-**Native plugin**:
+**Native plugin (recommended)**:
 ```sh
 my-agent plugin install protected-paths@one-for-all
 ```
 
-**APM package (recommended)**:
+**APM package**:
 ```sh
 apm install kilianpaquier/ai-integration/plugins/hooks/protected-paths -g
 ```
@@ -49,3 +49,16 @@ apm install protected-paths@one-for-all -g
 ```sh
 node --test tests/protected-paths.test.js
 ```
+
+## Compatibility table
+
+| Agent                | Manifest                     | Hook configuration                    |
+| -------------------- | ---------------------------- | ------------------------------------- |
+| **APM**              | `apm.yml`                    | `hooks/hooks.json`                    |
+| **Claude Code**      | `.claude-plugin/plugin.json` | `hooks/claude.json`                   |
+| **Codex**            | `.claude-plugin/plugin.json` | `hooks/claude.json`                   |
+| **Copilot**          | `plugin.json`                | `hooks/hooks.json`                    |
+
+> [!note]
+> **APM** merges `hooks/hooks.json` into the target agent settings (e.g. `~/.claude/settings.json`)
+> and rewrites `${PLUGIN_ROOT}` to the path it deployed the scripts to.

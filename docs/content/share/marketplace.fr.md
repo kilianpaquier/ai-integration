@@ -17,24 +17,9 @@ L'emplacement de l'index d'un marketplace dépend du (ou des) agent(s) cible(s).
 
 {{< tabs >}}
 
-{{< tab name="Open Plugin" >}}
-- **Format** : [**Open Plugin**](https://open-plugins.com/plugin-builders/marketplace)
-- **Lu par** : **Claude Code**, **Copilot**
-
-```tree
-repository/
-├── marketplace.json
-├── .plugin/
-│   └── marketplace.json
-└── plugins/
-    └── plugin-name/
-        └── ...
-```
-{{< /tab >}}
-
 {{< tab name="Claude Code" >}}
 - **Format** : [**Claude Code**](https://code.claude.com/docs/en/plugin-marketplaces)
-- **Aussi lu par** : **Codex**, **Copilot** (partiellement)
+- **Lu par** : **Codex**, **Copilot** (partiellement)
 
 ```tree
 repository/

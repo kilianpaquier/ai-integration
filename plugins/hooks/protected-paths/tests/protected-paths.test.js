@@ -165,6 +165,22 @@ test("copilot's native payload shape allow-lists its instructions file the same 
   assert.equal(stdout, '');
 });
 
+test("cursor's native payload shape is scanned and denied with cursor's own decision field", () => {
+  const { status, stdout } = runHook(
+    '{"tool_name":"Shell","tool_input":{"command":"cat ~/.ssh/id_rsa","working_directory":"/repo"},"tool_use_id":"u1","cwd":"/repo"}',
+  );
+  assert.equal(status, 0);
+  assert.match(stdout, /"permission":\s*"deny"/);
+  assert.ok(stdout.includes('.ssh'), "expected deny output to include '.ssh'");
+});
+
+test('an absolute_path argument is scanned the same way as file_path', () => {
+  const { status, stdout } = runHook('{"tool_name":"read_file","tool_input":{"absolute_path":"/home/tester/.ssh/id_rsa"}}');
+  assert.equal(status, 0);
+  assert.match(stdout, /"permissionDecision":\s*"deny"/);
+  assert.ok(stdout.includes('.ssh'), "expected deny output to include '.ssh'");
+});
+
 // --- compound and adversarial calls ---
 
 test('an allowed path chained with a denied one still denies', () => {

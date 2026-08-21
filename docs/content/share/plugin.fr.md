@@ -17,35 +17,32 @@ dépendent du (ou des) agent(s) cible(s).
 
 {{< tabs >}}
 
-{{< tab name="Open Plugin" >}}
-- **Format** : [**Open Plugin**](https://open-plugins.com/plugin-builders/specification)
-- **Lu par** : **Claude Code** (partiellement), **Copilot** (partiellement)
+{{< tab name="Agent Plugins" >}}
+- **Format** : [**Agent Plugins**](https://agent-plugins.org/specification)
+- **Lu par** : **Cursor**, **VSCode**
 - **Variables d'environnement** :
   - `PLUGIN_ROOT` (répertoire du plugin)
+  - `PLUGIN_DATA` (répertoire de données du plugin)
 
 ```tree
 repository/
-├── .plugin/
-│   └── plugin.json
-├── agents/
-│   └── reviewer.md
-├── commands/
-│   └── special.md
-├── hooks/
-│   └── hooks.json
-├── rules/
-│   └── prefer-const.mdc
+├── plugin.json
 ├── skills/
 │   └── skill-name/
 │       └── SKILL.md
-├── .mcp.json
-└── .lsp.json
+├── mcp.json
+└── com.example.client/
 ```
+
+Le répertoire `com.example.client` est une extension client.
+Il contient des composants dans un format spécifique à l'agent (hooks, serveurs MCP, skills, etc.).
+
+- **VSCode** : `com.github.copilot/`
 {{< /tab >}}
 
 {{< tab name="Claude Code" >}}
 - **Format** : [**Claude Code**](https://code.claude.com/docs/en/plugins-reference)
-- **Aussi lu par** : **Codex** (partiellement), **Copilot** (partiellement)
+- **Lu par** : **Codex** (partiellement), **Copilot** (partiellement)
 - **Variables d'environnement** :
   - `CLAUDE_PLUGIN_ROOT` (répertoire du plugin)
   - `CLAUDE_PLUGIN_DATA` (répertoire de données du plugin)
