@@ -24,16 +24,21 @@ cela peut aussi être utilisé pour des charts Helm, des modules Terraform, des 
 - **Upstream** : <https://github.com/DeusData/codebase-memory-mcp>
 - **Indexation** : via le serveur MCP ou le CLI
 - **Navigation** : via le serveur MCP ou le CLI
+- **Plugin** : [/interoperability/ai-integration/codebase-memory-mcp](/interoperability/ai-integration/codebase-memory-mcp)
 
 Installation du CLI :
 
 ```sh
+mise use -g 'github:DeusData/codebase-memory-mcp@latest'
+# ou
 <npm|pnpm|bun> install -g codebase-memory-mcp
-codebase-memory-mcp install
 ```
 
+Usage :
+
 ```sh
-mise use -g 'github:DeusData/codebase-memory-mcp@latest'
+my-agent plugin install codebase-memory-mcp@one-for-all
+# ou
 codebase-memory-mcp install
 ```
 {{< /tab >}}
@@ -47,8 +52,14 @@ Installation du CLI :
 
 ```sh
 mise use -g 'github:colbymchenry/codegraph@latest'
+```
+
+Usage :
+
+```sh
 codegraph install
-codegraph init --index # in the repository
+# puis
+codegraph init --index # au sein des dépôts à indexer
 ```
 {{< /tab >}}
 

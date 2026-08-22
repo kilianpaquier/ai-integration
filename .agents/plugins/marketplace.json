@@ -5,6 +5,18 @@
   },
   "plugins": [
     {
+      "name": "codebase-memory-mcp",
+      "source": {
+        "source": "local",
+        "path": "./plugins/codebase-memory-mcp"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "mcp"
+    },
+    {
       "name": "protected-paths",
       "source": {
         "source": "local",

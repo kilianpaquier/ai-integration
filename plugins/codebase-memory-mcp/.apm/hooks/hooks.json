@@ -1,0 +1,53 @@
+{
+    "description": "Augment searches and lifecycle boundaries with codebase-memory-mcp graph context",
+    "hooks": {
+        "PreToolUse": [
+            {
+                "matcher": "Grep|Glob",
+                "hooks": [
+                    {
+                        "type": "command",
+                        "command": "codebase-memory-mcp hook-augment",
+                        "timeout": 5
+                    }
+                ]
+            }
+        ],
+        "PostToolUse": [
+            {
+                "matcher": "Read",
+                "hooks": [
+                    {
+                        "type": "command",
+                        "command": "codebase-memory-mcp hook-augment",
+                        "timeout": 5
+                    }
+                ]
+            }
+        ],
+        "SessionStart": [
+            {
+                "matcher": "startup|resume|clear|compact",
+                "hooks": [
+                    {
+                        "type": "command",
+                        "command": "codebase-memory-mcp hook-augment",
+                        "timeout": 5
+                    }
+                ]
+            }
+        ],
+        "SubagentStart": [
+            {
+                "matcher": "*",
+                "hooks": [
+                    {
+                        "type": "command",
+                        "command": "codebase-memory-mcp hook-augment",
+                        "timeout": 5
+                    }
+                ]
+            }
+        ]
+    }
+}

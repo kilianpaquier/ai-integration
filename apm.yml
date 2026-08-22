@@ -19,6 +19,10 @@ marketplace:
     url: https://kilianpaquier.dev
 
   packages:
+    - category: mcp
+      name: codebase-memory-mcp
+      source: ./plugins/codebase-memory-mcp
+
     - category: hooks
       name: protected-paths
       source: ./plugins/protected-paths

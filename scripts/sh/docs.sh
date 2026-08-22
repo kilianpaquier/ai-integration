@@ -35,6 +35,12 @@ sync_tab() {
 
 out=
 
+# codebase-memory-mcp synchronization in doc
+out="$dir/../../docs/content/interoperability/ai-integration/codebase-memory-mcp.en.md"
+sync_tab "$dir/../../plugins/codebase-memory-mcp/README.md" "$out"
+out="$dir/../../docs/content/interoperability/ai-integration/codebase-memory-mcp.fr.md"
+sync_tab "$dir/../../plugins/codebase-memory-mcp/README.md" "$out"
+
 # protected-paths synchronization in doc
 out="$dir/../../docs/content/interoperability/ai-integration/protected-paths.en.md"
 sync_tab "$dir/../../plugins/protected-paths/README.md" "$out"

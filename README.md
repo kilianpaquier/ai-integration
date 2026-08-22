@@ -45,6 +45,12 @@ This repository follows various standards to structure its components:
 
 ## Plugins
 
+### MCP
+
+| Name                                               | Description                                                                           |
+| -------------------------------------------------- | ------------------------------------------------------------------------------------- |
+| [codebase-memory-mcp](plugins/codebase-memory-mcp) | Fast code intelligence engine for AI coding agents, a single static binary MCP server |
+
 ### Hooks
 
 | Name                                       | Description                                                      |

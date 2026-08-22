@@ -6,6 +6,13 @@
   },
   "plugins": [
     {
+      "name": "codebase-memory-mcp",
+      "description": "Fast code intelligence engine for AI coding agents - single static binary MCP server",
+      "version": "0.1.0",
+      "category": "mcp",
+      "source": "./plugins/codebase-memory-mcp"
+    },
+    {
       "name": "protected-paths",
       "description": "Stop your agent from accessing unwanted or sensitive directories",
       "version": "0.2.0",
