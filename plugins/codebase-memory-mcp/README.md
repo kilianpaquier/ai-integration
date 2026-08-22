@@ -23,6 +23,13 @@ Hooks route the agent through the graph, all of them delegating to `codebase-mem
 | `SessionStart`                    | whether the repo is indexed, and to search the graph before grep | Claude Code, Codex, Copilot |
 | `SubagentStart`                   | the same, for every subagent spawned                             | Claude Code, Codex, Copilot |
 
+## Skills
+
+### `codebase-memory`
+
+Activated to answer structural code questions through the knowledge graph: which tool answers which
+question, the graph's edge types, Cypher query examples and common pitfalls.
+
 ## Installation
 
 > [!warning]
@@ -49,9 +56,9 @@ apm install codebase-memory-mcp@one-for-all -g
 
 ## Compatibility table
 
-| Agent           | Manifest                     | MCP configuration | Hook configuration                    |
-| --------------- | ---------------------------- | ----------------- | ------------------------------------- |
-| **APM**         | `apm.yml`                    | `apm.yml`         | `.apm/hooks/hooks.json`               |
-| **Claude Code** | `.claude-plugin/plugin.json` | `mcp.json`        | `hooks/claude.json`                   |
-| **Codex**       | `.claude-plugin/plugin.json` | `mcp.json`        | `hooks/claude.json`                   |
-| **Copilot**     | `plugin.json`                | `mcp.json`        | `com.github.copilot/hooks/hooks.json` |
+| Agent           | Manifest                     | Hook configuration                    |
+| --------------- | ---------------------------- | ------------------------------------- |
+| **APM**         | `apm.yml`                    | `.apm/hooks/hooks.json`               |
+| **Claude Code** | `.claude-plugin/plugin.json` | `hooks/claude.json`                   |
+| **Codex**       | `.claude-plugin/plugin.json` | `hooks/claude.json`                   |
+| **Copilot**     | `plugin.json`                | `com.github.copilot/hooks/hooks.json` |

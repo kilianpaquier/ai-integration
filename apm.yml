@@ -19,7 +19,7 @@ marketplace:
     url: https://kilianpaquier.dev
 
   packages:
-    - category: mcp
+    - category: hybrid
       name: codebase-memory-mcp
       source: ./plugins/codebase-memory-mcp
 

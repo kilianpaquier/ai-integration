@@ -43,14 +43,10 @@ npx skills add kilianpaquier/ai-integration -g
 
 ## Compatibility table
 
-| Agent                | Manifest                     | Skills    |
-| -------------------- | ---------------------------- | --------- |
-| **APM**              | `apm.yml`                    | `skills/` |
-| **Claude Code**      | `.claude-plugin/plugin.json` | `skills/` |
-| **Codex**            | `.claude-plugin/plugin.json` | `skills/` |
-| **Copilot**          | `plugin.json`                | `skills/` |
-| **Cursor**           | `plugin.json`                | `skills/` |
-
-> [!note]
-> **APM** copies `skills/` to the agent directory
-> (`~/.claude/skills/` for **Claude Code**, `~/.agents/skills/`, etc.).
+| Agent                | Manifest                     |
+| -------------------- | ---------------------------- |
+| **APM**              | `apm.yml`                    |
+| **Claude Code**      | `.claude-plugin/plugin.json` |
+| **Codex**            | `.claude-plugin/plugin.json` |
+| **Copilot**          | `plugin.json`                |
+| **Cursor**           | `plugin.json`                |
