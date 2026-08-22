@@ -13,12 +13,13 @@ for libraries, frameworks, SDKs and APIs.
 
 ## Hooks
 
-| Event                                      | Output                                                 | Agent Runtimes                     |
-| ------------------------------------------ | ------------------------------------------------------ | ---------------------------------- |
-| `PreToolUse`, before a web search or fetch | a reminder to try Context7 before the raw web tool     | Claude Code, Codex                 |
-| `SessionStart`                             | a reminder that Context7 is available for library docs | Claude Code, Codex, Copilot, Devin |
-| `SubagentStart`                            | the same, for every subagent spawned                   | Claude Code, Codex, Copilot        |
-| `pre_llm_call`                             | the same, before every LLM call                        | Hermes Agent                       |
+| Event                                      | Output                                                 | Agent Runtimes                             |
+| ------------------------------------------ | ------------------------------------------------------ | ------------------------------------------ |
+| `PreToolUse`, before a web search or fetch | a reminder to try Context7 before the raw web tool     | Claude Code                                |
+| `PostToolUse`, after a web search or fetch | the same reminder, for the next lookup in the session  | Codex, Copilot                             |
+| `SessionStart`                             | a reminder that Context7 is available for library docs | Claude Code, Codex, Copilot, Cursor, Devin |
+| `SubagentStart`                            | the same, for every subagent spawned                   | Claude Code, Codex, Copilot                |
+| `pre_llm_call`                             | the same, before every LLM call                        | Hermes Agent                               |
 
 ## Skills
 
@@ -57,10 +58,11 @@ apm install context7@one-for-all -g
 
 | Agent Runtime    | Manifest                     | MCP configuration                             | Hook configuration                    |
 | ---------------- | ---------------------------- | --------------------------------------------- | ------------------------------------- |
+| **Antigravity**  | `plugin.json`                | `mcp_config.json`                             | -                                     |
 | **APM**          | `apm.yml`                    | `apm.yml`                                     | `.apm/hooks/hooks.json`               |
 | **Claude Code**  | `.claude-plugin/plugin.json` | `mcp.json`                                    | `hooks/claude.json`                   |
-| **Codex**        | `.claude-plugin/plugin.json` | `mcp.json`                                    | `hooks/claude.json`                   |
+| **Codex**        | `.codex-plugin/plugin.json`  | `mcp.json`                                    | `hooks/codex.json`                    |
 | **Copilot**      | `.plugin/plugin.json`        | `mcp.json`                                    | `com.github.copilot/hooks/hooks.json` |
-| **Antigravity**  | `plugin.json`                | `mcp_config.json`                             | -                                     |
+| **Cursor**       | `.cursor-plugin/plugin.json` | `mcp.json`                                    | `hooks/cursor.json`                   |
 | **Devin**        | `.claude-plugin/plugin.json` | `mcp.json`                                    | -                                     |
 | **Hermes Agent** | `plugin.yaml`                | manual, `~/.hermes/config.yaml` (not bundled) | `__init__.py`                         |

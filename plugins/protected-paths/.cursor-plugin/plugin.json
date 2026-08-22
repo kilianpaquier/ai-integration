@@ -1,6 +1,4 @@
 {
-    "$schema": "https://www.schemastore.org/claude-code-plugin-manifest.json",
-
     "name": "protected-paths",
     "description": "Stop your agent from accessing unwanted or sensitive directories",
     "version": "0.4.0",
@@ -9,5 +7,5 @@
     "repository": "https://gitlab.com/kilianpaquier/ai-integration",
     "homepage": "https://gitlab.com/kilianpaquier/ai-integration/-/tree/main/plugins/protected-paths",
 
-    "hooks": "./hooks/claude.json"
+    "hooks": "./hooks/cursor.json"
 }

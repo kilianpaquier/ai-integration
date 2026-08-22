@@ -126,6 +126,29 @@ url = "http://localhost:8000"
 ```
 {{< /tab >}}
 
+{{< tab name="Cursor" >}}
+- **Format**: [**Cursor**](https://cursor.com/docs/mcp)
+
+```tree
+repository/
+└── .cursor/
+    └── mcp.json
+~/.cursor/
+└── mcp.json
+```
+
+```json
+{
+    "mcpServers": {
+        "context7": {
+            "command": "npx",
+            "args": ["-y", "@upstash/context7-mcp"]
+        }
+    }
+}
+```
+{{< /tab >}}
+
 {{< tab name="Antigravity" >}}
 - **Format**: [**Antigravity**](https://antigravity.google/docs/cli/mcp/)
 

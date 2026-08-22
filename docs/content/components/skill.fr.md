@@ -140,6 +140,35 @@ Skill instructions body (the prompt the agent follows when invoked).
 ```
 {{< /tab >}}
 
+{{< tab name="Cursor" >}}
+- **Format** : [**Cursor**](https://cursor.com/docs/skills)
+
+```tree
+repository/
+├── .agents/
+│   └── skills/
+│       └── skill-name/
+│           └── SKILL.md
+└── .cursor/
+    └── skills/
+        └── skill-name/
+            └── SKILL.md
+<plugin>/
+└── skills/
+    └── skill-name/
+        └── SKILL.md
+```
+
+```yaml
+---
+name: schema-to-go
+description: A skill that converts JSON Schema to Go struct definitions.
+---
+
+Skill instructions body (the prompt the agent follows when invoked).
+```
+{{< /tab >}}
+
 {{< tab name="Mistral Vibe" >}}
 - **Format** : [**Mistral Vibe**](https://docs.mistral.ai/vibe/code/cli/skills#skill-format)
 

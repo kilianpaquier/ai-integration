@@ -21,7 +21,7 @@ dans les instructions pour charger des fichiers spécifiques (par exemple `@READ
 > Standard neutre de l'[Agentic AI Foundation](https://aaif.io/).
 
 - **Format** : [**AGENTS.md**](https://agents.md/)
-- **Lu par** : **Codex**, **Copilot**, **Mistral Vibe**, **Devin**, **Antigravity**
+- **Lu par** : **Codex**, **Copilot**, **Cursor**, **Mistral Vibe**, **Devin**, **Antigravity**
 
 ```tree
 repository/
@@ -84,6 +84,28 @@ excludeAgent: code-review
 ---
 
 Handle Ruby model files matching this pattern with the project's ActiveRecord conventions.
+```
+{{< /tab >}}
+
+{{< tab name="Cursor" >}}
+- **Format** : [**Cursor**](https://cursor.com/docs/rules)
+
+```tree
+repository/
+├── AGENTS.md
+└── .cursor/
+    └── rules/
+        └── code-style.mdc
+```
+
+```yaml
+---
+description: Rules for TypeScript API files
+globs: src/api/**/*.ts
+alwaysApply: false
+---
+
+List of rules to respect for TypeScript API files
 ```
 {{< /tab >}}
 

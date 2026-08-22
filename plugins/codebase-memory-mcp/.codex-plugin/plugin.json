@@ -1,11 +1,12 @@
 {
-    "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
-
     "name": "codebase-memory-mcp",
     "description": "High-performance code intelligence MCP server. Indexes codebases into a persistent knowledge graph.",
     "version": "0.6.0",
     "license": "MIT",
 
     "repository": "https://github.com/DeusData/codebase-memory-mcp",
-    "homepage": "https://gitlab.com/kilianpaquier/ai-integration/-/tree/main/plugins/codebase-memory-mcp"
+    "homepage": "https://gitlab.com/kilianpaquier/ai-integration/-/tree/main/plugins/codebase-memory-mcp",
+
+    "hooks": "./hooks/codex.json",
+    "mcpServers": "./mcp.json"
 }

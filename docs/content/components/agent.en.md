@@ -89,6 +89,32 @@ Detailed system prompt for the agent describing its role, expertise and behavior
 ```
 {{< /tab >}}
 
+{{< tab name="Cursor" >}}
+- **Format**: [**Cursor**](https://cursor.com/docs/subagents)
+
+```tree
+repository/
+└── .cursor/
+    └── agents/
+        └── reviewer.md
+~/.cursor/
+└── agents/
+    └── reviewer.md
+```
+
+```yaml
+---
+name: reviewer
+description: What this agent specializes in and when it should be invoked
+model: inherit # "inherit" or a specific model ID
+readonly: true # prevents file edits and state-changing shell commands
+is_background: false
+---
+
+Detailed system prompt for the agent describing its role, expertise and behavior.
+```
+{{< /tab >}}
+
 {{< tab name="Mistral Vibe" >}}
 - **Format**: [**Mistral Vibe**](https://docs.mistral.ai/vibe/code/cli/agents#custom-agents)
 

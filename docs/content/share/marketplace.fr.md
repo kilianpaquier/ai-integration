@@ -59,6 +59,19 @@ repository/
 ```
 {{< /tab >}}
 
+{{< tab name="Cursor" >}}
+- **Format** : [**Cursor**](https://cursor.com/docs/reference/plugins#cursor-multi-plugin-repositories)
+
+```tree
+repository/
+├── .cursor-plugin/
+│   └── marketplace.json
+└── plugins/
+    └── plugin-name/
+        └── ...
+```
+{{< /tab >}}
+
 {{< /tabs >}}
 
 ## Utilisation
@@ -108,6 +121,11 @@ copilot plugin uninstall <plugin-name>
 ```
 
 L'installation des plugins et leur suivi (quels plugins, quels marketplaces) sont gérés sous `~/.copilot/installed-plugins`.
+{{< /tab >}}
+
+{{< tab name="Cursor" >}}
+Aucune commande CLI, l'installation passe par le Dashboard (**Dashboard > Plugins > Add Marketplace**)
+en important un dépôt **GitHub** en direct.
 {{< /tab >}}
 
 {{< tab name="Antigravity" >}}

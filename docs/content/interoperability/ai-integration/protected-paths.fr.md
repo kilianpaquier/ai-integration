@@ -21,7 +21,7 @@ An allow-list carves out specific subpaths needed for plugins and instructions t
 The hook also catches recursive tools (`grep -r`, `find`, `tar`, `rsync`, `ls -R`, ...) and bare
 references like `cd ~` that could reach a protected directory without naming it directly.
 
-A blocked call prints an explanatory message and denies the tool call across **Claude Code**, **Codex**, **Copilot** and **Hermes Agent**.
+A blocked call prints an explanatory message and denies the tool call across **Claude Code**, **Codex**, **Copilot**, **Cursor** and **Hermes Agent**.
 
 > [!warning]
 > A relative path used after a `cd` earlier in the same command is not resolved against that new directory.

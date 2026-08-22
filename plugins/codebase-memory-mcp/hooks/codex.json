@@ -1,14 +1,14 @@
 {
-    "version": 1,
-    "description": "Remind the agent to prefer Context7 over training data or a raw web search for library/framework/SDK/API docs",
+    "description": "Augment searches and lifecycle boundaries with codebase-memory-mcp graph context",
     "hooks": {
         "PostToolUse": [
             {
-                "matcher": "WebFetch|WebSearch",
+                "matcher": "Read",
                 "hooks": [
                     {
                         "type": "command",
-                        "command": "node ${PLUGIN_ROOT}/scripts/context7-hint PostToolUse"
+                        "command": "codebase-memory-mcp hook-augment",
+                        "timeout": 5
                     }
                 ]
             }
@@ -19,7 +19,8 @@
                 "hooks": [
                     {
                         "type": "command",
-                        "command": "node ${PLUGIN_ROOT}/scripts/context7-hint SessionStart"
+                        "command": "codebase-memory-mcp hook-augment",
+                        "timeout": 5
                     }
                 ]
             }
@@ -30,7 +31,8 @@
                 "hooks": [
                     {
                         "type": "command",
-                        "command": "node ${PLUGIN_ROOT}/scripts/context7-hint SubagentStart"
+                        "command": "codebase-memory-mcp hook-augment",
+                        "timeout": 5
                     }
                 ]
             }

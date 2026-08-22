@@ -1,0 +1,10 @@
+{
+    "version": 1,
+    "hooks": {
+        "sessionStart": [
+            {
+                "command": "node ${PLUGIN_ROOT}/scripts/context7-hint SessionStart"
+            }
+        ]
+    }
+}

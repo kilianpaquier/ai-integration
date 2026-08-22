@@ -1,0 +1,16 @@
+{
+    "version": 1,
+    "hooks": {
+        "sessionStart": [
+            {
+                "command": "codebase-memory-mcp hook-augment --event SessionStart --dialect cursor"
+            }
+        ],
+        "postToolUse": [
+            {
+                "matcher": "Read",
+                "command": "codebase-memory-mcp hook-augment --event PostToolUse --dialect cursor"
+            }
+        ]
+    }
+}

@@ -110,6 +110,24 @@ repository/
 ```
 {{< /tab >}}
 
+{{< tab name="Cursor" >}}
+- **Format** : [**Cursor**](https://cursor.com/docs/plugins)
+
+```tree
+repository/
+├── .cursor-plugin/
+│   └── plugin.json
+├── rules/
+│   └── rule-name.mdc
+├── skills/
+│   └── skill-name/
+│       └── SKILL.md
+├── hooks/
+│   └── hooks.json
+└── mcp.json
+```
+{{< /tab >}}
+
 {{< tab name="Antigravity" >}}
 - **Format** : [**Antigravity**](https://antigravity.google/docs/cli/plugins)
 

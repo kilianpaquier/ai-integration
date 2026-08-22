@@ -138,6 +138,38 @@ repository/
 ```
 {{< /tab >}}
 
+{{< tab name="Cursor" >}}
+- **Format** : [**Cursor**](https://cursor.com/docs/hooks)
+- **Pour aller plus loin** :
+  [events](https://cursor.com/docs/hooks#reference),
+  [matchers](https://cursor.com/docs/hooks#configuration)
+
+```tree
+repository/
+└── .cursor/
+    └── hooks.json
+~/.cursor/
+└── hooks.json
+<plugin>/
+└── .cursor-plugin/
+    └── plugin.json
+```
+
+```json
+{
+    "version": 1,
+    "hooks": {
+        "preToolUse": [
+            {
+                "command": "./hooks/lint-check.sh",
+                "matcher": "Shell"
+            }
+        ]
+    }
+}
+```
+{{< /tab >}}
+
 {{< tab name="Mistral Vibe" >}}
 - **Format** : [**Mistral Vibe**](https://github.com/mistralai/mistral-vibe/blob/main/README.md#hooks)
 - **Pour aller plus loin** :

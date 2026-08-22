@@ -22,6 +22,7 @@ def _pre_llm_call(ctx: Any, **kwargs: Any) -> dict[str, str] | None:
     return {"context": result.stdout} if result.stdout else None
 
 def register(ctx: Any) -> None:
+    # `hook-augment --dialect hermes` only supports hook_event_name "pre_llm_call"
     ctx.register_hook("pre_llm_call", _pre_llm_call)
 
     skills_dir = Path(__file__).parent / "skills"

@@ -3,52 +3,60 @@
 
 'use strict'
 
-const eventName = process.argv[2] // comes from hooks calls
+const VALID_EVENTS = ['PreToolUse', 'PostToolUse', 'SessionStart', 'SubagentStart']
 const message = 'Use context7-mcp skill for library docs. MCP unavailable? Fall back to the context7-cli skill.'
 
-const VALID_EVENTS = ['PreToolUse', 'SessionStart', 'SubagentStart']
-if (!VALID_EVENTS.includes(eventName)) {
-    process.stderr.write(`context7-hint: unknown hook event '${eventName}', expected one of ${VALID_EVENTS.join(', ')}`)
-    process.exit(0)
+const main = () => {
+    const eventName = process.argv[2] // comes from hooks calls
+
+    if (!VALID_EVENTS.includes(eventName)) {
+        process.stderr.write(`context7-hint: unknown hook event '${eventName}', expected one of ${VALID_EVENTS.join(', ')}`)
+        process.exit(0)
+    }
+
+    // Two bodies (PreToolUse and SessionStart + SubagentStart + PostToolUse), per each agent's own hooks docs.
+    //
+    // PreToolUse always ends with 'allow', this hook serves as a reminder to agents.
+    //
+    // PreToolUse output format:
+    //  - Claude Code: hookSpecificOutput wrapper (additionalContext honored)
+    //  - Copilot: flat permissionDecision (additionalContext NOT honored here, dropped silently)
+    //  - Cursor: flat permission
+    //  - Gemini: flat decision
+    //
+    // SessionStart, SubagentStart and PostToolUse inject context, no decision made.
+    //
+    // SessionStart, SubagentStart, PostToolUse output format:
+    //  - Claude Code, Codex, Devin: hookSpecificOutput wrapper
+    //  - Copilot: flat top-level additionalContext
+    //  - Cursor: flat snake_case additional_context (SessionStart only, SubagentStart has no context field on Cursor)
+    //
+    // Unknown keys are ignored by each agent, so one body covers them all.
+    const body = eventName === 'PreToolUse'
+        ? {
+            additionalContext: message,
+            agent_message: message,
+            context: message,
+            decision: 'allow',
+            message,
+            permission: 'allow',
+            permissionDecision: 'allow',
+            hookSpecificOutput: {
+                hookEventName: eventName,
+                permissionDecision: 'allow',
+                additionalContext: message,
+            },
+        }
+        : {
+            additionalContext: message,
+            additional_context: message,
+            context: message,
+            hookSpecificOutput: {
+                hookEventName: eventName,
+                additionalContext: message,
+            },
+        }
+    process.stdout.write(JSON.stringify(body))
 }
 
-// Two bodies (PreTooluse and SessionStart + SubagentStart), per each agent's own hooks docs.
-//
-// PreToolUse always ends with 'allow', this hook serves as a reminder to agents.
-//
-// PreToolUse output format:
-//  - Claude Code, Codex: hookSpecificOutput wrapper
-//  - Copilot, Codex: flat permissionDecision
-//  - Cursor: flat permission
-//  - Gemini: flat decision
-//
-// SessionStart and SubagentStart inject context, no decision made.
-//
-// SessionStart, SubagentStart output format:
-//  - Claude Code, Codex, Devin: hookSpecificOutput wrapper
-//  - Copilot: flat top-level additionalContext
-//
-// Unknown keys are ignored by each agent, so one body covers them all.
-const body = eventName === 'PreToolUse'
-    ? {
-        additionalContext: message,
-        agent_message: message,
-        context: message,
-        decision: 'allow',
-        message,
-        permission: 'allow',
-        permissionDecision: 'allow',
-        hookSpecificOutput: {
-            hookEventName: eventName,
-            permissionDecision: 'allow',
-            additionalContext: message,
-        },
-    }
-    : {
-        additionalContext: message,
-        hookSpecificOutput: {
-            hookEventName: eventName,
-            additionalContext: message,
-        },
-    }
-process.stdout.write(JSON.stringify(body))
+main()
