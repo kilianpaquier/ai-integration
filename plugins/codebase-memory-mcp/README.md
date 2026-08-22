@@ -1,6 +1,6 @@
 # codebase-memory-mcp
 
-Fast code intelligence engine for AI coding agents - single static binary MCP server.
+High-performance code intelligence MCP server. Indexes codebases into a persistent knowledge graph.
 
 <!-- docs:start -->
 

@@ -4,7 +4,7 @@ name: codebase-memory-mcp
 version: 0.1.0
 
 author: Kilian PAQUIER
-description: Fast code intelligence engine for AI coding agents - single static binary MCP server
+description: High-performance code intelligence MCP server. Indexes codebases into a persistent knowledge graph.
 license: MIT
 
 dependencies:

@@ -2,7 +2,7 @@
     "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
 
     "name": "codebase-memory-mcp",
-    "description": "Fast code intelligence engine for AI coding agents - single static binary MCP server",
+    "description": "High-performance code intelligence MCP server. Indexes codebases into a persistent knowledge graph.",
     "version": "0.1.0",
     "license": "MIT",
 

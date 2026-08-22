@@ -1,12 +1,12 @@
 ---
-description: Fast code intelligence engine for AI coding agents, a single static binary MCP server.
+description: High-performance code intelligence MCP server. Indexes codebases into a persistent knowledge graph.
 title: Codebase Memory MCP
 ---
 
 - **Upstream**: <https://github.com/DeusData/codebase-memory-mcp>
 - **Plugin**:
   [https://gitlab.com/kilianpaquier/ai-integration](https://gitlab.com/kilianpaquier/ai-integration/-/tree/main/plugins/codebase-memory-mcp)
-- **Description**: Fast code intelligence engine for AI coding agents, a single static binary MCP server.
+- **Description**: High-performance code intelligence MCP server. Indexes codebases into a persistent knowledge graph.
 
 <!-- docs:start -->
 
