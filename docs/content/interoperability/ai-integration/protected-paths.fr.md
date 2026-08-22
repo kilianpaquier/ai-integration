@@ -4,10 +4,10 @@ title: Protected Paths
 ---
 
 - **Upstream**:
-  [https://gitlab.com/kilianpaquier/ai-integration](https://gitlab.com/kilianpaquier/ai-integration/-/tree/main/plugins/hooks/protected-paths)
+  [https://gitlab.com/kilianpaquier/ai-integration](https://gitlab.com/kilianpaquier/ai-integration/-/tree/main/plugins/protected-paths)
 - **Description**: Protégez l'accès aux dossiers sensibles aux agents.
 
-<!-- docs:hook:start -->
+<!-- docs:start -->
 
 ## Hooks
 
@@ -38,7 +38,7 @@ my-agent plugin install protected-paths@one-for-all
 
 **APM package**:
 ```sh
-apm install kilianpaquier/ai-integration/plugins/hooks/protected-paths -g
+apm install kilianpaquier/ai-integration/plugins/protected-paths -g
 ```
 
 **APM plugin**:
@@ -47,4 +47,4 @@ apm marketplace add kilianpaquier/ai-integration
 apm install protected-paths@one-for-all -g
 ```
 
-<!-- docs:hook:end -->
+<!-- docs:end -->

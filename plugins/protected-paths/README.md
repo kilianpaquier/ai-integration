@@ -33,7 +33,7 @@ my-agent plugin install protected-paths@one-for-all
 
 **APM package**:
 ```sh
-apm install kilianpaquier/ai-integration/plugins/hooks/protected-paths -g
+apm install kilianpaquier/ai-integration/plugins/protected-paths -g
 ```
 
 **APM plugin**:

@@ -7,7 +7,7 @@
     "license": "MIT",
 
     "repository": "https://gitlab.com/kilianpaquier/ai-integration",
-    "homepage": "https://gitlab.com/kilianpaquier/ai-integration/-/tree/main/plugins/hooks/protected-paths",
+    "homepage": "https://gitlab.com/kilianpaquier/ai-integration/-/tree/main/plugins/protected-paths",
 
     "hooks": ["./hooks/claude.json"]
 }

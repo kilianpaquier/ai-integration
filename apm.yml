@@ -21,8 +21,8 @@ marketplace:
   packages:
     - category: hooks
       name: protected-paths
-      source: ./plugins/hooks/protected-paths
+      source: ./plugins/protected-paths
 
     - category: skills
       name: schema-converter
-      source: ./plugins/skills/schema-converter
+      source: ./plugins/schema-converter

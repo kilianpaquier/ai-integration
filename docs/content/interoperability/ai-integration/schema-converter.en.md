@@ -4,10 +4,10 @@ title: Schema Converter
 ---
 
 - **Upstream**:
-  [https://gitlab.com/kilianpaquier/ai-integration](https://gitlab.com/kilianpaquier/ai-integration/-/tree/main/plugins/skills/schema-converter)
+  [https://gitlab.com/kilianpaquier/ai-integration](https://gitlab.com/kilianpaquier/ai-integration/-/tree/main/plugins/schema-converter)
 - **Description**: A skill suite to transform JSON schemas into their language equivalents.
 
-<!-- docs:skill:start -->
+<!-- docs:start -->
 
 ## Skills
 
@@ -29,7 +29,7 @@ my-agent plugin install schema-converter@one-for-all
 
 **APM package**:
 ```sh
-apm install kilianpaquier/ai-integration/plugins/skills/schema-converter -g
+apm install kilianpaquier/ai-integration/plugins/schema-converter -g
 ```
 
 **APM plugin**:
@@ -44,4 +44,4 @@ apm install schema-converter@one-for-all -g
 npx skills add kilianpaquier/ai-integration -g
 ```
 
-<!-- docs:skill:end -->
+<!-- docs:end -->

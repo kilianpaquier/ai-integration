@@ -47,15 +47,15 @@ This repository follows various standards to structure its components:
 
 ### Hooks
 
-| Name                                             | Description                                                      |
-| ------------------------------------------------ | ---------------------------------------------------------------- |
-| [protected-paths](plugins/hooks/protected-paths) | Stop your agent from accessing unwanted or sensitive directories |
+| Name                                       | Description                                                      |
+| ------------------------------------------ | ---------------------------------------------------------------- |
+| [protected-paths](plugins/protected-paths) | Stop your agent from accessing unwanted or sensitive directories |
 
 ### Skills
 
-| Name                                                | Description                                                             |
-| --------------------------------------------------- | ----------------------------------------------------------------------- |
-| [schema-converter](plugins/skills/schema-converter) | A skill suite to transform JSON schemas into their language equivalents |
+| Name                                         | Description                                                             |
+| -------------------------------------------- | ----------------------------------------------------------------------- |
+| [schema-converter](plugins/schema-converter) | A skill suite to transform JSON schemas into their language equivalents |
 
 ## Developing
 

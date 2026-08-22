@@ -13,15 +13,15 @@ cleanup() {
 }
 trap cleanup EXIT
 
-# replaces the content between "<!-- docs:$section:start -->" and
-# "<!-- docs:$section:end -->" markers in $out with the content between
-# $src_start and $src_end in $src (i.e. $src's plugin-specific body).
+# replaces the content between "<!-- docs:$section:start -->"
+# and "<!-- docs:$section:end -->" markers in $out with the content
+# between $src_start and $src_end in $src (i.e. $src's plugin-specific body).
 sync_tab() {
   src="$1"
   out="$2"
   section="$3"
-  start="<!-- docs:$section:start -->"
-  end="<!-- docs:$section:end -->"
+  start="<!-- docs${section:+:${section}}:start -->"
+  end="<!-- docs${section:+:${section}}:end -->"
 
   # read the plugin-specific body out of $src, between its own markers
   body="$(mktemp)"
@@ -37,12 +37,12 @@ out=
 
 # protected-paths synchronization in doc
 out="$dir/../../docs/content/interoperability/ai-integration/protected-paths.en.md"
-sync_tab "$dir/../../plugins/hooks/protected-paths/README.md" "$out" hook
+sync_tab "$dir/../../plugins/protected-paths/README.md" "$out"
 out="$dir/../../docs/content/interoperability/ai-integration/protected-paths.fr.md"
-sync_tab "$dir/../../plugins/hooks/protected-paths/README.md" "$out" hook
+sync_tab "$dir/../../plugins/protected-paths/README.md" "$out"
 
 # schema-converter synchronization in doc
 out="$dir/../../docs/content/interoperability/ai-integration/schema-converter.en.md"
-sync_tab "$dir/../../plugins/skills/schema-converter/README.md" "$out" skill
+sync_tab "$dir/../../plugins/schema-converter/README.md" "$out"
 out="$dir/../../docs/content/interoperability/ai-integration/schema-converter.fr.md"
-sync_tab "$dir/../../plugins/skills/schema-converter/README.md" "$out" skill
+sync_tab "$dir/../../plugins/schema-converter/README.md" "$out"

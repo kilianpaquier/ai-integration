@@ -8,7 +8,7 @@
       "name": "protected-paths",
       "source": {
         "source": "local",
-        "path": "./plugins/hooks/protected-paths"
+        "path": "./plugins/protected-paths"
       },
       "policy": {
         "installation": "AVAILABLE",
@@ -20,7 +20,7 @@
       "name": "schema-converter",
       "source": {
         "source": "local",
-        "path": "./plugins/skills/schema-converter"
+        "path": "./plugins/schema-converter"
       },
       "policy": {
         "installation": "AVAILABLE",
