@@ -5,14 +5,14 @@ title: Talk like cave humans
 
 Agents tend to write a lot, from subagents spawning context and MCP requests/outputs to outputs shown to users, which increases token consumption.
 
-To counter this, there's the [caveman](https://github.com/JuliusBrussee/caveman) stack that acts at different places within agents' runtime.
+The [caveman](https://github.com/JuliusBrussee/caveman) stack counters this by acting at different places within agent runtimes.
 
 {{< tabs >}}
 
 {{< tab name="Caveman" >}}
 > [!warning]
 > Hooks activation is limited to **Claude Code** by default,
-> but a [simili-mirrored hook](/interoperability/ai-integration/caveman) can be used to broaden agent compatibility.
+> but a [simili-mirrored hook](/interoperability/ai-integration/caveman) can be used to broaden agent runtime compatibility.
 
 - **Upstream**: <https://github.com/JuliusBrussee/caveman>
 - **What is it**: A skill suite for compressed outputs, primarily for chat output, documentation, commits, code review,
@@ -62,11 +62,11 @@ apm install JuliusBrussee/cavekit -g
 
 {{< tab name="Caveman Code" >}}
 > [!note]
-> Since it's not a shareable component or pluggeable to mainstream agents,
+> Since it's not a shareable component or pluggeable to mainstream agent runtimes,
 > this documentation won't go into details about it.
 
 - **Upstream**: <https://github.com/JuliusBrussee/caveman-code>
-- **What is it**: A whole agent to use instead of **Claude Code**, **Copilot**, etc.,
+- **What is it**: A whole agent runtime to use instead of **Claude Code**, **Copilot**, etc.,
   including the whole caveman stack, and using subscriptionss to connect to LLMs.
 {{< /tab >}}
 

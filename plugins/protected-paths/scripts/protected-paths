@@ -149,13 +149,15 @@ const denyReasonFor = (resolved) => {
 // Unknown keys are ignored by each agent, so a single body covers them all.
 const deny = (reason) => {
     const body = JSON.stringify({
-        decision: 'block',
-        reason,
-        permission: 'deny',
-        user_message: `blocked: ${reason}`,
+        action: "block",
         agent_message: reason,
+        decision: 'block',
+        message: reason,
+        permission: 'deny',
         permissionDecision: 'deny',
         permissionDecisionReason: reason,
+        reason,
+        user_message: reason,
         hookSpecificOutput: {
             hookEventName: 'PreToolUse',
             permissionDecision: 'deny',
@@ -167,16 +169,7 @@ const deny = (reason) => {
     process.exit(0)
 }
 
-const main = () => {
-    const input = fs.readFileSync(0, 'utf8')
-
-    let payload
-    try {
-        payload = JSON.parse(input)
-    } catch {
-        deny('payload is not valid JSON')
-    }
-
+const main = (payload) => {
     const toolInput = toolInputOf(payload)
     const values = KNOWN_FIELDS
         .map((field) => toolInput[field])
@@ -201,4 +194,12 @@ const main = () => {
     }
 }
 
-main()
+if (require.main === module) {
+    try {
+        main(JSON.parse(fs.readFileSync(0, 'utf8')))
+    } catch {
+        deny('payload is not valid JSON')
+    }
+} else {
+    module.exports = { main }
+}

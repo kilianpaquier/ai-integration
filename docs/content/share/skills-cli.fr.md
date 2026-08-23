@@ -14,7 +14,7 @@ au sein des dépôts Git, et le CLI est compatible avec les *skills* définis da
 ## Utilisation
 
 Le Skills CLI n'a besoin que de `npx` pour être utilisé, peut installer des *skills* à l'échelle du dépôt ou de l'utilisateur,
-et supporte [beaucoup d'agents](https://github.com/vercel-labs/skills#supported-agents).
+et supporte [beaucoup d'agent *runtimes*](https://github.com/vercel-labs/skills#supported-agents).
 
 ```sh
 brew install node@24
@@ -51,5 +51,5 @@ même des *skills* ou dépôts non référencés peuvent être utilisés (par ex
 
 ## Limitations
 
-- Seuls des *skills* peuvent être installés par le CLI, limitant l'optimisation des agents.
+- Seuls des *skills* peuvent être installés par le CLI, limitant l'optimisation spécifique à chaque agent *runtime*.
 - Les *skills* installés avec le CLI n'ont pas de *namespace* (par exemple `/plugin:skill-name`) et sont donc susceptibles aux conflits de nommage.

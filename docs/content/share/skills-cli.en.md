@@ -14,7 +14,7 @@ and the CLI is compatible with skills defined within [plugins](/share/plugin).
 ## Usage
 
 The Skills CLI only needs `npx` to be used, can install skills at both repository and user scope,
-and supports [a lot of agents](https://github.com/vercel-labs/skills#supported-agents).
+and supports [a lot of agent runtimes](https://github.com/vercel-labs/skills#supported-agents).
 
 ```sh
 brew install node@24
@@ -50,5 +50,5 @@ even non-referenced skills or repositories can be used (e.g. private skills).
 
 ## Limitations
 
-- Only skills can be installed through the CLI, limiting agent optimization.
+- Only skills can be installed through the CLI, limiting agent-runtime-specific optimization.
 - Skills installed through the CLI aren't namespaced (e.g. `/plugin:skill-name`) and can be subject to naming conflicts.

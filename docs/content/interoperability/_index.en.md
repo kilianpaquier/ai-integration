@@ -12,17 +12,17 @@ Use standards to reduce vendor dependency and ensure easier switches to competit
 without losing time on team re-setup.
 
 - [**Agent Client Protocol**](https://agentclientprotocol.com/get-started/introduction): Any LLM on any editor (or extension), switch LLM providers without changing your setup.
-- [**Agent Skills**](https://agentskills.io/home): Build standardized skills for all agents to use.
-- [**AGENTS.md**](https://agents.md): A simple instruction filename for all agents (well almost).
-- [**Model Context Protocol**](https://modelcontextprotocol.io/docs/getting-started/intro): Connect any agent to any compatible external system.
-- [**Agent Plugins**](https://agent-plugins.org): Share components in one format for all agents to use.
+- [**Agent Skills**](https://agentskills.io/home): Build standardized skills for all agent runtimes to use.
+- [**AGENTS.md**](https://agents.md): A simple instruction filename for all agent runtimes (well almost).
+- [**Model Context Protocol**](https://modelcontextprotocol.io/docs/getting-started/intro): Connect any agent runtime to any compatible external system.
+- [**Agent Plugins**](https://agent-plugins.org): Share components in one format for all agent runtimes to use.
 
 ## Favor Open Source
 
-Favor Open Source projects, components, agents and tools with no LLM provider lock-in.
+Favor Open Source projects, components, agent runtimes and tools with no LLM provider lock-in.
 
 - [**agentgateway**](https://agentgateway.dev): Open source proxy for MCP, Agent-to-Agent, LLM and API traffic, providing drop-in security, observability and governance.
-- [**Goose**](https://goose-docs.ai): Open source, extensible AI agent (CLI, desktop app, API) that works with any LLM provider.
+- [**Goose**](https://goose-docs.ai): Open source, extensible AI agent runtime (CLI, desktop app, API) that works with any LLM provider.
 
 Both projects live under the [**Agentic AI Foundation**](https://aaif.io) (AAIF), a newly founded (December 2025) neutral foundation,
 Linux Foundation-backed, for open agentic AI standards and projects.

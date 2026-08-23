@@ -9,7 +9,7 @@ This is exactly what's being executed to get IntelliSense when developing within
 When an agent edits code, it only sees a file and predicts how it should be written based on its understanding of the format (e.g. a `.java`, etc.),
 the project files (because the agent has read them), and the user's request.
 
-To counter potential invalid code and ease code navigation, LSPs can be connected to agents,
+To counter potential invalid code and ease code navigation, LSPs can be connected to agent runtimes,
 and like [MCP](/components/mcp), they offer access to tools such as verifying that code compiles or finding what calls a function.
 
 Combined with [codebase indexing](/tooling/code-indexing), an agent can navigate code far faster

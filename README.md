@@ -10,7 +10,7 @@
 ---
 
 A simple and humble repository sharing components with as much standardization as possible
-and with the sole purpose to have as many agents as possible compatible with what's being shared.
+and with the sole purpose to have as many agent runtimes as possible compatible with what's being shared.
 
 This is also the source repository for [AI Integration](https://ai.kilianpaquier.dev),
 simple and humble documentation explaining AI components, how to properly share them

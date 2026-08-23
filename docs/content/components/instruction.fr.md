@@ -8,10 +8,10 @@ qu'il s'agisse de pratiques à appliquer, de la façon de développer, de conven
 Mais ce n'est pas que ça : pour éviter de saturer le contexte avec toutes les instructions spécifiques
 aux langages ou types de fichiers (markdown, java, go, etc.), des fichiers d'instructions spécifiques peuvent être créés.
 
-En procédant ainsi, l'agent ne charge dans son contexte que le contenu du frontmatter au début d'une session,
+En procédant ainsi, l'agent *runtime* ne charge dans son contexte que le contenu du frontmatter au début d'une session,
 et ne charge les instructions spécifiques que lorsqu'il travaille avec les fichiers concernés.
 
-Pour éviter de dupliquer des instructions entre agents ou fichiers, des références `@filepath` peuvent être utilisées
+Pour éviter de dupliquer des instructions entre agent *runtimes* ou fichiers, des références `@filepath` peuvent être utilisées
 dans les instructions pour charger des fichiers spécifiques (par exemple `@README.md`, `@AGENTS.md`).
 
 {{< tabs >}}
@@ -21,7 +21,7 @@ dans les instructions pour charger des fichiers spécifiques (par exemple `@READ
 > Standard neutre de l'[Agentic AI Foundation](https://aaif.io/).
 
 - **Format** : [**AGENTS.md**](https://agents.md/)
-- **Lu par** : **Codex**, **Copilot**, **Mistral Vibe**
+- **Lu par** : **Codex**, **Copilot**, **Mistral Vibe**, **Devin**, **Antigravity**
 
 ```tree
 repository/
@@ -37,8 +37,7 @@ repository/
 ├── CLAUDE.md
 └── .claude/
     └── rules/
-        ├── code-style.md
-        └── api.md
+        └── code-style.md
 ```
 
 ```yaml
@@ -100,6 +99,50 @@ repository/
 ~/.vibe/
 └── AGENTS.md
 ```
+{{< /tab >}}
+
+{{< tab name="Antigravity" >}}
+- **Format** : [**Antigravity**](https://antigravity.google/docs/rules-workflows/)
+
+```tree
+repository/
+├── AGENTS.md
+├── GEMINI.md
+└── .agents/
+    └── rules/
+        └── code-style.md
+~/.gemini/
+└── GEMINI.md
+```
+{{< /tab >}}
+
+{{< tab name="Devin" >}}
+- **Format** : [**Devin**](https://docs.devin.ai/onboard-devin/agents-md)
+
+```tree
+repository/
+└── AGENTS.md
+```
+{{< /tab >}}
+
+{{< tab name="Hermes Agent" >}}
+- **Format** : [**Hermes Agent**](https://hermes-agent.nousresearch.com/docs/user-guide/features/context-files)
+
+```tree
+repository/
+├── .hermes.md
+├── AGENTS.override.md
+├── AGENTS.md
+├── CLAUDE.md
+├── .cursorrules
+└── src/
+    └── api/
+        └── AGENTS.md
+~/.hermes/
+└── SOUL.md
+```
+
+Priorité : `.hermes.md` > `AGENTS.override.md` > `AGENTS.md` > `CLAUDE.md` > `.cursorrules`.
 {{< /tab >}}
 
 {{< /tabs >}}

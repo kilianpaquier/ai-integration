@@ -24,7 +24,7 @@ brew install rtk
 ```sh
 mise use -g rtk@latest
 # use '--agent' or '--<agent>' to install the RTK instructions
-# and hooks for a specific agent
+# and hooks for a specific agent runtime
 rtk init -g
 ```
 {{< /tab >}}

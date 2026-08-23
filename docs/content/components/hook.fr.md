@@ -7,7 +7,7 @@ lorsqu'un événement se déclenche pendant l'exécution de la session.
 
 Les événements se déclenchent à divers moments : au démarrage d'une session (`SessionStart`),
 lorsqu'un utilisateur soumet une instruction (`UserPromptSubmit`),
-avant l'exécution d'un outil (`PreToolUse`), et bien d'autres cas (la diversité dépend de l'agent utilisé).
+avant l'exécution d'un outil (`PreToolUse`), et bien d'autres cas (la diversité dépend de l'agent *runtime* utilisé).
 
 Les cas d'usage typiques des *hooks* incluent la limitation d'accès aux fichiers, la protection contre les commandes destructrices,
 la télémétrie, le lint de code, ou même la sauvegarde et la restauration automatiques des souvenirs de session.
@@ -16,7 +16,7 @@ la télémétrie, le lint de code, ou même la sauvegarde et la restauration aut
 
 {{< tab name="Claude Code" >}}
 - **Format** : [**Claude Code**](https://code.claude.com/docs/en/hooks#configuration)
-- **Lu par** : **Copilot** (niveau dépôt uniquement)
+- **Aussi lu par** : **Copilot** (niveau dépôt uniquement)
 - **Pour aller plus loin** :
   [events](https://code.claude.com/docs/en/hooks#hook-events),
   [matchers](https://code.claude.com/docs/en/hooks#matcher-patterns),
@@ -162,6 +162,90 @@ command = "node .vibe/hooks/link-check.js"
 ```
 
 Les hooks de projet se chargent avant les hooks utilisateur.
+{{< /tab >}}
+
+{{< tab name="Antigravity" >}}
+- **Format** : [**Antigravity**](https://antigravity.google/docs/ide/hooks/)
+- **Pour aller plus loin** :
+  [events](https://antigravity.google/docs/ide/hooks/#supported-events),
+  [matchers](https://antigravity.google/docs/ide/hooks/#matcher)
+
+```tree
+repository/
+└── .agents/
+    └── hooks.json
+~/.gemini/config/
+└── hooks.json
+```
+
+```json
+{
+    "PreToolUse": [
+        {
+            "matcher": "run_command",
+            "hooks": [
+                {
+                    "type": "command",
+                    "command": "./scripts/lint-check.sh"
+                }
+            ]
+        }
+    ]
+}
+```
+{{< /tab >}}
+
+{{< tab name="Devin" >}}
+- **Format** : [**Devin**](https://docs.devin.ai/cli/extensibility/hooks/overview)
+- **Pour aller plus loin** :
+  [events](https://docs.devin.ai/cli/extensibility/hooks/overview#hook-events)
+
+```tree
+repository/
+└── .devin/
+    └── hooks.v1.json
+~/.config/devin/
+└── config.json
+~/path/to/locally/installed/plugins/<name>/
+└── hooks.json
+```
+
+```json
+{
+    "PreToolUse": [
+        {
+            "matcher": "exec",
+            "hooks": [
+                {
+                    "type": "command",
+                    "command": "./scripts/lint-check.sh",
+                    "timeout": 10
+                }
+            ]
+        }
+    ]
+}
+```
+{{< /tab >}}
+
+{{< tab name="Hermes Agent" >}}
+- **Format** : [**Hermes Agent**](https://hermes-agent.nousresearch.com/docs/user-guide/features/hooks)
+- **Pour aller plus loin** :
+  [events](https://hermes-agent.nousresearch.com/docs/user-guide/features/hooks#available-events)
+
+```tree
+<plugin>/
+├── plugin.yaml
+└── __init__.py
+```
+
+```python
+def register(ctx):
+    ctx.register_hook("pre_tool_call", my_pre_tool_call)
+    ctx.register_hook("post_tool_call", my_post_tool_call)
+    ctx.register_hook("on_session_start", my_on_session_start)
+    ctx.register_hook("pre_gateway_dispatch", my_pre_gateway_dispatch)
+```
 {{< /tab >}}
 
 {{< /tabs >}}

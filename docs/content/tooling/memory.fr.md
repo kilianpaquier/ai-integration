@@ -26,7 +26,7 @@ et résumer ces informations lorsque nécessaire.
 
 ```sh
 <npm|pnpm|bun|yarn> install -g node-gyp cavemem
-# use '--ide' to install hooks and MCP server for a specific agent
+# use '--ide' to install hooks and MCP server for a specific agent runtime
 cavemem install
 ```
 {{< /tab >}}

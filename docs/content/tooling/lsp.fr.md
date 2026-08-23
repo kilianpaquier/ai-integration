@@ -3,12 +3,12 @@ description: Donnez aux agents de l'intelligence de code (définitions, référe
 title: Utilisez des serveurs LSP
 ---
 
-Les serveurs [**Language Server Protocol**](/components/lsp) peuvent être branchés aux agents pour réduire le code invalide
+Les serveurs [**Language Server Protocol**](/components/lsp) peuvent être branchés aux agent *runtimes* pour réduire le code invalide
 et faciliter la navigation, en complément de [l'indexation de bases de code](/tooling/code-indexing).
 
 > [!warning]
 > Ni les [plugins](/share/plugin) ni les [packages](/share/package) ne fournissent les serveurs eux-mêmes,
-> seulement la colle permettant à un agent de les utiliser.
+> seulement la colle permettant à un agent *runtime* de les utiliser.
 
 ## Un partageur parmi d'autres
 

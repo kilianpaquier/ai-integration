@@ -43,10 +43,13 @@ npx skills add kilianpaquier/ai-integration -g
 
 ## Compatibility table
 
-| Agent                | Manifest                     |
-| -------------------- | ---------------------------- |
-| **APM**              | `apm.yml`                    |
-| **Claude Code**      | `.claude-plugin/plugin.json` |
-| **Codex**            | `.claude-plugin/plugin.json` |
-| **Copilot**          | `plugin.json`                |
-| **Cursor**           | `plugin.json`                |
+| Agent Runtime    | Manifest                     |
+| ---------------- | ---------------------------- |
+| **APM**          | `apm.yml`                    |
+| **Claude Code**  | `.claude-plugin/plugin.json` |
+| **Codex**        | `.claude-plugin/plugin.json` |
+| **Copilot**      | `plugin.json`                |
+| **Cursor**       | `plugin.json`                |
+| **Antigravity**  | `plugin.json`                |
+| **Devin**        | `.claude-plugin/plugin.json` |
+| **Hermes Agent** | `plugin.yaml`, `__init__.py` |

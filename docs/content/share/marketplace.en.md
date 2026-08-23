@@ -12,7 +12,7 @@ remote references to other plugins (useful to group plugins within one *to rule 
 ## Structure
 
 A marketplace is identified by its `marketplace.json` (index) referencing one or more plugins.
-The place of a marketplace index depends on the target agent(s).
+The place of a marketplace index depends on the target agent runtime(s).
 
 {{< tabs >}}
 

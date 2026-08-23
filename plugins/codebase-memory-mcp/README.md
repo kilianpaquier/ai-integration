@@ -16,12 +16,12 @@ read exact snippets and query the architecture.
 
 Hooks route the agent through the graph, all of them delegating to `codebase-memory-mcp hook-augment` (non-blocking).
 
-| Event                             | Output                                                           | Agents                      |
-| --------------------------------- | ---------------------------------------------------------------- | --------------------------- |
-| `PreToolUse`, before grep or glob | the graph symbols matching what it searched                      | Claude Code, Codex          |
-| `PostToolUse`, after a file read  | the parts of that file the graph does not know                   | Claude Code, Codex          |
-| `SessionStart`                    | whether the repo is indexed, and to search the graph before grep | Claude Code, Codex, Copilot |
-| `SubagentStart`                   | the same, for every subagent spawned                             | Claude Code, Codex, Copilot |
+| Event                             | Output                                                           | Agent Runtimes                            |
+| --------------------------------- | ---------------------------------------------------------------- | ----------------------------------------- |
+| `PreToolUse`, before grep or glob | the graph symbols matching what it searched                      | Claude Code, Codex, Devin                 |
+| `PostToolUse`, after a file read  | the parts of that file the graph does not know                   | Claude Code, Codex, Devin                 |
+| `SessionStart`                    | whether the repo is indexed, and to search the graph before grep | Claude Code, Codex, Copilot, Hermes Agent |
+| `SubagentStart`                   | the same, for every subagent spawned                             | Claude Code, Codex, Copilot               |
 
 ## Skills
 
@@ -56,9 +56,12 @@ apm install codebase-memory-mcp@one-for-all -g
 
 ## Compatibility table
 
-| Agent           | Manifest                     | Hook configuration                    |
-| --------------- | ---------------------------- | ------------------------------------- |
-| **APM**         | `apm.yml`                    | `.apm/hooks/hooks.json`               |
-| **Claude Code** | `.claude-plugin/plugin.json` | `hooks/claude.json`                   |
-| **Codex**       | `.claude-plugin/plugin.json` | `hooks/claude.json`                   |
-| **Copilot**     | `plugin.json`                | `com.github.copilot/hooks/hooks.json` |
+| Agent Runtime    | Manifest                     | MCP configuration                             | Hook configuration                    |
+| ---------------- | ---------------------------- | --------------------------------------------- | ------------------------------------- |
+| **APM**          | `apm.yml`                    | `apm.yml`                                     | `.apm/hooks/hooks.json`               |
+| **Claude Code**  | `.claude-plugin/plugin.json` | `mcp.json`                                    | `hooks/claude.json`                   |
+| **Codex**        | `.claude-plugin/plugin.json` | `mcp.json`                                    | `hooks/claude.json`                   |
+| **Copilot**      | `plugin.json`                | `mcp.json`                                    | `com.github.copilot/hooks/hooks.json` |
+| **Antigravity**  | `plugin.json`                | `mcp_config.json`                             | -                                     |
+| **Devin**        | `.claude-plugin/plugin.json` | `mcp.json`                                    | -                                     |
+| **Hermes Agent** | `plugin.yaml`                | manual, `~/.hermes/config.yaml` (not bundled) | `__init__.py`                         |

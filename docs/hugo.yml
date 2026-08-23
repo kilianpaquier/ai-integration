@@ -47,6 +47,9 @@ params:
   #   message: |
   #     Some news with emotes handled (or not)
   dateFormat: "January 2, 2006"
+  description: >-
+    Simple and humble documentation explaining AI components, how to properly share them, some
+    optimization recommendations and comparison examples to better switch to other agent runtimes when needed.
   displayUpdatedAuthor: true
   displayUpdatedDate: true
   editURL:
@@ -79,5 +82,5 @@ params:
 
 outputs:
   home: [html, llms]
-  page: [html, llms, markdown]
-  section: [html, llms, markdown]
+  page: [html, markdown]
+  section: [html, markdown]

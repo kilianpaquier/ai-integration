@@ -13,13 +13,13 @@ des références distantes vers d'autres plugins (utile pour regrouper des plugi
 ## Structure
 
 Un marketplace est identifié par son `marketplace.json` (index) référençant un ou plusieurs plugins.
-L'emplacement de l'index d'un marketplace dépend du (ou des) agent(s) cible(s).
+L'emplacement de l'index d'un marketplace dépend du (ou des) agent *runtime(s)* cible(s).
 
 {{< tabs >}}
 
 {{< tab name="Claude Code" >}}
 - **Format** : [**Claude Code**](https://code.claude.com/docs/en/plugin-marketplaces)
-- **Lu par** : **Codex**, **Copilot** (partiellement)
+- **Aussi lu par** : **Codex**, **Copilot** (partiellement)
 
 ```tree
 repository/

@@ -3,7 +3,7 @@ title: MCP
 ---
 
 When in need of documentation regarding tools, language features, interactions with platforms (**Jira**, **GitHub**, **GitLab** and many more), etc.,
-an agent will either use its training information, or run searches or fetches (through tools, `curl`, `wget`, etc.).
+an agent runtime will either use its training information, or run searches or fetches (through tools, `curl`, `wget`, etc.).
 
 Fetches and searches return a variable amount of information that will probably not be useful for the session going forward, flooding the context.
 
@@ -123,6 +123,73 @@ args = ["-y", "@upstash/context7-mcp"]
 name = "my_http_server"
 transport = "http"
 url = "http://localhost:8000"
+```
+{{< /tab >}}
+
+{{< tab name="Antigravity" >}}
+- **Format**: [**Antigravity**](https://antigravity.google/docs/cli/mcp/)
+
+```tree
+repository/
+└── .agents/
+    └── mcp_config.json
+~/.gemini/config/
+└── mcp_config.json
+~/.gemini/antigravity-cli/plugins/<plugin>/
+└── mcp_config.json
+```
+
+```json
+{
+    "mcpServers": {
+        "context7": {
+            "command": "npx",
+            "args": ["-y", "@upstash/context7-mcp"]
+        }
+    }
+}
+```
+{{< /tab >}}
+
+{{< tab name="Devin" >}}
+- **Format**: [**Devin**](https://docs.devin.ai/cli/extensibility/mcp/configuration)
+
+```tree
+repository/
+└── .devin/
+    ├── mcp_config.json
+    └── mcp_config.local.json
+~/.config/devin/
+└── mcp_config.json
+~/path/to/locally/installed/plugins/<name>/
+└── mcp.json
+```
+
+```json
+{
+    "mcpServers": {
+        "context7": {
+            "command": "npx",
+            "args": ["-y", "@upstash/context7-mcp"]
+        }
+    }
+}
+```
+{{< /tab >}}
+
+{{< tab name="Hermes Agent" >}}
+- **Format**: [**Hermes Agent**](https://hermes-agent.nousresearch.com/docs/reference/mcp-config-reference)
+
+```tree
+~/.hermes/
+└── config.yaml
+```
+
+```yaml
+mcp_servers:
+  context7:
+    command: npx
+    args: ["-y", "@upstash/context7-mcp"]
 ```
 {{< /tab >}}
 

@@ -1,0 +1,5 @@
+name: schema-converter
+version: 0.2.0
+description: A skill suite to transform JSON schemas into their language equivalents
+license: MIT
+homepage: https://gitlab.com/kilianpaquier/ai-integration/-/tree/main/plugins/schema-converter

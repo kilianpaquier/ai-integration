@@ -114,4 +114,70 @@ system_prompt_id = "reviewer" # must point to a valid prompts/<id>.md
 ```
 {{< /tab >}}
 
+{{< tab name="Antigravity" >}}
+- **Format**: [**Antigravity**](https://antigravity.google/docs/subagents/)
+
+```tree
+repository/
+└── .agents/
+    └── agents/
+        ├── reviewer.md
+        └── developer/
+            └── agent.md
+~/.gemini/config/
+└── agents/
+    ├── reviewer.md
+    └── developer/
+        └── agent.md
+~/.gemini/antigravity-cli/plugins/<plugin>/
+└── agents/
+    └── reviewer.md
+```
+
+```yaml
+---
+name: reviewer
+description: What this agent specializes in and when it should be invoked
+subagent: true
+mainAgent: false
+model: pro # "inherit", "flash", or "pro"
+commandExecutionPolicy: sandbox # "off", "auto", "eager", or "sandbox"
+---
+
+Detailed system prompt for the agent describing its role, expertise and behavior.
+```
+{{< /tab >}}
+
+{{< tab name="Devin" >}}
+- **Format**: [**Devin**](https://docs.devin.ai/cli/subagents)
+
+```tree
+repository/
+└── .devin/
+    └── agents/
+        ├── reviewer.md
+        └── developer/
+            └── AGENT.md
+~/.config/devin/
+└── agents/
+    ├── reviewer.md
+    └── developer/
+        └── AGENT.md
+~/path/to/locally/installed/plugins/<name>/
+└── agents/
+    └── reviewer.md
+```
+
+```yaml
+---
+name: reviewer
+description: What this agent specializes in and when it should be invoked
+model: sonnet
+allowed-tools: [glob, grep, read]
+---
+
+Detailed system prompt for the agent describing its role, expertise and behavior.
+```
+{{< /tab >}}
+
 {{< /tabs >}}

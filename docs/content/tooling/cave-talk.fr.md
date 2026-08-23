@@ -6,15 +6,15 @@ title: Parler hommes des cavernes
 Les agents ont tendance à écrire beaucoup, du contexte généré par les sous-agents aux requêtes/réponses MCP
 en passant par les sorties affichées aux utilisateurs, ce qui augmente la consommation de tokens.
 
-Pour contrer cela, il existe la stack [caveman](https://github.com/JuliusBrussee/caveman) qui agit à différents endroits
-dans le runtime des agents.
+La stack [caveman](https://github.com/JuliusBrussee/caveman) contre cela en agissant à différents endroits
+au sein des agent *runtimes*.
 
 {{< tabs >}}
 
 {{< tab name="Caveman" >}}
 > [!warning]
 > L'activation des hooks est limitée à **Claude Code** par défaut,
-> mais un [hook quasi-mirroir](/interoperability/ai-integration/caveman) peut être utilisé pour élargir la compatibilité entre agents.
+> mais un [hook quasi-mirroir](/interoperability/ai-integration/caveman) peut être utilisé pour élargir la compatibilité entre agent *runtimes*.
 
 - **Upstream** : <https://github.com/JuliusBrussee/caveman>
 - **Description** : une suite de *skills* pour des sorties compressées, principalement pour la sortie du chat, la documentation,
@@ -64,11 +64,11 @@ apm install JuliusBrussee/cavekit -g
 
 {{< tab name="Caveman Code" >}}
 > [!note]
-> Comme ce n'est pas un composant partageable ou pluggable aux agents grand public,
+> Comme ce n'est pas un composant partageable ou pluggable aux agent *runtimes* grand public,
 > cette documentation n'entrera pas dans les détails à son sujet.
 
 - **Upstream** : <https://github.com/JuliusBrussee/caveman-code>
-- **Description** : un agent complet à utiliser à la place de **Claude Code**, **Copilot**, etc.,
+- **Description** : un agent *runtime* complet à utiliser à la place de **Claude Code**, **Copilot**, etc.,
   incluant toute la stack caveman, et utilisant les abonnements pour se connecter aux LLMs.
 {{< /tab >}}
 

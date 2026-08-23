@@ -10,7 +10,7 @@ ou autre éditeur de code.
 Lorsqu'un agent édite du code, il ne voit qu'un fichier et prédit comment il doit être écrit en se basant sur sa compréhension
 du format (par exemple un `.java`, etc.), des fichiers du projet (car l'agent les a lus), et de la demande de l'utilisateur.
 
-Pour contrer un potentiel code invalide et faciliter la navigation dans le code, les LSP peuvent être connectés aux agents,
+Pour contrer un potentiel code invalide et faciliter la navigation dans le code, les LSP peuvent être connectés aux agent *runtimes*,
 et comme les [MCP](/components/mcp), ils offrent l'accès à des outils, par exemple pour vérifier que le code compile
 ou trouver ce qui appelle une fonction.
 

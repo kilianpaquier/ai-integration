@@ -3,7 +3,7 @@ title: MCP
 ---
 
 Lorsqu'il a besoin de documentation concernant des outils, des fonctionnalités de langage, des interactions avec des plateformes
-(**Jira**, **GitHub**, **GitLab** et bien d'autres), etc., un agent utilisera soit ses informations d'entraînement,
+(**Jira**, **GitHub**, **GitLab** et bien d'autres), etc., un agent *runtime* utilisera soit ses informations d'entraînement,
 lançera des recherches ou exécutera des requêtes (via des outils, `curl`, `wget`, etc.).
 
 Les requêtes et recherches renvoient une quantité variable d'informations qui ne seront probablement pas utiles pour la suite
@@ -125,6 +125,73 @@ args = ["-y", "@upstash/context7-mcp"]
 name = "my_http_server"
 transport = "http"
 url = "http://localhost:8000"
+```
+{{< /tab >}}
+
+{{< tab name="Antigravity" >}}
+- **Format** : [**Antigravity**](https://antigravity.google/docs/cli/mcp/)
+
+```tree
+repository/
+└── .agents/
+    └── mcp_config.json
+~/.gemini/config/
+└── mcp_config.json
+~/.gemini/antigravity-cli/plugins/<plugin>/
+└── mcp_config.json
+```
+
+```json
+{
+    "mcpServers": {
+        "context7": {
+            "command": "npx",
+            "args": ["-y", "@upstash/context7-mcp"]
+        }
+    }
+}
+```
+{{< /tab >}}
+
+{{< tab name="Devin" >}}
+- **Format** : [**Devin**](https://docs.devin.ai/cli/extensibility/mcp/configuration)
+
+```tree
+repository/
+└── .devin/
+    ├── mcp_config.json
+    └── mcp_config.local.json
+~/.config/devin/
+└── mcp_config.json
+~/path/to/locally/installed/plugins/<name>/
+└── mcp.json
+```
+
+```json
+{
+    "mcpServers": {
+        "context7": {
+            "command": "npx",
+            "args": ["-y", "@upstash/context7-mcp"]
+        }
+    }
+}
+```
+{{< /tab >}}
+
+{{< tab name="Hermes Agent" >}}
+- **Format** : [**Hermes Agent**](https://hermes-agent.nousresearch.com/docs/reference/mcp-config-reference)
+
+```tree
+~/.hermes/
+└── config.yaml
+```
+
+```yaml
+mcp_servers:
+  context7:
+    command: npx
+    args: ["-y", "@upstash/context7-mcp"]
 ```
 {{< /tab >}}
 

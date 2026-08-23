@@ -13,7 +13,7 @@ to be restricted to either one of them.
 
 {{< tab name="Agent Skills" >}}
 > [!note]
-> Skills must still be placed under the right agent directory in this format (e.g. `.agents`, `.claude`, `.vibe`).
+> Skills must still be placed under the right agent runtime directory in this format (e.g. `.agents`, `.claude`, `.vibe`, `.hermes`).
 
 - **Format**:
   [**Agent Skills**](https://agentskills.io/specification),
@@ -164,6 +164,86 @@ repository/
 name: schema-to-go
 description: A skill that converts JSON Schema to Go struct definitions.
 # many other frontmatter properties
+---
+
+Skill instructions body (the prompt the agent follows when invoked).
+```
+{{< /tab >}}
+
+{{< tab name="Antigravity" >}}
+- **Format**: [**Antigravity**](https://antigravity.google/docs/skills/)
+
+```tree
+repository/
+└── .agents/
+    └── skills/
+        └── skill-name/
+            └── SKILL.md
+~/.gemini/config/
+└── skills/
+    └── skill-name/
+        └── SKILL.md
+```
+
+```yaml
+---
+name: schema-to-go
+description: A skill that converts JSON Schema to Go struct definitions.
+---
+
+Skill instructions body (the prompt the agent follows when invoked).
+```
+{{< /tab >}}
+
+{{< tab name="Devin" >}}
+- **Format**: [**Devin**](https://docs.devin.ai/product-guides/skills)
+
+```tree
+repository/
+└── .agents/
+    └── skills/
+        └── skill-name/
+            └── SKILL.md
+<plugin>/
+└── skills/
+    └── skill-name/
+        └── SKILL.md
+```
+
+```yaml
+---
+name: schema-to-go
+description: A skill that converts JSON Schema to Go struct definitions.
+---
+
+Skill instructions body (the prompt the agent follows when invoked).
+```
+{{< /tab >}}
+
+{{< tab name="Hermes Agent" >}}
+- **Format**: [**Hermes Agent**](https://hermes-agent.nousresearch.com/docs/user-guide/features/skills)
+
+```tree
+repository/
+├── .hermes/
+│   └── skills/
+│       └── skill-name/
+│           └── SKILL.md
+└── .agents/
+    └── skills/
+        └── skill-name/
+            └── SKILL.md
+~/.hermes/
+└── skills/
+    └── category/
+        └── skill-name/
+            └── SKILL.md
+```
+
+```yaml
+---
+name: schema-to-go
+description: A skill that converts JSON Schema to Go struct definitions.
 ---
 
 Skill instructions body (the prompt the agent follows when invoked).

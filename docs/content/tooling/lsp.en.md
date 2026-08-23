@@ -3,12 +3,12 @@ description: Give agents code intelligence (definitions, references, diagnostics
 title: Use LSP servers
 ---
 
-[**Language Server Protocol**](/components/lsp) servers can be plugged into agents to reduce invalid code
+[**Language Server Protocol**](/components/lsp) servers can be plugged into agent runtimes to reduce invalid code
 and ease navigation, complementing [codebase indexing](/tooling/code-indexing).
 
 > [!warning]
 > Neither [plugins](/share/plugin) or [packages](/share/package) ship servers themselves
-> but only the glue for an agent to use them.
+> but only the glue for an agent runtime to use them.
 
 ## One sharer among others
 

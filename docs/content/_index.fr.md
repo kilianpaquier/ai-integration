@@ -6,7 +6,7 @@ type: docs
 ---
 
 Documentation simple et humble expliquant les composants IA, comment bien les partager, quelques recommandations d'optimisation et
-des exemples de comparaison pour mieux basculer vers d'autres agents si besoin (ex. résidence des données).
+des exemples de comparaison pour mieux basculer vers d'autres agent *runtimes* si besoin (ex. résidence des données).
 
 > [!note]
 > Cette documentation n'est pas exhaustive et évolue selon les investigations, découvertes, préférences et travaux d'optimisation.

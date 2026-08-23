@@ -7,16 +7,16 @@ weight: 50
 L'[**Agent Package Manager**](https://github.com/microsoft/apm) (APM) installe des [packages](/share/package),
 des [plugins](/share/plugin) (directement) ou via des [marketplaces](/share/marketplace).
 
-Contrairement aux plugins installés nativement par chaque agent, le CLI APM se charge de placer les composants au bon endroit
-pour chaque agent, afin qu'ils puissent être utilisés sans configuration supplémentaire (`.agents`, `.claude`, `.copilot`, `.github`, etc.),
-élargissant ainsi la compatibilité entre agents.
+Contrairement aux plugins installés nativement par chaque agent *runtime*, le CLI APM se charge de placer les composants au bon endroit
+pour chaque agent *runtime*, afin qu'ils puissent être utilisés sans configuration supplémentaire (`.agents`, `.claude`, `.copilot`, `.github`, etc.),
+élargissant ainsi la compatibilité entre agent *runtimes*.
 
 ## Utilisation
 
 L'installation peut se faire au sein de dépôts (pour avoir des dépendances ou plugins limités à un dépôt)
 ou à l'échelle utilisateur. La gestion de la portée se fait via le flag `--global` / `-g`.
 
-Pour installer des composants pour des agents spécifiques uniquement,
+Pour installer des composants pour des agent *runtimes* spécifiques uniquement,
 utilisez la propriété [`target(s)`](https://microsoft.github.io/apm/reference/targets-matrix/).
 
 {{< tabs >}}

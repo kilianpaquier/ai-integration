@@ -3,7 +3,7 @@ title: Tooling
 weight: 30
 ---
 
-Tool suggestions to improve token consumption and agent behaviors.
+Tool suggestions to improve token consumption and agent behavior.
 
 ## Explore
 

@@ -6,7 +6,7 @@ type: docs
 ---
 
 Simple and humble documentation explaining AI components, how to properly share them, some optimization recommendations and
-comparison examples to better switch to other agents when needed (e.g. data residency).
+comparison examples to better switch to other agent runtimes when needed (e.g. data residency).
 
 > [!note]
 > This documentation is non-exhaustive and evolves based on investigation, findings, preferences, and optimization work.
