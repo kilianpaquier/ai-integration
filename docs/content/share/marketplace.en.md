@@ -77,11 +77,16 @@ claude
 
 ```sh
 claude plugin marketplace add <repository>
-claude plugin install <plugin-name>@<marketplace-name>
+claude plugin install <plugin-name>@<marketplace-name> [--scope user]
+claude plugin install <plugin-name>@<marketplace-name> --scope local
+claude plugin install <plugin-name>@<marketplace-name> --scope project
 claude plugin uninstall <plugin-name>@<marketplace-name>
 ```
 
-Plugin installation and tracing (which plugins, which marketplaces) is managed under `~/.claude/plugins`.
+Plugin installation and tracing (which plugins, which marketplaces) is managed under the following directories:
+- `~/.claude/plugins` (user scope, default): available to oneself, across every project.
+- `.claude/settings.json` (project scope): available to every collaborator on this repository, once committed.
+- `.claude/settings.local.json` (local scope): available to oneself only, in this repository.
 {{< /tab >}}
 
 {{< tab name="Codex" >}}
@@ -102,6 +107,36 @@ copilot plugin uninstall <plugin-name>
 ```
 
 Plugin installation and tracing (which plugins, which marketplaces) is managed under `~/.copilot/installed-plugins`.
+{{< /tab >}}
+
+{{< tab name="Antigravity" >}}
+```sh
+agy plugin install <url>
+agy plugin install /path/to/local/plugin
+agy plugin uninstall <plugin-name>
+```
+{{< /tab >}}
+
+{{< tab name="Devin" >}}
+```sh
+devin plugins install <owner>/<repo>
+devin plugins install <url>
+devin plugins install /path/to/local/plugin
+devin plugins remove <plugin-name>
+```
+{{< /tab >}}
+
+{{< tab name="Hermes Agent" >}}
+```sh
+hermes plugins search <term>
+hermes plugins install <plugin-name>
+hermes plugins install <owner>/<repo> --enable
+hermes plugins remove <plugin-name>
+```
+
+Plugin installation and tracing (which plugins) is managed under the following directories:
+- `~/.hermes/plugins/` (user scope, default): available to oneself, across every project.
+- `.hermes/plugins/` (project scope): available to every collaborator on this repository, once committed.
 {{< /tab >}}
 
 {{< /tabs >}}

@@ -78,11 +78,16 @@ claude
 
 ```sh
 claude plugin marketplace add <repository>
-claude plugin install <plugin-name>@<marketplace-name>
+claude plugin install <plugin-name>@<marketplace-name> [--scope user]
+claude plugin install <plugin-name>@<marketplace-name> --scope local
+claude plugin install <plugin-name>@<marketplace-name> --scope project
 claude plugin uninstall <plugin-name>@<marketplace-name>
 ```
 
-L'installation des plugins et leur suivi (quels plugins, quels marketplaces) sont gérés sous `~/.claude/plugins`.
+L'installation des plugins et leur suivi (quels plugins, quels marketplaces) sont gérés sous les emplacements suivants :
+- `~/.claude/plugins` (niveau utilisateur, par défaut) : disponible pour vous-même, sur tous les projets.
+- `.claude/settings.json` (niveau projet) : disponible pour chaque collaborateur de ce dépôt, une fois commité.
+- `.claude/settings.local.json` (niveau local) : disponible pour vous-même uniquement, sur ce dépôt.
 {{< /tab >}}
 
 {{< tab name="Codex" >}}
@@ -103,6 +108,35 @@ copilot plugin uninstall <plugin-name>
 ```
 
 L'installation des plugins et leur suivi (quels plugins, quels marketplaces) sont gérés sous `~/.copilot/installed-plugins`.
+{{< /tab >}}
+
+{{< tab name="Antigravity" >}}
+```sh
+agy plugin install /path/to/local/plugin
+agy plugin uninstall <plugin-name>
+```
+{{< /tab >}}
+
+{{< tab name="Devin" >}}
+```sh
+devin plugins install <owner>/<repo>
+devin plugins install <git-url>
+devin plugins install ./path/to/local/plugin
+devin plugins remove <plugin-name>
+```
+{{< /tab >}}
+
+{{< tab name="Hermes Agent" >}}
+```sh
+hermes plugins search <term>
+hermes plugins install <plugin-name>
+hermes plugins install <owner>/<repo> --enable
+hermes plugins remove <plugin-name>
+```
+
+L'installation des plugins et leur suivi (quels plugins) sont gérés sous les emplacements suivants :
+- `~/.hermes/plugins/` (niveau utilisateur, par défaut) : disponible pour vous-même, sur tous les projets.
+- `.hermes/plugins/` (niveau projet) : disponible pour chaque collaborateur de ce dépôt, une fois commité.
 {{< /tab >}}
 
 {{< /tabs >}}
