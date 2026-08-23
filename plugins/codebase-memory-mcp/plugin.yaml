@@ -1,5 +1,5 @@
 name: codebase-memory-mcp
-version: 0.1.0
+version: 0.2.0
 description: High-performance code intelligence MCP server. Indexes codebases into a persistent knowledge graph.
 license: MIT
 homepage: https://gitlab.com/kilianpaquier/ai-integration/-/tree/main/plugins/codebase-memory-mcp
