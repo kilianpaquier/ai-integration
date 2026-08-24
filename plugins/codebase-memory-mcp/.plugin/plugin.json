@@ -7,6 +7,6 @@
     "repository": "https://github.com/DeusData/codebase-memory-mcp",
     "homepage": "https://gitlab.com/kilianpaquier/ai-integration/-/tree/main/plugins/codebase-memory-mcp",
 
-    "hooks": "com.github.copilot/hooks/hooks.json",
+    "hooks": "./com.github.copilot/hooks/hooks.json",
     "mcpServers": "./mcp.json"
 }

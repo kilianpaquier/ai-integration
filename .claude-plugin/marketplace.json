@@ -15,7 +15,7 @@
     {
       "name": "protected-paths",
       "description": "Stop your agent from accessing unwanted or sensitive directories",
-      "version": "0.2.0",
+      "version": "0.3.0",
       "category": "hooks",
       "source": "./plugins/protected-paths"
     },
