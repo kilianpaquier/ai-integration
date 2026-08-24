@@ -3,6 +3,8 @@
 import json
 import os
 import subprocess
+
+from pathlib import Path
 from typing import Any
 
 def _pre_llm_call(ctx: Any, **kwargs: Any) -> dict[str, str] | None:
@@ -21,3 +23,9 @@ def _pre_llm_call(ctx: Any, **kwargs: Any) -> dict[str, str] | None:
 
 def register(ctx: Any) -> None:
     ctx.register_hook("pre_llm_call", _pre_llm_call)
+
+    skills_dir = Path(__file__).parent / "skills"
+    for child in sorted(skills_dir.iterdir()):
+        skill_md = child / "SKILL.md"
+        if child.is_dir() and skill_md.exists():
+            ctx.register_skill(child.name, skill_md)
