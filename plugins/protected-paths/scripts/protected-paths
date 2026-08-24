@@ -137,16 +137,15 @@ const denyReasonFor = (resolved) => {
     return null
 }
 
-// deny prints an explanatory message on stderr and a deny decision on stdout, then exits 0.
+// deny with a reason the tool call since it touches protected paths.
 //
-// The JSON body merges every agent's own deny shape:
-//  - Claude/Codex's hookSpecificOutput wrapper
-//  - Copilot/Codex's flat permissionDecision
-//  - Cursor's permission and Gemini's decision
+// PreToolUse output format:
+//  - Claude Code, Codex: hookSpecificOutput wrapper
+//  - Copilot, Codex: flat permissionDecision
+//  - Cursor: flat permission
+//  - Gemini: flat decision
 //
-// Exiting with an error code alone isn't enough for some of them to block the tool call.
-//
-// Unknown keys are ignored by each agent, so a single body covers them all.
+// Unknown keys are ignored by each agent, so one body covers them all.
 const deny = (reason) => {
     const body = JSON.stringify({
         action: "block",
