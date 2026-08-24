@@ -3,7 +3,7 @@
 
     "name": "codebase-memory-mcp",
     "description": "High-performance code intelligence MCP server. Indexes codebases into a persistent knowledge graph.",
-    "version": "0.3.0",
+    "version": "0.4.0",
     "license": "MIT",
 
     "repository": "https://github.com/DeusData/codebase-memory-mcp",
