@@ -1,26 +1,19 @@
 {
+    "version": 1,
     "description": "Augment session and subagent starts with codebase-memory-mcp graph context",
     "hooks": {
         "SessionStart": [
             {
-                "hooks": [
-                    {
-                        "type": "command",
-                        "command": "codebase-memory-mcp hook-augment --event SessionStart --dialect copilot",
-                        "timeout": 5
-                    }
-                ]
+                "type": "command",
+                "command": "codebase-memory-mcp hook-augment --event SessionStart --dialect copilot",
+                "timeoutSec": 5
             }
         ],
         "SubagentStart": [
             {
-                "hooks": [
-                    {
-                        "type": "command",
-                        "command": "codebase-memory-mcp hook-augment --event SubagentStart --dialect copilot",
-                        "timeout": 5
-                    }
-                ]
+                "type": "command",
+                "command": "codebase-memory-mcp hook-augment --event SubagentStart --dialect copilot",
+                "timeoutSec": 5
             }
         ]
     }
