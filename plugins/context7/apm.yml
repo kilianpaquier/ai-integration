@@ -1,0 +1,18 @@
+# yaml-language-server: $schema=https://microsoft.github.io/apm/specs/schemas/manifest-v0.1.schema.json
+
+name: context7
+version: 0.1.0
+
+author: Kilian PAQUIER
+description: Up-to-date code documentation for LLMs and AI code editors
+license: MIT
+
+dependencies:
+  mcp:
+    - name: context7
+      registry: "false"
+      transport: stdio
+      command: context7-mcp
+      args: []
+
+# targets: [claude, codex, copilot, cursor, gemini, kiro, opencode, windsurf]

@@ -1,0 +1,12 @@
+{
+    "name": "context7",
+    "description": "Up-to-date code documentation for LLMs and AI code editors",
+    "version": "0.1.0",
+    "license": "MIT",
+
+    "repository": "https://github.com/upstash/context7",
+    "homepage": "https://gitlab.com/kilianpaquier/ai-integration/-/tree/main/plugins/context7",
+
+    "hooks": "./com.github.copilot/hooks/hooks.json",
+    "mcpServers": "./mcp.json"
+}

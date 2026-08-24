@@ -1,0 +1,38 @@
+{
+    "description": "Remind the agent to prefer Context7 over training data or a raw web search for library/framework/SDK/API docs",
+    "hooks": {
+        "PreToolUse": [
+            {
+                "matcher": "WebFetch|WebSearch",
+                "hooks": [
+                    {
+                        "type": "command",
+                        "command": "node ${PLUGIN_ROOT}/scripts/context7-hint PreToolUse"
+                    }
+                ]
+            }
+        ],
+        "SessionStart": [
+            {
+                "matcher": "startup|resume|clear|compact",
+                "hooks": [
+                    {
+                        "type": "command",
+                        "command": "node ${PLUGIN_ROOT}/scripts/context7-hint SessionStart"
+                    }
+                ]
+            }
+        ],
+        "SubagentStart": [
+            {
+                "matcher": "*",
+                "hooks": [
+                    {
+                        "type": "command",
+                        "command": "node ${PLUGIN_ROOT}/scripts/context7-hint SubagentStart"
+                    }
+                ]
+            }
+        ]
+    }
+}

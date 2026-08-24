@@ -23,6 +23,10 @@ marketplace:
       name: codebase-memory-mcp
       source: ./plugins/codebase-memory-mcp
 
+    - category: hybrid
+      name: context7
+      source: ./plugins/context7
+
     - category: hooks
       name: protected-paths
       source: ./plugins/protected-paths

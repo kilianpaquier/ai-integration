@@ -52,3 +52,9 @@ out="$dir/../../docs/content/interoperability/ai-integration/schema-converter.en
 sync_tab "$dir/../../plugins/schema-converter/README.md" "$out"
 out="$dir/../../docs/content/interoperability/ai-integration/schema-converter.fr.md"
 sync_tab "$dir/../../plugins/schema-converter/README.md" "$out"
+
+# context7 synchronization in doc
+out="$dir/../../docs/content/interoperability/ai-integration/context7.en.md"
+sync_tab "$dir/../../plugins/context7/README.md" "$out"
+out="$dir/../../docs/content/interoperability/ai-integration/context7.fr.md"
+sync_tab "$dir/../../plugins/context7/README.md" "$out"

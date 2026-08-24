@@ -21,3 +21,19 @@ rm -f "$codebase_memory_mcp_cli_c"
 
 # upstream frontmatter description contains an unquoted ": " (invalid YAML), quote it
 sed -i -e '3{/^description: "/!s/^description: \(.*\)$/description: "\1"/}' "$codebase_memory_mcp_skill_dest"
+
+################################################################
+#
+# Context7 skill sync
+#
+################################################################
+
+# renovate: datasource=git-refs packageName=https://github.com/upstash/context7 depName=context7
+context7_version=c3248289c2ad431a9f34849a3f3d047fc4400373 # master
+
+context7_mcp_skill_dest="$dir/../../plugins/context7/.apm/skills/context7-mcp/SKILL.md"
+"$dir/helpers/extract-git.sh" https://github.com/upstash/context7.git skills/context7-mcp/SKILL.md "$context7_mcp_skill_dest" "$context7_version"
+
+# only sync docs part to keep the SKILL focused on docs search and not setup or skills installation
+context7_cli_docs_dest="$dir/../../plugins/context7/.apm/skills/context7-cli/references/docs.md"
+"$dir/helpers/extract-git.sh" https://github.com/upstash/context7.git skills/context7-cli/references/docs.md "$context7_cli_docs_dest" "$context7_version"

@@ -13,6 +13,13 @@
       "source": "./plugins/codebase-memory-mcp"
     },
     {
+      "name": "context7",
+      "description": "Up-to-date code documentation for LLMs and AI code editors",
+      "version": "0.1.0",
+      "category": "hybrid",
+      "source": "./plugins/context7"
+    },
+    {
       "name": "protected-paths",
       "description": "Stop your agent from accessing unwanted or sensitive directories",
       "version": "0.3.0",

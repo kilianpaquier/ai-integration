@@ -50,6 +50,7 @@ This repository follows various standards to structure its components:
 | Name                                               | Description                                                                                         |
 | -------------------------------------------------- | --------------------------------------------------------------------------------------------------- |
 | [codebase-memory-mcp](plugins/codebase-memory-mcp) | High-performance code intelligence MCP server. Indexes codebases into a persistent knowledge graph. |
+| [context7](plugins/context7)                       | Up-to-date code documentation for LLMs and AI code editors.                                         |
 
 ### Hooks
 
