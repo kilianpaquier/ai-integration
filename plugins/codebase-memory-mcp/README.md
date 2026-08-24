@@ -61,7 +61,7 @@ apm install codebase-memory-mcp@one-for-all -g
 | **APM**          | `apm.yml`                    | `apm.yml`                                     | `.apm/hooks/hooks.json`               |
 | **Claude Code**  | `.claude-plugin/plugin.json` | `mcp.json`                                    | `hooks/claude.json`                   |
 | **Codex**        | `.claude-plugin/plugin.json` | `mcp.json`                                    | `hooks/claude.json`                   |
-| **Copilot**      | `plugin.json`                | `mcp.json`                                    | `com.github.copilot/hooks/hooks.json` |
+| **Copilot**      | `.plugin/plugin.json`        | `mcp.json`                                    | `com.github.copilot/hooks/hooks.json` |
 | **Antigravity**  | `plugin.json`                | `mcp_config.json`                             | -                                     |
 | **Devin**        | `.claude-plugin/plugin.json` | `mcp.json`                                    | -                                     |
 | **Hermes Agent** | `plugin.yaml`                | manual, `~/.hermes/config.yaml` (not bundled) | `__init__.py`                         |

@@ -52,14 +52,14 @@ node --test tests/protected-paths.test.js
 
 ## Compatibility table
 
-| Agent Runtime    | Manifest                     | Hook configuration  |
-| ---------------- | ---------------------------- | ------------------- |
-| **APM**          | `apm.yml`                    | `hooks/hooks.json`  |
-| **Claude Code**  | `.claude-plugin/plugin.json` | `hooks/claude.json` |
-| **Codex**        | `.claude-plugin/plugin.json` | `hooks/claude.json` |
-| **Copilot**      | `plugin.json`                | `hooks/hooks.json`  |
-| **Hermes Agent** | `plugin.yaml`                | `__init__.py`       |
+| Agent Runtime    | Manifest                     | Hook configuration                    |
+| ---------------- | ---------------------------- | ------------------------------------- |
+| **APM**          | `apm.yml`                    | `.apm/hooks/hooks.json`               |
+| **Claude Code**  | `.claude-plugin/plugin.json` | `hooks/claude.json`                   |
+| **Codex**        | `.claude-plugin/plugin.json` | `hooks/claude.json`                   |
+| **Copilot**      | `.plugin/plugin.json`        | `com.github.copilot/hooks/hooks.json` |
+| **Hermes Agent** | `plugin.yaml`                | `__init__.py`                         |
 
 > [!note]
-> **APM** merges `hooks/hooks.json` into the target agent runtime settings (e.g. `~/.claude/settings.json`)
+> **APM** merges `.apm/hooks/hooks.json` into the target agent runtime settings (e.g. `~/.claude/settings.json`)
 > and rewrites `${PLUGIN_ROOT}` to the path it deployed the scripts to.
