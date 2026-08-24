@@ -15,7 +15,7 @@
     {
       "name": "context7",
       "description": "Up-to-date code documentation for LLMs and AI code editors",
-      "version": "0.1.0",
+      "version": "0.2.0",
       "category": "hybrid",
       "source": "./plugins/context7"
     },
