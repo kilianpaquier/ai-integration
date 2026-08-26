@@ -1,18 +1,6 @@
 {
     "description": "Augment searches and lifecycle boundaries with codebase-memory-mcp graph context",
     "hooks": {
-        "PostToolUse": [
-            {
-                "matcher": "Read",
-                "hooks": [
-                    {
-                        "type": "command",
-                        "command": "codebase-memory-mcp hook-augment",
-                        "timeout": 5
-                    }
-                ]
-            }
-        ],
         "SessionStart": [
             {
                 "matcher": "startup|resume|clear|compact",
