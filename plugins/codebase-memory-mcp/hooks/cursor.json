@@ -3,8 +3,8 @@
     "hooks": {
         "postToolUse": [
             {
-                "command": "node ${PLUGIN_ROOT}/scripts/codebase-memory-hint PostToolUse",
-                "matcher": "Grep|Glob"
+                "matcher": "Grep|Glob",
+                "command": "node ${PLUGIN_ROOT}/scripts/codebase-memory-hint PostToolUse"
             }
         ],
         "sessionStart": [

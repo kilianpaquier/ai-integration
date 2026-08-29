@@ -14,8 +14,7 @@ const main = () => {
         process.exit(0)
     }
 
-    // Session and subagent boundaries stay on `codebase-memory-mcp hook-augment`, which reports live
-    // index state. Searches only need the reminder, so they no longer spawn the binary.
+    // Two bodies (PreToolUse and PostToolUse), per each agent's own hooks docs.
     //
     // PreToolUse always ends with 'allow', this hook serves as a reminder to agents.
     //

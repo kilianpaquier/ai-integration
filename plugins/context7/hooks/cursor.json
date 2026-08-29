@@ -3,8 +3,8 @@
     "hooks": {
         "postToolUse": [
             {
-                "command": "node ${PLUGIN_ROOT}/scripts/context7-hint PostToolUse",
-                "matcher": "WebFetch|WebSearch"
+                "matcher": "WebFetch|WebSearch",
+                "command": "node ${PLUGIN_ROOT}/scripts/context7-hint PostToolUse"
             }
         ],
         "sessionStart": [

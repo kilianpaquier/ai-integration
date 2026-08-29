@@ -61,7 +61,7 @@ apm install context7@one-for-all -g
 | **Antigravity**  | `plugin.json`                | `mcp_config.json`                             | -                                     |
 | **APM**          | `apm.yml`                    | `apm.yml`                                     | `.apm/hooks/hooks.json`               |
 | **Claude Code**  | `.claude-plugin/plugin.json` | `mcp.json`                                    | `hooks/claude.json`                   |
-| **Codex**        | `.codex-plugin/plugin.json`  | `mcp.json`                                    | `hooks/codex.json`                    |
+| **Codex**        | `.claude-plugin/plugin.json` | `mcp.json`                                    | `hooks/claude.json`                   |
 | **Copilot**      | `.plugin/plugin.json`        | `mcp.json`                                    | `com.github.copilot/hooks/hooks.json` |
 | **Cursor**       | `.cursor-plugin/plugin.json` | `mcp.json`                                    | `hooks/cursor.json`                   |
 | **Devin**        | `.claude-plugin/plugin.json` | `mcp.json`                                    | -                                     |
