@@ -19,13 +19,13 @@ for libraries, frameworks, SDKs and APIs.
 
 ## Hooks
 
-| Event                                      | Output                                                 | Agent Runtimes                             |
-| ------------------------------------------ | ------------------------------------------------------ | ------------------------------------------ |
-| `PreToolUse`, before a web search or fetch | a reminder to try Context7 before the raw web tool     | Claude Code, Codex                         |
-| `PostToolUse`, after a web search or fetch | the same reminder, for the next lookup in the session  | Copilot, Cursor                            |
-| `SessionStart`                             | a reminder that Context7 is available for library docs | Claude Code, Codex, Copilot, Cursor, Devin |
-| `SubagentStart`                            | the same, for every subagent spawned                   | Claude Code, Codex, Copilot                |
-| `pre_llm_call`                             | the same, before every LLM call                        | Hermes Agent                               |
+| Event                                      | Output                                                 | Agent Runtimes                      |
+| ------------------------------------------ | ------------------------------------------------------ | ----------------------------------- |
+| `PreToolUse`, before a web search or fetch | a reminder to try Context7 before the raw web tool     | Claude Code, Codex                  |
+| `PostToolUse`, after a web search or fetch | the same reminder, for the next lookup in the session  | Copilot, Cursor                     |
+| `SessionStart`                             | a reminder that Context7 is available for library docs | Claude Code, Codex, Copilot, Cursor |
+| `SubagentStart`                            | the same, for every subagent spawned                   | Claude Code, Codex, Copilot         |
+| `pre_llm_call`                             | the same, before every LLM call                        | Hermes Agent                        |
 
 ## Skills
 
