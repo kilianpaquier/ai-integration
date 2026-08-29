@@ -1,8 +1,10 @@
 ---
 name: context7-cli
 description: |
-  Fetch current library/framework/SDK/API documentation via the ctx7 CLI,
-  as a fallback when the Context7 MCP tools are unavailable or blocked.
+  Fetch current documentation for a library, framework, SDK, API or CLI tool with the ctx7 CLI.
+  Use for setup questions, API syntax, version migrations and code generation involving a dependency,
+  whenever the Context7 MCP tools are unavailable or blocked.
+  Requires ctx7 in PATH, and answers nothing about the local codebase.
 ---
 
 # ctx7 CLI (doc search)

@@ -20,14 +20,16 @@ read exact snippets and query the architecture.
 
 ## Hooks
 
-Hooks route the agent through the graph, all of them delegating to `codebase-memory-mcp hook-augment` (non-blocking).
+Hooks route the agent through the graph (non-blocking). Lifecycle events delegate reminder and index state to `codebase-memory-mcp hook-augment`
+while searches (tool events) only provide a simple reminder to use the CLI or MCP to search the codebase.
 
-| Event                             | Output                                                           | Agent Runtimes                                    |
-| --------------------------------- | ---------------------------------------------------------------- | ------------------------------------------------- |
-| `PreToolUse`, before grep or glob | the graph symbols matching what it searched                      | Claude Code, Devin                                |
-| `SessionStart`                    | whether the repo is indexed, and to search the graph before grep | Claude Code, Codex, Copilot, Cursor               |
-| `SubagentStart`                   | the same, for every subagent spawned                             | Claude Code, Codex, Copilot                       |
-| `pre_llm_call`                    | the same, before every LLM call                                  | Hermes Agent                                      |
+| Event                             | Output                                                           | Agent Runtimes                      |
+| --------------------------------- | ---------------------------------------------------------------- | ----------------------------------- |
+| `PreToolUse`, before grep or glob | a reminder to use the `codebase-memory` skill, or the CLI        | Claude Code, Codex, Devin           |
+| `PostToolUse`, after grep or glob | the same, where `PreToolUse` carries no context back             | Copilot, Cursor                     |
+| `SessionStart`                    | whether the repo is indexed, and to search the graph before grep | Claude Code, Codex, Copilot, Cursor |
+| `SubagentStart`                   | the same, for every subagent spawned                             | Claude Code, Codex, Copilot         |
+| `pre_llm_call`                    | the same, before every LLM call                                  | Hermes Agent                        |
 
 ## Skills
 
@@ -35,6 +37,9 @@ Hooks route the agent through the graph, all of them delegating to `codebase-mem
 
 Activated to answer structural code questions through the knowledge graph: which tool answers which
 question, the graph's edge types, Cypher query examples and common pitfalls.
+
+The same tools run as one-shot commands (`codebase-memory-mcp cli <tool>`) when the MCP server is unavailable
+or blocked, so no separate CLI skill is needed.
 
 ## Installation
 

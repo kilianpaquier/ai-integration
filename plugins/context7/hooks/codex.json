@@ -1,13 +1,13 @@
 {
     "description": "Remind the agent to prefer Context7 over training data or a raw web search for library/framework/SDK/API docs",
     "hooks": {
-        "PostToolUse": [
+        "PreToolUse": [
             {
                 "matcher": "WebFetch|WebSearch",
                 "hooks": [
                     {
                         "type": "command",
-                        "command": "node ${CLAUDE_PLUGIN_ROOT}/scripts/context7-hint PostToolUse"
+                        "command": "node ${CLAUDE_PLUGIN_ROOT}/scripts/context7-hint PreToolUse"
                     }
                 ]
             }

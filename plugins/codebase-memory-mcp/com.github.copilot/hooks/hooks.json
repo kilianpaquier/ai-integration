@@ -1,7 +1,14 @@
 {
     "version": 1,
-    "description": "Augment session and subagent starts with codebase-memory-mcp graph context",
+    "description": "Augment session and subagent starts with codebase-memory-mcp graph context and route searches back to the skill",
     "hooks": {
+        "PostToolUse": [
+            {
+                "type": "command",
+                "matcher": "Grep|Glob",
+                "command": "node ${PLUGIN_ROOT}/scripts/codebase-memory-hint PostToolUse"
+            }
+        ],
         "SessionStart": [
             {
                 "type": "command",

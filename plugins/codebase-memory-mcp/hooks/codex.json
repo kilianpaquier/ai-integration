@@ -1,6 +1,17 @@
 {
-    "description": "Augment searches and lifecycle boundaries with codebase-memory-mcp graph context",
+    "description": "Augment lifecycle boundaries with codebase-memory-mcp graph context and route searches back to the skill",
     "hooks": {
+        "PreToolUse": [
+            {
+                "matcher": "Grep|Glob",
+                "hooks": [
+                    {
+                        "type": "command",
+                        "command": "node ${CLAUDE_PLUGIN_ROOT}/scripts/codebase-memory-hint PreToolUse"
+                    }
+                ]
+            }
+        ],
         "SessionStart": [
             {
                 "matcher": "startup|resume|clear|compact",

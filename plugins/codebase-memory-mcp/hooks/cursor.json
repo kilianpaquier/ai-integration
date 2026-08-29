@@ -1,6 +1,12 @@
 {
     "version": 1,
     "hooks": {
+        "postToolUse": [
+            {
+                "command": "node ${PLUGIN_ROOT}/scripts/codebase-memory-hint PostToolUse",
+                "matcher": "Grep|Glob"
+            }
+        ],
         "sessionStart": [
             {
                 "command": "codebase-memory-mcp hook-augment --event SessionStart --dialect cursor"
