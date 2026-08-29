@@ -47,10 +47,11 @@ This repository follows various standards to structure its components:
 
 ### MCP
 
-| Name                                               | Description                                                                                         |
-| -------------------------------------------------- | --------------------------------------------------------------------------------------------------- |
-| [codebase-memory-mcp](plugins/codebase-memory-mcp) | High-performance code intelligence MCP server. Indexes codebases into a persistent knowledge graph. |
-| [context7](plugins/context7)                       | Up-to-date code documentation for LLMs and AI code editors.                                         |
+| Name                                               | Description                                                                                               |
+| -------------------------------------------------- | --------------------------------------------------------------------------------------------------------- |
+| [codebase-memory-mcp](plugins/codebase-memory-mcp) | High-performance code intelligence MCP server. Indexes codebases into a persistent knowledge graph.       |
+| [codegraph](plugins/codegraph)                     | Pre-indexed code knowledge graph, auto syncs on code changes, fewer tokens, fewer tool calls, 100% local. |
+| [context7](plugins/context7)                       | Up-to-date code documentation for LLMs and AI code editors.                                               |
 
 ### Hooks
 

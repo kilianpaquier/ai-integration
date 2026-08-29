@@ -24,6 +24,10 @@ marketplace:
       source: ./plugins/codebase-memory-mcp
 
     - category: hybrid
+      name: codegraph
+      source: ./plugins/codegraph
+
+    - category: hybrid
       name: context7
       source: ./plugins/context7
 

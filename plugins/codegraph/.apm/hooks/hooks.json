@@ -1,0 +1,40 @@
+{
+    "description": "Augment searches and lifecycle boundaries with codegraph knowledge graph context",
+    "hooks": {
+        "PreToolUse": [
+            {
+                "matcher": "Grep|Glob",
+                "hooks": [
+                    {
+                        "type": "command",
+                        "command": "node ${PLUGIN_ROOT}/scripts/codegraph-hook PreToolUse"
+                    }
+                ]
+            }
+        ],
+        "SessionStart": [
+            {
+                "matcher": "startup|resume|clear|compact",
+                "hooks": [
+                    {
+                        "type": "command",
+                        "command": "node ${PLUGIN_ROOT}/scripts/codegraph-hook SessionStart",
+                        "timeout": 10
+                    }
+                ]
+            }
+        ],
+        "SubagentStart": [
+            {
+                "matcher": "*",
+                "hooks": [
+                    {
+                        "type": "command",
+                        "command": "node ${PLUGIN_ROOT}/scripts/codegraph-hook SubagentStart",
+                        "timeout": 10
+                    }
+                ]
+            }
+        ]
+    }
+}

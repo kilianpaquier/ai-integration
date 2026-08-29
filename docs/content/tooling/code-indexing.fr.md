@@ -47,6 +47,7 @@ codebase-memory-mcp install
 - **Upstream** : <https://github.com/colbymchenry/codegraph>
 - **Indexation** : via le CLI
 - **Navigation** : via le serveur MCP ou le CLI
+- **Plugin** : [/interoperability/ai-integration/codegraph](/interoperability/ai-integration/codegraph)
 
 Installation du CLI :
 
@@ -57,6 +58,8 @@ mise use -g 'github:colbymchenry/codegraph@latest'
 Usage :
 
 ```sh
+my-agent plugin install codegraph@one-for-all
+# ou
 codegraph install
 # puis
 codegraph init --index # au sein des dépôts à indexer

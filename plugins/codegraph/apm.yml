@@ -1,0 +1,18 @@
+# yaml-language-server: $schema=https://microsoft.github.io/apm/specs/schemas/manifest-v0.1.schema.json
+
+name: codegraph
+version: 0.1.0
+
+author: Kilian PAQUIER
+description: Pre-indexed code knowledge graph, auto syncs on code changes, fewer tokens, fewer tool calls, 100% local.
+license: MIT
+
+dependencies:
+  mcp:
+    - name: codegraph
+      registry: "false"
+      transport: stdio
+      command: codegraph
+      args: [serve, --mcp]
+
+# targets: [claude, codex, copilot, cursor, gemini, kiro, opencode, windsurf]

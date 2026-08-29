@@ -17,6 +17,18 @@
       "category": "hybrid"
     },
     {
+      "name": "codegraph",
+      "source": {
+        "source": "local",
+        "path": "./plugins/codegraph"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "hybrid"
+    },
+    {
       "name": "context7",
       "source": {
         "source": "local",

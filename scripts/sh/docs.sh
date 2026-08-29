@@ -41,6 +41,12 @@ sync_tab "$dir/../../plugins/codebase-memory-mcp/README.md" "$out"
 out="$dir/../../docs/content/interoperability/ai-integration/codebase-memory-mcp.fr.md"
 sync_tab "$dir/../../plugins/codebase-memory-mcp/README.md" "$out"
 
+# codegraph synchronization in doc
+out="$dir/../../docs/content/interoperability/ai-integration/codegraph.en.md"
+sync_tab "$dir/../../plugins/codegraph/README.md" "$out"
+out="$dir/../../docs/content/interoperability/ai-integration/codegraph.fr.md"
+sync_tab "$dir/../../plugins/codegraph/README.md" "$out"
+
 # protected-paths synchronization in doc
 out="$dir/../../docs/content/interoperability/ai-integration/protected-paths.en.md"
 sync_tab "$dir/../../plugins/protected-paths/README.md" "$out"

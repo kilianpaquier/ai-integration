@@ -1,0 +1,14 @@
+{
+    "$schema": "https://www.schemastore.org/claude-code-plugin-manifest.json",
+
+    "name": "codegraph",
+    "description": "Pre-indexed code knowledge graph, auto syncs on code changes, fewer tokens, fewer tool calls, 100% local.",
+    "version": "0.1.0",
+    "license": "MIT",
+
+    "repository": "https://github.com/colbymchenry/codegraph",
+    "homepage": "https://gitlab.com/kilianpaquier/ai-integration/-/tree/main/plugins/codegraph",
+
+    "hooks": "./hooks/claude.json",
+    "mcpServers": "./mcp.json"
+}
