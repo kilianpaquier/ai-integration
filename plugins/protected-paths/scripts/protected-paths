@@ -10,7 +10,11 @@ const path = require('node:path')
 const HOME = os.homedir()
 
 const ALLOW_LIST = [
+    // agents
+    `${HOME}/.agents/skills`,
     // apm
+    `${HOME}/.apm/apm.lock.json`,
+    `${HOME}/.apm/apm.lock.yml`,
     `${HOME}/.apm/apm.yml`,
     `${HOME}/.apm/apm_modules`,
     `${HOME}/.apm/cache`,
@@ -21,26 +25,35 @@ const ALLOW_LIST = [
     `${HOME}/.claude/agents`,
     `${HOME}/.claude/CLAUDE.md`,
     `${HOME}/.claude/commands`,
+    `${HOME}/.claude/debug`,
     `${HOME}/.claude/hooks`,
     `${HOME}/.claude/output-styles`,
     `${HOME}/.claude/plans`,
     `${HOME}/.claude/plugins`,
     `${HOME}/.claude/projects`,
     `${HOME}/.claude/rules`,
+    `${HOME}/.claude/settings.json`,
     `${HOME}/.claude/skills`,
     `${HOME}/.claude/workflows`,
     // codex
+    `${HOME}/.codex/.tmp`,
     `${HOME}/.codex/AGENTS.md`,
     `${HOME}/.codex/hooks.json`,
     `${HOME}/.codex/plugins`,
     `${HOME}/.codex/skills`,
+    // config (devin)
+    `${HOME}/.config/devin/agents`,
+    `${HOME}/.config/devin/config.json`,
+    `${HOME}/.config/devin/mcp_config.json`,
     // copilot
     `${HOME}/.copilot/agents`,
     `${HOME}/.copilot/copilot-instructions.md`,
     `${HOME}/.copilot/hooks`,
     `${HOME}/.copilot/installed-plugins`,
     `${HOME}/.copilot/instructions`,
+    `${HOME}/.copilot/mcp-config.json`,
     `${HOME}/.copilot/prompts`,
+    `${HOME}/.copilot/settings.json`,
     `${HOME}/.copilot/skills`,
 ]
 
@@ -131,7 +144,7 @@ const denyReasonFor = (resolved) => {
         }
 
         if (isPrefix(resolved, pattern)) {
-            return `tool call references an ancestor of protected path: '${pattern}'`
+            return `tool call references an ancestor of protected path: '${pattern}', target the specific file or subdirectory you need instead of scanning or cd-ing into $HOME`
         }
     }
     return null

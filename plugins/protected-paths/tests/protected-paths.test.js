@@ -68,6 +68,42 @@ test('copilot instructions dir is allow-listed', () => {
   assert.equal(stdout, '');
 });
 
+test('agents skills dir is allow-listed', () => {
+  const { status, stdout } = runHook('{"tool_input":{"command":"ls ~/.agents/skills"}}');
+  assert.equal(status, 0);
+  assert.equal(stdout, '');
+});
+
+test('apm lockfiles are allow-listed', () => {
+  const { status, stdout } = runHook('{"tool_input":{"command":"cat ~/.apm/apm.lock.json; cat ~/.apm/apm.lock.yml"}}');
+  assert.equal(status, 0);
+  assert.equal(stdout, '');
+});
+
+test('claude debug dir is allow-listed', () => {
+  const { status, stdout } = runHook('{"tool_input":{"command":"cat ~/.claude/debug/session.txt"}}');
+  assert.equal(status, 0);
+  assert.equal(stdout, '');
+});
+
+test('claude settings.json is allow-listed', () => {
+  const { status, stdout } = runHook('{"tool_input":{"command":"cat ~/.claude/settings.json"}}');
+  assert.equal(status, 0);
+  assert.equal(stdout, '');
+});
+
+test('devin agents dir, config.json and mcp_config.json are allow-listed', () => {
+  const { status, stdout } = runHook('{"tool_input":{"command":"ls ~/.config/devin/agents; cat ~/.config/devin/config.json; cat ~/.config/devin/mcp_config.json"}}');
+  assert.equal(status, 0);
+  assert.equal(stdout, '');
+});
+
+test('copilot mcp-config.json and settings.json are allow-listed', () => {
+  const { status, stdout } = runHook('{"tool_input":{"command":"cat ~/.copilot/mcp-config.json; cat ~/.copilot/settings.json"}}');
+  assert.equal(status, 0);
+  assert.equal(stdout, '');
+});
+
 test('literal $HOME text is normalized before allow-listing', () => {
   const { status, stdout } = runHook('{"tool_input":{"command":"cat $HOME/.claude/CLAUDE.md"}}');
   assert.equal(status, 0);
@@ -76,18 +112,32 @@ test('literal $HOME text is normalized before allow-listing', () => {
 
 // --- protected directories are denied outside of their allow-listed subpaths ---
 
-test('claude settings.json is denied', () => {
-  const { status, stdout } = runHook('{"tool_input":{"command":"cat ~/.claude/settings.json"}}');
+test('claude config.json is denied', () => {
+  const { status, stdout } = runHook('{"tool_input":{"command":"cat ~/.claude/config.json"}}');
   assert.equal(status, 0);
   assert.match(stdout, /"permissionDecision":\s*"deny"/);
   assert.ok(stdout.includes('.claude'), "expected deny output to include '.claude'");
 });
 
-test('copilot mcp config is denied', () => {
-  const { status, stdout } = runHook('{"tool_input":{"command":"cat ~/.copilot/mcp-config.json"}}');
+test('copilot config.json is denied', () => {
+  const { status, stdout } = runHook('{"tool_input":{"command":"cat ~/.copilot/config.json"}}');
   assert.equal(status, 0);
   assert.match(stdout, /"permissionDecision":\s*"deny"/);
   assert.ok(stdout.includes('.copilot'), "expected deny output to include '.copilot'");
+});
+
+test('agents dir outside its skills allow-list is denied', () => {
+  const { status, stdout } = runHook('{"tool_input":{"command":"cat ~/.agents/state.json"}}');
+  assert.equal(status, 0);
+  assert.match(stdout, /"permissionDecision":\s*"deny"/);
+  assert.ok(stdout.includes('.agents'), "expected deny output to include '.agents'");
+});
+
+test('config dir outside devin allow-list is denied', () => {
+  const { status, stdout } = runHook('{"tool_input":{"command":"cat ~/.config/some-other-app/secrets.json"}}');
+  assert.equal(status, 0);
+  assert.match(stdout, /"permissionDecision":\s*"deny"/);
+  assert.ok(stdout.includes('.config'), "expected deny output to include '.config'");
 });
 
 test('codex auth.json is denied', () => {
@@ -141,7 +191,7 @@ test("codex's native payload shape allow-lists AGENTS.md the same way", () => {
 
 test("copilot's native payload shape (toolName/toolArgs, camelCase) is still scanned", () => {
   const { status, stdout } = runHook(
-    '{"sessionId":"s1","timestamp":1704614400000,"cwd":"/repo","toolName":"bash","toolArgs":{"command":"cat ~/.copilot/mcp-config.json"}}',
+    '{"sessionId":"s1","timestamp":1704614400000,"cwd":"/repo","toolName":"bash","toolArgs":{"command":"cat ~/.copilot/config.json"}}',
   );
   assert.equal(status, 0);
   assert.match(stdout, /"permissionDecision":\s*"deny"/);
