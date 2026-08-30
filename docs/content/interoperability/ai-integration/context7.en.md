@@ -25,7 +25,6 @@ for libraries, frameworks, SDKs and APIs.
 | `PostToolUse`, after a web search or fetch | the same reminder, for the next lookup in the session  | Copilot, Cursor                     |
 | `SessionStart`                             | a reminder that Context7 is available for library docs | Claude Code, Codex, Copilot, Cursor |
 | `SubagentStart`                            | the same, for every subagent spawned                   | Claude Code, Codex, Copilot         |
-| `pre_llm_call`                             | the same, before every LLM call                        | Hermes Agent                        |
 
 ## Skills
 

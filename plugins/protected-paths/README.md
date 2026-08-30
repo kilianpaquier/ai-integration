@@ -16,8 +16,6 @@ An allow-list carves out specific subpaths needed for plugins and instructions t
 The hook also catches recursive tools (`grep -r`, `find`, `tar`, `rsync`, `ls -R`, ...) and bare
 references like `cd ~` that could reach a protected directory without naming it directly.
 
-A blocked call prints an explanatory message and denies the tool call across **Claude Code**, **Codex**, **Copilot**, **Cursor** and **Hermes Agent**.
-
 > [!warning]
 > A relative path used after a `cd` earlier in the same command is not resolved against that new directory.
 
@@ -52,14 +50,15 @@ node --test tests/protected-paths.test.js
 
 ## Compatibility table
 
-| Agent Runtime    | Manifest                     | Hook configuration                    |
-| ---------------- | ---------------------------- | ------------------------------------- |
-| **APM**          | `apm.yml`                    | `.apm/hooks/hooks.json`               |
-| **Claude Code**  | `.claude-plugin/plugin.json` | `hooks/claude.json`                   |
-| **Codex**        | `.claude-plugin/plugin.json` | `hooks/claude.json`                   |
-| **Copilot**      | `.plugin/plugin.json`        | `com.github.copilot/hooks/hooks.json` |
-| **Cursor**       | `.cursor-plugin/plugin.json` | `hooks/cursor.json`                   |
-| **Hermes Agent** | `plugin.yaml`                | `__init__.py`                         |
+| Agent Runtime   | Manifest                     | Hook configuration                    |
+| --------------- | ---------------------------- | ------------------------------------- |
+| **APM**         | `apm.yml`                    | `.apm/hooks/hooks.json`               |
+| **Antigravity** | `plugin.json`                | -                                     |
+| **Claude Code** | `.claude-plugin/plugin.json` | `hooks/claude.json`                   |
+| **Codex**       | `.claude-plugin/plugin.json` | `hooks/claude.json`                   |
+| **Copilot**     | `.plugin/plugin.json`        | `com.github.copilot/hooks/hooks.json` |
+| **Cursor**      | `.cursor-plugin/plugin.json` | `hooks/cursor.json`                   |
+| **Devin**       | `.claude-plugin/plugin.json` | -                                     |
 
 > [!note]
 > **APM** merges `.apm/hooks/hooks.json` into the target agent runtime settings (e.g. `~/.claude/settings.json`)

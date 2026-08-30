@@ -19,7 +19,6 @@ for libraries, frameworks, SDKs and APIs.
 | `PostToolUse`, after a web search or fetch | the same reminder, for the next lookup in the session  | Copilot, Cursor                     |
 | `SessionStart`                             | a reminder that Context7 is available for library docs | Claude Code, Codex, Copilot, Cursor |
 | `SubagentStart`                            | the same, for every subagent spawned                   | Claude Code, Codex, Copilot         |
-| `pre_llm_call`                             | the same, before every LLM call                        | Hermes Agent                        |
 
 ## Skills
 
@@ -56,13 +55,12 @@ apm install context7@one-for-all -g
 
 ## Compatibility table
 
-| Agent Runtime    | Manifest                     | MCP configuration                             | Hook configuration                    |
-| ---------------- | ---------------------------- | --------------------------------------------- | ------------------------------------- |
-| **Antigravity**  | `plugin.json`                | `mcp_config.json`                             | -                                     |
-| **APM**          | `apm.yml`                    | `apm.yml`                                     | `.apm/hooks/hooks.json`               |
-| **Claude Code**  | `.claude-plugin/plugin.json` | `mcp.json`                                    | `hooks/claude.json`                   |
-| **Codex**        | `.claude-plugin/plugin.json` | `mcp.json`                                    | `hooks/claude.json`                   |
-| **Copilot**      | `.plugin/plugin.json`        | `mcp.json`                                    | `com.github.copilot/hooks/hooks.json` |
-| **Cursor**       | `.cursor-plugin/plugin.json` | `mcp.json`                                    | `hooks/cursor.json`                   |
-| **Devin**        | `.claude-plugin/plugin.json` | `mcp.json`                                    | -                                     |
-| **Hermes Agent** | `plugin.yaml`                | manual, `~/.hermes/config.yaml` (not bundled) | `__init__.py`                         |
+| Agent Runtime   | Manifest                     | MCP configuration | Hook configuration                    |
+| --------------- | ---------------------------- | ----------------- | ------------------------------------- |
+| **APM**         | `apm.yml`                    | `apm.yml`         | `.apm/hooks/hooks.json`               |
+| **Antigravity** | `plugin.json`                | `mcp_config.json` | -                                     |
+| **Claude Code** | `.claude-plugin/plugin.json` | `mcp.json`        | `hooks/claude.json`                   |
+| **Codex**       | `.claude-plugin/plugin.json` | `mcp.json`        | `hooks/claude.json`                   |
+| **Copilot**     | `.plugin/plugin.json`        | `mcp.json`        | `com.github.copilot/hooks/hooks.json` |
+| **Cursor**      | `.cursor-plugin/plugin.json` | `mcp.json`        | `hooks/cursor.json`                   |
+| **Devin**       | `.claude-plugin/plugin.json` | `mcp.json`        | -                                     |

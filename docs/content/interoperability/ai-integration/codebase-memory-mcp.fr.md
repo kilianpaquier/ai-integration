@@ -29,7 +29,6 @@ while searches (tool events) only provide a simple reminder to use the CLI or MC
 | `PostToolUse`, after grep or glob | the same, where `PreToolUse` carries no context back             | Copilot, Cursor                     |
 | `SessionStart`                    | whether the repo is indexed, and to search the graph before grep | Claude Code, Codex, Copilot, Cursor |
 | `SubagentStart`                   | the same, for every subagent spawned                             | Claude Code, Codex, Copilot         |
-| `pre_llm_call`                    | the same, before every LLM call                                  | Hermes Agent                        |
 
 ## Skills
 

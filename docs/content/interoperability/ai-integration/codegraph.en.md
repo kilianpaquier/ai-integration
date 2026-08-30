@@ -25,7 +25,6 @@ read one symbol with its callers and callees, and measure the impact of a change
 | `PostToolUse`, after grep or glob | the same, where `PreToolUse` carries no context back             | Copilot, Cursor                     |
 | `SessionStart`                    | whether the repo is indexed, and to search the graph before grep | Claude Code, Codex, Copilot, Cursor |
 | `SubagentStart`                   | the same, for every subagent spawned                             | Claude Code, Codex, Copilot         |
-| `pre_llm_call`                    | the same status, before every LLM call                           | Hermes Agent                        |
 
 ## Skills
 

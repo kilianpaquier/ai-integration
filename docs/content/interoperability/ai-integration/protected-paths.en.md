@@ -16,12 +16,10 @@ protected directory: `~/.agents`, `~/.apm`, `~/.aws`, `~/.azure`, `~/.claude`, `
 `~/.git-credentials`, `~/.gnupg`, `~/.kube`, `~/.netrc`, `~/.npmrc`, `~/.pypirc`, `~/.ssh`.
 
 An allow-list carves out specific subpaths needed for plugins and instructions to keep working under
-`~/.apm`, `~/.claude`, `~/.codex`, and `~/.copilot`, which are otherwise fully denied.
+`~/.agents`, `~/.apm`, `~/.claude`, `~/.codex`, `~/.config`, and `~/.copilot`, which are otherwise fully denied.
 
 The hook also catches recursive tools (`grep -r`, `find`, `tar`, `rsync`, `ls -R`, ...) and bare
 references like `cd ~` that could reach a protected directory without naming it directly.
-
-A blocked call prints an explanatory message and denies the tool call across **Claude Code**, **Codex**, **Copilot**, **Cursor** and **Hermes Agent**.
 
 > [!warning]
 > A relative path used after a `cd` earlier in the same command is not resolved against that new directory.
