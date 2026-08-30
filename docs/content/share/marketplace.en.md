@@ -105,9 +105,9 @@ Plugin installation and tracing (which plugins, which marketplaces) is managed u
 {{< tab name="Codex" >}}
 ```sh
 codex plugin marketplace add <owner>/<repo>
+codex plugin add <plugin-name>@<marketplace-name>
+codex plugin remove <plugin-name>@<marketplace-name>
 ```
-
-Plugin install/uninstall goes through the ChatGPT app's `/plugins` browser once the marketplace is added.
 
 Plugin installation and tracing (which plugins, which marketplaces) is managed under `~/.codex/plugins`.
 {{< /tab >}}
@@ -116,7 +116,7 @@ Plugin installation and tracing (which plugins, which marketplaces) is managed u
 ```sh
 copilot plugin marketplace add <owner>/<repo>
 copilot plugin install <plugin-name>@<marketplace-name>
-copilot plugin uninstall <plugin-name>
+copilot plugin uninstall <plugin-name>@<marketplace-name>
 ```
 
 Plugin installation and tracing (which plugins, which marketplaces) is managed under `~/.copilot/installed-plugins`.

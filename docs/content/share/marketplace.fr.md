@@ -106,9 +106,9 @@ L'installation des plugins et leur suivi (quels plugins, quels marketplaces) son
 {{< tab name="Codex" >}}
 ```sh
 codex plugin marketplace add <owner>/<repo>
+codex plugin add <plugin-name>@<marketplace-name>
+codex plugin remove <plugin-name>@<marketplace-name>
 ```
-
-L'installation/désinstallation de plugins se fait via le navigateur `/plugins` de l'application ChatGPT une fois le marketplace ajouté.
 
 L'installation des plugins et leur suivi (quels plugins, quels marketplaces) sont gérés sous `~/.codex/plugins`.
 {{< /tab >}}
@@ -117,7 +117,7 @@ L'installation des plugins et leur suivi (quels plugins, quels marketplaces) son
 ```sh
 copilot plugin marketplace add <owner>/<repo>
 copilot plugin install <plugin-name>@<marketplace-name>
-copilot plugin uninstall <plugin-name>
+copilot plugin uninstall <plugin-name>@<marketplace-name>
 ```
 
 L'installation des plugins et leur suivi (quels plugins, quels marketplaces) sont gérés sous `~/.copilot/installed-plugins`.
