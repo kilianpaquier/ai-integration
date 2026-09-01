@@ -36,13 +36,6 @@ apm install kilianpaquier/ai-integration/plugins/<plugin_path> -g
 npx skills add kilianpaquier/ai-integration -g
 ```
 
-## Plugin structure
-
-This repository follows various standards to structure its components:
-- [**Agent Package Manager**](https://microsoft.github.io/apm/producer/author-primitives/)
-- [**Agent Skills**](https://agentskills.io/home)
-- [**Agent Plugins**](https://agent-plugins.org/specification)
-
 ## Plugins
 
 ### MCP
@@ -64,12 +57,3 @@ This repository follows various standards to structure its components:
 | Name                                         | Description                                                             |
 | -------------------------------------------- | ----------------------------------------------------------------------- |
 | [schema-converter](plugins/schema-converter) | A skill suite to transform JSON schemas into their language equivalents |
-
-## Developing
-
-- When updating `README.md` from plugins, the script `./scripts/sh/docs.sh` must be run to update all documentation references.
-- The [apm.yml](apm.yml) is the source of truth for the marketplace listing. After editing it, regenerate all `marketplace.json` by running:
-
-  ```sh
-  apm pack
-  ```

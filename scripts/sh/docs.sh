@@ -3,8 +3,11 @@
 set -e
 
 dir="$(realpath "$(dirname "$0")")"
-src_start='<!-- docs:start -->'
-src_end='<!-- docs:end -->'
+docs="$dir/../../docs/content/interoperability/ai-integration"
+plugins="$dir/../../plugins"
+
+start='<!-- docs:start -->'
+end='<!-- docs:end -->'
 
 tmp_files=""
 cleanup() {
@@ -13,54 +16,47 @@ cleanup() {
 }
 trap cleanup EXIT
 
-# replaces the content between "<!-- docs:$section:start -->"
-# and "<!-- docs:$section:end -->" markers in $out with the content
-# between $src_start and $src_end in $src (i.e. $src's plugin-specific body).
+# replaces the content between the "$start" and "$end" markers in $out
+# with the content between the same markers in $src (i.e. $src's plugin-specific body).
 sync_tab() {
   src="$1"
   out="$2"
-  section="$3"
-  start="<!-- docs${section:+:${section}}:start -->"
-  end="<!-- docs${section:+:${section}}:end -->"
 
   # read the plugin-specific body out of $src, between its own markers
   body="$(mktemp)"
   tmp_files="$tmp_files $body"
-  awk "/$src_start/{f=1;next} /$src_end/{f=0} f" "$src" > "$body"
+  awk "/$start/{f=1;next} /$end/{f=0} f" "$src" > "$body"
+
+  # both guards below prevent a silent wipe of $out's section
+  if [ ! -s "$body" ]; then
+    echo "$src: nothing between the '$start' and '$end' markers" >&2
+    return 1
+  fi
+  if ! grep -qF "$start" "$out"; then
+    echo "$out: missing the '$start' marker" >&2
+    return 1
+  fi
 
   # remove the stale section currently in $out, then print the body in-between
   sed -i "/$start/,/$end/{/$start/!{/$end/!d}}" "$out"
   sed -i "/$start/r $body" "$out"
 }
 
-out=
+missing=""
+for readme in "$plugins"/*/README.md; do
+  plugin="$(basename "$(dirname "$readme")")"
 
-# codebase-memory-mcp synchronization in doc
-out="$dir/../../docs/content/interoperability/ai-integration/codebase-memory-mcp.en.md"
-sync_tab "$dir/../../plugins/codebase-memory-mcp/README.md" "$out"
-out="$dir/../../docs/content/interoperability/ai-integration/codebase-memory-mcp.fr.md"
-sync_tab "$dir/../../plugins/codebase-memory-mcp/README.md" "$out"
+  for lang in en fr; do
+    out="$docs/$plugin.$lang.md"
+    if [ ! -f "$out" ]; then
+      missing="$missing $plugin.$lang.md"
+      continue
+    fi
+    sync_tab "$readme" "$out"
+  done
+done
 
-# codegraph synchronization in doc
-out="$dir/../../docs/content/interoperability/ai-integration/codegraph.en.md"
-sync_tab "$dir/../../plugins/codegraph/README.md" "$out"
-out="$dir/../../docs/content/interoperability/ai-integration/codegraph.fr.md"
-sync_tab "$dir/../../plugins/codegraph/README.md" "$out"
-
-# protected-paths synchronization in doc
-out="$dir/../../docs/content/interoperability/ai-integration/protected-paths.en.md"
-sync_tab "$dir/../../plugins/protected-paths/README.md" "$out"
-out="$dir/../../docs/content/interoperability/ai-integration/protected-paths.fr.md"
-sync_tab "$dir/../../plugins/protected-paths/README.md" "$out"
-
-# schema-converter synchronization in doc
-out="$dir/../../docs/content/interoperability/ai-integration/schema-converter.en.md"
-sync_tab "$dir/../../plugins/schema-converter/README.md" "$out"
-out="$dir/../../docs/content/interoperability/ai-integration/schema-converter.fr.md"
-sync_tab "$dir/../../plugins/schema-converter/README.md" "$out"
-
-# context7 synchronization in doc
-out="$dir/../../docs/content/interoperability/ai-integration/context7.en.md"
-sync_tab "$dir/../../plugins/context7/README.md" "$out"
-out="$dir/../../docs/content/interoperability/ai-integration/context7.fr.md"
-sync_tab "$dir/../../plugins/context7/README.md" "$out"
+if [ -n "$missing" ]; then
+  echo "missing documentation pages under docs/content/interoperability/ai-integration:$missing" >&2
+  exit 1
+fi
