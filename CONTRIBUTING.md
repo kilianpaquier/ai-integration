@@ -107,22 +107,35 @@ Only the following files and directories are required (everything else depends o
 ├── .claude-plugin/
 │   └── plugin.json
 ├── .cursor-plugin/
-│   └── plugin.json           # only with hooks (Cursor)
-├── .plugin/
-│   └── plugin.json           # only with hooks (GitHub Copilot)
-├── com.github.copilot/       # client extension directory (**Agent Plugins** specification)
+│   └── plugin.json               # only with hooks (Cursor)
+├── com.github.copilot/           # client extension directory (**Agent Plugins** specification)
+│   ├── agents -> ../.apm/agents  # symlink, only with agents
 │   └── hooks/
 │       └── hooks.json
 ├── hooks/
 │   ├── claude.json
 │   └── cursor.json
-├── scripts/                  # hook executables, resolved as ${PLUGIN_ROOT}/scripts/<name> or {CLAUDE_PLUGIN_ROOT}/scripts/<name>
+├── scripts/                      # hook executables, resolved as ${PLUGIN_ROOT}/scripts/<name> or {CLAUDE_PLUGIN_ROOT}/scripts/<name>
 ├── tests/
-├── agents -> .apm/agents     # symlink
-├── skills -> .apm/skills     # symlink
+├── agents -> .apm/agents         # symlink
+├── skills -> .apm/skills         # symlink
 ├── apm.yml
-├── mcp_config.json           # Antigravity MCPs configuration
-├── mcp.json                  # **Agent Plugins** MCPs configuration
-├── plugin.json               # **Agent Plugins** plugin definition
+├── mcp_config.json               # Antigravity MCPs configuration
+├── mcp.json                      # **Agent Plugins** MCPs configuration
+├── plugin.json                   # **Agent Plugins** plugin definition
 └── README.md
 ```
+
+### Compatibility table
+
+| Agent Runtime   | Manifest                     | Agent config                           | Hook config                                                 |
+| --------------- | ---------------------------- | -------------------------------------- | ----------------------------------------------------------- |
+| **APM**         | `apm.yml`                    | `.apm/agents/*.agent.md`               | `.apm/hooks/hooks.json`                                     |
+| **Antigravity** | `plugin.json`                | `agents/*.agent.md`                    | (same `hooks.json` path as **Devin**, so not shipped)       |
+| **Claude Code** | `.claude-plugin/plugin.json` | `agents/*.agent.md`                    | `hooks/claude.json`                                         |
+| **Codex**       | `.claude-plugin/plugin.json` | (no plugin mode)                       | `hooks/claude.json`                                         |
+| **Copilot**     | `plugin.json`                | `com.github.copilot/agents/*.agent.md` | `com.github.copilot/hooks/hooks.json`                       |
+| **Cursor**      | `.cursor-plugin/plugin.json` | (no plugin mode)                       | `hooks/cursor.json`                                         |
+| **Devin**       | `plugin.json`                | `agents/*.agent.md`                    | (same `hooks.json` path as **Antigravity**, so not shipped) |
+
+Skills are read from the single `skills -> .apm/skills` symlink by every runtime supporting the **Agent Skills** spec, no per-runtime config needed.
