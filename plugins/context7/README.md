@@ -22,13 +22,10 @@ for libraries, frameworks, SDKs and APIs.
 
 ## Skills
 
-### `context7-mcp`
-
-Synced as-is from upstream. When to use Context7 over training data or a raw web search for library docs.
-
-### `context7-cli`
-
-Fallback for fetching docs through the `ctx7` CLI when the Context7 MCP is unavailable or blocked.
+| Skill          | Description                                                                                               |
+| -------------- | --------------------------------------------------------------------------------------------------------- |
+| `context7-mcp` | Synced as-is from upstream. When to use Context7 over training data or a raw web search for library docs. |
+| `context7-cli` | Fallback for fetching docs through the `ctx7` CLI when the Context7 MCP is unavailable or blocked.        |
 
 ## Installation
 

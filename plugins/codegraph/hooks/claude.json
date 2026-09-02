@@ -7,7 +7,7 @@
                 "hooks": [
                     {
                         "type": "command",
-                        "command": "node ${CLAUDE_PLUGIN_ROOT}/scripts/codegraph-hook PreToolUse"
+                        "command": "node ${CLAUDE_PLUGIN_ROOT}/scripts/codegraph-hook.js PreToolUse"
                     }
                 ]
             }
@@ -18,7 +18,7 @@
                 "hooks": [
                     {
                         "type": "command",
-                        "command": "node ${CLAUDE_PLUGIN_ROOT}/scripts/codegraph-hook SessionStart",
+                        "command": "node ${CLAUDE_PLUGIN_ROOT}/scripts/codegraph-hook.js SessionStart",
                         "timeout": 10
                     }
                 ]
@@ -30,7 +30,7 @@
                 "hooks": [
                     {
                         "type": "command",
-                        "command": "node ${CLAUDE_PLUGIN_ROOT}/scripts/codegraph-hook SubagentStart",
+                        "command": "node ${CLAUDE_PLUGIN_ROOT}/scripts/codegraph-hook.js SubagentStart",
                         "timeout": 10
                     }
                 ]

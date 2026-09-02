@@ -7,7 +7,7 @@
                 "hooks": [
                     {
                         "type": "command",
-                        "command": "node ${CLAUDE_PLUGIN_ROOT}/scripts/codebase-memory-hint PreToolUse"
+                        "command": "node ${CLAUDE_PLUGIN_ROOT}/scripts/codebase-memory-hint.js PreToolUse"
                     }
                 ]
             }

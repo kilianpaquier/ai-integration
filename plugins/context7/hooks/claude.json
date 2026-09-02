@@ -7,7 +7,7 @@
                 "hooks": [
                     {
                         "type": "command",
-                        "command": "node ${CLAUDE_PLUGIN_ROOT}/scripts/context7-hint PreToolUse"
+                        "command": "node ${CLAUDE_PLUGIN_ROOT}/scripts/context7-hint.js PreToolUse"
                     }
                 ]
             }
@@ -18,7 +18,7 @@
                 "hooks": [
                     {
                         "type": "command",
-                        "command": "node ${CLAUDE_PLUGIN_ROOT}/scripts/context7-hint SessionStart"
+                        "command": "node ${CLAUDE_PLUGIN_ROOT}/scripts/context7-hint.js SessionStart"
                     }
                 ]
             }
@@ -29,7 +29,7 @@
                 "hooks": [
                     {
                         "type": "command",
-                        "command": "node ${CLAUDE_PLUGIN_ROOT}/scripts/context7-hint SubagentStart"
+                        "command": "node ${CLAUDE_PLUGIN_ROOT}/scripts/context7-hint.js SubagentStart"
                     }
                 ]
             }

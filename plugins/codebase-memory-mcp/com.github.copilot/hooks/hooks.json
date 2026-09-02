@@ -6,7 +6,7 @@
             {
                 "matcher": "Grep|Glob",
                 "type": "command",
-                "command": "node ${PLUGIN_ROOT}/scripts/codebase-memory-hint PostToolUse"
+                "command": "node ${PLUGIN_ROOT}/scripts/codebase-memory-hint.js PostToolUse"
             }
         ],
         "SessionStart": [
