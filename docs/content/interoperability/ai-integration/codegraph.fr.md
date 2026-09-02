@@ -28,14 +28,10 @@ read one symbol with its callers and callees, and measure the impact of a change
 
 ## Skills
 
-### `codegraph-mcp`
-
-Activated on structural code questions to explore related symbols, call paths
-and blast radius through the `codegraph_explore` MCP tool rather than a blind grep.
-
-### `codegraph-cli`
-
-Fallback for querying the knowledge graph through the `codegraph` CLI when the codegraph MCP is unavailable or blocked.
+| Skill           | Description                                                                                                                                                       |
+| --------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `codegraph-mcp` | Activated on structural code questions to explore related symbols, call paths and blast radius through the `codegraph_explore` MCP tool rather than a blind grep. |
+| `codegraph-cli` | Fallback for querying the knowledge graph through the `codegraph` CLI when the codegraph MCP is unavailable or blocked.                                           |
 
 ## Installation
 

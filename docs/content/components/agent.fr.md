@@ -33,6 +33,8 @@ repository/
 ---
 name: agent-name
 description: What this agent specializes in and when it should be invoked
+model: opus # "opus", "sonnet", "haiku", "inherit" ou un ID de modèle précis
+tools: Glob, Grep, Read
 # many other frontmatter properties
 ---
 
@@ -82,6 +84,8 @@ repository/
 ---
 name: agent-name
 description: What this agent specializes in and when it should be invoked
+model: Claude Opus 5
+tools: read, search # accepte aussi les valeurs de Claude Code
 # many other frontmatter properties
 ---
 

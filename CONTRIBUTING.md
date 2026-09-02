@@ -98,24 +98,30 @@ Only the following files and directories are required (everything else depends o
 <plugin-name>/
 ├── .apm/
 │   ├── agents/
+│   │   ├── LICENSE               # only when vendored, beside the files it covers
 │   │   └── agent-name.agent.md
 │   ├── hooks/
 │   │   └── hooks.json
 │   └── skills/
 │       └── skill-name/
+│           ├── LICENSE           # only when vendored, travels with a standalone skill install
 │           └── SKILL.md
 ├── .claude-plugin/
 │   └── plugin.json
 ├── .cursor-plugin/
 │   └── plugin.json               # only with hooks (Cursor)
 ├── com.github.copilot/           # client extension directory (**Agent Plugins** specification)
-│   ├── agents -> ../.apm/agents  # symlink, only with agents
+│   ├── agents/
+│   │   └── agent-name.agent.md   # copy of .apm/agent/*.agent.md with custom frontmatter
 │   └── hooks/
 │       └── hooks.json
 ├── hooks/
 │   ├── claude.json
 │   └── cursor.json
 ├── scripts/                      # hook executables, resolved as ${PLUGIN_ROOT}/scripts/<name> or {CLAUDE_PLUGIN_ROOT}/scripts/<name>
+│   └── vendor/                   # only when vendored, keeps the LICENSE scoped to upstream files
+│       ├── LICENSE
+│       └── module.js
 ├── tests/
 ├── agents -> .apm/agents         # symlink
 ├── skills -> .apm/skills         # symlink
@@ -136,6 +142,13 @@ Only the following files and directories are required (everything else depends o
 | **Codex**       | `.claude-plugin/plugin.json` | (no plugin mode)                       | `hooks/claude.json`                                         |
 | **Copilot**     | `plugin.json`                | `com.github.copilot/agents/*.agent.md` | `com.github.copilot/hooks/hooks.json`                       |
 | **Cursor**      | `.cursor-plugin/plugin.json` | (no plugin mode)                       | `hooks/cursor.json`                                         |
-| **Devin**       | `plugin.json`                | `agents/*.agent.md`                    | (same `hooks.json` path as **Antigravity**, so not shipped) |
+| **Devin**       | `.claude-plugin/plugin.json` | `agents/*.agent.md`                    | (same `hooks.json` path as **Antigravity**, so not shipped) |
 
 Skills are read from the single `skills -> .apm/skills` symlink by every runtime supporting the **Agent Skills** spec, no per-runtime config needed.
+
+### Licensing
+
+Vendored components must declare frontmatter property `metadata.upstream`
+and carry their upstream `LICENSE` in the same directory (needed when redistributing MIT and Apache-2.0).
+
+Moreover, modified redistributions of Apache-2.0 need `metadata.modified` stating what changed.

@@ -32,13 +32,9 @@ while searches (tool events) only provide a simple reminder to use the CLI or MC
 
 ## Skills
 
-### `codebase-memory`
-
-Activated to answer structural code questions through the knowledge graph: which tool answers which
-question, the graph's edge types, Cypher query examples and common pitfalls.
-
-The same tools run as one-shot commands (`codebase-memory-mcp cli <tool>`) when the MCP server is unavailable
-or blocked, so no separate CLI skill is needed.
+| Skill             | Description                                                                                                                                                                                                                                                                                                                                    |
+| ----------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `codebase-memory` | Activated to answer structural code questions through the knowledge graph: which tool answers which question, the graph's edge types, Cypher query examples and common pitfalls. The same tools run as one-shot commands (`codebase-memory-mcp cli <tool>`) when the MCP server is unavailable or blocked, so no separate CLI skill is needed. |
 
 ## Installation
 

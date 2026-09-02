@@ -1,6 +1,12 @@
 ---
+description: |
+  Use the codegraph_explore MCP tool for structural code discovery (relevant symbols, call paths, blast-radius) instead of blind grep/read.
+  Activates when exploring an unfamiliar codebase, finding what calls or is called by a symbol,
+  or asking how a change would ripple through the code.
+disable-model-invocation: false
+license: MIT
 name: codegraph-mcp
-description: Use the codegraph_explore MCP tool for structural code discovery (relevant symbols, call paths, blast-radius) instead of blind grep/read. Activates when exploring an unfamiliar codebase, finding what calls or is called by a symbol, or asking how a change would ripple through the code.
+user-invocable: true
 ---
 
 When the user asks a structural code question, use codegraph's knowledge graph instead of blind grep/read.

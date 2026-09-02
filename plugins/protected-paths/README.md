@@ -56,7 +56,7 @@ node --test tests/protected-paths.test.js
 | **Antigravity** | `plugin.json`                | -                                     |
 | **Claude Code** | `.claude-plugin/plugin.json` | `hooks/claude.json`                   |
 | **Codex**       | `.claude-plugin/plugin.json` | `hooks/claude.json`                   |
-| **Copilot**     | `.plugin/plugin.json`        | `com.github.copilot/hooks/hooks.json` |
+| **Copilot**     | `plugin.json`                | `com.github.copilot/hooks/hooks.json` |
 | **Cursor**      | `.cursor-plugin/plugin.json` | `hooks/cursor.json`                   |
 | **Devin**       | `.claude-plugin/plugin.json` | -                                     |
 
