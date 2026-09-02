@@ -32,10 +32,14 @@ repository/
 │       └── SKILL.md
 ├── mcp.json
 └── com.example.client/
+    ├── agents/
+    │   └── reviewer.agent.md
+    └── hooks/
+        └── hooks.json
 ```
 
 Le répertoire `com.example.client` est une extension client.
-Il contient des composants dans un format spécifique à l'agent *runtime* (hooks, serveurs MCP, skills, etc.).
+Il contient des composants dans un format spécifique à l'agent *runtime* (hooks, serveurs MCP, agents, etc.).
 
 - **Copilot** : `com.github.copilot/`
 {{< /tab >}}

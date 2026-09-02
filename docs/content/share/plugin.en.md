@@ -32,10 +32,14 @@ repository/
 │       └── SKILL.md
 ├── mcp.json
 └── com.example.client/
+    ├── agents/
+    │   └── reviewer.agent.md
+    └── hooks/
+        └── hooks.json
 ```
 
 The `com.example.client` directory is a client extension.
-It contains components in an agent-runtime-specific format (hooks, MCP servers, skills, etc.).
+It contains components in an agent-runtime-specific format (hooks, MCP servers, agents, etc.).
 
 - **Copilot**: `com.github.copilot/`
 {{< /tab >}}
