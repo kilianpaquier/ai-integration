@@ -1,0 +1,11 @@
+{
+    "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+
+    "name": "exam-drill",
+    "description": "Endless certification drilling with real exam-format questions built from official documentation",
+    "version": "0.1.0",
+    "license": "MIT",
+
+    "repository": "https://gitlab.com/kilianpaquier/ai-integration",
+    "homepage": "https://gitlab.com/kilianpaquier/ai-integration/-/tree/main/plugins/exam-drill"
+}

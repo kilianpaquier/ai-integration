@@ -1,0 +1,10 @@
+# yaml-language-server: $schema=https://microsoft.github.io/apm/specs/schemas/manifest-v0.1.schema.json
+
+name: exam-drill
+version: 0.1.0
+
+author: Kilian PAQUIER
+description: Endless certification drilling with real exam-format questions built from official documentation
+license: MIT
+
+# targets: [claude, codex, copilot, cursor, gemini, kiro, opencode, windsurf]

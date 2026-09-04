@@ -61,3 +61,10 @@ apm install context7@one-for-all -g
 | **Copilot**     | `plugin.json`                | `mcp.json`        | `com.github.copilot/hooks/hooks.json` |
 | **Cursor**      | `.cursor-plugin/plugin.json` | `mcp.json`        | `hooks/cursor.json`                   |
 | **Devin**       | `.claude-plugin/plugin.json` | `mcp.json`        | -                                     |
+
+## Limitations
+
+> [!warning]No hooks on Antigravity or Devin
+> Antigravity and Devin ship no hook configuration, so the search-before-grep reminders
+> and index-state hints never fire there. The MCP server and `codebase-memory` skill still work,
+> but nothing nudges the agent to use them.

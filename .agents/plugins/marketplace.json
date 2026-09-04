@@ -41,6 +41,18 @@
       "category": "hybrid"
     },
     {
+      "name": "exam-drill",
+      "source": {
+        "source": "local",
+        "path": "./plugins/exam-drill"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "hybrid"
+    },
+    {
       "name": "protected-paths",
       "source": {
         "source": "local",

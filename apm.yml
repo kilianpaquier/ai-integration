@@ -31,6 +31,10 @@ marketplace:
       name: context7
       source: ./plugins/context7
 
+    - category: skills
+      name: exam-drill
+      source: ./plugins/exam-drill
+
     - category: hooks
       name: protected-paths
       source: ./plugins/protected-paths

@@ -206,12 +206,3 @@ def register(ctx):
 > [!warning]Format LSP
 > Bien que les LSP puissent être définis dans `.lsp.json`, une meilleure approche consiste à les définir en ligne dans `plugin.json`
 > car [leur format varie selon les agent *runtimes*](/components/lsp).
-
-> [!warning]Variables d'environnement des hooks
-> Dans la plupart des cas, les *hooks* appellent des scripts personnalisés (shell, powershell, bash, js, etc.)
-> et utilisent des variables d'environnement prédéfinies pour les localiser (par exemple `PLUGIN_ROOT`, `CLAUDE_PLUGIN_ROOT`, `CLAUDE_PLUGIN_DATA`, etc.).
->
-> Cependant, avec certains agent *runtimes* (par exemple VSCode Chat), ces variables ne sont pas correctement définies sur les environnements distants
-> (par exemple WSL ou SSH) lorsque l'OS hôte diffère de celui du distant.
->
-> Voir [microsoft/vscode#313201](https://github.com/microsoft/vscode/issues/313201) et [microsoft/vscode#326166](https://github.com/microsoft/vscode/issues/326166) pour plus de détails.

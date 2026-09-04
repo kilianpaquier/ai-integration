@@ -54,6 +54,7 @@ npx skills add kilianpaquier/ai-integration -g
 
 ### Skills
 
-| Name                                         | Description                                                             |
-| -------------------------------------------- | ----------------------------------------------------------------------- |
-| [schema-converter](plugins/schema-converter) | A skill suite to transform JSON schemas into their language equivalents |
+| Name                                         | Description                                                                                       |
+| -------------------------------------------- | ------------------------------------------------------------------------------------------------- |
+| [schema-converter](plugins/schema-converter) | A skill suite to transform JSON schemas into their language equivalents                           |
+| [exam-drill](plugins/exam-drill)             | Endless certification drilling with real exam-format questions built from official documentation. |

@@ -62,6 +62,13 @@ apm install codebase-memory-mcp@one-for-all -g
 | **Antigravity** | `plugin.json`                | `mcp_config.json` | -                                     |
 | **Claude Code** | `.claude-plugin/plugin.json` | `mcp.json`        | `hooks/claude.json`                   |
 | **Codex**       | `.claude-plugin/plugin.json` | `mcp.json`        | `hooks/claude.json`                   |
-| **Copilot**     | `.plugin/plugin.json`        | `mcp.json`        | `com.github.copilot/hooks/hooks.json` |
+| **Copilot**     | `plugin.json`                | `mcp.json`        | `com.github.copilot/hooks/hooks.json` |
 | **Cursor**      | `.cursor-plugin/plugin.json` | `mcp.json`        | `hooks/cursor.json`                   |
 | **Devin**       | `.claude-plugin/plugin.json` | `mcp.json`        | -                                     |
+
+## Limitations
+
+> [!warning]No hooks on Antigravity or Devin
+> Antigravity and Devin ship no hook configuration, so the search-before-grep reminders
+> and index-state hints never fire there. The MCP server and `codebase-memory` skill still work,
+> but nothing nudges the agent to use them.

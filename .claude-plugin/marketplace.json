@@ -27,6 +27,13 @@
       "source": "./plugins/context7"
     },
     {
+      "name": "exam-drill",
+      "description": "Endless certification drilling with real exam-format questions built from official documentation",
+      "version": "0.1.0",
+      "category": "hybrid",
+      "source": "./plugins/exam-drill"
+    },
+    {
       "name": "protected-paths",
       "description": "Stop your agent from accessing unwanted or sensitive directories",
       "version": "0.6.0",

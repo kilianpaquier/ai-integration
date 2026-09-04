@@ -84,7 +84,7 @@ repository/
 ---
 name: agent-name
 description: What this agent specializes in and when it should be invoked
-model: Claude Opus 5
+model: Claude Opus 5, GPT-5.6 Sol # une liste de modèles, le premier disponible sera utilisé
 tools: read, search # accepte aussi les valeurs de Claude Code
 # many other frontmatter properties
 ---
