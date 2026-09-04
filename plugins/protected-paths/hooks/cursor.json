@@ -3,6 +3,7 @@
     "hooks": {
         "preToolUse": [
             {
+                "matcher": "Shell|Read|Write|Grep",
                 "command": "node ${PLUGIN_ROOT}/scripts/protected-paths.js"
             }
         ]

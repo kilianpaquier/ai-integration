@@ -76,28 +76,27 @@ const DENY_LIST = [
     `${HOME}/.ssh`,
 ]
 
-// every absolute-path-looking token in a scanned field stops at whitespace/quotes/shell metacharacters
-const TOKEN_PATTERN = /\/[^\]\s"\\;|&()<>,}]*/g
+// shell-token boundary, used to split path tokens out of compound field values.
+const SPLIT_PATTERN = /[\s"'\\;|&()<>,}]+/
 
-// tool-argument fields, across Claude/Codex/Copilot/Cursor/Gemini's built-in tools, that can carry a filesystem path.
-//
-// A field or tool not listed here (eg. a custom MCP tool's own argument shape) is not scanned.
-// An accepted tradeoff for parsing known JSON fields instead of scanning the raw payload text.
-const KNOWN_FIELDS = [
+// fields whose entire value is a single path.
+const SINGLE_PATH_FIELDS = [
     'absolute_path',
-    'command',
     'directory',
     'file_path',
-    'glob',
     'notebook_path',
     'path',
-    'pattern',
     'working_directory',
 ]
 
-// toolInputOf returns the tool-call argument object of a hook payload, regardless of which agent sent it:
-//  - Claude/Codex/Cursor/Gemini use tool_input
-//  - Copilot uses toolArgs - sometimes as a plain object, sometimes double-encoded as an escaped JSON string.
+// fields that embed a path inside a larger string (shell command, glob expression).
+const COMPOUND_FIELDS = [
+    'command',
+    'glob',
+    'pattern',
+]
+
+// toolInputOf extracts the tool-call arguments from a hook payload (tool_input or Copilot's toolArgs, plain or JSON-encoded).
 const toolInputOf = (payload) => {
     let toolInput = payload.tool_input ?? payload.toolArgs ?? {}
     if (typeof toolInput === 'string') {
@@ -110,15 +109,13 @@ const toolInputOf = (payload) => {
     return toolInput
 }
 
-// isPrefix reports whether prefix is target itself, or an ancestor directory of target.
+// isPrefix reports whether target equals prefix or sits under it.
 const isPrefix = (prefix, target) => target === prefix || target.startsWith(`${prefix}/`)
 
-// resolvePath mimics `realpath -m`: it canonicalizes every existing leading segment (resolving symlinks)
-// then lexically appends whatever doesn't exist, without requiring the full path to exist.
-//
-// A reference to a not-yet-created file under a protected directory is still caught.
-const resolvePath = (target) => {
-    const segments = path.resolve(target).split(path.sep).filter(Boolean)
+// resolvePath resolves target against base (like `realpath -m`), following symlinks on existing segments
+// and appending the rest lexically, so a not-yet-created path under a protected dir is still caught.
+const resolvePath = (base, target) => {
+    const segments = path.resolve(base, target).split(path.sep).filter(Boolean)
 
     let real = path.sep
     let i = 0
@@ -133,7 +130,7 @@ const resolvePath = (target) => {
     return i === segments.length ? real : path.join(real, ...segments.slice(i))
 }
 
-// denyReasonFor returns the deny reason for a resolved path, or null if it's allowed.
+// denyReasonFor returns the deny reason for a resolved path, or null if allowed.
 const denyReasonFor = (resolved) => {
     for (const pattern of DENY_LIST) {
         if (isPrefix(pattern, resolved)) {
@@ -150,15 +147,13 @@ const denyReasonFor = (resolved) => {
     return null
 }
 
-// deny with a reason the tool call since it touches protected paths.
+// deny blocks the tool call with reason, writing every agent's PreToolUse deny format (unknown keys are ignored).
 //
-// PreToolUse output format:
+// Runtime formats:
 //  - Claude Code, Codex: hookSpecificOutput wrapper
 //  - Copilot, Codex: flat permissionDecision
 //  - Cursor: flat permission
 //  - Gemini: flat decision
-//
-// Unknown keys are ignored by each agent, so one body covers them all.
 const deny = (reason) => {
     const body = JSON.stringify({
         action: "block",
@@ -181,25 +176,32 @@ const deny = (reason) => {
     process.exit(0)
 }
 
+const expand = (value) => value
+    .replaceAll('~', HOME)
+    .replaceAll('$HOME', HOME)
+    .replaceAll('${HOME}', HOME)
+
 const main = (payload) => {
     const toolInput = toolInputOf(payload)
-    const values = KNOWN_FIELDS
+    const cwd = typeof payload.cwd === 'string' ? payload.cwd : process.cwd()
+
+    const singleValues = SINGLE_PATH_FIELDS
         .map((field) => toolInput[field])
         .filter((value) => typeof value === 'string')
+        .map(expand)
     if (typeof payload.cwd === 'string') {
-        values.push(payload.cwd)
+        singleValues.push(cwd)
     }
 
-    const tokens = values.flatMap((value) => {
-        const normalized = value
-            .replaceAll('~', HOME)
-            .replaceAll('$HOME', HOME)
-            .replaceAll('${HOME}', HOME)
-        return normalized.match(TOKEN_PATTERN) ?? []
-    })
+    const compoundTokens = COMPOUND_FIELDS
+        .map((field) => toolInput[field])
+        .filter((value) => typeof value === 'string')
+        .flatMap((value) => expand(value).split(SPLIT_PATTERN))
+        .filter((token) => token.includes('/'))
 
+    const tokens = [...singleValues, ...compoundTokens]
     for (const token of new Set(tokens)) {
-        const reason = denyReasonFor(resolvePath(token))
+        const reason = denyReasonFor(resolvePath(cwd, token))
         if (reason) {
             deny(reason)
         }

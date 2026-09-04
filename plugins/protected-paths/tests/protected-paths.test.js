@@ -7,7 +7,7 @@ const { spawnSync } = require('node:child_process');
 const path = require('node:path');
 const { test } = require('node:test');
 
-const HOOK = path.join(__dirname, '..', 'scripts', 'protected-paths');
+const HOOK = path.join(__dirname, '..', 'scripts', 'protected-paths.js');
 const TEST_HOME = '/home/tester';
 
 const runHook = (input) => spawnSync(process.execPath, [HOOK], {
@@ -285,6 +285,28 @@ test("a Grep-style glob field is scanned separately from pattern", () => {
   assert.equal(status, 0);
   assert.match(stdout, /"permissionDecision":\s*"deny"/);
   assert.ok(stdout.includes('.ssh'), "expected deny output to include '.ssh'");
+});
+
+// --- relative references are resolved against the tool call's own cwd, not the hook's ---
+
+test('a relative command reference resolved against cwd is denied', () => {
+  const { status, stdout } = runHook('{"cwd":"/home/tester/project","tool_input":{"command":"cat ../.ssh/id_rsa"}}');
+  assert.equal(status, 0);
+  assert.match(stdout, /"permissionDecision":\s*"deny"/);
+  assert.ok(stdout.includes('.ssh'), "expected deny output to include '.ssh'");
+});
+
+test('a relative file_path resolved against cwd is denied', () => {
+  const { status, stdout } = runHook('{"cwd":"/home/tester/project","tool_input":{"file_path":"../.ssh/id_rsa"}}');
+  assert.equal(status, 0);
+  assert.match(stdout, /"permissionDecision":\s*"deny"/);
+  assert.ok(stdout.includes('.ssh'), "expected deny output to include '.ssh'");
+});
+
+test('a relative reference outside any protected dir is allowed', () => {
+  const { status, stdout } = runHook('{"cwd":"/home/tester/project","tool_input":{"command":"cat ../notes.txt"}}');
+  assert.equal(status, 0);
+  assert.equal(stdout, '');
 });
 
 test('malformed JSON payload is denied rather than silently allowed', () => {

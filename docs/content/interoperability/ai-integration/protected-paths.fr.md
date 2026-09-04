@@ -11,18 +11,18 @@ title: Protected Paths
 
 ## Hooks
 
-This plugin registers a `PreToolUse` hook that inspects every tool call and blocks any that touch a
-protected directory: `~/.agents`, `~/.apm`, `~/.aws`, `~/.azure`, `~/.claude`, `~/.codex`, `~/.config`, `~/.copilot`, `~/.docker`,
+| Event                                               | Output                                                | Agent Runtimes                      |
+| --------------------------------------------------- | ----------------------------------------------------- | ----------------------------------- |
+| `PreToolUse`, shell/read/write/edit/glob/grep calls | blocks the call when it touches a protected directory | Claude Code, Codex, Copilot, Cursor |
+
+Protected directories: `~/.agents`, `~/.apm`, `~/.aws`, `~/.azure`, `~/.claude`, `~/.codex`, `~/.config`, `~/.copilot`, `~/.docker`,
 `~/.git-credentials`, `~/.gnupg`, `~/.kube`, `~/.netrc`, `~/.npmrc`, `~/.pypirc`, `~/.ssh`.
 
-An allow-list carves out specific subpaths needed for plugins and instructions to keep working under
-`~/.agents`, `~/.apm`, `~/.claude`, `~/.codex`, `~/.config`, and `~/.copilot`, which are otherwise fully denied.
+An allow-list carves out specific subpaths under `~/.agents`, `~/.apm`, `~/.claude`, `~/.codex`, `~/.config`, and `~/.copilot`,
+which are otherwise fully denied.
 
-The hook also catches recursive tools (`grep -r`, `find`, `tar`, `rsync`, `ls -R`, ...) and bare
-references like `cd ~` that could reach a protected directory without naming it directly.
-
-> [!warning]
-> A relative path used after a `cd` earlier in the same command is not resolved against that new directory.
+The hook also catches recursive tools (`grep -r`, `find`, `tar`, `rsync`, `ls -R`, ...)
+and bare references like `cd ~` that could reach a protected directory without naming it directly.
 
 ## Installation
 

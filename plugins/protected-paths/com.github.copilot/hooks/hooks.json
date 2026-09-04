@@ -3,6 +3,7 @@
     "hooks": {
         "PreToolUse": [
             {
+                "matcher": "bash|powershell|view|create|edit|glob|grep",
                 "hooks": [
                     {
                         "type": "command",
