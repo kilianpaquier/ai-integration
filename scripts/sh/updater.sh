@@ -88,6 +88,30 @@ copy_file "$context7_tmp/LICENSE" "$context7_skills_dest/context7-cli/references
 
 ################################################################
 #
+# Claude Code official plugins
+#
+################################################################
+
+# renovate: datasource=git-refs packageName=https://github.com/anthropics/claude-plugins-official depName=claude-plugins-official
+claude_plugins_official_version=4b909c3492b350cdc42160ffe4b135e6f5c1db12 # main
+
+claude_plugins_official_tmp="$("$dir/helpers/git-clone.sh" https://github.com/anthropics/claude-plugins-official.git "$claude_plugins_official_version")"
+
+# feature-dev
+feature_dev_dir="$dir/../../plugins/feature-dev"
+feature_dev_apm_dir="$feature_dev_dir/.apm"
+for agent in code-architect code-explorer code-reviewer; do
+  sync_body "$claude_plugins_official_tmp/plugins/feature-dev/agents/$agent.md" "$feature_dev_apm_dir/agents/$agent.agent.md"
+  sync_body "$claude_plugins_official_tmp/plugins/feature-dev/agents/$agent.md" \
+    "$feature_dev_dir/com.github.copilot/agents/$agent.agent.md"
+done
+sync_body "$claude_plugins_official_tmp/plugins/feature-dev/commands/feature-dev.md" "$feature_dev_apm_dir/skills/feature-dev/SKILL.md"
+copy_file "$claude_plugins_official_tmp/LICENSE" "$feature_dev_apm_dir/agents/LICENSE"
+copy_file "$claude_plugins_official_tmp/LICENSE" "$feature_dev_apm_dir/skills/feature-dev/LICENSE"
+copy_file "$claude_plugins_official_tmp/LICENSE" "$feature_dev_dir/com.github.copilot/agents/LICENSE"
+
+################################################################
+#
 # Caveman
 #
 ################################################################

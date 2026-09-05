@@ -39,6 +39,10 @@ marketplace:
       name: exam-drill
       source: ./plugins/exam-drill
 
+    - category: hybrid
+      name: feature-dev
+      source: ./plugins/feature-dev
+
     - category: hooks
       name: protected-paths
       source: ./plugins/protected-paths

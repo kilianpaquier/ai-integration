@@ -65,6 +65,18 @@
       "category": "skills"
     },
     {
+      "name": "feature-dev",
+      "source": {
+        "source": "local",
+        "path": "./plugins/feature-dev"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "hybrid"
+    },
+    {
       "name": "protected-paths",
       "source": {
         "source": "local",

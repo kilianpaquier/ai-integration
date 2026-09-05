@@ -1,0 +1,10 @@
+# yaml-language-server: $schema=https://microsoft.github.io/apm/specs/schemas/manifest-v0.1.schema.json
+
+name: feature-dev
+version: 0.1.0
+
+author: Kilian PAQUIER
+description: Guided feature development with codebase understanding and architecture focus
+license: Apache-2.0
+
+# targets: [claude, codex, copilot, cursor, gemini, kiro, opencode, windsurf]

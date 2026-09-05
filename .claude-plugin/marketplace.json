@@ -41,6 +41,13 @@
       "source": "./plugins/exam-drill"
     },
     {
+      "name": "feature-dev",
+      "description": "Guided feature development with codebase understanding and architecture focus",
+      "version": "0.1.0",
+      "category": "hybrid",
+      "source": "./plugins/feature-dev"
+    },
+    {
       "name": "protected-paths",
       "description": "Stop your agent from accessing unwanted or sensitive directories",
       "version": "0.7.0",

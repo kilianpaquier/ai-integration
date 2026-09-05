@@ -1,0 +1,11 @@
+{
+    "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+
+    "name": "feature-dev",
+    "description": "Guided feature development with codebase understanding and architecture focus",
+    "version": "0.1.0",
+    "license": "Apache-2.0",
+
+    "repository": "https://gitlab.com/kilianpaquier/ai-integration",
+    "homepage": "https://gitlab.com/kilianpaquier/ai-integration/-/tree/main/plugins/feature-dev"
+}
