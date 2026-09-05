@@ -1,0 +1,10 @@
+# yaml-language-server: $schema=https://microsoft.github.io/apm/specs/schemas/manifest-v0.1.schema.json
+
+name: caveman
+version: 0.1.0
+
+author: Kilian PAQUIER
+description: Ultra-compressed communication mode. Cuts output tokens while keeping full technical accuracy.
+license: MIT
+
+# targets: [claude, codex, copilot, cursor, gemini, kiro, opencode, windsurf]

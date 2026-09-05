@@ -1,0 +1,11 @@
+{
+    "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+
+    "name": "caveman",
+    "description": "Ultra-compressed communication mode. Cuts output tokens while keeping full technical accuracy.",
+    "version": "0.1.0",
+    "license": "MIT",
+
+    "repository": "https://gitlab.com/kilianpaquier/ai-integration",
+    "homepage": "https://gitlab.com/kilianpaquier/ai-integration/-/tree/main/plugins/caveman"
+}

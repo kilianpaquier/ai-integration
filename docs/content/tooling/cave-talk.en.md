@@ -5,35 +5,35 @@ title: Talk like cave humans
 
 Agents tend to write a lot, from subagents spawning context and MCP requests/outputs to outputs shown to users, which increases token consumption.
 
-The [caveman](https://github.com/JuliusBrussee/caveman) stack counters this by acting at different places within agent runtimes.
+The [**caveman**](https://github.com/JuliusBrussee/caveman) stack counters this by acting at different places within agent runtimes.
 
 {{< tabs >}}
 
 {{< tab name="Caveman" >}}
 > [!warning]
 > Hooks activation is limited to **Claude Code** by default,
-> but a [simili-mirrored hook](/interoperability/ai-integration/caveman) can be used to broaden agent runtime compatibility.
+> but a [mirrored plugin](/interoperability/ai-integration/caveman) can be used to broaden agent runtime compatibility.
 
 - **Upstream**: <https://github.com/JuliusBrussee/caveman>
 - **What is it**: A skill suite for compressed outputs, primarily for chat output, documentation, commits, code review,
 and hooks to automatically activate caveman output mode.
 
 ```sh
-claude plugin marketplace add JuliusBrussee/caveman
-claude plugin install caveman@caveman
+claude plugin marketplace add kilianpaquier/ai-integration
+claude plugin install caveman@one-for-all
 ```
 
 ```sh
-npx skills add JuliusBrussee/caveman
+apm marketplace add kilianpaquier/ai-integration
+apm install caveman@one-for-all -g
 ```
 
 ```sh
-apm marketplace add JuliusBrussee/caveman
-apm install caveman@caveman -g
+apm install kilianpaquier/ai-integration/plugins/caveman -g
 ```
 
 ```sh
-apm install JuliusBrussee/caveman -g
+npx skills add kilianpaquier/ai-integration
 ```
 {{< /tab >}}
 
@@ -47,16 +47,16 @@ my-agent plugin install ck@cavekit-marketplace
 ```
 
 ```sh
-npx skills add JuliusBrussee/cavekit
-```
-
-```sh
 apm marketplace add JuliusBrussee/cavekit
 apm install ck@cavekit-marketplace -g
 ```
 
 ```sh
 apm install JuliusBrussee/cavekit -g
+```
+
+```sh
+npx skills add JuliusBrussee/cavekit
 ```
 {{< /tab >}}
 
@@ -67,7 +67,7 @@ apm install JuliusBrussee/cavekit -g
 
 - **Upstream**: <https://github.com/JuliusBrussee/caveman-code>
 - **What is it**: A whole agent runtime to use instead of **Claude Code**, **Copilot**, etc.,
-  including the whole caveman stack, and using subscriptionss to connect to LLMs.
+  including the whole **caveman** stack, and using subscriptionss to connect to LLMs.
 {{< /tab >}}
 
 {{< tab name="Caveman Shrink" >}}
@@ -83,7 +83,7 @@ apm install JuliusBrussee/cavekit -g
 > More information about this server in [memory](/tooling/memory).
 
 - **Upstream**: <https://github.com/JuliusBrussee/cavemem>
-- **What is it**: An MCP server to store session memories (compressed using caveman constraints) and reuse them in subsequent sessions.
+- **What is it**: An MCP server to store session memories (compressed using **caveman** constraints) and reuse them in subsequent sessions.
 {{< /tab >}}
 
 {{< /tabs >}}

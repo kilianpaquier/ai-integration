@@ -87,6 +87,46 @@ copy_file "$context7_tmp/LICENSE" "$context7_skills_dest/context7-mcp/LICENSE"
 copy_file "$context7_tmp/LICENSE" "$context7_skills_dest/context7-cli/references/LICENSE"
 
 ################################################################
+#
+# Caveman
+#
+################################################################
+
+# renovate: datasource=github-tags packageName=JuliusBrussee/caveman depName=caveman
+caveman_version=ae10845a5e4c958db8a5b52018c9ebc7ce534874 # v2.4.0
+
+caveman_tmp="$("$dir/helpers/git-clone.sh" https://github.com/JuliusBrussee/caveman.git "$caveman_version")"
+caveman_dir="$dir/../../plugins/caveman"
+caveman_apm_dir="$caveman_dir/.apm"
+caveman_scripts_dir="$caveman_dir/scripts"
+
+for skill in caveman caveman-commit caveman-explore; do
+  sync_body "$caveman_tmp/skills/$skill/SKILL.md" "$caveman_apm_dir/skills/$skill/SKILL.md"
+  copy_file "$caveman_tmp/LICENSE" "$caveman_apm_dir/skills/$skill/LICENSE"
+done
+for hook_module in caveman-config caveman-parse; do
+  copy_file "$caveman_tmp/src/hooks/$hook_module.js" "$caveman_scripts_dir/vendor/$hook_module.js"
+done
+copy_file "$caveman_tmp/LICENSE" "$caveman_scripts_dir/vendor/LICENSE"
+
+# inline the already-synced caveman SKILL.md (frontmatter stripped) into the session start script
+caveman_rules="$(mktemp)"
+sed -e '2,/^---$/d' -e '1d' "$caveman_apm_dir/skills/caveman/SKILL.md" > "$caveman_rules"
+caveman_escaped="$(mktemp)"
+# shellcheck disable=SC2016
+sed -e 's/\\/\\\\/g' -e 's/`/\\`/g' -e 's/\${/\\${/g' "$caveman_rules" > "$caveman_escaped"
+caveman_script="$caveman_scripts_dir/caveman-activate.js"
+
+# without both markers the sed below silently no-ops, or deletes everything down to EOF
+for caveman_marker in 'const SKILL = `' '`.trim()'; do
+  grep -qxF -- "$caveman_marker" "$caveman_script" ||
+    error "$caveman_script: missing the '$caveman_marker' marker the inline sed relies on"
+done
+
+# shellcheck disable=SC2016
+sed -i -e '/^const SKILL = `$/,/^`\.trim()$/{//!d}' -e "/^const SKILL = \`\$/r $caveman_escaped" "$caveman_script"
+
+################################################################
 
 if [ -n "$missing" ]; then
   error "missing destination frontmatter, author it before syncing:$missing"

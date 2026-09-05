@@ -48,9 +48,10 @@ npx skills add kilianpaquier/ai-integration -g
 
 ### Hooks
 
-| Name                                       | Description                                                      |
-| ------------------------------------------ | ---------------------------------------------------------------- |
-| [protected-paths](plugins/protected-paths) | Stop your agent from accessing unwanted or sensitive directories |
+| Name                                       | Description                                                                                    |
+| ------------------------------------------ | ---------------------------------------------------------------------------------------------- |
+| [caveman](plugins/caveman)                 | Ultra-compressed communication mode. Cuts output tokens while keeping full technical accuracy. |
+| [protected-paths](plugins/protected-paths) | Stop your agent from accessing unwanted or sensitive directories                               |
 
 ### Skills
 

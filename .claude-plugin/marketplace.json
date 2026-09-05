@@ -6,6 +6,13 @@
   },
   "plugins": [
     {
+      "name": "caveman",
+      "description": "Ultra-compressed communication mode. Cuts output tokens while keeping full technical accuracy.",
+      "version": "0.1.0",
+      "category": "hybrid",
+      "source": "./plugins/caveman"
+    },
+    {
       "name": "codebase-memory-mcp",
       "description": "High-performance code intelligence MCP server. Indexes codebases into a persistent knowledge graph.",
       "version": "0.11.0",

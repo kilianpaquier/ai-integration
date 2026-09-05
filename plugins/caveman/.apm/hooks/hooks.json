@@ -1,0 +1,33 @@
+{
+    "description": "Activate ultra-compressed caveman communication mode at session start, track its level on each prompt",
+    "hooks": {
+        "SessionStart": [
+            {
+                "matcher": "startup|resume|clear|compact",
+                "hooks": [
+                    {
+                        "type": "command",
+                        "command": "node ${PLUGIN_ROOT}/scripts/caveman-activate.js SessionStart",
+                        "timeout": 10
+                    }
+                ]
+            }
+        ],
+        "UserPromptSubmit": [
+            {
+                "hooks": [
+                    {
+                        "type": "command",
+                        "command": "node ${PLUGIN_ROOT}/scripts/caveman-mode.js",
+                        "timeout": 10
+                    },
+                    {
+                        "type": "command",
+                        "command": "node ${PLUGIN_ROOT}/scripts/caveman-activate.js UserPromptSubmit",
+                        "timeout": 10
+                    }
+                ]
+            }
+        ]
+    }
+}

@@ -6,7 +6,7 @@ title: Parler hommes des cavernes
 Les agents ont tendance à écrire beaucoup, du contexte généré par les sous-agents aux requêtes/réponses MCP
 en passant par les sorties affichées aux utilisateurs, ce qui augmente la consommation de tokens.
 
-La stack [caveman](https://github.com/JuliusBrussee/caveman) contre cela en agissant à différents endroits
+La stack [**caveman**](https://github.com/JuliusBrussee/caveman) contre cela en agissant à différents endroits
 au sein des agent *runtimes*.
 
 {{< tabs >}}
@@ -14,28 +14,28 @@ au sein des agent *runtimes*.
 {{< tab name="Caveman" >}}
 > [!warning]
 > L'activation des hooks est limitée à **Claude Code** par défaut,
-> mais un [hook quasi-mirroir](/interoperability/ai-integration/caveman) peut être utilisé pour élargir la compatibilité entre agent *runtimes*.
+> mais un [plugin mirroir](/interoperability/ai-integration/caveman) peut être utilisé pour élargir la compatibilité entre agent *runtimes*.
 
 - **Upstream** : <https://github.com/JuliusBrussee/caveman>
 - **Description** : une suite de *skills* pour des sorties compressées, principalement pour la sortie du chat, la documentation,
 les commits, la revue de code, ainsi que des *hooks* pour activer automatiquement le mode de sortie homme des cavernes.
 
 ```sh
-claude plugin marketplace add JuliusBrussee/caveman
-claude plugin install caveman@caveman
+claude plugin marketplace add kilianpaquier/ai-integration
+claude plugin install caveman@one-for-all
 ```
 
 ```sh
-npx skills add JuliusBrussee/caveman
+apm marketplace add kilianpaquier/ai-integration
+apm install caveman@one-for-all -g
 ```
 
 ```sh
-apm marketplace add JuliusBrussee/caveman
-apm install caveman@caveman -g
+apm install kilianpaquier/ai-integration/plugins/caveman -g
 ```
 
 ```sh
-apm install JuliusBrussee/caveman -g
+npx skills add kilianpaquier/ai-integration
 ```
 {{< /tab >}}
 
@@ -49,16 +49,16 @@ my-agent plugin install ck@cavekit-marketplace
 ```
 
 ```sh
-npx skills add JuliusBrussee/cavekit
-```
-
-```sh
 apm marketplace add JuliusBrussee/cavekit
 apm install ck@cavekit-marketplace -g
 ```
 
 ```sh
 apm install JuliusBrussee/cavekit -g
+```
+
+```sh
+npx skills add JuliusBrussee/cavekit
 ```
 {{< /tab >}}
 
@@ -69,7 +69,7 @@ apm install JuliusBrussee/cavekit -g
 
 - **Upstream** : <https://github.com/JuliusBrussee/caveman-code>
 - **Description** : un agent *runtime* complet à utiliser à la place de **Claude Code**, **Copilot**, etc.,
-  incluant toute la stack caveman, et utilisant les abonnements pour se connecter aux LLMs.
+  incluant toute la stack **caveman**, et utilisant les abonnements pour se connecter aux LLMs.
 {{< /tab >}}
 
 {{< tab name="Caveman Shrink" >}}
@@ -85,7 +85,7 @@ apm install JuliusBrussee/cavekit -g
 > Plus d'informations sur ce serveur dans [memory](/tooling/memory).
 
 - **Upstream** : <https://github.com/JuliusBrussee/cavemem>
-- **Description** : un serveur MCP pour stocker les souvenirs de session (compressées selon les contraintes caveman)
+- **Description** : un serveur MCP pour stocker les souvenirs de session (compressées selon les contraintes **caveman**)
 et les réutiliser dans les sessions suivantes.
 {{< /tab >}}
 
