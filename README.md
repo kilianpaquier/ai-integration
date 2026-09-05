@@ -57,6 +57,7 @@ npx skills add kilianpaquier/ai-integration -g
 | Name                                       | Description                                                                                    |
 | ------------------------------------------ | ---------------------------------------------------------------------------------------------- |
 | [caveman](plugins/caveman)                 | Ultra-compressed communication mode. Cuts output tokens while keeping full technical accuracy. |
+| [dcg](plugins/dcg)                         | Block destructive shell and git commands before they run                                       |
 | [protected-paths](plugins/protected-paths) | Stop your agent from accessing unwanted or sensitive directories                               |
 
 ### Skills

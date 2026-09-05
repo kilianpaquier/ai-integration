@@ -1,0 +1,10 @@
+# yaml-language-server: $schema=https://microsoft.github.io/apm/specs/schemas/manifest-v0.1.schema.json
+
+name: dcg
+version: 0.1.0
+
+author: Kilian PAQUIER
+description: Block destructive shell and git commands before they run
+license: MIT
+
+# targets: [claude, codex, copilot, cursor, gemini, kiro, opencode, windsurf]

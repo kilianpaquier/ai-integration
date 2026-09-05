@@ -1,0 +1,11 @@
+{
+    "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+
+    "name": "dcg",
+    "description": "Block destructive shell and git commands before they run",
+    "version": "0.1.0",
+    "license": "MIT",
+
+    "repository": "https://github.com/Dicklesworthstone/destructive_command_guard",
+    "homepage": "https://gitlab.com/kilianpaquier/ai-integration/-/tree/main/plugins/dcg"
+}

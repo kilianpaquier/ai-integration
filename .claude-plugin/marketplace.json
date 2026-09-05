@@ -41,6 +41,13 @@
       "source": "./plugins/context7"
     },
     {
+      "name": "dcg",
+      "description": "Block destructive shell and git commands before they run",
+      "version": "0.1.0",
+      "category": "hooks",
+      "source": "./plugins/dcg"
+    },
+    {
       "name": "exam-drill",
       "description": "Endless certification drilling with real exam-format questions built from official documentation",
       "version": "0.1.0",

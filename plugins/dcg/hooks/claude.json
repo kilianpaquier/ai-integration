@@ -1,0 +1,16 @@
+{
+    "description": "Block destructive shell and git commands before they run",
+    "hooks": {
+        "PreToolUse": [
+            {
+                "matcher": "Bash|PowerShell",
+                "hooks": [
+                    {
+                        "type": "command",
+                        "command": "dcg"
+                    }
+                ]
+            }
+        ]
+    }
+}

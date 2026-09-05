@@ -39,6 +39,10 @@ marketplace:
       name: context7
       source: ./plugins/context7
 
+    - category: hooks
+      name: dcg
+      source: ./plugins/dcg
+
     - category: skills
       name: exam-drill
       source: ./plugins/exam-drill
