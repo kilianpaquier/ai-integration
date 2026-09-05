@@ -35,7 +35,7 @@ apm install exam-drill@one-for-all -g
 
 **Skills CLI**:
 ```sh
-npx skills add kilianpaquier/ai-integration -g
+npx skills add kilianpaquier/ai-integration/plugins/exam-drill -g
 ```
 
 <!-- docs:end -->

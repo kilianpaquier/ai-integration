@@ -37,7 +37,7 @@ apm install schema-converter@one-for-all -g
 **Skills CLI**:
 
 ```sh
-npx skills add kilianpaquier/ai-integration -g
+npx skills add kilianpaquier/ai-integration/plugins/schema-converter -g
 ```
 
 <!-- docs:end -->
