@@ -17,6 +17,18 @@
       "category": "hybrid"
     },
     {
+      "name": "code-simplifier",
+      "source": {
+        "source": "local",
+        "path": "./plugins/code-simplifier"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "hybrid"
+    },
+    {
       "name": "codebase-memory-mcp",
       "source": {
         "source": "local",

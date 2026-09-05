@@ -13,6 +13,13 @@
       "source": "./plugins/caveman"
     },
     {
+      "name": "code-simplifier",
+      "description": "Simplifies and refines code for clarity, consistency, and maintainability while preserving all functionality.",
+      "version": "0.1.0",
+      "category": "hybrid",
+      "source": "./plugins/code-simplifier"
+    },
+    {
       "name": "codebase-memory-mcp",
       "description": "High-performance code intelligence MCP server. Indexes codebases into a persistent knowledge graph.",
       "version": "0.11.0",

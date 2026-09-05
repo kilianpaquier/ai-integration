@@ -38,6 +38,12 @@ npx skills add kilianpaquier/ai-integration -g
 
 ## Plugins
 
+### Agents
+
+| Name                                       | Description                                                                                                   |
+| ------------------------------------------ | ------------------------------------------------------------------------------------------------------------- |
+| [code-simplifier](plugins/code-simplifier) | Simplifies and refines code for clarity, consistency, and maintainability while preserving all functionality. |
+
 ### MCP
 
 | Name                                               | Description                                                                                               |

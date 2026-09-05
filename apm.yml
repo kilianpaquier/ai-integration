@@ -24,6 +24,10 @@ marketplace:
       source: ./plugins/caveman
 
     - category: hybrid
+      name: code-simplifier
+      source: ./plugins/code-simplifier
+
+    - category: hybrid
       name: codebase-memory-mcp
       source: ./plugins/codebase-memory-mcp
 

@@ -97,6 +97,18 @@ claude_plugins_official_version=4b909c3492b350cdc42160ffe4b135e6f5c1db12 # main
 
 claude_plugins_official_tmp="$("$dir/helpers/git-clone.sh" https://github.com/anthropics/claude-plugins-official.git "$claude_plugins_official_version")"
 
+# code-simplifier
+code_simplifier_dir="$dir/../../plugins/code-simplifier"
+sync_body "$claude_plugins_official_tmp/plugins/code-simplifier/agents/code-simplifier.md" \
+  "$code_simplifier_dir/.apm/agents/code-simplifier.agent.md"
+sync_body "$claude_plugins_official_tmp/plugins/code-simplifier/agents/code-simplifier.md" \
+  "$code_simplifier_dir/com.github.copilot/agents/code-simplifier.agent.md"
+sync_body "$claude_plugins_official_tmp/plugins/code-simplifier/agents/code-simplifier.md" \
+  "$code_simplifier_dir/.apm/skills/code-simplifier/SKILL.md"
+copy_file "$claude_plugins_official_tmp/LICENSE" "$code_simplifier_dir/.apm/agents/LICENSE"
+copy_file "$claude_plugins_official_tmp/LICENSE" "$code_simplifier_dir/com.github.copilot/agents/LICENSE"
+copy_file "$claude_plugins_official_tmp/LICENSE" "$code_simplifier_dir/.apm/skills/code-simplifier/LICENSE"
+
 # feature-dev
 feature_dev_dir="$dir/../../plugins/feature-dev"
 feature_dev_apm_dir="$feature_dev_dir/.apm"

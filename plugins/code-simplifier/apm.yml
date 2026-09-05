@@ -1,0 +1,10 @@
+# yaml-language-server: $schema=https://microsoft.github.io/apm/specs/schemas/manifest-v0.1.schema.json
+
+name: code-simplifier
+version: 0.1.0
+
+author: Kilian PAQUIER
+description: Simplifies and refines code for clarity, consistency, and maintainability while preserving all functionality.
+license: Apache-2.0
+
+# targets: [claude, codex, copilot, cursor, gemini, kiro, opencode, windsurf]
