@@ -12,15 +12,18 @@ This plugins marketplace aims to get shared compatibility for a bunch-of plugins
 
 ## Bumping a plugin version
 
-Each plugin duplicates its `version` field across 4 manifests, all must be bumped together:
+Each plugin duplicates its `version` field across all manifests, all must be bumped together:
 
-- `plugins/<plugin>/plugin.json` (Agent Plugins format)
-- `plugins/<plugin>/.plugin/plugin.json` (Copilot native format)
 - `plugins/<plugin>/.claude-plugin/plugin.json` (Claude Code format)
 - `plugins/<plugin>/.cursor-plugin/plugin.json` (Cursor format)
+- `plugins/<plugin>/.plugin/plugin.json` (Copilot native format)
+- `plugins/<plugin>/apm.yml` (Agent Package Manager format)
+- `plugins/<plugin>/plugin.json` (Agent Plugins format)
 
 `hooks/cursor.json` and `com.github.copilot/hooks/hooks.json` also carry a `version` field,
 but it's the hook config schema version (always `1`), not the plugin release version.
+
+Always bump the minor version, regardless of change kind (fix, feat, etc.).
 
 ## Components documentation
 

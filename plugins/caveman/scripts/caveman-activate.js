@@ -105,6 +105,11 @@ const main = (payload) => {
         ? `CAVEMAN MODE ACTIVE (level: ${mode})\n\n${SKILL}`
         : `CAVEMAN MODE ACTIVE (level: ${mode}). Session ruleset applies.`
 
+    // UserPromptSubmit context costs more tokens than it saves once the prompt itself is shorter than the reminder.
+    if (event === 'UserPromptSubmit' && (payload.prompt || '').length < message.length) {
+        return
+    }
+
     // SessionStart, UserPromptSubmit inject context back to the agent (unknown keys are ignored, so one body covers them all).
     //
     // Runtime formats:
