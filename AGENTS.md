@@ -10,6 +10,18 @@ This plugins marketplace aims to get shared compatibility for a bunch-of plugins
 - Always use the provider description when importing a plugin from another marketplace or declaring a plugin for an external tool (MCP, LSP, etc.).
 - Always use **Agent Plugins** format (`plugin.json`) and **Agent Package Manager** package format (`apm.yml`).
 
+## Bumping a plugin version
+
+Each plugin duplicates its `version` field across 4 manifests, all must be bumped together:
+
+- `plugins/<plugin>/plugin.json` (Agent Plugins format)
+- `plugins/<plugin>/.plugin/plugin.json` (Copilot native format)
+- `plugins/<plugin>/.claude-plugin/plugin.json` (Claude Code format)
+- `plugins/<plugin>/.cursor-plugin/plugin.json` (Cursor format)
+
+`hooks/cursor.json` and `com.github.copilot/hooks/hooks.json` also carry a `version` field,
+but it's the hook config schema version (always `1`), not the plugin release version.
+
 ## Components documentation
 
 Per-component, per-agent-runtime format reference (manifest, hooks, MCP, skills, subagents, instructions, LSP, monitors):
