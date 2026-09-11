@@ -129,7 +129,7 @@ copy_file "$claude_plugins_official_tmp/LICENSE" "$feature_dev_dir/com.github.co
 ################################################################
 
 # renovate: datasource=github-tags packageName=JuliusBrussee/caveman depName=caveman
-caveman_version=ae10845a5e4c958db8a5b52018c9ebc7ce534874 # v2.4.0
+caveman_version=b82c0ad42c2bedc1f2cd78e414dadfaffbaaeec3 # v2.6.0
 
 caveman_tmp="$("$dir/helpers/git-clone.sh" https://github.com/JuliusBrussee/caveman.git "$caveman_version")"
 caveman_dir="$dir/../../plugins/caveman"
