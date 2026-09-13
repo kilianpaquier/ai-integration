@@ -7,6 +7,7 @@
         "github>kickr-dev/renovate//configs/renovate/default.json",
         "github>kickr-dev/renovate//configs/renovate/gitlab-ci.json",
         "github>kickr-dev/renovate//configs/renovate/gomod.json",
+        "github>kickr-dev/renovate//configs/renovate/hugo.json(docs/go.mod)",
         "github>kickr-dev/renovate//configs/renovate/kickr.json",
         "github>kickr-dev/renovate//configs/renovate/pre-commit.json",
         "local>kickr-dev/kickr//configs/renovate/local.json"
