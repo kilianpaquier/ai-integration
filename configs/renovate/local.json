@@ -5,7 +5,7 @@
 
     "packageRules": [
         {
-            "matchFileNames": ["/apm.yml/"],
+            "matchFileNames": ["scripts/sh/updater.sh"],
             "postUpgradeTasks": {
                 "commands": ["./scripts/sh/renovate.sh"],
                 "executionMode": "branch"

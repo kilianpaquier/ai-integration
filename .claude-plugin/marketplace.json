@@ -8,7 +8,7 @@
     {
       "name": "caveman",
       "description": "Ultra-compressed communication mode. Cuts output tokens while keeping full technical accuracy.",
-      "version": "0.1.0",
+      "version": "0.4.0",
       "category": "hybrid",
       "source": "./plugins/caveman"
     },
@@ -22,28 +22,28 @@
     {
       "name": "codebase-memory-mcp",
       "description": "High-performance code intelligence MCP server. Indexes codebases into a persistent knowledge graph.",
-      "version": "0.11.0",
+      "version": "0.12.0",
       "category": "hybrid",
       "source": "./plugins/codebase-memory-mcp"
     },
     {
       "name": "codegraph",
       "description": "Pre-indexed code knowledge graph, auto syncs on code changes, fewer tokens, fewer tool calls, 100% local.",
-      "version": "0.3.0",
+      "version": "0.4.0",
       "category": "hybrid",
       "source": "./plugins/codegraph"
     },
     {
       "name": "context7",
       "description": "Up-to-date code documentation for LLMs and AI code editors",
-      "version": "0.6.0",
+      "version": "0.7.0",
       "category": "hybrid",
       "source": "./plugins/context7"
     },
     {
       "name": "dcg",
       "description": "Block destructive shell and git commands before they run",
-      "version": "0.1.0",
+      "version": "0.2.0",
       "category": "hooks",
       "source": "./plugins/dcg"
     },
@@ -64,7 +64,7 @@
     {
       "name": "protected-paths",
       "description": "Stop your agent from accessing unwanted or sensitive directories",
-      "version": "0.7.0",
+      "version": "0.8.0",
       "category": "hooks",
       "source": "./plugins/protected-paths"
     },
