@@ -133,7 +133,7 @@ let payload = {}
 try {
     payload = JSON.parse(fs.readFileSync(0, 'utf8'))
 } catch {
-    // no stdin, or a runtime sending none: fall back to the configured default mode
+    // no stdin, or a runtime sending none: sync still runs with empty session metadata
 }
 
 main(payload)

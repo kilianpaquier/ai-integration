@@ -33,28 +33,25 @@ const sessionOf = (data) => data.session_id || data.conversation_id
 //  - Cursor: workspace_roots[0] (when cwd is absent)
 const cwdOf = (data) => data.cwd || (data.workspace_roots || [])[0]
 
-const main = (data) => {
-    const change = parseModeChange(data.prompt, { getDefaultMode: () => getDefaultMode(cwdOf(data)) })
+const main = (payload) => {
+    const change = parseModeChange(payload.prompt, { getDefaultMode: () => getDefaultMode(cwdOf(payload)) })
     if (!change) {
         return
     }
     if (change.action === 'clear') {
-        writeSessionMode(stateDir(), sessionOf(data), null)
+        writeSessionMode(stateDir(), sessionOf(payload), null)
     }
     if (change.action === 'set') {
-        writeSessionMode(stateDir(), sessionOf(data), change.mode)
+        writeSessionMode(stateDir(), sessionOf(payload), change.mode)
     }
 }
 
 if (require.main === module) {
-    let payload = {}
     try {
-        payload = JSON.parse(fs.readFileSync(0, 'utf8'))
+        main(JSON.parse(fs.readFileSync(0, 'utf8')))
     } catch {
         return
     }
-
-    main(payload)
 } else {
     module.exports = { sessionMode } // export for caveman-activate.js
 }

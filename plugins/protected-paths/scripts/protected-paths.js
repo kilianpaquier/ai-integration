@@ -39,6 +39,7 @@ const ALLOW_LIST = [
     `${HOME}/.codex/.tmp`,
     `${HOME}/.codex/AGENTS.md`,
     `${HOME}/.codex/hooks.json`,
+    `${HOME}/.codex/hooks`,
     `${HOME}/.codex/plugins`,
     `${HOME}/.codex/skills`,
     // config (devin)
