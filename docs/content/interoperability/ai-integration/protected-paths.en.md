@@ -15,14 +15,18 @@ title: Protected Paths
 | --------------------------------------------------- | ----------------------------------------------------- | ----------------------------------- |
 | `PreToolUse`, shell/read/write/edit/glob/grep calls | blocks the call when it touches a protected directory | Claude Code, Codex, Copilot, Cursor |
 
-Protected directories: `~/.agents`, `~/.apm`, `~/.aws`, `~/.azure`, `~/.claude`, `~/.codex`, `~/.config`, `~/.copilot`, `~/.docker`,
-`~/.git-credentials`, `~/.gnupg`, `~/.kube`, `~/.netrc`, `~/.npmrc`, `~/.pypirc`, `~/.ssh`.
+Protected and allowed directories come from `~/.config/protected-paths/config.json`,
+a `denylist`/`allowlist` pair of path arrays (`~`, `$HOME`, and `${HOME}` are expanded):
 
-An allow-list carves out specific subpaths under `~/.agents`, `~/.apm`, `~/.claude`, `~/.codex`, `~/.config`, and `~/.copilot`,
-which are otherwise fully denied.
+```json
+{
+    "denylist": ["~/.ssh", "~/.aws"],
+    "allowlist": ["~/.ssh/config"]
+}
+```
 
 The hook also catches recursive tools (`grep -r`, `find`, `tar`, `rsync`, `ls -R`, ...)
-and bare references like `cd ~` that could reach a protected directory without naming it directly.
+and bare references like `cd ~` that could reach a denylisted directory without naming it directly.
 
 ## Installation
 

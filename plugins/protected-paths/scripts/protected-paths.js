@@ -8,74 +8,7 @@ const os = require('node:os')
 const path = require('node:path')
 
 const HOME = os.homedir()
-
-const ALLOW_LIST = [
-    // agents
-    `${HOME}/.agents/skills`,
-    // apm
-    `${HOME}/.apm/apm.lock.json`,
-    `${HOME}/.apm/apm.lock.yml`,
-    `${HOME}/.apm/apm.yml`,
-    `${HOME}/.apm/apm_modules`,
-    `${HOME}/.apm/cache`,
-    `${HOME}/.apm/config.json`,
-    `${HOME}/.apm/marketplaces.json`,
-    // claude
-    `${HOME}/.claude/agent-memory`,
-    `${HOME}/.claude/agents`,
-    `${HOME}/.claude/CLAUDE.md`,
-    `${HOME}/.claude/commands`,
-    `${HOME}/.claude/debug`,
-    `${HOME}/.claude/hooks`,
-    `${HOME}/.claude/output-styles`,
-    `${HOME}/.claude/plans`,
-    `${HOME}/.claude/plugins`,
-    `${HOME}/.claude/projects`,
-    `${HOME}/.claude/rules`,
-    `${HOME}/.claude/settings.json`,
-    `${HOME}/.claude/skills`,
-    `${HOME}/.claude/workflows`,
-    // codex
-    `${HOME}/.codex/.tmp`,
-    `${HOME}/.codex/AGENTS.md`,
-    `${HOME}/.codex/hooks.json`,
-    `${HOME}/.codex/hooks`,
-    `${HOME}/.codex/plugins`,
-    `${HOME}/.codex/skills`,
-    // config (devin)
-    `${HOME}/.config/devin/agents`,
-    `${HOME}/.config/devin/config.json`,
-    `${HOME}/.config/devin/mcp_config.json`,
-    // copilot
-    `${HOME}/.copilot/agents`,
-    `${HOME}/.copilot/copilot-instructions.md`,
-    `${HOME}/.copilot/hooks`,
-    `${HOME}/.copilot/installed-plugins`,
-    `${HOME}/.copilot/instructions`,
-    `${HOME}/.copilot/mcp-config.json`,
-    `${HOME}/.copilot/prompts`,
-    `${HOME}/.copilot/settings.json`,
-    `${HOME}/.copilot/skills`,
-]
-
-const DENY_LIST = [
-    `${HOME}/.agents`,
-    `${HOME}/.apm`,
-    `${HOME}/.aws`,
-    `${HOME}/.azure`,
-    `${HOME}/.claude`,
-    `${HOME}/.codex`,
-    `${HOME}/.config`,
-    `${HOME}/.copilot`,
-    `${HOME}/.docker`,
-    `${HOME}/.git-credentials`,
-    `${HOME}/.gnupg`,
-    `${HOME}/.kube`,
-    `${HOME}/.netrc`,
-    `${HOME}/.npmrc`,
-    `${HOME}/.pypirc`,
-    `${HOME}/.ssh`,
-]
+const CONFIG_PATH = path.join(HOME, '.config', 'protected-paths', 'config.json')
 
 // shell-token boundary, used to split path tokens out of compound field values.
 const SPLIT_PATTERN = /[\s"'\\;|&()<>,}]+/
@@ -110,6 +43,25 @@ const toolInputOf = (payload) => {
     return toolInput
 }
 
+const expand = (value) => value
+    .replaceAll('~', HOME)
+    .replaceAll('$HOME', HOME)
+    .replaceAll('${HOME}', HOME)
+
+// loadConfig reads denylist/allowlist from CONFIG_PATH, or null if absent, unreadable, or malformed.
+const loadConfig = () => {
+    let parsed
+    try {
+        parsed = JSON.parse(fs.readFileSync(CONFIG_PATH, 'utf8'))
+    } catch {
+        return null
+    }
+    return {
+        denylist: (parsed.denylist ?? []).map(expand),
+        allowlist: (parsed.allowlist ?? []).map(expand),
+    }
+}
+
 // isPrefix reports whether target equals prefix or sits under it.
 const isPrefix = (prefix, target) => target === prefix || target.startsWith(`${prefix}/`)
 
@@ -132,10 +84,10 @@ const resolvePath = (base, target) => {
 }
 
 // denyReasonFor returns the deny reason for a resolved path, or null if allowed.
-const denyReasonFor = (resolved) => {
-    for (const pattern of DENY_LIST) {
+const denyReasonFor = (denylist, allowlist, resolved) => {
+    for (const pattern of denylist) {
         if (isPrefix(pattern, resolved)) {
-            if (ALLOW_LIST.some((allowed) => isPrefix(allowed, resolved))) {
+            if (allowlist.some((allowed) => isPrefix(allowed, resolved))) {
                 return null
             }
             return `tool call references a protected path: '${pattern}'`
@@ -177,12 +129,12 @@ const deny = (reason) => {
     process.exit(0)
 }
 
-const expand = (value) => value
-    .replaceAll('~', HOME)
-    .replaceAll('$HOME', HOME)
-    .replaceAll('${HOME}', HOME)
-
 const main = (payload) => {
+    const config = loadConfig()
+    if (!config) {
+        return
+    }
+
     const toolInput = toolInputOf(payload)
     const cwd = typeof payload.cwd === 'string' ? payload.cwd : process.cwd()
 
@@ -202,7 +154,7 @@ const main = (payload) => {
 
     const tokens = [...singleValues, ...compoundTokens]
     for (const token of new Set(tokens)) {
-        const reason = denyReasonFor(resolvePath(cwd, token))
+        const reason = denyReasonFor(config.denylist, config.allowlist, resolvePath(cwd, token))
         if (reason) {
             deny(reason)
         }

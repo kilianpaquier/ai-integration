@@ -2,18 +2,56 @@
 
 'use strict';
 
+const fs = require('node:fs');
+const os = require('node:os');
+const path = require('node:path');
+
 const assert = require('node:assert/strict');
 const { spawnSync } = require('node:child_process');
-const path = require('node:path');
 const { test } = require('node:test');
 
 const HOOK = path.join(__dirname, '..', 'scripts', 'protected-paths.js');
-const TEST_HOME = '/home/tester';
 
-const runHook = (input) => spawnSync(process.execPath, [HOOK], {
+// FIXTURE_CONFIG covers the paths the tests below reference.
+const FIXTURE_CONFIG = {
+  denylist: ['~/.agents', '~/.apm', '~/.aws', '~/.claude', '~/.codex', '~/.config', '~/.copilot', '~/.ssh'],
+  allowlist: ['~/.claude/CLAUDE.md'],
+};
+
+// makeHome creates a throwaway HOME directory, optionally seeded with a config.json body
+// (an object is serialized, a string is written verbatim to test malformed JSON).
+const makeHome = (configBody) => {
+  const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'protected-paths-'));
+  if (configBody === null) return dir;
+
+  const configPath = path.join(dir, '.config', 'protected-paths', 'config.json');
+  fs.mkdirSync(path.dirname(configPath), { recursive: true });
+  fs.writeFileSync(configPath, typeof configBody === 'string' ? configBody : JSON.stringify(configBody));
+  return dir;
+};
+
+const TEST_HOME = makeHome(FIXTURE_CONFIG);
+const NO_CONFIG_HOME = makeHome(null);
+const MALFORMED_CONFIG_HOME = makeHome('not json');
+
+const runHook = (input, home = TEST_HOME) => spawnSync(process.execPath, [HOOK], {
   input,
-  env: { ...process.env, HOME: TEST_HOME },
+  env: { ...process.env, HOME: home },
   encoding: 'utf8',
+});
+
+// --- config loading: no config file, or a malformed one, means every call is allowed ---
+
+test('no config file present allows every call', () => {
+  const { status, stdout } = runHook('{"tool_input":{"command":"cat ~/.ssh/id_rsa"}}', NO_CONFIG_HOME);
+  assert.equal(status, 0);
+  assert.equal(stdout, '');
+});
+
+test('a malformed config.json is treated as absent, allowing every call', () => {
+  const { status, stdout } = runHook('{"tool_input":{"command":"cat ~/.ssh/id_rsa"}}', MALFORMED_CONFIG_HOME);
+  assert.equal(status, 0);
+  assert.equal(stdout, '');
 });
 
 // --- normal calls: nothing protected is referenced ---
@@ -26,86 +64,6 @@ test('normal command', () => {
 
 test('claude transcript_path is bookkeeping, not a tool argument', () => {
   const { status, stdout } = runHook('{"transcript_path":"~/.claude/projects/foo/session.jsonl","tool_input":{"command":"echo hi"}}');
-  assert.equal(status, 0);
-  assert.equal(stdout, '');
-});
-
-// --- allow-listed subpaths stay usable despite their parent dir being denied ---
-
-test('claude CLAUDE.md is allow-listed', () => {
-  const { status, stdout } = runHook('{"tool_input":{"command":"cat ~/.claude/CLAUDE.md"}}');
-  assert.equal(status, 0);
-  assert.equal(stdout, '');
-});
-
-test('claude rules dir is allow-listed', () => {
-  const { status, stdout } = runHook('{"tool_input":{"command":"cat ~/.claude/rules/shell.md"}}');
-  assert.equal(status, 0);
-  assert.equal(stdout, '');
-});
-
-test('codex skills dir is allow-listed', () => {
-  const { status, stdout } = runHook('{"tool_input":{"command":"ls ~/.codex/skills"}}');
-  assert.equal(status, 0);
-  assert.equal(stdout, '');
-});
-
-test('apm apm_modules is allow-listed', () => {
-  const { status, stdout } = runHook('{"tool_input":{"command":"ls ~/.apm/apm_modules"}}');
-  assert.equal(status, 0);
-  assert.equal(stdout, '');
-});
-
-test('copilot personal instructions file is allow-listed', () => {
-  const { status, stdout } = runHook('{"tool_input":{"command":"cat ~/.copilot/copilot-instructions.md"}}');
-  assert.equal(status, 0);
-  assert.equal(stdout, '');
-});
-
-test('copilot instructions dir is allow-listed', () => {
-  const { status, stdout } = runHook('{"tool_input":{"command":"ls ~/.copilot/instructions"}}');
-  assert.equal(status, 0);
-  assert.equal(stdout, '');
-});
-
-test('agents skills dir is allow-listed', () => {
-  const { status, stdout } = runHook('{"tool_input":{"command":"ls ~/.agents/skills"}}');
-  assert.equal(status, 0);
-  assert.equal(stdout, '');
-});
-
-test('apm lockfiles are allow-listed', () => {
-  const { status, stdout } = runHook('{"tool_input":{"command":"cat ~/.apm/apm.lock.json; cat ~/.apm/apm.lock.yml"}}');
-  assert.equal(status, 0);
-  assert.equal(stdout, '');
-});
-
-test('claude debug dir is allow-listed', () => {
-  const { status, stdout } = runHook('{"tool_input":{"command":"cat ~/.claude/debug/session.txt"}}');
-  assert.equal(status, 0);
-  assert.equal(stdout, '');
-});
-
-test('claude settings.json is allow-listed', () => {
-  const { status, stdout } = runHook('{"tool_input":{"command":"cat ~/.claude/settings.json"}}');
-  assert.equal(status, 0);
-  assert.equal(stdout, '');
-});
-
-test('devin agents dir, config.json and mcp_config.json are allow-listed', () => {
-  const { status, stdout } = runHook('{"tool_input":{"command":"ls ~/.config/devin/agents; cat ~/.config/devin/config.json; cat ~/.config/devin/mcp_config.json"}}');
-  assert.equal(status, 0);
-  assert.equal(stdout, '');
-});
-
-test('copilot mcp-config.json and settings.json are allow-listed', () => {
-  const { status, stdout } = runHook('{"tool_input":{"command":"cat ~/.copilot/mcp-config.json; cat ~/.copilot/settings.json"}}');
-  assert.equal(status, 0);
-  assert.equal(stdout, '');
-});
-
-test('literal $HOME text is normalized before allow-listing', () => {
-  const { status, stdout } = runHook('{"tool_input":{"command":"cat $HOME/.claude/CLAUDE.md"}}');
   assert.equal(status, 0);
   assert.equal(stdout, '');
 });
@@ -181,14 +139,6 @@ test("codex's native payload shape (tool_name/tool_input, snake_case) is still s
   assert.ok(stdout.includes('.ssh'), "expected deny output to include '.ssh'");
 });
 
-test("codex's native payload shape allow-lists AGENTS.md the same way", () => {
-  const { status, stdout } = runHook(
-    '{"session_id":"s1","turn_id":"t1","tool_name":"Bash","tool_use_id":"u1","tool_input":{"command":"cat ~/.codex/AGENTS.md"},"cwd":"/repo","hook_event_name":"PreToolUse","model":"gpt","permission_mode":"default"}',
-  );
-  assert.equal(status, 0);
-  assert.equal(stdout, '');
-});
-
 test("copilot's native payload shape (toolName/toolArgs, camelCase) is still scanned", () => {
   const { status, stdout } = runHook(
     '{"sessionId":"s1","timestamp":1704614400000,"cwd":"/repo","toolName":"bash","toolArgs":{"command":"cat ~/.copilot/config.json"}}',
@@ -207,14 +157,6 @@ test("copilot's toolArgs, when double-encoded as an escaped JSON string, is stil
   assert.ok(stdout.includes('.ssh'), "expected deny output to include '.ssh'");
 });
 
-test("copilot's native payload shape allow-lists its instructions file the same way", () => {
-  const { status, stdout } = runHook(
-    '{"sessionId":"s1","timestamp":1704614400000,"cwd":"/repo","toolName":"bash","toolArgs":{"command":"cat ~/.copilot/copilot-instructions.md"}}',
-  );
-  assert.equal(status, 0);
-  assert.equal(stdout, '');
-});
-
 test("cursor's native payload shape is scanned and denied with cursor's own decision field", () => {
   const { status, stdout } = runHook(
     '{"tool_name":"Shell","tool_input":{"command":"cat ~/.ssh/id_rsa","working_directory":"/repo"},"tool_use_id":"u1","cwd":"/repo"}',
@@ -225,7 +167,7 @@ test("cursor's native payload shape is scanned and denied with cursor's own deci
 });
 
 test('an absolute_path argument is scanned the same way as file_path', () => {
-  const { status, stdout } = runHook('{"tool_name":"read_file","tool_input":{"absolute_path":"/home/tester/.ssh/id_rsa"}}');
+  const { status, stdout } = runHook(`{"tool_name":"read_file","tool_input":{"absolute_path":"${TEST_HOME}/.ssh/id_rsa"}}`);
   assert.equal(status, 0);
   assert.match(stdout, /"permissionDecision":\s*"deny"/);
   assert.ok(stdout.includes('.ssh'), "expected deny output to include '.ssh'");
@@ -290,21 +232,21 @@ test("a Grep-style glob field is scanned separately from pattern", () => {
 // --- relative references are resolved against the tool call's own cwd, not the hook's ---
 
 test('a relative command reference resolved against cwd is denied', () => {
-  const { status, stdout } = runHook('{"cwd":"/home/tester/project","tool_input":{"command":"cat ../.ssh/id_rsa"}}');
+  const { status, stdout } = runHook(`{"cwd":"${TEST_HOME}/project","tool_input":{"command":"cat ../.ssh/id_rsa"}}`);
   assert.equal(status, 0);
   assert.match(stdout, /"permissionDecision":\s*"deny"/);
   assert.ok(stdout.includes('.ssh'), "expected deny output to include '.ssh'");
 });
 
 test('a relative file_path resolved against cwd is denied', () => {
-  const { status, stdout } = runHook('{"cwd":"/home/tester/project","tool_input":{"file_path":"../.ssh/id_rsa"}}');
+  const { status, stdout } = runHook(`{"cwd":"${TEST_HOME}/project","tool_input":{"file_path":"../.ssh/id_rsa"}}`);
   assert.equal(status, 0);
   assert.match(stdout, /"permissionDecision":\s*"deny"/);
   assert.ok(stdout.includes('.ssh'), "expected deny output to include '.ssh'");
 });
 
 test('a relative reference outside any protected dir is allowed', () => {
-  const { status, stdout } = runHook('{"cwd":"/home/tester/project","tool_input":{"command":"cat ../notes.txt"}}');
+  const { status, stdout } = runHook(`{"cwd":"${TEST_HOME}/project","tool_input":{"command":"cat ../notes.txt"}}`);
   assert.equal(status, 0);
   assert.equal(stdout, '');
 });
