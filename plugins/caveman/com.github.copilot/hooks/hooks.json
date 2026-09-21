@@ -4,24 +4,16 @@
     "hooks": {
         "SessionStart": [
             {
-                "hooks": [
-                    {
-                        "type": "command",
-                        "command": "node ${PLUGIN_ROOT}/scripts/caveman-activate.js SessionStart",
-                        "timeout": 10
-                    }
-                ]
+                "type": "command",
+                "command": "node ${PLUGIN_ROOT}/scripts/caveman-activate.js SessionStart",
+                "timeout": 10
             }
         ],
         "UserPromptSubmit": [
             {
-                "hooks": [
-                    {
-                        "type": "command",
-                        "command": "node ${PLUGIN_ROOT}/scripts/caveman-mode.js",
-                        "timeout": 10
-                    }
-                ]
+                "type": "command",
+                "command": "node ${PLUGIN_ROOT}/scripts/caveman-mode.js",
+                "timeout": 10
             }
         ]
     }
