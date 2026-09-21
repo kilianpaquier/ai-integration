@@ -166,6 +166,60 @@ test("cursor's native payload shape is scanned and denied with cursor's own deci
   assert.ok(stdout.includes('.ssh'), "expected deny output to include '.ssh'");
 });
 
+// --- a command with no path argument relies on cwd alone, across every agent's own field names ---
+
+test('claude: a command with no path argument, run with cwd at $HOME, is allowed', () => {
+  const { status, stdout } = runHook(`{"cwd":"${TEST_HOME}","tool_input":{"command":"curl https://example.com"}}`);
+  assert.equal(status, 0);
+  assert.equal(stdout, '');
+});
+
+test('claude: a command with no path argument, run with cwd inside a protected dir, is denied', () => {
+  const { status, stdout } = runHook(`{"cwd":"${TEST_HOME}/.ssh","tool_input":{"command":"ls -la"}}`);
+  assert.equal(status, 0);
+  assert.match(stdout, /"permissionDecision":\s*"deny"/);
+  assert.ok(stdout.includes('.ssh'), "expected deny output to include '.ssh'");
+});
+
+test("codex: a command with no path argument, run with cwd at $HOME, is allowed", () => {
+  const { status, stdout } = runHook(`{"tool_name":"Bash","tool_input":{"command":"curl https://example.com"},"cwd":"${TEST_HOME}"}`);
+  assert.equal(status, 0);
+  assert.equal(stdout, '');
+});
+
+test("codex: a command with no path argument, run with cwd inside a protected dir, is denied", () => {
+  const { status, stdout } = runHook(`{"tool_name":"Bash","tool_input":{"command":"ls -la"},"cwd":"${TEST_HOME}/.ssh"}`);
+  assert.equal(status, 0);
+  assert.match(stdout, /"permissionDecision":\s*"deny"/);
+  assert.ok(stdout.includes('.ssh'), "expected deny output to include '.ssh'");
+});
+
+test("copilot: a command with no path argument, run with cwd at $HOME, is allowed", () => {
+  const { status, stdout } = runHook(`{"toolName":"bash","toolArgs":{"command":"curl https://example.com"},"cwd":"${TEST_HOME}"}`);
+  assert.equal(status, 0);
+  assert.equal(stdout, '');
+});
+
+test("copilot: a command with no path argument, run with cwd inside a protected dir, is denied", () => {
+  const { status, stdout } = runHook(`{"toolName":"bash","toolArgs":{"command":"ls -la"},"cwd":"${TEST_HOME}/.ssh"}`);
+  assert.equal(status, 0);
+  assert.match(stdout, /"permissionDecision":\s*"deny"/);
+  assert.ok(stdout.includes('.ssh'), "expected deny output to include '.ssh'");
+});
+
+test("cursor: a command with no path argument, run with cwd at $HOME, is allowed", () => {
+  const { status, stdout } = runHook(`{"tool_name":"Shell","tool_input":{"command":"curl https://example.com"},"cwd":"${TEST_HOME}"}`);
+  assert.equal(status, 0);
+  assert.equal(stdout, '');
+});
+
+test("cursor: a command with no path argument, run with cwd inside a protected dir, is denied", () => {
+  const { status, stdout } = runHook(`{"tool_name":"Shell","tool_input":{"command":"ls -la"},"cwd":"${TEST_HOME}/.ssh"}`);
+  assert.equal(status, 0);
+  assert.match(stdout, /"permission":\s*"deny"/);
+  assert.ok(stdout.includes('.ssh'), "expected deny output to include '.ssh'");
+});
+
 test('an absolute_path argument is scanned the same way as file_path', () => {
   const { status, stdout } = runHook(`{"tool_name":"read_file","tool_input":{"absolute_path":"${TEST_HOME}/.ssh/id_rsa"}}`);
   assert.equal(status, 0);

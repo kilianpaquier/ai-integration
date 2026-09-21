@@ -142,15 +142,12 @@ const main = (payload) => {
         .map((field) => toolInput[field])
         .filter((value) => typeof value === 'string')
         .map(expand)
-    if (typeof payload.cwd === 'string') {
-        singleValues.push(cwd)
-    }
 
     const compoundTokens = COMPOUND_FIELDS
         .map((field) => toolInput[field])
         .filter((value) => typeof value === 'string')
         .flatMap((value) => expand(value).split(SPLIT_PATTERN))
-        .filter((token) => token.includes('/'))
+        .filter((token) => token.length > 0)
 
     const tokens = [...singleValues, ...compoundTokens]
     for (const token of new Set(tokens)) {
