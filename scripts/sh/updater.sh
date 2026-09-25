@@ -58,7 +58,7 @@ sync_body() {
 ################################################################
 
 # renovate: datasource=github-tags packageName=DeusData/codebase-memory-mcp depName=codebase-memory-mcp
-codebase_memory_mcp_version=46ae198fc11cda80e817acbc5f5908d7c2de7032 # v0.10.8
+codebase_memory_mcp_version=8972ea69c6ad94b1ef1d4ffbf0a92d78d2db1798 # v0.11.0
 
 codebase_memory_mcp_tmp="$("$dir/helpers/git-clone.sh" https://github.com/DeusData/codebase-memory-mcp.git "$codebase_memory_mcp_version")"
 codebase_memory_mcp_skill="$(mktemp)"
@@ -130,7 +130,7 @@ copy_file "$claude_plugins_official_tmp/LICENSE" "$feature_dev_dir/com.github.co
 ################################################################
 
 # renovate: datasource=github-tags packageName=JuliusBrussee/caveman depName=caveman
-caveman_version=b82c0ad42c2bedc1f2cd78e414dadfaffbaaeec3 # v2.6.0
+caveman_version=8b0c1d3699b8d83e87fe4605b378da20c41555e0 # v2.7.0
 
 caveman_tmp="$("$dir/helpers/git-clone.sh" https://github.com/JuliusBrussee/caveman.git "$caveman_version")"
 caveman_dir="$dir/../../plugins/caveman"
