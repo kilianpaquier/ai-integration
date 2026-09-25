@@ -20,6 +20,33 @@ cela peut aussi être utilisé pour des charts Helm, des modules Terraform, des 
 
 {{< tabs >}}
 
+{{< tab name="BoostGraph" >}}
+> [!warning]
+> Présent documentation Boost mais absent du CLI (en date du 25/09/2026) et de l'UI déployée en local
+
+- **Upstream** : <https://github.com/jfrog/boost>
+- **Indexation** : via le CLI ou automatiquement via un *hook* en arrière-plan au démarrage de session
+- **Navigation** : via le serveur MCP
+
+Installation :
+
+```sh
+mise use -g 'github:jfrog/boost@latest'
+# ou
+curl -fsSL https://boost.jfrog.com/install.sh | bash
+```
+
+```sh
+boost init --accept-terms
+```
+
+Usage :
+
+```sh
+boost graph init # au sein des dépôts à indexer à la demande
+```
+{{< /tab >}}
+
 {{< tab name="Codebase Memory MCP" >}}
 - **Upstream** : <https://github.com/DeusData/codebase-memory-mcp>
 - **Indexation** : via le serveur MCP ou le CLI

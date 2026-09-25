@@ -10,6 +10,21 @@ Plusieurs outils existent pour contrer cette pollution du contexte.
 
 {{< tabs >}}
 
+{{< tab name="JFrog Boost" >}}
+- **Upstream** : <https://github.com/jfrog/boost>
+- **Description** : Un CLI réécrivant les commandes des agents pour compresser les sorties bruyantes (et les réponses JSON des outils MCP) avant qu'elles n'atteignent le contexte.
+
+```sh
+mise use -g 'github:jfrog/boost@latest'
+# ou
+curl -fsSL https://boost.jfrog.com/install.sh | bash
+```
+
+```sh
+boost init --accept-terms
+```
+{{< /tab >}}
+
 {{< tab name="Rust Token Killer" >}}
 > [!note]
 > Toutes les commandes ne sont pas supportées.

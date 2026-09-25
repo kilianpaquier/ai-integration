@@ -10,6 +10,21 @@ Multiple tools exist to counter this context pollution.
 
 {{< tabs >}}
 
+{{< tab name="JFrog Boost" >}}
+- **Upstream**: <https://github.com/jfrog/boost>
+- **Description**: A CLI rewriting agent commands to compress noisy stdout (and MCP JSON tool responses) before they reach context.
+
+```sh
+mise use -g 'github:jfrog/boost@latest'
+# or
+curl -fsSL https://boost.jfrog.com/install.sh | bash
+```
+
+```sh
+boost init --accept-terms
+```
+{{< /tab >}}
+
 {{< tab name="Rust Token Killer" >}}
 > [!note]
 > Not all commands are supported.

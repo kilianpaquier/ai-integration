@@ -19,6 +19,33 @@ it can also be used for Helm charts, Terraform modules, markdown references, etc
 
 {{< tabs >}}
 
+{{< tab name="BoostGraph" >}}
+> [!warning]
+> Present in Boost documentation but absent from the CLI (as of 2026-09-25) and from the locally deployed UI
+
+- **Upstream**: <https://github.com/jfrog/boost>
+- **Indexing**: through the CLI or automatically via a background hook on session start
+- **Navigation**: through the MCP server
+
+Install:
+
+```sh
+mise use -g 'github:jfrog/boost@latest'
+# or
+curl -fsSL https://boost.jfrog.com/install.sh | bash
+```
+
+```sh
+boost init --accept-terms
+```
+
+Usage:
+
+```sh
+boost graph init # within repositories to index on demand
+```
+{{< /tab >}}
+
 {{< tab name="Codebase Memory MCP" >}}
 - **Upstream**: <https://github.com/DeusData/codebase-memory-mcp>
 - **Indexing**: through the MCP server or the CLI
