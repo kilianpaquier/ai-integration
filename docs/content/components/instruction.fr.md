@@ -21,7 +21,7 @@ dans les instructions pour charger des fichiers spécifiques (par exemple `@READ
 > Standard neutre de l'[Agentic AI Foundation](https://aaif.io/).
 
 - **Format** : [**AGENTS.md**](https://agents.md/)
-- **Lu par** : **Codex**, **Copilot**, **Cursor**, **Mistral Vibe**, **Devin**, **Antigravity**
+- **Lu par** : **Codex**, **Copilot**, **Claude Code**, **Cursor**, **Mistral Vibe**, **Devin**, **Antigravity**
 
 ```tree
 repository/

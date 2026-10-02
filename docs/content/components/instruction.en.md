@@ -21,7 +21,7 @@ to load specific files (e.g. `@README.md`, `@AGENTS.md`).
 > Neutral standard from the [Agentic AI Foundation](https://aaif.io/).
 
 - **Format**: [**AGENTS.md**](https://agents.md/)
-- **Read by**: **Codex**, **Copilot**, **Cursor**, **Mistral Vibe**, **Devin**, **Antigravity**
+- **Read by**: **Codex**, **Copilot**, **Claude Code**, **Cursor**, **Mistral Vibe**, **Devin**, **Antigravity**
 
 ```tree
 repository/
