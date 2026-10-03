@@ -15,4 +15,6 @@ modules:
     deployment:
       auto: true
       target: netlify
+options:
+  - renovate:overrides
 platform: gitlab
