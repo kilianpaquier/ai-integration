@@ -130,38 +130,49 @@ copy_file "$claude_plugins_official_tmp/LICENSE" "$feature_dev_dir/com.github.co
 ################################################################
 
 # renovate: datasource=github-tags packageName=JuliusBrussee/caveman depName=caveman
-caveman_version=8b0c1d3699b8d83e87fe4605b378da20c41555e0 # v2.7.0
+caveman_version=8af1f1b9b1346bca0722a1556f119b4e6675cc96 # v3.1.0
 
 caveman_tmp="$("$dir/helpers/git-clone.sh" https://github.com/JuliusBrussee/caveman.git "$caveman_version")"
-caveman_dir="$dir/../../plugins/caveman"
+caveman_dir="$dir/../../plugins/cave-talk"
 caveman_apm_dir="$caveman_dir/.apm"
 caveman_scripts_dir="$caveman_dir/scripts"
 
-for skill in caveman caveman-commit caveman-explore; do
+caveman_copy_licenses() {
+  for license in LICENSE NOTICE LICENSE-MIT; do
+    copy_file "$caveman_tmp/$license" "$1/$license"
+  done
+}
+for skill in caveman caveman-commit caveman-explore megacave ultracave; do
   sync_body "$caveman_tmp/skills/$skill/SKILL.md" "$caveman_apm_dir/skills/$skill/SKILL.md"
-  copy_file "$caveman_tmp/LICENSE" "$caveman_apm_dir/skills/$skill/LICENSE"
+  caveman_copy_licenses "$caveman_apm_dir/skills/$skill"
 done
 for hook_module in caveman-config caveman-parse; do
   copy_file "$caveman_tmp/src/hooks/$hook_module.js" "$caveman_scripts_dir/vendor/$hook_module.js"
 done
-copy_file "$caveman_tmp/LICENSE" "$caveman_scripts_dir/vendor/LICENSE"
+caveman_copy_licenses "$caveman_scripts_dir/vendor"
 
-# inline the already-synced caveman SKILL.md (frontmatter stripped) into the session start script
-caveman_rules="$(mktemp)"
-sed -e '2,/^---$/d' -e '1d' "$caveman_apm_dir/skills/caveman/SKILL.md" > "$caveman_rules"
-caveman_escaped="$(mktemp)"
-# shellcheck disable=SC2016
-sed -e 's/\\/\\\\/g' -e 's/`/\\`/g' -e 's/\${/\\${/g' "$caveman_rules" > "$caveman_escaped"
 caveman_script="$caveman_scripts_dir/caveman-activate.js"
 
-# without both markers the sed below silently no-ops, or deletes everything down to EOF
-for caveman_marker in 'const SKILL = `' '`.trim()'; do
-  grep -qxF -- "$caveman_marker" "$caveman_script" ||
-    error "$caveman_script: missing the '$caveman_marker' marker the inline sed relies on"
-done
+# inlines the already-synced $1 SKILL.md (frontmatter stripped) into the session start script, as the $2 constant.
+inline_skill() {
+  rules="$(mktemp)"
+  sed -e '2,/^---$/d' -e '1d' "$caveman_apm_dir/skills/$1/SKILL.md" > "$rules"
+  escaped="$(mktemp)"
+  # shellcheck disable=SC2016
+  sed -e 's/\\/\\\\/g' -e 's/`/\\`/g' -e 's/\${/\\${/g' "$rules" > "$escaped"
 
-# shellcheck disable=SC2016
-sed -i -e '/^const SKILL = `$/,/^`\.trim()$/{//!d}' -e "/^const SKILL = \`\$/r $caveman_escaped" "$caveman_script"
+  # without both markers the sed below silently no-ops, or deletes everything down to EOF
+  for marker in "const $2 = \`" '`.trim()'; do
+    grep -qxF -- "$marker" "$caveman_script" ||
+      error "$caveman_script: missing the '$marker' marker the inline sed relies on"
+  done
+
+  sed -i -e "/^const $2 = \`\$/,/^\`\\.trim()\$/{//!d}" -e "/^const $2 = \`\$/r $escaped" "$caveman_script"
+}
+
+inline_skill caveman CAVEMAN
+inline_skill megacave MEGACAVE
+inline_skill ultracave ULTRACAVE
 
 ################################################################
 

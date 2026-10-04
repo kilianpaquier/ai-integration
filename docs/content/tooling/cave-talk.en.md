@@ -12,24 +12,24 @@ The [**caveman**](https://github.com/JuliusBrussee/caveman) stack counters this 
 {{< tab name="Caveman" >}}
 > [!warning]
 > Hooks activation is limited to **Claude Code** by default,
-> but a [mirrored plugin](/interoperability/ai-integration/caveman) can be used to broaden agent runtime compatibility.
+> but a [mirrored plugin](/interoperability/ai-integration/cave-talk) can be used to broaden agent runtime compatibility.
 
 - **Upstream**: <https://github.com/JuliusBrussee/caveman>
 - **What is it**: A skill suite for compressed outputs, primarily for chat output, documentation, commits, code review,
-and hooks to automatically activate caveman output mode.
+and hooks to automatically activate **caveman** output mode.
 
 ```sh
 claude plugin marketplace add kilianpaquier/ai-integration
-claude plugin install caveman@one-for-all
+claude plugin install cave-talk@one-for-all
 ```
 
 ```sh
 apm marketplace add kilianpaquier/ai-integration
-apm install caveman@one-for-all -g
+apm install cave-talk@one-for-all -g
 ```
 
 ```sh
-apm install kilianpaquier/ai-integration/plugins/caveman -g
+apm install kilianpaquier/ai-integration/plugins/cave-talk -g
 ```
 
 ```sh

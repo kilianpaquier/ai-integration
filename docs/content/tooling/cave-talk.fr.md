@@ -14,7 +14,7 @@ au sein des agent *runtimes*.
 {{< tab name="Caveman" >}}
 > [!warning]
 > L'activation des hooks est limitée à **Claude Code** par défaut,
-> mais un [plugin mirroir](/interoperability/ai-integration/caveman) peut être utilisé pour élargir la compatibilité entre agent *runtimes*.
+> mais un [plugin mirroir](/interoperability/ai-integration/cave-talk) peut être utilisé pour élargir la compatibilité entre agent *runtimes*.
 
 - **Upstream** : <https://github.com/JuliusBrussee/caveman>
 - **Description** : une suite de *skills* pour des sorties compressées, principalement pour la sortie du chat, la documentation,
@@ -22,16 +22,16 @@ les commits, la revue de code, ainsi que des *hooks* pour activer automatiquemen
 
 ```sh
 claude plugin marketplace add kilianpaquier/ai-integration
-claude plugin install caveman@one-for-all
+claude plugin install cave-talk@one-for-all
 ```
 
 ```sh
 apm marketplace add kilianpaquier/ai-integration
-apm install caveman@one-for-all -g
+apm install cave-talk@one-for-all -g
 ```
 
 ```sh
-apm install kilianpaquier/ai-integration/plugins/caveman -g
+apm install kilianpaquier/ai-integration/plugins/cave-talk -g
 ```
 
 ```sh

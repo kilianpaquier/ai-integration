@@ -1,0 +1,10 @@
+# yaml-language-server: $schema=https://microsoft.github.io/apm/specs/schemas/manifest-v0.1.schema.json
+
+name: cave-talk
+version: 0.7.0
+
+author: Kilian PAQUIER
+description: Ultra-compressed communication mode. Cuts output tokens while keeping full technical accuracy.
+license: MIT and Apache-2.0
+
+# targets: [claude, codex, copilot, cursor, gemini, kiro, opencode, windsurf]

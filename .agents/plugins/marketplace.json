@@ -5,10 +5,10 @@
   },
   "plugins": [
     {
-      "name": "caveman",
+      "name": "cave-talk",
       "source": {
         "source": "local",
-        "path": "./plugins/caveman"
+        "path": "./plugins/cave-talk"
       },
       "policy": {
         "installation": "AVAILABLE",

@@ -1,0 +1,13 @@
+{
+    "$schema": "https://www.schemastore.org/claude-code-plugin-manifest.json",
+
+    "name": "cave-talk",
+    "description": "Ultra-compressed communication mode. Cuts output tokens while keeping full technical accuracy.",
+    "version": "0.7.0",
+    "license": "MIT and Apache-2.0",
+
+    "repository": "https://gitlab.com/kilianpaquier/ai-integration",
+    "homepage": "https://gitlab.com/kilianpaquier/ai-integration/-/tree/main/plugins/cave-talk",
+
+    "hooks": "./hooks/claude.json"
+}

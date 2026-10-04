@@ -20,8 +20,8 @@ marketplace:
 
   packages:
     - category: hybrid
-      name: caveman
-      source: ./plugins/caveman
+      name: cave-talk
+      source: ./plugins/cave-talk
 
     - category: hybrid
       name: code-simplifier

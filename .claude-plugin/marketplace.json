@@ -6,11 +6,11 @@
   },
   "plugins": [
     {
-      "name": "caveman",
+      "name": "cave-talk",
       "description": "Ultra-compressed communication mode. Cuts output tokens while keeping full technical accuracy.",
-      "version": "0.6.0",
+      "version": "0.7.0",
       "category": "hybrid",
-      "source": "./plugins/caveman"
+      "source": "./plugins/cave-talk"
     },
     {
       "name": "code-simplifier",
