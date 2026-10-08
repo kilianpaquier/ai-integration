@@ -1,18 +1,14 @@
 # ai-integration <!-- omit in toc -->
 
 <div align="center">
-  <a href="https://gitlab.com/kilianpaquier/ai-integration/-/work_items">
-    <img alt="GitLab Issues" src="https://img.shields.io/gitlab/issues/open/kilianpaquier%2Fai-integration?gitlab_url=https%3A%2F%2Fgitlab.com&style=for-the-badge">
-  </a>
-  <a href="https://gitlab.com/kilianpaquier/ai-integration/-/blob/HEAD/LICENSE">
-    <img alt="GitLab License" src="https://img.shields.io/gitlab/license/kilianpaquier%2Fai-integration?gitlab_url=https%3A%2F%2Fgitlab.com&style=for-the-badge">
-  </a>
-  <a href="https://gitlab.com/kilianpaquier/ai-integration/-/pipelines?ref=main">
-    <img alt="GitLab CICD" src="https://img.shields.io/gitlab/pipeline-status/kilianpaquier%2Fai-integration?gitlab_url=https%3A%2F%2Fgitlab.com&branch=main&style=for-the-badge">
-  </a>
-  <a href="https://score.getplumber.io/gitlab.com/kilianpaquier/ai-integration">
-    <img alt="Plumber Score" src="https://img.shields.io/endpoint?url=https%3A%2F%2Fscore.getplumber.io%2Fgitlab.com%2Fkilianpaquier%2Fai-integration.json&style=for-the-badge">
-  </a>
+
+<!-- BEGIN_KICKR_BADGES -->
+[![GitLab Issues](https://img.shields.io/gitlab/issues/open/kilianpaquier%2Fai-integration?gitlab_url=https%3A%2F%2Fgitlab.com&style=for-the-badge)](https://gitlab.com/kilianpaquier/ai-integration/-/work_items)
+[![GitLab License](https://img.shields.io/gitlab/license/kilianpaquier%2Fai-integration?gitlab_url=https%3A%2F%2Fgitlab.com&style=for-the-badge)](https://gitlab.com/kilianpaquier/ai-integration/-/blob/HEAD/LICENSE)
+[![GitLab CICD](https://img.shields.io/gitlab/pipeline-status/kilianpaquier%2Fai-integration?gitlab_url=https%3A%2F%2Fgitlab.com&branch=main&style=for-the-badge)](https://gitlab.com/kilianpaquier/ai-integration/-/pipelines?ref=main)
+[![Plumber Score](https://img.shields.io/endpoint?url=https%3A%2F%2Fscore.getplumber.io%2Fgitlab.com%2Fkilianpaquier%2Fai-integration.json&style=for-the-badge)](https://score.getplumber.io/gitlab.com/kilianpaquier/ai-integration)
+<!-- END_KICKR_BADGES -->
+
 </div>
 
 ---

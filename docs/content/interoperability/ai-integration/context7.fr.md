@@ -8,7 +8,7 @@ title: Context7
   [https://gitlab.com/kilianpaquier/ai-integration](https://gitlab.com/kilianpaquier/ai-integration/-/tree/main/plugins/context7)
 - **Description**: Up-to-date code documentation for LLMs and AI code editors.
 
-<!-- docs:start -->
+<!-- BEGIN_AII_DOC -->
 
 ## MCP server
 
@@ -54,4 +54,4 @@ apm marketplace add kilianpaquier/ai-integration
 apm install context7@one-for-all -g
 ```
 
-<!-- docs:end -->
+<!-- END_AII_DOCS -->

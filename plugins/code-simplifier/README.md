@@ -3,7 +3,7 @@
 Simplify and refine recently modified code for clarity, consistency, and maintainability
 without changing its behavior.
 
-<!-- docs:start -->
+<!-- BEGIN_AII_DOC -->
 
 ## Skills
 
@@ -41,7 +41,7 @@ apm install code-simplifier@one-for-all -g
 npx skills add kilianpaquier/ai-integration/plugins/code-simplifier -g
 ```
 
-<!-- docs:end -->
+<!-- END_AII_DOCS -->
 
 ## Compatibility table
 

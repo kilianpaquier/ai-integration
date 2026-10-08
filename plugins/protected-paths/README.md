@@ -2,7 +2,7 @@
 
 Stop your agent from accessing unwanted or sensitive directories.
 
-<!-- docs:start -->
+<!-- BEGIN_AII_DOC -->
 
 ## Hooks
 
@@ -44,7 +44,7 @@ apm marketplace add kilianpaquier/ai-integration
 apm install protected-paths@one-for-all -g
 ```
 
-<!-- docs:end -->
+<!-- END_AII_DOCS -->
 
 ## Tests
 

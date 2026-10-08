@@ -8,7 +8,7 @@ title: CodeGraph
   [https://gitlab.com/kilianpaquier/ai-integration](https://gitlab.com/kilianpaquier/ai-integration/-/tree/main/plugins/codegraph)
 - **Description**: Pre-indexed code knowledge graph, auto syncs on code changes, fewer tokens, fewer tool calls, 100% local.
 
-<!-- docs:start -->
+<!-- BEGIN_AII_DOC -->
 
 ## MCP server
 
@@ -55,4 +55,4 @@ apm marketplace add kilianpaquier/ai-integration
 apm install codegraph@one-for-all -g
 ```
 
-<!-- docs:end -->
+<!-- END_AII_DOCS -->

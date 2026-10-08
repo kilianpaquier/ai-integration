@@ -2,7 +2,7 @@
 
 Endless certification drilling with real exam-format questions built from official documentation.
 
-<!-- docs:start -->
+<!-- BEGIN_AII_DOC -->
 
 ## Skills
 
@@ -38,7 +38,7 @@ apm install exam-drill@one-for-all -g
 npx skills add kilianpaquier/ai-integration/plugins/exam-drill -g
 ```
 
-<!-- docs:end -->
+<!-- END_AII_DOCS -->
 
 ## Compatibility table
 

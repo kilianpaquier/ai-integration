@@ -4,7 +4,7 @@ Ultra-compressed communication mode. Cuts output tokens while keeping full techn
 
 Uses [**Caveman**](https://github.com/JuliusBrussee/caveman), with no affiliation or endorsement from its author.
 
-<!-- docs:start -->
+<!-- BEGIN_AII_DOC -->
 
 ## Hooks
 
@@ -56,7 +56,7 @@ apm marketplace add kilianpaquier/ai-integration
 apm install cave-talk@one-for-all -g
 ```
 
-<!-- docs:end -->
+<!-- END_AII_DOCS -->
 
 ## Compatibility table
 

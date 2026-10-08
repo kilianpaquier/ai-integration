@@ -2,7 +2,7 @@
 
 Up-to-date code documentation for LLMs and AI code editors.
 
-<!-- docs:start -->
+<!-- BEGIN_AII_DOC -->
 
 ## MCP server
 
@@ -48,7 +48,7 @@ apm marketplace add kilianpaquier/ai-integration
 apm install context7@one-for-all -g
 ```
 
-<!-- docs:end -->
+<!-- END_AII_DOCS -->
 
 ## Compatibility table
 

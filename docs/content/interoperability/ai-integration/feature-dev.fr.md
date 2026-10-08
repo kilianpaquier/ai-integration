@@ -8,7 +8,7 @@ title: Feature Dev
   [https://gitlab.com/kilianpaquier/ai-integration](https://gitlab.com/kilianpaquier/ai-integration/-/tree/main/plugins/feature-dev)
 - **Description**: Guided feature development with codebase understanding and architecture focus.
 
-<!-- docs:start -->
+<!-- BEGIN_AII_DOC -->
 
 ## Skills
 
@@ -48,4 +48,4 @@ apm install feature-dev@one-for-all -g
 npx skills add kilianpaquier/ai-integration/plugins/feature-dev -g
 ```
 
-<!-- docs:end -->
+<!-- END_AII_DOCS -->

@@ -8,7 +8,7 @@ title: Exam Drill
 - **Description**:
   Entraînement sans fin à une certification, avec de vraies questions au format examen construites depuis la documentation officielle.
 
-<!-- docs:start -->
+<!-- BEGIN_AII_DOC -->
 
 ## Skills
 
@@ -44,4 +44,4 @@ apm install exam-drill@one-for-all -g
 npx skills add kilianpaquier/ai-integration/plugins/exam-drill -g
 ```
 
-<!-- docs:end -->
+<!-- END_AII_DOCS -->

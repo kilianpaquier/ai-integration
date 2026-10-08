@@ -7,7 +7,7 @@ title: Protected Paths
   [https://gitlab.com/kilianpaquier/ai-integration](https://gitlab.com/kilianpaquier/ai-integration/-/tree/main/plugins/protected-paths)
 - **Description**: Protégez l'accès aux dossiers sensibles aux agents.
 
-<!-- docs:start -->
+<!-- BEGIN_AII_DOC -->
 
 ## Hooks
 
@@ -49,4 +49,4 @@ apm marketplace add kilianpaquier/ai-integration
 apm install protected-paths@one-for-all -g
 ```
 
-<!-- docs:end -->
+<!-- END_AII_DOCS -->

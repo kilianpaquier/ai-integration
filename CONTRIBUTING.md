@@ -57,7 +57,7 @@ Force-pushing to update a review branch is fine.
 ### Documentation
 
 Every plugin needs a documentation page under `interoperability`, both `<plugin>.en.md` and `<plugin>.fr.md`.
-Both pages and the plugin `README.md` must carry the `<!-- docs:start -->` and `<!-- docs:end -->` markers.
+Both pages and the plugin `README.md` must carry the `<!-- BEGIN_AII_DOC -->` and `<!-- END_AII_DOCS -->` markers.
 The sync copies the block between them from the README into both pages.
 
 Plugins are discovered from `plugins/*/README.md`, so there is nothing to register.

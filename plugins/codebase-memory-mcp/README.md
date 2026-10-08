@@ -2,7 +2,7 @@
 
 High-performance code intelligence MCP server. Indexes codebases into a persistent knowledge graph.
 
-<!-- docs:start -->
+<!-- BEGIN_AII_DOC -->
 
 ## MCP server
 
@@ -52,7 +52,7 @@ apm marketplace add kilianpaquier/ai-integration
 apm install codebase-memory-mcp@one-for-all -g
 ```
 
-<!-- docs:end -->
+<!-- END_AII_DOCS -->
 
 ## Compatibility table
 

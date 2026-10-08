@@ -8,7 +8,7 @@ title: DCG
   [https://gitlab.com/kilianpaquier/ai-integration](https://gitlab.com/kilianpaquier/ai-integration/-/tree/main/plugins/dcg)
 - **Description**: Bloquez les commandes shell et git destructrices avant leur exécution.
 
-<!-- docs:start -->
+<!-- BEGIN_AII_DOC -->
 
 ## Hooks
 
@@ -38,4 +38,4 @@ apm marketplace add kilianpaquier/ai-integration
 apm install dcg@one-for-all -g
 ```
 
-<!-- docs:end -->
+<!-- END_AII_DOCS -->

@@ -8,7 +8,7 @@ title: Codebase Memory MCP
   [https://gitlab.com/kilianpaquier/ai-integration](https://gitlab.com/kilianpaquier/ai-integration/-/tree/main/plugins/codebase-memory-mcp)
 - **Description**: High-performance code intelligence MCP server. Indexes codebases into a persistent knowledge graph.
 
-<!-- docs:start -->
+<!-- BEGIN_AII_DOC -->
 
 ## MCP server
 
@@ -58,4 +58,4 @@ apm marketplace add kilianpaquier/ai-integration
 apm install codebase-memory-mcp@one-for-all -g
 ```
 
-<!-- docs:end -->
+<!-- END_AII_DOCS -->

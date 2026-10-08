@@ -3,7 +3,7 @@
 A structured 7-phase workflow for feature development:
 codebase exploration, clarifying questions, architecture design, implementation, and quality review.
 
-<!-- docs:start -->
+<!-- BEGIN_AII_DOC -->
 
 ## Skills
 
@@ -43,7 +43,7 @@ apm install feature-dev@one-for-all -g
 npx skills add kilianpaquier/ai-integration/plugins/feature-dev -g
 ```
 
-<!-- docs:end -->
+<!-- END_AII_DOCS -->
 
 ## Compatibility table
 

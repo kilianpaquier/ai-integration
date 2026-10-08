@@ -2,7 +2,7 @@
 
 A skill suite to transform JSON schemas into their language equivalents.
 
-<!-- docs:start -->
+<!-- BEGIN_AII_DOC -->
 
 ## Skills
 
@@ -35,7 +35,7 @@ apm install schema-converter@one-for-all -g
 npx skills add kilianpaquier/ai-integration/plugins/schema-converter -g
 ```
 
-<!-- docs:end -->
+<!-- END_AII_DOCS -->
 
 ## Compatibility table
 
