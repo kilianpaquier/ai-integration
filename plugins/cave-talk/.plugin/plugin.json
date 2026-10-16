@@ -1,7 +1,7 @@
 {
     "name": "cave-talk",
     "description": "Ultra-compressed communication mode. Cuts output tokens while keeping full technical accuracy.",
-    "version": "0.7.0",
+    "version": "0.8.0",
     "license": "MIT and Apache-2.0",
 
     "repository": "https://gitlab.com/kilianpaquier/ai-integration",
