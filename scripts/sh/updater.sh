@@ -58,7 +58,7 @@ sync_body() {
 ################################################################
 
 # renovate: datasource=github-tags packageName=DeusData/codebase-memory-mcp depName=codebase-memory-mcp
-codebase_memory_mcp_version=8972ea69c6ad94b1ef1d4ffbf0a92d78d2db1798 # v0.11.0
+codebase_memory_mcp_version=a7158ac2f48ca646b4527341b76f930f2aeff87e # v0.12.1
 
 codebase_memory_mcp_tmp="$("$dir/helpers/git-clone.sh" https://github.com/DeusData/codebase-memory-mcp.git "$codebase_memory_mcp_version")"
 codebase_memory_mcp_skill="$(mktemp)"
