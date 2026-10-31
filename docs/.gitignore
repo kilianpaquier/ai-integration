@@ -13,11 +13,26 @@ hugo.direct.sum
 # Local Netlify folder
 .netlify
 
-# Created by https://www.toptal.com/developers/gitignore/api/dotenv,hugo
-# Edit at https://www.toptal.com/developers/gitignore?templates=dotenv,hugo
+# Created by https://www.toptal.com/developers/gitignore/api/dotenv,git,hugo,visualstudiocode
+# Edit at https://www.toptal.com/developers/gitignore?templates=dotenv,git,hugo,visualstudiocode
 
 ### dotenv ###
 .env
+
+### Git ###
+# Created by git for backups. To disable backups in Git:
+# $ git config --global mergetool.keepBackup false
+*.orig
+
+# Created by git when using merge tools for conflicts
+*.BACKUP.*
+*.BASE.*
+*.LOCAL.*
+*.REMOTE.*
+*_BACKUP_*.txt
+*_BASE_*.txt
+*_LOCAL_*.txt
+*_REMOTE_*.txt
 
 ### Hugo ###
 # Generated files by hugo
@@ -34,4 +49,23 @@ hugo.linux
 # Temporary lock file while building
 /.hugo_build.lock
 
-# End of https://www.toptal.com/developers/gitignore/api/dotenv,hugo
+### VisualStudioCode ###
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+!.vscode/*.code-snippets
+
+# Local History for Visual Studio Code
+.history/
+
+# Built Visual Studio Code Extensions
+*.vsix
+
+### VisualStudioCode Patch ###
+# Ignore all local history of files
+.history
+.ionide
+
+# End of https://www.toptal.com/developers/gitignore/api/dotenv,git,hugo,visualstudiocode

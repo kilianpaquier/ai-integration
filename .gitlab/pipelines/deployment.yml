@@ -98,7 +98,7 @@ netlify-deploy-production:
   rules:
     - if: '$CI_COMMIT_REF_NAME !~ $PROD_REF'
       when: never
-    - when: on_success
+    - when: manual
   variables:
     ARGS: --prod --message=$CI_COMMIT_REF_NAME
     NETLIFY_PROJECT_DIR: docs
