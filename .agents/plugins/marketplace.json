@@ -65,6 +65,18 @@
       "category": "hooks"
     },
     {
+      "name": "devkit",
+      "source": {
+        "source": "local",
+        "path": "./plugins/devkit"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "hybrid"
+    },
+    {
       "name": "exam-drill",
       "source": {
         "source": "local",

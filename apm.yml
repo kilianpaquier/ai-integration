@@ -39,6 +39,10 @@ marketplace:
       name: dcg
       source: ./plugins/dcg
 
+    - category: hybrid
+      name: devkit
+      source: ./plugins/devkit
+
     - category: skills
       name: exam-drill
       source: ./plugins/exam-drill

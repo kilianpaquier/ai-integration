@@ -41,6 +41,13 @@
       "source": "./plugins/dcg"
     },
     {
+      "name": "devkit",
+      "description": "AI-powered skills and agents for software development, code review, and documentation",
+      "version": "0.2.0",
+      "category": "hybrid",
+      "source": "./plugins/devkit"
+    },
+    {
       "name": "exam-drill",
       "description": "Endless certification drilling with real exam-format questions built from official documentation",
       "version": "0.1.0",
