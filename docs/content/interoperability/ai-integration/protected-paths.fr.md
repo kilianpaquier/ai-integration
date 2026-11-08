@@ -15,23 +15,27 @@ title: Protected Paths
 | --------------------------------------------------- | ----------------------------------------------------- | ----------------------------------- |
 | `PreToolUse`, shell/read/write/edit/glob/grep calls | blocks the call when it touches a protected directory | Claude Code, Codex, Copilot, Cursor |
 
-Protected and allowed directories come from `~/.config/protected-paths/config.json`,
-a `denylist`/`allowlist` pair of path arrays (`~`, `$HOME`, and `${HOME}` are expanded):
+Protected paths come from `~/.config/protected-paths/config.json`, a `denylist`/`allowlist` pair:
 
 ```json
 {
-    "denylist": ["~/.ssh", "~/.aws"],
+    "denylist": ["~/.ssh", "**/.env", "**/.git/hooks"],
     "allowlist": ["~/.ssh/config"]
 }
 ```
 
-The hook also catches recursive tools (`grep -r`, `find`, `tar`, `rsync`, `ls -R`, ...)
-and bare references like `cd ~` that could reach a denylisted directory without naming it directly.
+- A path such as `~/.ssh` protects that directory and everything in it.
+- A path starting with `**/` protects it in any directory (`**/.env`).
+- Use `*` and `?` inside the names of any path (`~/.config/*/secrets`, `**/.env.*.local`).
+- An allowlist entry lifts a match from the denylist.
+- A missing config file allows every call, an unreadable or malformed one blocks every call.
+
+Commands that reach a protected directory without naming it, such as `grep -r` or `cd ~`, are blocked too.
 
 ## Installation
 
 > [!warning]
-> Nodejs is needed in `PATH` environment variable to work.
+> Nodejs 24 or later is needed in `PATH` environment variable to work.
 
 **Native plugin (recommended)**:
 ```sh

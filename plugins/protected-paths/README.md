@@ -10,23 +10,27 @@ Stop your agent from accessing unwanted or sensitive directories.
 | --------------------------------------------------- | ----------------------------------------------------- | ----------------------------------- |
 | `PreToolUse`, shell/read/write/edit/glob/grep calls | blocks the call when it touches a protected directory | Claude Code, Codex, Copilot, Cursor |
 
-Protected and allowed directories come from `~/.config/protected-paths/config.json`,
-a `denylist`/`allowlist` pair of path arrays (`~`, `$HOME`, and `${HOME}` are expanded):
+Protected paths come from `~/.config/protected-paths/config.json`, a `denylist`/`allowlist` pair:
 
 ```json
 {
-    "denylist": ["~/.ssh", "~/.aws"],
+    "denylist": ["~/.ssh", "**/.env", "**/.git/hooks"],
     "allowlist": ["~/.ssh/config"]
 }
 ```
 
-The hook also catches recursive tools (`grep -r`, `find`, `tar`, `rsync`, `ls -R`, ...)
-and bare references like `cd ~` that could reach a denylisted directory without naming it directly.
+- A path such as `~/.ssh` protects that directory and everything in it.
+- A path starting with `**/` protects it in any directory (`**/.env`).
+- Use `*` and `?` inside the names of any path (`~/.config/*/secrets`, `**/.env.*.local`).
+- An allowlist entry lifts a match from the denylist.
+- A missing config file allows every call, an unreadable or malformed one blocks every call.
+
+Commands that reach a protected directory without naming it, such as `grep -r` or `cd ~`, are blocked too.
 
 ## Installation
 
 > [!warning]
-> Nodejs is needed in `PATH` environment variable to work.
+> Nodejs 24 or later is needed in `PATH` environment variable to work.
 
 **Native plugin (recommended)**:
 ```sh
@@ -70,8 +74,9 @@ node --test tests/protected-paths.test.js
 
 ## Limitations
 
-> [!warning]No protection on Antigravity or Devin
-> Antigravity and Devin ship no hook configuration, so no tool call is inspected there, none of the protections below apply on those runtimes.
+The hook only blocks a path it can read in the call.
 
-> [!warning]Relative paths after a `cd` are not resolved
-> A relative path used after a `cd` earlier in the same command is not resolved against that new directory.
+- **Antigravity** and **Devin** ship no hook configuration, so no call is inspected there.
+- A recursive search that names no path, such as `grep -r x .`, gets past a `**/` entry, while an absolute entry like `~/.ssh` also blocks a search of its parent directories.
+- A relative path is followed after `cd`, `pushd` or `-C`, but not after a bare `cd`, so use the full path in the same command.
+- Every word of a command counts as a possible path, so with `**/.env` listed, `git commit -m "ignore .env"` is denied until you reword the message.

@@ -7,13 +7,32 @@ const fs = require('node:fs')
 const os = require('node:os')
 const path = require('node:path')
 
+// Shell builtins that change the working directory.
+const CD_COMMANDS = new Set(['cd', 'chdir', 'pushd'])
+
+// Options of the builtins above that come before the directory.
+const CD_OPTIONS = new Set(['--', '-@', '-L', '-P', '-e'])
+
+// Fields that embed a path inside a larger string (glob expression, search pattern), relative to the `path` field.
+const COMPOUND_FIELDS = [
+    'glob',
+    'pattern',
+]
+
+const CONFIG_PATH = path.join(os.homedir(), '.config', 'protected-paths', 'config.json')
+
+// Options that run a command in another directory (git -C, make -C, tar -C, env --chdir, tar --directory).
+const DIRECTORY_OPTIONS = new Set(['-C', '--chdir', '--directory'])
+
+// Compiled regexp of each config entry, so a token is matched against an entry without compiling it again.
+const ENTRY_REGEXPS = new Map()
+
+// Characters that make a command token a shell glob.
+const GLOB_CHARACTERS = /[*?[]/
+
 const HOME = os.homedir()
-const CONFIG_PATH = path.join(HOME, '.config', 'protected-paths', 'config.json')
 
-// shell-token boundary, used to split path tokens out of compound field values.
-const SPLIT_PATTERN = /[\s"'\\;|&()<>,}]+/
-
-// fields whose entire value is a single path.
+// Fields whose entire value is a single path.
 const SINGLE_PATH_FIELDS = [
     'absolute_path',
     'directory',
@@ -23,50 +42,101 @@ const SINGLE_PATH_FIELDS = [
     'working_directory',
 ]
 
-// fields that embed a path inside a larger string (shell command, glob expression).
-const COMPOUND_FIELDS = [
-    'command',
-    'glob',
-    'pattern',
-]
+// Shell-token boundary, used to split path tokens out of a command or a compound field.
+const SPLIT_PATTERN = /[\s"'\\;|&()<>,}=:]+/
 
-// toolInputOf extracts the tool-call arguments from a hook payload (tool_input or Copilot's toolArgs, plain or JSON-encoded).
-const toolInputOf = (payload) => {
-    let toolInput = payload.tool_input ?? payload.toolArgs ?? {}
-    if (typeof toolInput === 'string') {
-        try {
-            toolInput = JSON.parse(toolInput)
-        } catch {
-            toolInput = {}
-        }
+// parse parses JSON and names what failed, so a malformed payload and a malformed config are told apart.
+const parse = (text, name) => {
+    try {
+        return JSON.parse(text)
+    } catch {
+        throw new Error(`${name} is not valid JSON`)
     }
-    return toolInput
 }
 
+// expand replaces `~`, `$HOME` and `${HOME}` anywhere in value, not only at the start of a word as a shell does.
 const expand = (value) => value
     .replaceAll('~', HOME)
     .replaceAll('$HOME', HOME)
     .replaceAll('${HOME}', HOME)
 
-// loadConfig reads denylist/allowlist from CONFIG_PATH, or null if absent, unreadable, or malformed.
+// tokensOf splits a command or a compound field into the tokens that may be paths.
+const tokensOf =(value) => expand(value).split(SPLIT_PATTERN).filter(Boolean)
+
+// toolInputOf returns the tool-call arguments of a hook payload (tool_input or Copilot's toolArgs, plain or JSON-encoded) and throws on an unparsable string.
+const toolInputOf = (payload) => {
+    const toolInput = payload.tool_input ?? payload.toolArgs ?? {}
+    return typeof toolInput === 'string' ? parse(toolInput, 'tool arguments') : toolInput
+}
+
+// normalizeEntry expands a leading `~`, `$HOME` or `${HOME}` of a config entry and drops its trailing slash.
+const normalizeEntry = (entry) => path.posix
+    .normalize(entry.replace(/^(~|\$HOME|\$\{HOME\})(?=\/|$)/, HOME))
+    .replace(/\/+$/, '')
+
+// loadConfig returns the denylist and allowlist of the config file, or null when the file doesn't exist, and throws when it is unreadable or malformed.
 const loadConfig = () => {
-    let parsed
+    let raw
     try {
-        parsed = JSON.parse(fs.readFileSync(CONFIG_PATH, 'utf8'))
-    } catch {
-        return null
+        raw = fs.readFileSync(CONFIG_PATH, 'utf8')
+    } catch (error) {
+        if (error.code === 'ENOENT') {
+            return null
+        }
+        throw error
     }
+
+    const config = parse(raw, 'config.json')
     return {
-        denylist: (parsed.denylist ?? []).map(expand),
-        allowlist: (parsed.allowlist ?? []).map(expand),
+        allowlist: (config.allowlist ?? []).map(normalizeEntry),
+        denylist: (config.denylist ?? []).map(normalizeEntry),
     }
 }
 
-// isPrefix reports whether target equals prefix or sits under it.
-const isPrefix = (prefix, target) => target === prefix || target.startsWith(`${prefix}/`)
+const segmentsOf = (entry) => entry.split('/').filter(Boolean)
 
-// resolvePath resolves target against base (like `realpath -m`), following symlinks on existing segments
-// and appending the rest lexically, so a not-yet-created path under a protected dir is still caught.
+// globSource compiles a path component to regexp source, where `*` is any characters but `/`, `?` is one character and anything else is literal.
+const globSource = (segment) => RegExp.escape(segment)
+    .replaceAll('\\*', '[^/]*')
+    .replaceAll('\\?', '[^/]')
+
+// entryRegExp compiles a config entry to a regexp matching the path and everything under it, where a `**` component stands for any number of components.
+const entryRegExp = (entry) => {
+    if (!ENTRY_REGEXPS.has(entry)) {
+        const source = segmentsOf(entry)
+            .map((segment) => segment === '**' ? '(?:/[^/]+)*' : `/${globSource(segment)}`)
+            .join('')
+        ENTRY_REGEXPS.set(entry, new RegExp(`^${source}(?:/|$)`))
+    }
+    return ENTRY_REGEXPS.get(entry)
+}
+
+// covers matches the entry on the symlink-resolved path and on the lexical one, so a symlink named like a protected file (`.env` pointing elsewhere) is caught by its name.
+const covers = (entry, resolved, lexical) => entryRegExp(entry).test(resolved) || entryRegExp(entry).test(lexical)
+
+// isAncestor reports whether target is a directory above what the entry covers, which never holds for an entry starting with `**/`.
+const isAncestor = (entry, target) => {
+    const entrySegments = segmentsOf(entry)
+    if (entrySegments[0] === '**') {
+        return false
+    }
+
+    const targetSegments = segmentsOf(target)
+    for (const [i, segment] of targetSegments.entries()) {
+        if (i >= entrySegments.length) {
+            return false
+        }
+        if (entrySegments[i] === '**') {
+            return true
+        }
+        if (!new RegExp(`^${globSource(entrySegments[i])}$`).test(segment)) {
+            return false
+        }
+    }
+    return targetSegments.length < entrySegments.length
+}
+
+// resolvePath resolves target against base like `realpath -m`, following symlinks on existing segments and appending the rest lexically.
 const resolvePath = (base, target) => {
     const segments = path.resolve(base, target).split(path.sep).filter(Boolean)
 
@@ -83,18 +153,68 @@ const resolvePath = (base, target) => {
     return i === segments.length ? real : path.join(real, ...segments.slice(i))
 }
 
-// denyReasonFor returns the deny reason for a resolved path, or null if allowed.
-const denyReasonFor = (denylist, allowlist, resolved) => {
-    for (const pattern of denylist) {
-        if (isPrefix(pattern, resolved)) {
-            if (allowlist.some((allowed) => isPrefix(allowed, resolved))) {
+// denyReasonFor returns the deny reason for a path, or null when it is allowed, where an allowlist match lifts a denylist match and `ancestors` also denies a directory above a protected path.
+const denyReasonFor = ({ allowlist, denylist }, resolved, lexical, ancestors = true) => {
+    for (const entry of denylist) {
+        if (covers(entry, resolved, lexical)) {
+            if (allowlist.some((allowed) => covers(allowed, resolved, lexical))) {
                 return null
             }
-            return `tool call references a protected path: '${pattern}'`
+            return `tool call references a protected path: '${entry}'`
         }
 
-        if (isPrefix(resolved, pattern)) {
-            return `tool call references an ancestor of protected path: '${pattern}', target the specific file or subdirectory you need instead of scanning or cd-ing into $HOME`
+        if (ancestors && isAncestor(entry, resolved)) {
+            return `tool call references an ancestor of protected path: '${entry}', target the specific file or subdirectory you need instead of scanning or cd-ing into $HOME`
+        }
+    }
+    return null
+}
+
+// directoriesOf lists the directories a relative token of a command may refer to, which are the cwd and each directory change resolved against the previous one.
+const directoriesOf = (cwd, tokens) => {
+    const directories = [cwd]
+    tokens.forEach((token, i) => {
+        let target
+        if (CD_COMMANDS.has(token)) {
+            target = tokens.slice(i + 1).find((next) => !CD_OPTIONS.has(next))
+        } else if (DIRECTORY_OPTIONS.has(token)) {
+            target = tokens[i + 1]
+        }
+        if (target) {
+            directories.push(path.resolve(directories.at(-1), target))
+        }
+    })
+    return directories
+}
+
+// targetsOf lists every [directory, token] pair a tool call may read, with the files matched by a shell glob of a command since the shell expands it before the tool sees it.
+const targetsOf = (toolInput, cwd) => {
+    const stringsOf = (fields) => fields.map((field) => toolInput[field]).filter((value) => typeof value === 'string')
+    const pathBase = typeof toolInput.path === 'string' ? path.resolve(cwd, expand(toolInput.path)) : cwd
+    const commandTokens = stringsOf(['command']).flatMap(tokensOf)
+
+    return [
+        ...stringsOf(SINGLE_PATH_FIELDS).map((value) => [cwd, expand(value)]),
+        ...stringsOf(COMPOUND_FIELDS).flatMap(tokensOf).map((token) => [pathBase, token]),
+        ...directoriesOf(cwd, commandTokens).flatMap((directory) => [...new Set(commandTokens)]
+            .flatMap((token) => [token, ...(GLOB_CHARACTERS.test(token) ? fs.globSync(token, { cwd: directory }) : [])])
+            .map((token) => [directory, token])),
+    ]
+}
+
+// reasonFor returns the reason a tool call must be blocked, or null when it is allowed, checking the cwd itself (not its ancestors) before each target.
+const reasonFor = (config, payload) => {
+    const cwd = typeof payload.cwd === 'string' ? payload.cwd : process.cwd()
+
+    const cwdReason = denyReasonFor(config, resolvePath(cwd, '.'), path.resolve(cwd), false)
+    if (cwdReason) {
+        return cwdReason
+    }
+
+    for (const [directory, token] of targetsOf(toolInputOf(payload), cwd)) {
+        const reason = denyReasonFor(config, resolvePath(directory, token), path.resolve(directory, token))
+        if (reason) {
+            return reason
         }
     }
     return null
@@ -109,57 +229,37 @@ const denyReasonFor = (denylist, allowlist, resolved) => {
 //  - Gemini: flat decision
 const deny = (reason) => {
     const body = JSON.stringify({
-        action: "block",
+        action: 'block',
         agent_message: reason,
         decision: 'block',
+        hookSpecificOutput: {
+            hookEventName: 'PreToolUse',
+            permissionDecision: 'deny',
+            permissionDecisionReason: reason,
+        },
         message: reason,
         permission: 'deny',
         permissionDecision: 'deny',
         permissionDecisionReason: reason,
         reason,
         user_message: reason,
-        hookSpecificOutput: {
-            hookEventName: 'PreToolUse',
-            permissionDecision: 'deny',
-            permissionDecisionReason: reason,
-        },
     })
     process.stderr.write(`blocked: ${reason}`)
     process.stdout.write(body)
-    process.exit(0)
 }
 
-const main = (payload) => {
-    const config = loadConfig()
-    if (!config) {
-        return
-    }
-
-    const toolInput = toolInputOf(payload)
-    const cwd = typeof payload.cwd === 'string' ? payload.cwd : process.cwd()
-
-    const singleValues = SINGLE_PATH_FIELDS
-        .map((field) => toolInput[field])
-        .filter((value) => typeof value === 'string')
-        .map(expand)
-
-    const compoundTokens = COMPOUND_FIELDS
-        .map((field) => toolInput[field])
-        .filter((value) => typeof value === 'string')
-        .flatMap((value) => expand(value).split(SPLIT_PATTERN))
-        .filter((token) => token.length > 0)
-
-    const tokens = [...singleValues, ...compoundTokens]
-    for (const token of new Set(tokens)) {
-        const reason = denyReasonFor(config.denylist, config.allowlist, resolvePath(cwd, token))
+// main denies on any failure, since a hook that crashes lets the tool call through.
+const main = () => {
+    try {
+        const payload = parse(fs.readFileSync(0, 'utf8'), 'payload')
+        const config = loadConfig()
+        const reason = config ? reasonFor(config, payload) : null
         if (reason) {
             deny(reason)
         }
+    } catch (error) {
+        deny(error.message)
     }
 }
 
-try {
-    main(JSON.parse(fs.readFileSync(0, 'utf8')))
-} catch {
-    deny('payload is not valid JSON')
-}
+main()
