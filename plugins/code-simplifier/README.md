@@ -57,6 +57,4 @@ npx skills add kilianpaquier/ai-integration/plugins/code-simplifier -g
 
 ## Limitations
 
-> [!warning]No agent on Codex or Cursor
-> Codex and Cursor have no plugin agent mode, so `code-simplifier` is unavailable there as a
-> dedicated agent; only the `code-simplifier` skill can drive it on those runtimes.
+On **Codex** and **Cursor**, `code-simplifier` isn't available as an agent, so use the `code-simplifier` skill instead.

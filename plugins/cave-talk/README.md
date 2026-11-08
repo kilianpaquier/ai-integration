@@ -76,8 +76,4 @@ apm install cave-talk@one-for-all -g
 
 ## Limitations
 
-> [!warning]Mode hint not re-asserted on Copilot or Cursor
-> **Copilot** and **Cursor** accept context back on `SessionStart` only,
-> so the `UserPromptSubmit` hint naming the active mode never registers there: it would spawn a process per prompt
-> and discard what it prints.
-> The mode still persists through `caveman-mode.js`, it just isn't re-asserted mid-session.
+On **Copilot** and **Cursor**, the active mode is announced once at session start, not again on each prompt.

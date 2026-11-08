@@ -54,6 +54,4 @@ npx skills add kilianpaquier/ai-integration/plugins/exam-drill -g
 
 ## Limitations
 
-> [!warning]Context grows with every question
-> Every question comes from a page read during the session, so a long drill grows its context until it compacts.
-> Compaction keeps the exam brief, the reading list, and what's already been asked, which is why repeats become possible after a very long run.
+A long drill grows the session until it compacts, so questions can repeat after a very long run.
