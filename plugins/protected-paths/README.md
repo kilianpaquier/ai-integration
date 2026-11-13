@@ -22,7 +22,7 @@ Protected paths come from `~/.config/protected-paths/config.json`, a `denylist`/
 - A path such as `~/.ssh` protects that directory and everything in it.
 - A path starting with `**/` protects it in any directory (`**/.env`).
 - Use `*` and `?` inside the names of any path (`~/.config/*/secrets`, `**/.env.*.local`).
-- An allowlist entry lifts a match from the denylist.
+- When a path matches both lists, the entry matching the longer part of the path wins, and a tie blocks (`~/.ssh/config` beats `~/.ssh`).
 - A missing config file allows every call, an unreadable or malformed one blocks every call.
 
 Commands that reach a protected directory without naming it, such as `grep -r` or `cd ~`, are blocked too.
@@ -80,3 +80,6 @@ The hook only blocks a path it can read in the call.
 - A recursive search that names no path, such as `grep -r x .`, gets past a `**/` entry, while an absolute entry like `~/.ssh` also blocks a search of its parent directories.
 - A relative path is followed after `cd`, `pushd` or `-C`, but not after a bare `cd`, so use the full path in the same command.
 - Every word of a command counts as a possible path, so with `**/.env` listed, `git commit -m "ignore .env"` is denied until you reword the message.
+- A command too large to check is blocked: more than 64 extra variable values, 1 000 directory changes, 100 glob expansions, 100 000 path checks, or 1 000 000 characters once variables are replaced.
+- A shell search that names no path, such as `grep -r x` run from the home directory, is not blocked.
+- A glob with a `**` component, more than 2 wildcard components or more than 2 `*` in one name isn't expanded. Its directory before the first wildcard is checked instead, so `ls /**/bin` is blocked and `.e*n*v*` gets past a `**/.env` entry.

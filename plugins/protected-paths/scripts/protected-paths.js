@@ -7,6 +7,9 @@ const fs = require('node:fs')
 const os = require('node:os')
 const path = require('node:path')
 
+// Shell assignment `NAME=value` or `NAME+=value`, with the value quoted or bare.
+const ASSIGNMENT = /(?:^|[\s;&|(])([A-Za-z_]\w*)(\+?)=("[^"]*"|'[^']*'|[^\s;&|)]*)/g
+
 // Shell builtins that change the working directory.
 const CD_COMMANDS = new Set(['cd', 'chdir', 'pushd'])
 
@@ -24,13 +27,31 @@ const CONFIG_PATH = path.join(os.homedir(), '.config', 'protected-paths', 'confi
 // Options that run a command in another directory (git -C, make -C, tar -C, env --chdir, tar --directory).
 const DIRECTORY_OPTIONS = new Set(['-C', '--chdir', '--directory'])
 
-// Compiled regexp of each config entry, so a token is matched against an entry without compiling it again.
-const ENTRY_REGEXPS = new Map()
-
 // Characters that make a command token a shell glob.
 const GLOB_CHARACTERS = /[*?[]/
 
+// Tool name of a content search, whose pattern is a regexp and which searches its cwd when given no path.
+const GREP_TOOL = /grep/i
+
 const HOME = os.homedir()
+
+// Bounds on the work of one call, so a costly call is denied or checked coarsely rather than left to time out, which lets it through.
+const LIMITS = {
+    directories: 1_000, // directory changes followed in a command, denied past it
+    globComponents: 2, // wildcard components of a glob expanded on disk, checked as its parent directory past it
+    globStars: 2, // `*` in one component of a glob expanded on disk, checked as its parent directory past it
+    globs: 100, // glob expansions on disk, denied past it
+    passes: 8, // substitution passes, past which substitution stops without denying
+    paths: 100_000, // paths checked, denied past it
+    textLength: 1_000_000, // characters of a command, before and during substitution, denied past it
+    values: 64, // extra variable values, denied past it
+}
+
+// Longest path the system opens, so a longer token can't be a path read by the call.
+const PATH_MAX = 4096
+
+// Unresolved reference, command substitution or backquote right before a `/`, which the token split cuts from that `/`.
+const REFERENCE_BEFORE_SLASH = /(?:\$\{[^}$]*\}|\$\w+|[)`])["']?\//
 
 // Fields whose entire value is a single path.
 const SINGLE_PATH_FIELDS = [
@@ -45,12 +66,24 @@ const SINGLE_PATH_FIELDS = [
 // Shell-token boundary, used to split path tokens out of a command or a compound field.
 const SPLIT_PATTERN = /[\s"'\\;|&()<>,}=:]+/
 
+// `${NAME}` or `${NAME<op>word}` reference, else `$NAME` or the `${NAME` prefix of any other expansion.
+const VARIABLE = /\$\{([A-Za-z_]\w*)(?::?[-=+?]([^}$]*))?\}|\$\{?([A-Za-z_]\w*)/g
+
+const VARIABLE_NAME = /^[A-Za-z_]\w*$/
+
 // parse parses JSON and names what failed, so a malformed payload and a malformed config are told apart.
 const parse = (text, name) => {
     try {
         return JSON.parse(text)
     } catch {
         throw new Error(`${name} is not valid JSON`)
+    }
+}
+
+// assertWithin throws the deny reason of a call too large to check when count exceeds limit.
+const assertWithin = (count, limit) => {
+    if (count > limit) {
+        throw new Error(`tool call is too large to check (${count} > ${limit}), split it into smaller calls`)
     }
 }
 
@@ -61,7 +94,98 @@ const expand = (value) => value
     .replaceAll('${HOME}', HOME)
 
 // tokensOf splits a command or a compound field into the tokens that may be paths.
-const tokensOf =(value) => expand(value).split(SPLIT_PATTERN).filter(Boolean)
+const tokensOf = (value) => expand(value).split(SPLIT_PATTERN).filter(Boolean)
+
+// unquote drops the quotes around a shell word.
+const unquote = (word) => word.length > 1 && `"'`.includes(word[0]) && word.at(-1) === word[0] ? word.slice(1, -1) : word
+
+// forLoopsOf lists the variable and words of each `for NAME in words; do` loop, splitting the command on `;` and newlines so no regexp scans all of it.
+const forLoopsOf = (command) => {
+    const segments = command.split(/[;\n]/).map((segment) => segment.split(/[\s&|(]+/).filter(Boolean))
+    return segments.flatMap((words, i) => {
+        if (segments[i + 1]?.[0] !== 'do') {
+            return []
+        }
+        const heads = words.flatMap((word, j) => word === 'for' && words[j + 2] === 'in' && VARIABLE_NAME.test(words[j + 1]) ? [j] : [])
+        return heads.map((head, k) => [words[head + 1], words.slice(head + 3, heads[k + 1])])
+    })
+}
+
+// variablesOf maps each variable the command references to every value it may hold, HOME and PWD first, then each assignment, `${NAME:-word}` default and `for` loop word in order.
+const variablesOf = (command, cwd) => {
+    const references = [...command.matchAll(VARIABLE)]
+    const referenced = new Set(references.map(([, braced, , other]) => braced ?? other))
+    const values = new Map([['HOME', [HOME]], ['PWD', [cwd]]])
+    const add = (name, value) => {
+        if (!referenced.has(name)) {
+            return
+        }
+        if (values.has(name)) {
+            values.get(name).push(value)
+        } else {
+            values.set(name, [value])
+        }
+    }
+
+    for (const [, name, append, assigned] of command.matchAll(ASSIGNMENT)) {
+        add(name, `${append ? values.get(name)?.at(-1) ?? '' : ''}${unquote(assigned)}`)
+    }
+    for (const [, name, word] of references) {
+        if (word !== undefined) {
+            add(name, unquote(word))
+        }
+    }
+    for (const [name, words] of forLoopsOf(command)) {
+        words.forEach((word) => add(name, word))
+    }
+    return values
+}
+
+// variantsOf returns the command with each variable at its first value, then once more per other value of each variable, with `~` expanded anywhere.
+const variantsOf = (command, cwd) => {
+    assertWithin(command.length, LIMITS.textLength)
+    const text = command.replaceAll('$(pwd)', cwd).replaceAll('`pwd`', cwd)
+    const values = variablesOf(text, cwd)
+    const first = (name) => values.get(name)?.[0]
+    const picks = [
+        first,
+        ...[...values].flatMap(([name, list]) => list.slice(1).map((value) => (other) => other === name ? value : first(other))),
+    ]
+    assertWithin(picks.length - 1, LIMITS.values)
+
+    // Repeated passes resolve a value that references another variable, and the running length stops a value that references itself.
+    const resolve = (pick) => {
+        let current = text
+        for (let pass = 0; pass < LIMITS.passes; pass += 1) {
+            let length = current.length
+            const next = current.replace(VARIABLE, (match, braced, word, other) => {
+                const value = pick(braced ?? other) ?? word ?? match
+                length += value.length - match.length
+                assertWithin(length, LIMITS.textLength)
+                return value
+            })
+            if (next === current) {
+                break
+            }
+            current = next
+        }
+        return expand(current)
+    }
+    return [...new Set(picks.map(resolve))]
+}
+
+// directoryBefore returns the directory holding the component of token at index, or `.` when that component is the first.
+const directoryBefore = (token, index) => {
+    const slash = token.lastIndexOf('/', index)
+    return slash < 0 ? '.' : token.slice(0, slash) || '/'
+}
+
+// isCostlyGlob reports whether expanding a glob on disk could walk or backtrack for long, with a `**` component, many wildcard components or many `*` in one.
+const isCostlyGlob = (token) => {
+    const wildcards = token.split('/').filter((component) => GLOB_CHARACTERS.test(component))
+    return wildcards.length > LIMITS.globComponents || wildcards.some((component) => /^\*{2,}$/.test(component)
+        || component.replace(/\*+/g, '*').split('*').length - 1 > LIMITS.globStars)
+}
 
 // toolInputOf returns the tool-call arguments of a hook payload (tool_input or Copilot's toolArgs, plain or JSON-encoded) and throws on an unparsable string.
 const toolInputOf = (payload) => {
@@ -100,19 +224,33 @@ const globSource = (segment) => RegExp.escape(segment)
     .replaceAll('\\*', '[^/]*')
     .replaceAll('\\?', '[^/]')
 
+// Compiled regexp of each config entry, so a token is matched against an entry without compiling it again.
+const entryRegExps = new Map()
+
 // entryRegExp compiles a config entry to a regexp matching the path and everything under it, where a `**` component stands for any number of components.
 const entryRegExp = (entry) => {
-    if (!ENTRY_REGEXPS.has(entry)) {
+    if (!entryRegExps.has(entry)) {
         const source = segmentsOf(entry)
             .map((segment) => segment === '**' ? '(?:/[^/]+)*' : `/${globSource(segment)}`)
             .join('')
-        ENTRY_REGEXPS.set(entry, new RegExp(`^${source}(?:/|$)`))
+        entryRegExps.set(entry, new RegExp(`^${source}(?:/|$)`))
     }
-    return ENTRY_REGEXPS.get(entry)
+    return entryRegExps.get(entry)
 }
 
-// covers matches the entry on the symlink-resolved path and on the lexical one, so a symlink named like a protected file (`.env` pointing elsewhere) is caught by its name.
-const covers = (entry, resolved, lexical) => entryRegExp(entry).test(resolved) || entryRegExp(entry).test(lexical)
+// matchLength returns how much of the symlink-resolved or lexical path an entry matches, or -1 when it matches neither, so a symlink named like a protected file (`.env` pointing elsewhere) is caught by its name.
+const matchLength = (entry, resolved, lexical) => Math.max(...[resolved, lexical].map((target) => entryRegExp(entry).exec(target)?.[0].length ?? -1))
+
+// Compiled regexp of each entry component, so isAncestor compiles none on the hot path.
+const segmentRegExps = new Map()
+
+// segmentRegExp compiles one entry component to a regexp matching a whole path component.
+const segmentRegExp = (segment) => {
+    if (!segmentRegExps.has(segment)) {
+        segmentRegExps.set(segment, new RegExp(`^${globSource(segment)}$`))
+    }
+    return segmentRegExps.get(segment)
+}
 
 // isAncestor reports whether target is a directory above what the entry covers, which never holds for an entry starting with `**/`.
 const isAncestor = (entry, target) => {
@@ -129,92 +267,139 @@ const isAncestor = (entry, target) => {
         if (entrySegments[i] === '**') {
             return true
         }
-        if (!new RegExp(`^${globSource(entrySegments[i])}$`).test(segment)) {
+        if (!segmentRegExp(entrySegments[i]).test(segment)) {
             return false
         }
     }
     return targetSegments.length < entrySegments.length
 }
 
+// Symlink-resolved path of each path already looked up, null when it can't be resolved, so a directory shared by many tokens is resolved once.
+const realPaths = new Map()
+
+// realPathOf returns the symlink-resolved target, or null when it can't be resolved.
+const realPathOf = (target) => {
+    if (!realPaths.has(target)) {
+        try {
+            realPaths.set(target, fs.realpathSync.native(target))
+        } catch {
+            realPaths.set(target, null)
+        }
+    }
+    return realPaths.get(target)
+}
+
 // resolvePath resolves target against base like `realpath -m`, following symlinks on existing segments and appending the rest lexically.
 const resolvePath = (base, target) => {
-    const segments = path.resolve(base, target).split(path.sep).filter(Boolean)
+    const full = path.resolve(base, target)
+    const whole = realPathOf(full)
+    if (whole !== null) {
+        return whole
+    }
 
+    const segments = full.split(path.sep).filter(Boolean)
     let real = path.sep
     let i = 0
     for (; i < segments.length; i += 1) {
-        try {
-            real = fs.realpathSync(path.join(real, segments[i]))
-        } catch {
+        const next = realPathOf(path.join(real, segments[i]))
+        if (next === null) {
             break
         }
+        real = next
     }
 
     return i === segments.length ? real : path.join(real, ...segments.slice(i))
 }
 
-// denyReasonFor returns the deny reason for a path, or null when it is allowed, where an allowlist match lifts a denylist match and `ancestors` also denies a directory above a protected path.
+// denyReasonFor returns the deny reason for a path, or null when it is allowed, where the entry matching the longer part of the path wins (a tie denies) and `ancestors` also denies a directory above a protected path.
 const denyReasonFor = ({ allowlist, denylist }, resolved, lexical, ancestors = true) => {
-    for (const entry of denylist) {
-        if (covers(entry, resolved, lexical)) {
-            if (allowlist.some((allowed) => covers(allowed, resolved, lexical))) {
-                return null
-            }
-            return `tool call references a protected path: '${entry}'`
-        }
-
-        if (ancestors && isAncestor(entry, resolved)) {
-            return `tool call references an ancestor of protected path: '${entry}', target the specific file or subdirectory you need instead of scanning or cd-ing into $HOME`
-        }
+    const allowed = Math.max(0, ...allowlist.map((entry) => matchLength(entry, resolved, lexical)))
+    const covering = denylist.find((entry) => matchLength(entry, resolved, lexical) >= allowed)
+    if (covering) {
+        return `tool call references a protected path: '${covering}'`
     }
-    return null
+
+    const below = ancestors ? denylist.find((entry) => isAncestor(entry, resolved)) : undefined
+    return below ? `tool call references an ancestor of protected path: '${below}', target the specific file or subdirectory you need instead of scanning or cd-ing into $HOME` : null
 }
 
 // directoriesOf lists the directories a relative token of a command may refer to, which are the cwd and each directory change resolved against the previous one.
 const directoriesOf = (cwd, tokens) => {
     const directories = [cwd]
     tokens.forEach((token, i) => {
-        let target
+        let next = i + 1
         if (CD_COMMANDS.has(token)) {
-            target = tokens.slice(i + 1).find((next) => !CD_OPTIONS.has(next))
-        } else if (DIRECTORY_OPTIONS.has(token)) {
-            target = tokens[i + 1]
+            while (CD_OPTIONS.has(tokens[next])) {
+                next += 1
+            }
+        } else if (!DIRECTORY_OPTIONS.has(token)) {
+            return
         }
-        if (target) {
-            directories.push(path.resolve(directories.at(-1), target))
+        if (tokens[next]) {
+            assertWithin(directories.length, LIMITS.directories)
+            directories.push(path.resolve(directories.at(-1), tokens[next]))
         }
     })
     return directories
 }
 
-// targetsOf lists every [directory, token] pair a tool call may read, with the files matched by a shell glob of a command since the shell expands it before the tool sees it.
-const targetsOf = (toolInput, cwd) => {
+// targetsOf lists every [directory, token] pair a tool call may read, with the files a shell glob matches since the shell expands it before the tool sees it, and the parent directories checked in place of what can't be resolved.
+const targetsOf = (toolInput, cwd, toolName) => {
     const stringsOf = (fields) => fields.map((field) => toolInput[field]).filter((value) => typeof value === 'string')
     const pathBase = typeof toolInput.path === 'string' ? path.resolve(cwd, expand(toolInput.path)) : cwd
-    const commandTokens = stringsOf(['command']).flatMap(tokensOf)
+    // A grep tool's pattern is a regexp, not a path.
+    const compoundFields = GREP_TOOL.test(toolName) ? COMPOUND_FIELDS.filter((field) => field !== 'pattern') : COMPOUND_FIELDS
+
+    const variants = stringsOf(['command']).flatMap((command) => variantsOf(command, cwd))
+    const tokenLists = variants.map(tokensOf)
+    const tokens = [...new Set(tokenLists.flat())]
+    const directories = [...new Set(tokenLists.flatMap((list) => directoriesOf(cwd, list)))]
+    assertWithin(directories.length * tokens.length, LIMITS.paths)
+
+    const compoundPairs = stringsOf(compoundFields).flatMap(tokensOf).map((token) => [pathBase, token])
+    const commandPairs = directories.flatMap((directory) => tokens.map((token) => [directory, token]))
+    const globPairs = [...compoundPairs, ...commandPairs].filter(([, token]) => GLOB_CHARACTERS.test(token))
+    const expandable = globPairs.filter(([, token]) => !isCostlyGlob(token))
+    assertWithin(expandable.length, LIMITS.globs)
 
     return [
         ...stringsOf(SINGLE_PATH_FIELDS).map((value) => [cwd, expand(value)]),
-        ...stringsOf(COMPOUND_FIELDS).flatMap(tokensOf).map((token) => [pathBase, token]),
-        ...directoriesOf(cwd, commandTokens).flatMap((directory) => [...new Set(commandTokens)]
-            .flatMap((token) => [token, ...(GLOB_CHARACTERS.test(token) ? fs.globSync(token, { cwd: directory }) : [])])
-            .map((token) => [directory, token])),
+        ...compoundPairs,
+        ...commandPairs,
+        // Node reads `**` as a recursive walk where bash, without globstar, reads it as `*`.
+        ...expandable.flatMap(([directory, token]) => fs.globSync(token.replace(/\*+/g, '*'), { cwd: directory }).map((match) => [directory, match])),
+        ...globPairs
+            .filter(([, token]) => isCostlyGlob(token))
+            .map(([directory, token]) => [directory, directoryBefore(token, token.search(GLOB_CHARACTERS))]),
+        ...commandPairs
+            .filter(([, token]) => token.includes('$') && token.lastIndexOf('/', token.indexOf('$')) >= 0)
+            .map(([directory, token]) => [directory, directoryBefore(token, token.indexOf('$'))]),
+        ...(variants.some((variant) => REFERENCE_BEFORE_SLASH.test(variant)) ? directories.map((directory) => [directory, '.']) : []),
     ]
 }
 
-// reasonFor returns the reason a tool call must be blocked, or null when it is allowed, checking the cwd itself (not its ancestors) before each target.
+// reasonFor returns the reason a tool call must be blocked, or null when it is allowed, checking the cwd itself (its ancestors too for a grep tool given no path) before each target.
 const reasonFor = (config, payload) => {
     const cwd = typeof payload.cwd === 'string' ? payload.cwd : process.cwd()
+    const toolInput = toolInputOf(payload)
+    const toolName = payload.tool_name ?? payload.toolName ?? ''
 
-    const cwdReason = denyReasonFor(config, resolvePath(cwd, '.'), path.resolve(cwd), false)
+    const searchesCwd = GREP_TOOL.test(toolName) && typeof toolInput.path !== 'string'
+    const cwdReason = denyReasonFor(config, resolvePath(cwd, '.'), path.resolve(cwd), searchesCwd)
     if (cwdReason) {
         return cwdReason
     }
 
-    for (const [directory, token] of targetsOf(toolInputOf(payload), cwd)) {
-        const reason = denyReasonFor(config, resolvePath(directory, token), path.resolve(directory, token))
-        if (reason) {
-            return reason
+    const checked = new Set()
+    for (const [directory, token] of targetsOf(toolInput, cwd, toolName)) {
+        const lexical = path.resolve(directory, token)
+        if (lexical.length <= PATH_MAX && !checked.has(lexical)) {
+            checked.add(lexical)
+            assertWithin(checked.size, LIMITS.paths)
+            const reason = denyReasonFor(config, resolvePath(directory, token), lexical)
+            if (reason) {
+                return reason
+            }
         }
     }
     return null

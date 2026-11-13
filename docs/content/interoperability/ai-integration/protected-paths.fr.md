@@ -27,7 +27,7 @@ Protected paths come from `~/.config/protected-paths/config.json`, a `denylist`/
 - A path such as `~/.ssh` protects that directory and everything in it.
 - A path starting with `**/` protects it in any directory (`**/.env`).
 - Use `*` and `?` inside the names of any path (`~/.config/*/secrets`, `**/.env.*.local`).
-- An allowlist entry lifts a match from the denylist.
+- When a path matches both lists, the entry matching the longer part of the path wins, and a tie blocks (`~/.ssh/config` beats `~/.ssh`).
 - A missing config file allows every call, an unreadable or malformed one blocks every call.
 
 Commands that reach a protected directory without naming it, such as `grep -r` or `cd ~`, are blocked too.

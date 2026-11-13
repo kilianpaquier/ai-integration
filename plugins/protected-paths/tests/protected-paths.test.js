@@ -74,14 +74,14 @@ describe('protected-paths', () => {
         const home = homeFor(config)
         const input = raw ?? JSON.stringify(payload).replaceAll('$HOME', home).replaceAll('$PROJECT', project)
 
-        const { status, stdout } = spawnSync(process.execPath, [HOOK], { encoding: 'utf8', env: { ...process.env, HOME: home }, input })
+        const { status, stdout } = spawnSync(process.execPath, [HOOK], { encoding: 'utf8', env: { ...process.env, HOME: home }, input, timeout: 5000 })
 
         assert.equal(status, 0)
         return stdout === '' ? null : JSON.parse(stdout)
     }
 
     describe('config and payload', () => {
-        test('no config file allows every call', () => {
+        test('allows every call without a config file', () => {
             // Act
             const output = run(shell('cat ~/.ssh/id_rsa'), { config: null })
 
@@ -89,7 +89,7 @@ describe('protected-paths', () => {
             assert.equal(output, null)
         })
 
-        test('a malformed config.json denies every call', () => {
+        test('denies every call with a malformed config.json', () => {
             // Act
             const output = run(shell('echo hello'), { config: 'not json' })
 
@@ -97,7 +97,7 @@ describe('protected-paths', () => {
             assertDenied(output, 'config.json is not valid JSON')
         })
 
-        test('a malformed payload is denied', () => {
+        test('denies a malformed payload', () => {
             // Act
             const output = run(null, { raw: 'not json' })
 
@@ -105,7 +105,7 @@ describe('protected-paths', () => {
             assertDenied(output, 'payload is not valid JSON')
         })
 
-        test('unparsable tool arguments are denied', () => {
+        test('denies unparsable tool arguments', () => {
             // Act
             const output = run({ toolArgs: 'not json', toolName: 'bash' })
 
@@ -137,11 +137,11 @@ describe('protected-paths', () => {
         }
 
         const ancestors = [
-            ['grep -r password ~'],
-            ['find $HOME -name id_rsa'],
-            ['cd ~'],
+            'grep -r password ~',
+            'find $HOME -name id_rsa',
+            'cd ~',
         ]
-        for (const [command] of ancestors) {
+        for (const command of ancestors) {
             test(`denies ${command} as an ancestor of a protected path`, () => {
                 // Act
                 const output = run(shell(command))
@@ -167,43 +167,51 @@ describe('protected-paths', () => {
             assert.equal(output, null)
         })
 
-        test('denies a command run inside a protected directory, even without a path argument', () => {
+        test('normalizes a trailing slash in an entry', () => {
             // Act
-            const output = run({ cwd: '$HOME/.ssh', tool_input: { command: '' } })
+            const output = run(shell('cat ~/.ssh/id_rsa'), { config: { denylist: ['~/.ssh/'] } })
 
             // Assert
             assertDenied(output, '.ssh')
         })
 
-        test('normalizes a trailing slash and a $HOME prefix in an entry', () => {
-            // Arrange
-            const config = { denylist: ['~/.ssh/', '$HOME/.aws'] }
-
+        test('normalizes a $HOME prefix in an entry', () => {
             // Act
-            const ssh = run(shell('cat ~/.ssh/id_rsa'), { config })
-            const aws = run(shell('cat ~/.aws/credentials'), { config })
+            const output = run(shell('cat ~/.aws/credentials'), { config: { denylist: ['$HOME/.aws'] } })
 
             // Assert
-            assertDenied(ssh, '.ssh')
-            assertDenied(aws, '.aws')
+            assertDenied(output, '.aws')
         })
 
-        test('lets * and ? work in an absolute entry, ancestors included', () => {
-            // Arrange
+        describe('an absolute entry with *', () => {
             const config = { denylist: ['~/.config/*/secrets'] }
 
-            // Act
-            const secrets = run(shell('cat ~/.config/gh/secrets'), { config })
-            const other = run(shell('cat ~/.config/gh/hosts'), { config })
-            const ancestor = run(shell('grep -r token ~/.config/gh'), { config })
+            test('denies a path the entry matches', () => {
+                // Act
+                const output = run(shell('cat ~/.config/gh/secrets'), { config })
 
-            // Assert
-            assertDenied(secrets, '.config/*/secrets')
-            assert.equal(other, null)
-            assertDenied(ancestor, 'ancestor of protected path')
+                // Assert
+                assertDenied(output, '.config/*/secrets')
+            })
+
+            test('allows a sibling path the entry does not match', () => {
+                // Act
+                const output = run(shell('cat ~/.config/gh/hosts'), { config })
+
+                // Assert
+                assert.equal(output, null)
+            })
+
+            test('denies an ancestor of a path the entry matches', () => {
+                // Act
+                const output = run(shell('grep -r token ~/.config/gh'), { config })
+
+                // Assert
+                assertDenied(output, 'ancestor of protected path')
+            })
         })
 
-        test('lets an allowlist entry lift a denylist match', () => {
+        test('allows a path an allowlist entry lifts from a denylist match', () => {
             // Act
             const output = run(shell('cat ~/.claude/CLAUDE.md'))
 
@@ -219,13 +227,170 @@ describe('protected-paths', () => {
             assertDenied(output, '.ssh')
         })
 
-        test('resolves a ".." segment to its real destination', () => {
+        test('denies a ".." segment resolving to a protected path', () => {
             // Act
             const output = run(shell('cat ~/.claude/CLAUDE.md/../../.ssh/id_rsa'))
 
             // Assert
             assertDenied(output, '.ssh')
         })
+    })
+
+    describe('an allowlist entry above a denylist entry', () => {
+        const config = { allowlist: ['~/.config/gh'], denylist: ['~/.config', '~/.config/gh/token'] }
+
+        test('denies the deeper denylist entry', () => {
+            // Act
+            const output = run(shell('cat ~/.config/gh/token'), { config })
+
+            // Assert
+            assertDenied(output, '.config/gh/token')
+        })
+
+        test('denies an ancestor of the deeper denylist entry', () => {
+            // Act
+            const output = run(shell('grep -r x ~/.config/gh'), { config })
+
+            // Assert
+            assertDenied(output, 'ancestor of protected path')
+        })
+
+        test('denies an ancestor of the deeper denylist entry with the denylist reversed', () => {
+            // Arrange
+            const reversed = { ...config, denylist: [...config.denylist].reverse() }
+
+            // Act
+            const output = run(shell('grep -r x ~/.config/gh'), { config: reversed })
+
+            // Assert
+            assertDenied(output, 'ancestor of protected path')
+        })
+
+        test('allows a file an allowlist entry starting with **/ names inside a denylist entry', () => {
+            // Act
+            const output = run(shell('cat ~/.claude/CLAUDE.md'), { config: { allowlist: ['**/CLAUDE.md'], denylist: ['~/.claude'] } })
+
+            // Assert
+            assert.equal(output, null)
+        })
+    })
+
+    describe('variables', () => {
+        // `${HOME}` stays as is in a payload, since `run` only replaces `$HOME`.
+        const denied = [
+            ['X=.ssh; cat $HOME/$X/config', '.ssh'],
+            ['D=.ssh; X="~/$D"; cat $X/config', '.ssh'],
+            ['X=.ssh; cat ~/$X/config; X=a', '.ssh'],
+            ['HOME=/opt cat ${HOME}/.ssh/config', '.ssh'],
+            ['for d in docs .ssh; do ls ~/$d; done', '.ssh'],
+            ['read x; cat ~/$x/config', 'ancestor of protected path'],
+            ['cat ${Z:-~}/.ssh/id_rsa', '.ssh'],
+            ['A=~/.s; B=${A}; C=${B}; cat ${C}sh/id_rsa', '.ssh'],
+            ['X=~/.s; X+=sh; cat $X/id_rsa', '.ssh'],
+            ['X=hooks; cat .git/${X:0}/pre-commit', '**/.git/hooks'],
+            ['for d in for hooks; do cat .git/$d/pre-commit; done', '**/.git/hooks'],
+        ]
+        for (const [command, reason] of denied) {
+            test(`denies ${command} through its variables`, () => {
+                // Act
+                const output = run(shell(command))
+
+                // Assert
+                assertDenied(output, reason)
+            })
+        }
+
+        const resolved = [
+            'X=docs; cat $PROJECT/$X/a.md',
+            'for f in a b; do cat $PROJECT/$f; done',
+            'cat $PROJECT/$x',
+            'echo $PATH',
+        ]
+        for (const command of resolved) {
+            test(`allows ${command} outside protected paths`, () => {
+                // Act
+                const output = run(shell(command))
+
+                // Assert
+                assert.equal(output, null)
+            })
+        }
+
+        const unresolvedInHome = [
+            'echo $PATH',
+            'echo $(date)',
+            'awk \'{print $1}\' notes.txt',
+        ]
+        for (const command of unresolvedInHome) {
+            test(`allows ${command} run in the home directory`, () => {
+                // Act
+                const output = run(shell(command, '$HOME'))
+
+                // Assert
+                assert.equal(output, null)
+            })
+        }
+
+        const hiddenInHome = [
+            ['cat $PWD/.ssh/id_rsa', '.ssh'],
+            ['cat $(pwd -P)/.ssh/id_rsa', 'ancestor of protected path'],
+            ['cat ${XDG_CONFIG_HOME}/gh/token', 'ancestor of protected path'],
+        ]
+        for (const [command, reason] of hiddenInHome) {
+            test(`denies ${command} run in the home directory`, () => {
+                // Act
+                const output = run(shell(command, '$HOME'))
+
+                // Assert
+                assertDenied(output, reason)
+            })
+        }
+
+        test('allows a for loop followed by a long run of spaces without hanging', () => {
+            // Act
+            const output = run(shell(`for x in${' '.repeat(100_000)}x`))
+
+            // Assert
+            assert.equal(output, null)
+        })
+
+        test('allows repeated for loop heads without hanging', () => {
+            // Act
+            const output = run(shell('for x in '.repeat(100_000)))
+
+            // Assert
+            assert.equal(output, null)
+        })
+    })
+
+    describe('limits', () => {
+        test('allows a heredoc of keyword arguments without hanging', () => {
+            // Arrange
+            const lines = Array.from({ length: 200 }, (_, i) => `call(path=p${i}, mode=m${i}, name=n${i})\n`)
+            const command = `cat > a.py <<EOF\n${lines.join('')}EOF`
+
+            // Act
+            const output = run(shell(command))
+
+            // Assert
+            assert.equal(output, null)
+        })
+
+        const tooLarge = [
+            ['too many values of a variable', `${Array.from({ length: 66 }, (_, i) => `x=a${i}`).join('; ')}; cat $x`],
+            ['too many directory changes', `${'cd a; '.repeat(1_001)}ls`],
+            ['a long directory change chain', 'cd a '.repeat(150_000)],
+            ['a self-referencing variable', `X=${'$X'.repeat(500)}; cat $X`],
+        ]
+        for (const [name, command] of tooLarge) {
+            test(`denies ${name} as too large to check`, () => {
+                // Act
+                const output = run(shell(command))
+
+                // Assert
+                assertDenied(output, 'too large to check')
+            })
+        }
     })
 
     describe('runtime payloads', () => {
@@ -268,11 +433,11 @@ describe('protected-paths', () => {
 
     describe('tool fields', () => {
         const fields = [
-            [{ file_path: '~/.ssh/id_rsa' }],
-            [{ absolute_path: '$HOME/.ssh/id_rsa' }],
-            [{ glob: '~/.ssh/*', path: '.', pattern: 'password' }],
+            { file_path: '~/.ssh/id_rsa' },
+            { absolute_path: '$HOME/.ssh/id_rsa' },
+            { glob: '~/.ssh/*', path: '.', pattern: 'password' },
         ]
-        for (const [toolInput] of fields) {
+        for (const toolInput of fields) {
             test(`denies ${JSON.stringify(toolInput)}`, () => {
                 // Act
                 const output = run({ cwd: '$PROJECT', tool_input: toolInput })
@@ -282,17 +447,23 @@ describe('protected-paths', () => {
             })
         }
 
-        test('resolves glob and pattern against the path field', () => {
+        test('denies a glob resolved against a path field reaching a protected path', () => {
             // Act
-            const denied = run({ cwd: '$PROJECT', tool_input: { glob: 'hooks/pre-commit', path: '.git' } })
-            const allowed = run({ cwd: '$PROJECT', tool_input: { glob: 'hooks/pre-commit' } })
+            const output = run({ cwd: '$PROJECT', tool_input: { glob: 'hooks/pre-commit', path: '.git' } })
 
             // Assert
-            assertDenied(denied, '**/.git/hooks')
-            assert.equal(allowed, null)
+            assertDenied(output, '**/.git/hooks')
         })
 
-        test('resolves a relative file_path against the cwd', () => {
+        test('allows the same glob resolved against the cwd without a path field', () => {
+            // Act
+            const output = run({ cwd: '$PROJECT', tool_input: { glob: 'hooks/pre-commit' } })
+
+            // Assert
+            assert.equal(output, null)
+        })
+
+        test('denies a relative file_path resolving to a protected path', () => {
             // Act
             const output = run({ cwd: '$HOME/project', tool_input: { file_path: '../.ssh/id_rsa' } })
 
@@ -300,14 +471,44 @@ describe('protected-paths', () => {
             assertDenied(output, '.ssh')
         })
 
-        test('resolves a relative command reference against the cwd', () => {
+        test('denies a relative command reference resolving to a protected path', () => {
             // Act
-            const denyOutput = run(shell('cat ../.ssh/id_rsa', '$HOME/project'))
-            const allowOutput = run(shell('cat ../notes.txt', '$HOME/project'))
+            const output = run(shell('cat ../.ssh/id_rsa', '$HOME/project'))
 
             // Assert
-            assertDenied(denyOutput, '.ssh')
-            assert.equal(allowOutput, null)
+            assertDenied(output, '.ssh')
+        })
+
+        test('allows a relative command reference outside protected paths', () => {
+            // Act
+            const output = run(shell('cat ../notes.txt', '$HOME/project'))
+
+            // Assert
+            assert.equal(output, null)
+        })
+
+        test('denies a grep tool call without path run in the home directory', () => {
+            // Act
+            const output = run({ cwd: '$HOME', tool_input: { pattern: 'BEGIN' }, tool_name: 'Grep' })
+
+            // Assert
+            assertDenied(output, 'ancestor of protected path')
+        })
+
+        test('allows a grep tool call without path run in a project', () => {
+            // Act
+            const output = run({ cwd: '$PROJECT', tool_input: { pattern: 'BEGIN' }, tool_name: 'Grep' })
+
+            // Assert
+            assert.equal(output, null)
+        })
+
+        test('allows a grep tool pattern naming a protected file, since it is a regex', () => {
+            // Act
+            const output = run({ cwd: '$PROJECT', tool_input: { path: '.', pattern: '\\.env' }, tool_name: 'Grep' })
+
+            // Assert
+            assert.equal(output, null)
         })
     })
 
@@ -328,24 +529,37 @@ describe('protected-paths', () => {
             })
         }
 
-        test('does not deny git commands or the .git directory itself', () => {
-            // Arrange
-            const commands = ['git -C /work/repo status', 'ls /work/repo/.git', 'cat /work/repo/.git/HEAD', 'cat .git/config.bak', 'cat .github/hooks.json']
+        const allowed = [
+            'git -C /work/repo status',
+            'ls /work/repo/.git',
+            'cat /work/repo/.git/HEAD',
+            'cat .git/config.bak',
+            'cat .github/hooks.json',
+        ]
+        for (const command of allowed) {
+            test(`allows ${command}`, () => {
+                // Act
+                const output = run(shell(command, '/work/repo'))
 
-            // Act and Assert
-            for (const command of commands) {
-                assert.equal(run(shell(command, '/work/repo')), null, command)
-            }
-        })
+                // Assert
+                assert.equal(output, null)
+            })
+        }
 
-        test('denies a symlink named like a protected file, but not its target', () => {
+        test('denies a symlink named like a protected file', () => {
             // Act
-            const link = run(shell('cat link/.env'))
-            const target = run(shell('cat secret'))
+            const output = run(shell('cat link/.env'))
 
             // Assert
-            assertDenied(link, '**/.env')
-            assert.equal(target, null)
+            assertDenied(output, '**/.env')
+        })
+
+        test('allows the target of a symlink named like a protected file', () => {
+            // Act
+            const output = run(shell('cat secret'))
+
+            // Assert
+            assert.equal(output, null)
         })
     })
 
@@ -353,14 +567,20 @@ describe('protected-paths', () => {
         // Protects any `.git` directory, except its `info` subdirectory.
         const config = { allowlist: ['**/.git/info'], denylist: ['**/.git'] }
 
-        test('lifts a denylist entry starting with **/', () => {
+        test('allows a path the allowlist entry lifts', () => {
             // Act
-            const allowed = run(shell('cat .git/info/exclude', '/work/repo'), { config })
-            const denied = run(shell('cat .git/HEAD', '/work/repo'), { config })
+            const output = run(shell('cat .git/info/exclude', '/work/repo'), { config })
 
             // Assert
-            assert.equal(allowed, null)
-            assertDenied(denied, '**/.git')
+            assert.equal(output, null)
+        })
+
+        test('denies a path outside the allowlist entry', () => {
+            // Act
+            const output = run(shell('cat .git/HEAD', '/work/repo'), { config })
+
+            // Assert
+            assertDenied(output, '**/.git')
         })
     })
 
@@ -378,32 +598,44 @@ describe('protected-paths', () => {
             assertDenied(output, '**/.claude/settings*.json')
         })
 
-        const globs = [
-            [{ command: 'cat a/b/app.jks' }, true],
-            [{ command: 'cat app.jks.txt' }, false],
-            [{ command: 'cat jks' }, false],
-            [{ command: 'cat app.jks/inside' }, true],
-            [{ command: 'cat x/abc' }, true],
-            [{ command: 'cat x/ac' }, false],
-            [{ command: 'cat a/c' }, false],
-            [{ command: 'cat .env.prod.local' }, true],
-            [{ command: 'cat .env.local' }, false],
-            [{ command: 'cat .env.prod' }, false],
-            [{ file_path: '/work/repo/x.y' }, true],
-            [{ file_path: '/work/repo/xzy' }, false],
-            [{ file_path: '/work/repo/f+(1).txt' }, true],
-            [{ file_path: '/work/repo/ff1.txt' }, false],
-            [{ command: 'docker run --env-file=.env alpine env' }, true],
-            [{ command: 'git show HEAD:.env' }, true],
-            [{ command: 'git show HEAD:README.md' }, false],
+        const denied = [
+            [{ command: 'cat a/b/app.jks' }, '**/*.jks'],
+            [{ command: 'cat app.jks/inside' }, '**/*.jks'],
+            [{ command: 'cat x/abc' }, '**/a?c'],
+            [{ command: 'cat .env.prod.local' }, '**/.env.*.local'],
+            [{ file_path: '/work/repo/x.y' }, '**/x.y'],
+            [{ file_path: '/work/repo/f+(1).txt' }, '**/f+(1).txt'],
+            [{ command: 'docker run --env-file=.env alpine env' }, '**/.env'],
+            [{ command: 'git show HEAD:.env' }, '**/.env'],
         ]
-        for (const [toolInput, isDenied] of globs) {
-            test(`${isDenied ? 'denies' : 'allows'} ${JSON.stringify(toolInput)}`, () => {
+        for (const [toolInput, entry] of denied) {
+            test(`denies ${JSON.stringify(toolInput)}`, () => {
                 // Act
                 const output = run({ cwd: '/work/repo', tool_input: toolInput }, { config })
 
                 // Assert
-                assert.equal(output !== null, isDenied)
+                assertDenied(output, entry)
+            })
+        }
+
+        const allowed = [
+            { command: 'cat app.jks.txt' },
+            { command: 'cat jks' },
+            { command: 'cat x/ac' },
+            { command: 'cat a/c' },
+            { command: 'cat .env.local' },
+            { command: 'cat .env.prod' },
+            { file_path: '/work/repo/xzy' },
+            { file_path: '/work/repo/ff1.txt' },
+            { command: 'git show HEAD:README.md' },
+        ]
+        for (const toolInput of allowed) {
+            test(`allows ${JSON.stringify(toolInput)}`, () => {
+                // Act
+                const output = run({ cwd: '/work/repo', tool_input: toolInput }, { config })
+
+                // Assert
+                assert.equal(output, null)
             })
         }
     })
@@ -454,6 +686,41 @@ describe('protected-paths', () => {
         test('allows a glob that matches nothing protected', () => {
             // Act
             const output = run(shell('cat *.md'))
+
+            // Assert
+            assert.equal(output, null)
+        })
+
+        test('denies a glob tool pattern starting with ** run in the home directory', () => {
+            // Act
+            const output = run({ cwd: '$HOME', tool_input: { pattern: '**/id_rsa' }, tool_name: 'Glob' })
+
+            // Assert
+            assertDenied(output, 'ancestor of protected path')
+        })
+
+        const recursive = ['ls /**/nothing-here', 'ls /***/nothing-here']
+        for (const command of recursive) {
+            test(`denies ${command} as an ancestor without walking the filesystem`, () => {
+                // Act
+                const output = run(shell(command))
+
+                // Assert
+                assertDenied(output, 'ancestor of protected path')
+            })
+        }
+
+        test('allows an absolute regex of sed that looks like a glob', () => {
+            // Act
+            const output = run(shell('sed -n \'/^.*ERROR/p\' app.log'))
+
+            // Assert
+            assert.equal(output, null)
+        })
+
+        test('allows a glob with many wildcards without hanging', () => {
+            // Act
+            const output = run(shell('ls *?*?*?*?*?*?*?*?Z'))
 
             // Assert
             assert.equal(output, null)
