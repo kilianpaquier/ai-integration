@@ -29,18 +29,6 @@
       "category": "hybrid"
     },
     {
-      "name": "codebase-memory-mcp",
-      "source": {
-        "source": "local",
-        "path": "./plugins/codebase-memory-mcp"
-      },
-      "policy": {
-        "installation": "AVAILABLE",
-        "authentication": "ON_INSTALL"
-      },
-      "category": "hybrid"
-    },
-    {
       "name": "codegraph",
       "source": {
         "source": "local",
@@ -99,18 +87,6 @@
         "authentication": "ON_INSTALL"
       },
       "category": "hybrid"
-    },
-    {
-      "name": "protected-paths",
-      "source": {
-        "source": "local",
-        "path": "./plugins/protected-paths"
-      },
-      "policy": {
-        "installation": "AVAILABLE",
-        "authentication": "ON_INSTALL"
-      },
-      "category": "hooks"
     },
     {
       "name": "schema-converter",

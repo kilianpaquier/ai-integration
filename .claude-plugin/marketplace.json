@@ -20,13 +20,6 @@
       "source": "./plugins/code-simplifier"
     },
     {
-      "name": "codebase-memory-mcp",
-      "description": "High-performance code intelligence MCP server. Indexes codebases into a persistent knowledge graph.",
-      "version": "0.13.0",
-      "category": "hybrid",
-      "source": "./plugins/codebase-memory-mcp"
-    },
-    {
       "name": "codegraph",
       "description": "Pre-indexed code knowledge graph, auto syncs on code changes, fewer tokens, fewer tool calls, 100% local.",
       "version": "0.5.0",
@@ -60,13 +53,6 @@
       "version": "0.1.0",
       "category": "hybrid",
       "source": "./plugins/feature-dev"
-    },
-    {
-      "name": "protected-paths",
-      "description": "Stop your agent from accessing unwanted or sensitive directories",
-      "version": "0.13.0",
-      "category": "hooks",
-      "source": "./plugins/protected-paths"
     },
     {
       "name": "schema-converter",

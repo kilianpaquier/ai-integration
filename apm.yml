@@ -28,10 +28,6 @@ marketplace:
       source: ./plugins/code-simplifier
 
     - category: hybrid
-      name: codebase-memory-mcp
-      source: ./plugins/codebase-memory-mcp
-
-    - category: hybrid
       name: codegraph
       source: ./plugins/codegraph
 
@@ -50,10 +46,6 @@ marketplace:
     - category: hybrid
       name: feature-dev
       source: ./plugins/feature-dev
-
-    - category: hooks
-      name: protected-paths
-      source: ./plugins/protected-paths
 
     - category: skills
       name: schema-converter

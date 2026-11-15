@@ -46,13 +46,11 @@ npx skills add kilianpaquier/ai-integration -g
 | -------------------------------------------------- | ------------- | ------------------------------------------------------------------------------------------------------------- |
 | [cave-talk](plugins/cave-talk)                     | Hooks         | Ultra-compressed communication mode. Cuts output tokens while keeping full technical accuracy.                |
 | [code-simplifier](plugins/code-simplifier)         | Skill, Agent  | Simplifies and refines code for clarity, consistency, and maintainability while preserving all functionality. |
-| [codebase-memory-mcp](plugins/codebase-memory-mcp) | MCP, Hooks    | High-performance code intelligence MCP server. Indexes codebases into a persistent knowledge graph.           |
 | [codegraph](plugins/codegraph)                     | MCP, Hooks    | Pre-indexed code knowledge graph, auto syncs on code changes, fewer tokens, fewer tool calls, 100% local.     |
 | [context7](plugins/context7)                       | MCP, Hooks    | Up-to-date code documentation for LLMs and AI code editors.                                                   |
 | [dcg](plugins/dcg)                                 | Hook          | Block destructive shell and git commands before they run                                                      |
 | [exam-drill](plugins/exam-drill)                   | Skill         | Endless certification drilling with real exam-format questions built from official documentation.             |
 | [feature-dev](plugins/feature-dev)                 | Skill, Agents | Guided feature development with codebase understanding and architecture focus                                 |
-| [protected-paths](plugins/protected-paths)         | Hook          | Stop your agent from accessing unwanted or sensitive directories                                              |
 | [schema-converter](plugins/schema-converter)       | Skill         | A skill suite to transform JSON schemas into their language equivalents                                       |
 
 ## License
