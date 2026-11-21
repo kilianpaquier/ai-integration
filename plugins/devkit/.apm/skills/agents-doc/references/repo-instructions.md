@@ -9,7 +9,7 @@ These rules apply to AGENTS.md, CLAUDE.md, GEMINI.md, copilot-instructions.md an
 - The root file holds what applies to every change.
 - A nested instruction file holds a rule about one subtree, in the lowest directory shared by every file it applies to, when the runtimes in use load nested files.
 - A doc of its own holds a long procedure or a format spec, linked from the root file with a pointer saying when to read it ("Read it before ...").
-- Ask before creating a nested instruction file, a doc, a rule file or a skill, since each adds a file.
+- Ask before creating a nested instruction file, a doc, a rule file or a skill, since it changes what every session loads.
 - A recurring task the user triggers belongs in a skill rather than in a doc.
 
 ## Size
@@ -25,6 +25,6 @@ Check each section of the root file instead of counting lines.
 When the repository has both with overlapping content:
 
 - Move the content into AGENTS.md.
-- Delete CLAUDE.md once the user agrees, since Claude Code reads AGENTS.md natively.
-- When the user declines the deletion, keep CLAUDE.md as it is and say that Claude Code may not read the moved content.
+- Delete CLAUDE.md once the user agrees, since [**Claude Code**](https://code.claude.com) reads AGENTS.md natively.
+- When the user declines the deletion, keep CLAUDE.md as it is and say that **Claude Code** may not read the moved content.
 - Never replace it with an `@AGENTS.md` import or a symlink.

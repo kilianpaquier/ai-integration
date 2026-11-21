@@ -2,7 +2,7 @@
 
 Endless certification drilling with real exam-format questions built from official documentation.
 
-<!-- BEGIN_AII_DOC -->
+<!-- BEGIN_AII_DOCS -->
 
 ## Skills
 

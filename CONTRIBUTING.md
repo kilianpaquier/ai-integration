@@ -51,7 +51,7 @@ Force-pushing to update a review branch is fine.
 ### Documentation
 
 Every plugin needs a documentation page under `interoperability`, both `<plugin>.en.md` and `<plugin>.fr.md`.
-Both pages and the plugin `README.md` must carry the `<!-- BEGIN_AII_DOC -->` and `<!-- END_AII_DOCS -->` markers.
+Both pages and the plugin `README.md` must carry the `<!-- BEGIN_AII_DOCS -->` and `<!-- END_AII_DOCS -->` markers.
 The sync copies the block between them from the README into both pages.
 
 Plugins are discovered from `plugins/*/README.md`, so there is nothing to register.
@@ -104,6 +104,8 @@ Only the following files and directories are required (everything else depends o
 │   └── plugin.json
 ├── .cursor-plugin/
 │   └── plugin.json               # only with hooks (Cursor)
+├── .plugin/
+│   └── plugin.json               # only with hooks (VS Code Copilot agent host)
 ├── com.github.copilot/           # client extension directory (**Agent Plugins** specification)
 │   ├── agents/
 │   │   └── agent-name.agent.md   # copy of .apm/agent/*.agent.md with custom frontmatter
@@ -116,7 +118,7 @@ Only the following files and directories are required (everything else depends o
 │   └── vendor/                   # only when vendored, keeps the LICENSE scoped to upstream files
 │       ├── LICENSE
 │       └── module.js
-├── tests/
+├── tests/                        # tests of the hook executables, none for plugin config (JSON, evals, .mjs and .py adapters)
 ├── agents -> .apm/agents         # symlink
 ├── skills -> .apm/skills         # symlink
 ├── apm.yml
@@ -137,6 +139,7 @@ Only the following files and directories are required (everything else depends o
 | **Copilot**     | `plugin.json`                | `com.github.copilot/agents/*.agent.md` | `com.github.copilot/hooks/hooks.json`                       |
 | **Cursor**      | `.cursor-plugin/plugin.json` | (no plugin mode)                       | `hooks/cursor.json`                                         |
 | **Devin**       | `.claude-plugin/plugin.json` | `agents/*.agent.md`                    | (same `hooks.json` path as **Antigravity**, so not shipped) |
+| **VS Code**     | `.plugin/plugin.json`        | (hooks only)                           | `com.github.copilot/hooks/hooks.json`                       |
 
 Skills are read from the single `skills -> .apm/skills` symlink by every runtime supporting the **Agent Skills** spec, no per-runtime config needed.
 

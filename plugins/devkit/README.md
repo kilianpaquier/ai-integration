@@ -3,22 +3,22 @@
 These skills cover the daily development tasks. They read the code before they write anything, and they check with you wherever a wrong guess would be costly.
 You get features built from exploration to review, reviews of verified findings and documentation that stays accurate.
 
-<!-- BEGIN_AII_DOC -->
+<!-- BEGIN_AII_DOCS -->
 
 ## Skills
 
 | Skill         | Invocation                  |
 | ------------- | --------------------------- |
-| `feature`     | `/feature`                  |
+| `agents-doc`  | `/agents-doc` or automatic  |
 | `code-review` | `/code-review` or automatic |
-| `doc`         | automatic                   |
-| `agents-doc`  | automatic                   |
-| `retro`       | `/retro`                    |
+| `doc`         | `/doc` or automatic         |
+| `feature`     | `/feature` or automatic     |
+| `retro`       | `/retro` or automatic       |
 
 ### `feature`
 
-Tell it which feature you want and it explores the code, then builds the smallest change that meets the standards the code review checks,
-and it stops for your go when the change is large or a question needs your answer.
+Tell it which feature you want and it investigates the code, then builds the smallest change that meets the standards the code review checks.
+It offers you one review rather than running review loops on its own, and asks for your go before building a large change or when a question needs your answer.
 Ask it to bring an area to the standards instead and it applies the cheap fixes and lists the costly ones.
 
 ### `code-review`
@@ -35,19 +35,13 @@ and it rewrites long bullets and runs of short sentences into connected ones.
 
 ### `agents-doc`
 
-Use it on AGENTS.md, CLAUDE.md and other agent rule files.
+Use it on AGENTS.md, CLAUDE.md, other agent rule files and skills.
 It keeps only what an agent couldn't learn from the repository anyway, and it checks every path and command the file names.
 
 ### `retro`
 
-Give it a date or a date range and it finds the prompts where you corrected the agent in that period's sessions, traces each one to the rule, skill or config behind it,
-and plans the fixes.
-
-## Agents
-
-| Agent           | Upstream                                                                                                      |
-| --------------- | ------------------------------------------------------------------------------------------------------------- |
-| `code-explorer` | <https://github.com/anthropics/claude-plugins-official/blob/main/plugins/feature-dev/agents/code-explorer.md> |
+Give it a date, a date range or `all` and it finds the prompts where you corrected the agent in those sessions, then traces each one to the rule, skill or config behind it.
+It plans a rework of the rules behind your corrections, with each file's line delta, rather than new lines.
 
 ## Installation
 
@@ -73,20 +67,21 @@ apm install devkit@one-for-all -g
 npx skills add kilianpaquier/ai-integration/plugins/devkit -g
 ```
 
+The **APM** installs bring the `writing-for-agents` skill along.
+With a native plugin or **Skills CLI** install, add it with `apm install mattpocock/skills/skills/productivity/writing-for-agents -g`,
+or `agents-doc` runs with its own checks only.
+The `doc` skill takes its style rules (phrases, punctuation, layout) from the markdown rule file of [**agent-rules**](https://gitlab.com/kilianpaquier/agent-rules), when installed.
+
 <!-- END_AII_DOCS -->
 
 ## Compatibility table
 
-| Agent Runtime   | Manifest                     | Agent configuration                    |
-| --------------- | ---------------------------- | -------------------------------------- |
-| **APM**         | `apm.yml`                    | `.apm/agents/*.agent.md`               |
-| **Antigravity** | `plugin.json`                | `agents/*.agent.md`                    |
-| **Claude Code** | `.claude-plugin/plugin.json` | `agents/*.agent.md`                    |
-| **Codex**       | `.claude-plugin/plugin.json` | -                                      |
-| **Copilot**     | `plugin.json`                | `com.github.copilot/agents/*.agent.md` |
-| **Cursor**      | `plugin.json`                | -                                      |
-| **Devin**       | `.claude-plugin/plugin.json` | `agents/*.agent.md`                    |
-
-## Limitations
-
-On **Codex** and **Cursor**, the `code-explorer` agent isn't available, so the skills that use it run that step inline.
+| Agent Runtime   | Manifest                     |
+| --------------- | ---------------------------- |
+| **APM**         | `apm.yml`                    |
+| **Antigravity** | `plugin.json`                |
+| **Claude Code** | `.claude-plugin/plugin.json` |
+| **Codex**       | `.claude-plugin/plugin.json` |
+| **Copilot**     | `plugin.json`                |
+| **Cursor**      | `plugin.json`                |
+| **Devin**       | `.claude-plugin/plugin.json` |

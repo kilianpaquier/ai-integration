@@ -1,29 +1,28 @@
 ---
-description: Skills et agents IA pour le développement, la revue de code et la documentation.
-title: Dev Kit
+description: Skills IA pour le développement, la revue de code et la documentation.
+title: Devkit
 ---
 
-- **Upstream**: <https://github.com/anthropics/claude-plugins-official>
 - **Plugin**:
   [https://gitlab.com/kilianpaquier/ai-integration](https://gitlab.com/kilianpaquier/ai-integration/-/tree/main/plugins/devkit)
-- **Description**: Skills et agents IA pour le développement, la revue de code et la documentation.
+- **Description**: Skills IA pour le développement, la revue de code et la documentation.
 
-<!-- BEGIN_AII_DOC -->
+<!-- BEGIN_AII_DOCS -->
 
 ## Skills
 
 | Skill         | Invocation                  |
 | ------------- | --------------------------- |
-| `feature`     | `/feature`                  |
+| `agents-doc`  | `/agents-doc` or automatic  |
 | `code-review` | `/code-review` or automatic |
-| `doc`         | automatic                   |
-| `agents-doc`  | automatic                   |
-| `retro`       | `/retro`                    |
+| `doc`         | `/doc` or automatic         |
+| `feature`     | `/feature` or automatic     |
+| `retro`       | `/retro` or automatic       |
 
 ### `feature`
 
-Tell it which feature you want and it explores the code, then builds the smallest change that meets the standards the code review checks,
-and it stops for your go when the change is large or a question needs your answer.
+Tell it which feature you want and it investigates the code, then builds the smallest change that meets the standards the code review checks.
+It offers you one review rather than running review loops on its own, and asks for your go before building a large change or when a question needs your answer.
 Ask it to bring an area to the standards instead and it applies the cheap fixes and lists the costly ones.
 
 ### `code-review`
@@ -40,19 +39,13 @@ and it rewrites long bullets and runs of short sentences into connected ones.
 
 ### `agents-doc`
 
-Use it on AGENTS.md, CLAUDE.md and other agent rule files.
+Use it on AGENTS.md, CLAUDE.md, other agent rule files and skills.
 It keeps only what an agent couldn't learn from the repository anyway, and it checks every path and command the file names.
 
 ### `retro`
 
-Give it a date or a date range and it finds the prompts where you corrected the agent in that period's sessions, traces each one to the rule, skill or config behind it,
-and plans the fixes.
-
-## Agents
-
-| Agent           | Upstream                                                                                                      |
-| --------------- | ------------------------------------------------------------------------------------------------------------- |
-| `code-explorer` | <https://github.com/anthropics/claude-plugins-official/blob/main/plugins/feature-dev/agents/code-explorer.md> |
+Give it a date, a date range or `all` and it finds the prompts where you corrected the agent in those sessions, then traces each one to the rule, skill or config behind it.
+It plans a rework of the rules behind your corrections, with each file's line delta, rather than new lines.
 
 ## Installation
 
@@ -77,5 +70,10 @@ apm install devkit@one-for-all -g
 ```sh
 npx skills add kilianpaquier/ai-integration/plugins/devkit -g
 ```
+
+The **APM** installs bring the `writing-for-agents` skill along.
+With a native plugin or **Skills CLI** install, add it with `apm install mattpocock/skills/skills/productivity/writing-for-agents -g`,
+or `agents-doc` runs with its own checks only.
+The `doc` skill takes its style rules (phrases, punctuation, layout) from the markdown rule file of [**agent-rules**](https://gitlab.com/kilianpaquier/agent-rules), when installed.
 
 <!-- END_AII_DOCS -->

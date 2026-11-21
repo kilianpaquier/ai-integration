@@ -7,7 +7,7 @@ dir="$(realpath "$(dirname "$0")")"
 docs="$dir/../../docs/content/interoperability/ai-integration"
 plugins="$dir/../../plugins"
 
-start='<!-- BEGIN_AII_DOC -->'
+start='<!-- BEGIN_AII_DOCS -->'
 end='<!-- END_AII_DOCS -->'
 
 tmp_files=""

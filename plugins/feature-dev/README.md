@@ -3,7 +3,7 @@
 A structured 7-phase workflow for feature development:
 codebase exploration, clarifying questions, architecture design, implementation, and quality review.
 
-<!-- BEGIN_AII_DOC -->
+<!-- BEGIN_AII_DOCS -->
 
 ## Skills
 

@@ -7,7 +7,7 @@ title: Exam Drill
   [https://gitlab.com/kilianpaquier/ai-integration](https://gitlab.com/kilianpaquier/ai-integration/-/tree/main/plugins/exam-drill)
 - **Description**: Endless certification drilling with real exam-format questions built from official documentation.
 
-<!-- BEGIN_AII_DOC -->
+<!-- BEGIN_AII_DOCS -->
 
 ## Skills
 

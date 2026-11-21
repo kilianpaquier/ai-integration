@@ -2,7 +2,7 @@
 
 A skill suite to transform JSON schemas into their language equivalents.
 
-<!-- BEGIN_AII_DOC -->
+<!-- BEGIN_AII_DOCS -->
 
 ## Skills
 

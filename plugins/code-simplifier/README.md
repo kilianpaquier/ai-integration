@@ -3,7 +3,7 @@
 Simplify and refine recently modified code for clarity, consistency, and maintainability
 without changing its behavior.
 
-<!-- BEGIN_AII_DOC -->
+<!-- BEGIN_AII_DOCS -->
 
 ## Skills
 

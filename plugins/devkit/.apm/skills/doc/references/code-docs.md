@@ -25,7 +25,6 @@ When those disagree, follow the earlier source in that list and mention the diff
 - Cover the contrast with a sibling symbol (*e.g.* "Unlike Load, a missing file returns the default configuration instead of an error").
 - Reference other symbols with the language's own link syntax instead of repeating what they do.
 - Put a package or module overview where the language expects it, with a short example that runs as written.
-- Ask before adding a file for it.
 - Mark a deprecated symbol with the language's deprecation form, saying what to use instead.
 
 ## What stays out
@@ -36,18 +35,6 @@ When those disagree, follow the earlier source in that list and mention the diff
 
 Language-mandated doc comments may run several sentences, unlike inline comments.
 Each sentence still has to tell the caller something the signature doesn't.
-
-## Inline comments
-
-- These are defaults, and the project's own comment rules win where they differ.
-- Write none by default, and add one only for a non-obvious fact (a hidden constraint, a subtle invariant, a bug workaround).
-- Cap it at one sentence.
-- Wrap a comment line at the formatter's limit when the language has one.
-- Where the formatter sets none (gofmt for comments), keep each line readable at a glance.
-- Split a line much longer than its neighbors at a transition word.
-- End a comment on its own line with a period, unless it is a structural marker (*e.g.* `// Arrange`), and never end a trailing comment with one.
-- Never mention the replaced implementation or the history.
-- State a fact once, at its definition, never again in a sibling or a nearby comment.
 
 ## Review
 

@@ -8,7 +8,7 @@ title: Code Simplifier
   [https://gitlab.com/kilianpaquier/ai-integration](https://gitlab.com/kilianpaquier/ai-integration/-/tree/main/plugins/code-simplifier)
 - **Description**: Simplifies and refines code for clarity, consistency, and maintainability while preserving all functionality.
 
-<!-- BEGIN_AII_DOC -->
+<!-- BEGIN_AII_DOCS -->
 
 ## Skills
 

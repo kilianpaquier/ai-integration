@@ -39,7 +39,7 @@ marketplace:
       name: dcg
       source: ./plugins/dcg
 
-    - category: hybrid
+    - category: skills
       name: devkit
       source: ./plugins/devkit
 

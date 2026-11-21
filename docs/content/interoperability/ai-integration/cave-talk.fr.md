@@ -8,7 +8,7 @@ title: Cave Talk
   [https://gitlab.com/kilianpaquier/ai-integration](https://gitlab.com/kilianpaquier/ai-integration/-/tree/main/plugins/cave-talk)
 - **Description**: Ultra-compressed communication mode. Cuts output tokens while keeping full technical accuracy.
 
-<!-- BEGIN_AII_DOC -->
+<!-- BEGIN_AII_DOCS -->
 
 ## Hooks
 

@@ -7,7 +7,7 @@ title: Schema Converter
   [https://gitlab.com/kilianpaquier/ai-integration](https://gitlab.com/kilianpaquier/ai-integration/-/tree/main/plugins/schema-converter)
 - **Description**: A skill suite to transform JSON schemas into their language equivalents.
 
-<!-- BEGIN_AII_DOC -->
+<!-- BEGIN_AII_DOCS -->
 
 ## Skills
 

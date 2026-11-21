@@ -8,7 +8,7 @@ title: Exam Drill
 - **Description**:
   Entraînement sans fin à une certification, avec de vraies questions au format examen construites depuis la documentation officielle.
 
-<!-- BEGIN_AII_DOC -->
+<!-- BEGIN_AII_DOCS -->
 
 ## Skills
 

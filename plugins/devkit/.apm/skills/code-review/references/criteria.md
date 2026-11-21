@@ -75,6 +75,7 @@ Criteria cut across the angles of the target.
 - Look for a failure path that is swallowed, mislabeled, retried without bound or left with partial state.
 - In a plan, look for a step whose failure the next steps don't expect.
 - Wrong outcome: a failure is silent or corrupts state.
+
 ## Observability
 
 - Code only.
@@ -87,6 +88,7 @@ Criteria cut across the angles of the target.
 - Look for the places where the change breaks the standards of its technology, as [standards.md](standards.md) describes.
 - It covers unchanged text only as far as that file says.
 - Wrong outcome: the rule the official source states is broken, quoted with its URL.
+
 ## Reversibility
 
 - Run this one only when the argument names it.

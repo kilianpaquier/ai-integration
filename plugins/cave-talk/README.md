@@ -4,7 +4,7 @@ Ultra-compressed communication mode. Cuts output tokens while keeping full techn
 
 Uses [**Caveman**](https://github.com/JuliusBrussee/caveman), with no affiliation or endorsement from its author.
 
-<!-- BEGIN_AII_DOC -->
+<!-- BEGIN_AII_DOCS -->
 
 ## Hooks
 

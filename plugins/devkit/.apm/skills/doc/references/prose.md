@@ -5,28 +5,23 @@
 These rules apply to every human doc.
 
 - The project's own writing rules (instruction files, style guide) win where they differ.
-- The language conventions of [code-docs.md](code-docs.md) win for doc comments, bold and links included.
+- The language conventions of [code-docs.md](code-docs.md) win for doc comments.
 
 ## Sentences
 
 - Put the point first and the qualification after.
 - Link related facts with the word that names their relation (since, so, while, unless, which, then, once, though, this way).
 - Keep the why next to the rule it explains, in the same sentence or the next one ("The default skips the shell, since shell startup skews timings of fast commands").
-- Follow a technical sentence with a plain one for what the reader gets only when they must act on it ("It means that if git can avoid a merge commit, it will avoid it").
-- Keep the author's phrasing when it is correct and clear, and replace only what the phrases table and the AI tells list.
+- Follow a technical sentence with a plain one for what the reader gets only when they must act on it ("It means that if **git** can avoid a merge commit, it will avoid it").
+- Keep the author's phrasing when it is correct and clear, and replace only what the markdown rule file lists, when one is loaded.
 - Address the reader as "you" and make the doer the subject, with a concrete active verb ("You get a review", not "A review is provided").
 - A plain statement of what a thing does or is, with no "you", is as good ("Merge commit in case the fast-forward mode couldn't be done").
 - Use the plain verb and the present tense ("is", "has", "uses"), never "serves as", "provides a way to" or "boasts".
 - Open neighbouring sentences with different words (not *It*, *You can* or *To* twice in a row), and sibling paragraphs under parallel headings too.
-- Split a sentence that carries two unrelated points.
 - Use common contractions ("it's", "you're", "don't", "can't"), never one built from a noun and a verb ("the tool's running"), and avoid "it'll" and "there'd".
 - Use one term per concept, since a synonym reads as a second concept.
 - State a caveat where it applies, or in the doc's caveat section when it applies to the whole tool.
 - Link external concepts to their upstream docs instead of explaining them.
-- Never state a fact in the user's voice that the user didn't give.
-- Write in English, unless the doc is a translation the repository keeps.
-- Start every sentence and every list item with a capital letter.
-- Open a sentence with a capitalized word, never with a lowercase name such as a tool or a command ("Each service reads `app.toml`", not "`app.toml` is read by each service").
 
 A run of short sentences on one subject leaves the reader to rebuild the links between them, and a paragraph can have the right facts and still read as written by rule.
 For example, this one repeats its subject, keeps every sentence the same length and never links them:
@@ -58,23 +53,9 @@ A doc for people says what they get and what they do, never how the tool works i
 - Ask before leaving out an edge case that weakens a guarantee the doc makes.
 - Say in the caveat's sentence what the reader can do about it, when they can do something.
 
-## Formatting
-
-- Write a tool, product or brand name in bold on every mention in running text, list items and table cells included, never in a heading or a code span (**Docker**).
-- Link the first mention of a tool, product or brand to its upstream site, with the link around the bold name ([**Docker**](https://www.docker.com)).
-- Write an identifier, a flag, an environment variable and a config key in backticks (`--verbose`, `API_URL`).
-- Write a short command inside a sentence in backticks (`make test`).
-- Put a command the reader copies and runs in a fenced block with its language, when it spans lines or is a key step such as installation.
-- Put output or file content shown to the reader in a fenced block with its language.
-- Write a path the reader types or searches for in backticks (`config/app.toml`).
-- Link a file or a page the reader should open, using its title or file name as the link text.
-- Write a URL as an inline link `[text](url)`, and wrap a URL that must stay visible in `<>`.
-- Write a concept, not a literal, in plain words ("the config directory").
-
 ## Examples, lists and tables
 
 - Introduce an example, a list or a table with a sentence only when it adds something the heading and the content don't, never one that restates them.
-- Use a list for parallel items, one full sentence each, and use prose for reasoning and for what a skill, a feature or a tool does.
 - Never nest a list in a list, and turn the inner items into the sentences of a paragraph.
 - Use a callout (note, warning) only for a caveat that blocks the reader, in the syntax of the sibling docs.
 - Write a heading as a sentence case noun phrase, with no link in it, no empty section under it and no skipped level.
@@ -84,63 +65,3 @@ A doc for people says what they get and what they do, never how the tool works i
 - Use real names from the code for branches, flags and paths, and placeholders the reader can spot for versions, hosts and secrets (`X.Y.Z`, `registry.example.com`).
 
 For example, an introducing sentence that earns its place reads "This config keeps nightly backups for 30 days:" or "Here the service waits for its database, then starts:".
-
-## Source layout
-
-Follow the line layout the document already uses, since a new layout turns every touched paragraph into a whole-paragraph diff.
-When the document mixes layouts, follow the one most of it uses.
-These rules hold in any layout:
-
-- Keep one sentence in each bullet, and give a second sentence its own bullet, never a continuation line.
-- Call a sentence long when it passes about 140 columns, and keep every other bullet or sentence on one line.
-- Let a sentence run a few words past that limit when it ends there, rather than wrapping it for a word or two.
-- Split a long bullet at a transition word, into two bullets.
-- Keep a table cell or a heading to one short clause.
-
-When the document has no layout yet:
-
-- Put each sentence on its own line, so a diff shows which sentence changed.
-- Wrap a long sentence with a newline before an `or`, `and` or `but`, at a clause boundary when there is one and else at the last one that keeps the first line under the limit.
-- Start the new line with that word.
-- Add no period and no capital at that wrap, since the sentence goes on.
-
-For example, this bullet holds three facts on one line:
-
-```md
-- Set `retries` to 3 since the upstream drops one request in ten, but raise it only for idempotent calls because a retried write can be applied twice, and log each retry so the drop rate stays visible.
-```
-
-The split gives one fact per bullet, each cut where a transition word began:
-
-```md
-- Set `retries` to 3, since the upstream drops one request in ten.
-- Raise it only for idempotent calls, because a retried write can be applied twice.
-- Log each retry, so the drop rate stays visible.
-```
-
-## Phrases to replace
-
-These read as filler or as an older, hesitant style, so rewrite them in the paragraphs you touch and report the others.
-
-| Instead of                               | Write                                  |
-| ---------------------------------------- | -------------------------------------- |
-| "In case it's needed to ..."             | "To ...", or "When you need to ..."    |
-| "one may provide"                        | "provide", or "you can provide"        |
-| "How to ?" (space before the "?")        | "How to" or a heading naming the task  |
-| "It's possible to ..."                   | the action itself                      |
-| "It's worth noting ..."                  | the fact itself                        |
-| "please note", "at this time"            | nothing                                |
-| "Additionally", "Moreover"               | the word that names the relation       |
-| "basically", "really"                    | nothing                                |
-
-## AI tells
-
-Remove these patterns, which signal text written by rule rather than for the reader.
-
-- A contrast that only adds weight ("not just X, but Y").
-- A list padded to three items for rhythm.
-- A dash or an arrow used as punctuation.
-- A semicolon or a colon joining two clauses.
-- A closing line repeating what the paragraph already said.
-- An ordinary fact dressed as pivotal, powerful or seamless.
-- Bold labels on every bullet (one label over a block, such as **Notes:**, is fine).

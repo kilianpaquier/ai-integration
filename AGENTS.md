@@ -1,78 +1,52 @@
 # ai-integration
 
-The `one-for-all` plugins marketplace, and the source of the [AI Integration](https://ai.kilianpaquier.dev) Hugo site.
-A plugin groups skills, agents, hooks, MCP servers or LSP servers.
-Each one aims to work on as many agent runtimes as possible.
-That means at least Claude Code, Codex, Copilot, Cursor, Antigravity, Devin and Hermes Agent.
+The `one-for-all` plugin marketplace, and the source of the AI Integration [**Hugo**](https://gohugo.io) site.
+Each plugin targets as many agent runtimes as it can, at least [**Claude Code**](https://code.claude.com),
+[**Codex**](https://openai.com/codex),
+[**Copilot**](https://github.com/features/copilot),
+[**Cursor**](https://cursor.com),
+[**Antigravity**](https://antigravity.google)
+and [**Devin**](https://devin.ai).
+Read [CONTRIBUTING.md](CONTRIBUTING.md) before adding a plugin or moving a file inside one, since it holds the plugin layout, the per-runtime compatibility table and the "New plugin" steps.
 
-The [README.md](README.md) lists the plugins and their install commands.
-The [CONTRIBUTING.md](CONTRIBUTING.md) holds the plugin layout tree and the per-runtime compatibility table.
-Read its "New plugin" section before adding a plugin or moving a file inside one.
-
-## Where things go
-
-- A plugin lives in `plugins/<plugin>/`, with its sources under `.apm/` (`agents/`, `hooks/`, `skills/`).
-- The `agents` and `skills` entries at the plugin root are symlinks to `.apm/`, so edit the `.apm/` side.
-- A Copilot agent copies `.apm/agents/<name>.agent.md` into `com.github.copilot/agents/`, with its own frontmatter.
-- Hook executables go in `plugins/<plugin>/scripts/`, their tests in `plugins/<plugin>/tests/`.
-- A hook exists once per runtime format, so a hook change touches each of:
-  - `.apm/hooks/hooks.json`
-  - `hooks/claude.json`
-  - `hooks/cursor.json`
-  - `com.github.copilot/hooks/hooks.json`
-- A plugin's docs pages are `docs/content/interoperability/ai-integration/<plugin>.en.md` and `<plugin>.fr.md`.
-- Every docs page exists in English and French, so edit both together.
-
-## Adding a plugin
-
-- Use the provider's own description when importing a plugin or wrapping an external tool (MCP, LSP).
-- Ship the **Agent Plugins** format (`plugin.json`) and the **Agent Package Manager** format (`apm.yml`).
-- Add `.apm/.gitkeep` when the plugin has nothing under `.apm/`, as `apm install` fails without the directory.
-- Add the plugin to the root `apm.yml` packages, then run `apm pack`.
-- Add a row to the README plugins table.
-- Create both docs pages with the markers, then run `just docs::sync`.
-- A vendored plugin also gets a line in the README license section.
-
-## Bumping a plugin version
-
-- Always bump the minor version, whatever the change kind.
-- Bump `version` in `apm.yml` and in every `plugin.json` of the plugin together.
-- Every plugin has `plugin.json` and `.claude-plugin/plugin.json`.
-- Only plugins with hooks have `.cursor-plugin/plugin.json` and `.plugin/plugin.json`.
-- Leave the `version` in `hooks/cursor.json` and `com.github.copilot/hooks/hooks.json` alone, it's the hook schema version (`1`).
-- Renovate bumps vendored plugins on its own through `scripts/sh/renovate.sh`.
-
-## Vendored files
-
-- `scripts/sh/updater.sh` lists every upstream, its pinned commit and the files it syncs.
-- The sync rewrites the body of a vendored file and keeps its frontmatter.
-- Change only the frontmatter of a vendored file, since the next sync overwrites any body edit.
-- A vendored file declares `metadata.upstream` in its frontmatter.
-- A modified Apache-2.0 file also declares `metadata.modified`, stating what changed.
-- Each vendored file sits next to its upstream `LICENSE`.
-
-## Generated files
-
-- `.claude-plugin/marketplace.json` and `.agents/plugins/marketplace.json` come from `apm pack`, so edit the root `apm.yml`.
-- The block between the `BEGIN_AII_DOC` and `END_AII_DOCS` markers in a docs page comes from the plugin README.
-
-## Checks
-
-- Run `node --test plugins/*/tests/*.test.js` after changing a hook script.
-- Run `shellcheck` on each changed script under `scripts/sh/`.
-- Run `just docs::build` after changing anything under `docs/`.
-- pre-commit (gitleaks, whitespace, line endings) runs on every commit and in CI.
-
-## Boundaries
-
-- Run `just update` or `scripts/sh/renovate.sh` only when asked, both clone upstreams and rewrite vendored files.
-- semantic-release tags the repo from commit types, so never create a tag by hand.
-
-## References
-
-Read the matching page before writing or changing a component, or before changing how plugins get shared.
-Each page covers the format per agent runtime.
+Read the matching page before writing a component or changing how plugins get shared, since each one covers the format per runtime.
 
 - Components: `docs/content/components/<kind>.en.md`, with `<kind>` one of `agent`, `command`, `hook`, `instruction`, `lsp`, `mcp`, `monitor`, `skill`.
 - Sharing: `docs/content/share/<topic>.en.md`, with `<topic>` one of `apm`, `marketplace`, `package`, `plugin`, `skills-cli`.
-- The site uses [Hugo](https://gohugo.io/) with the [Hextra](https://imfing.github.io/hextra/docs/) theme.
+
+## Changing a plugin
+
+A plugin keeps one source under `plugins/<plugin>/.apm/`, and a **mirror** per runtime format that changes with it.
+
+- The root `skills` and `agents` entries are symlinks to `.apm/`, and a **Copilot** agent is a copy in `com.github.copilot/agents/` with its own frontmatter.
+- A hook has four mirrors: `.apm/hooks/hooks.json`, `hooks/claude.json`, `hooks/cursor.json` and `com.github.copilot/hooks/hooks.json`.
+- **Copilot**'s `hooks.json` keeps its own event format with Claude-style matchers, and **VS Code**'s **Copilot** agent host fires hooks only through `.plugin/plugin.json`.
+- A hook executable is a `.js` file in `plugins/<plugin>/scripts/`.
+- An MCP server has two mirrors, `mcp.json` and `mcp_config.json`.
+- Its docs pages `docs/content/interoperability/ai-integration/<plugin>.en.md` and `<plugin>.fr.md` change together.
+- Running `just docs::sync` copies their block between `BEGIN_AII_DOCS` and `END_AII_DOCS` from the plugin README.
+- Bump a plugin whose files the branch changes by one minor version over its version on `main`, in its `apm.yml` and every `plugin.json` at once.
+- A new plugin starts at `0.1.0` and keeps it on the branch that creates it, as does a plugin the branch already bumped, and plan-only work keeps its version.
+- The `version` of `hooks/cursor.json` and `com.github.copilot/hooks/hooks.json` is the hook schema version, `1`.
+
+Done when every mirror carries the change and `just docs::sync` has run after a README change.
+
+## Vendored plugins
+
+- The `scripts/sh/updater.sh` script declares each upstream (a `# renovate:` ref) and the files it syncs.
+- A new vendored file goes in as a line there and a `just update` run, instead of a hand copy.
+- Run `just update` or `scripts/sh/renovate.sh` for anything else only when asked, since both clone upstreams and rewrite vendored files.
+- The sync rewrites a vendored file's body and keeps its frontmatter, so a change to a vendored file is a frontmatter change.
+- A vendored file declares `metadata.upstream`, plus `metadata.modified` stating what changed for a modified Apache-2.0 one.
+- [**Renovate**](https://docs.renovatebot.com) bumps vendored plugins through `scripts/sh/renovate.sh`.
+
+## Generated files
+
+- Running `apm pack` writes `.claude-plugin/marketplace.json` and `.agents/plugins/marketplace.json` from the root `apm.yml`, which is the file to edit.
+- The [**kickr**](https://gitlab.com/kickr-dev/kickr) generator owns `Justfile`, `docs/Justfile`, `CODE_OF_CONDUCT.md`, `SECURITY.md` and the `BEGIN_KICKR_*` blocks of the README and CONTRIBUTING.
+
+## Checks
+
+- Run `shellcheck` on each changed script under `scripts/sh/`, since CI skips shell.
+- Run `just docs::build` after changing anything under `docs/`.
+- Test a hook executable in `plugins/<plugin>/tests/*.test.js`, run with `node --test`, and leave plugin config untested (JSON, evals, the **OpenCode** `.mjs` and **Hermes** `.py` adapters).

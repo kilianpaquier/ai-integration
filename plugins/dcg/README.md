@@ -2,7 +2,7 @@
 
 Block destructive shell and git commands before they run.
 
-<!-- BEGIN_AII_DOC -->
+<!-- BEGIN_AII_DOCS -->
 
 ## Hooks
 

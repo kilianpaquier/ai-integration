@@ -2,7 +2,7 @@
 
 Up-to-date code documentation for LLMs and AI code editors.
 
-<!-- BEGIN_AII_DOC -->
+<!-- BEGIN_AII_DOCS -->
 
 ## MCP server
 
