@@ -2,7 +2,7 @@
     "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
 
     "name": "devkit",
-    "description": "AI-powered skills for software development, code review, and documentation",
+    "description": "AI-powered skills and agents for software development, code review, and documentation",
     "version": "0.1.0",
     "license": "MIT",
 

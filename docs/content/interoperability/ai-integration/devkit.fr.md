@@ -1,11 +1,11 @@
 ---
-description: Skills IA pour le développement, la revue de code et la documentation.
+description: Skills et agents IA pour le développement, la revue de code et la documentation.
 title: Devkit
 ---
 
 - **Plugin**:
   [https://gitlab.com/kilianpaquier/ai-integration](https://gitlab.com/kilianpaquier/ai-integration/-/tree/main/plugins/devkit)
-- **Description**: Skills IA pour le développement, la revue de code et la documentation.
+- **Description**: Skills et agents IA pour le développement, la revue de code et la documentation.
 
 <!-- BEGIN_AII_DOCS -->
 
@@ -46,6 +46,18 @@ It keeps only what an agent couldn't learn from the repository anyway, and it ch
 
 Give it a date, a date range or `all` and it finds the prompts where you corrected the agent in those sessions, then traces each one to the rule, skill or config behind it.
 It plans a rework of the rules behind your corrections, with each file's line delta, rather than new lines.
+
+## Agents
+
+Once you approve a plan, the main session hands the legwork to these agents and comes back to you only for a decision that is yours.
+It starts each on a cheaper model than its own when the runtime lets it choose.
+
+| Agent                | Role                                                     | Model tier                               |
+| -------------------- | -------------------------------------------------------- | ---------------------------------------- |
+| `devkit:researcher`  | Looks up official docs and returns the quoted lines      | Fastest                                  |
+| `devkit:implementer` | Builds a plan piece, deciding what the piece leaves open | Mid                                      |
+| `devkit:executor`    | Applies a plan piece exactly as written                  | Fastest                                  |
+| `devkit:verifier`    | Checks the finished build against the plan, read-only    | Fastest, mid after an implementer piece  |
 
 ## Installation
 

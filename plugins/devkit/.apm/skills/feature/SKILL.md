@@ -29,7 +29,7 @@ Done when the request is one sentence the code can be checked against.
 ## 2. Investigate
 
 - Read each place to change (whole when short), its closest sibling, the callers of each symbol to change, and the instruction files that govern those files.
-- Delegate a wide read to a read-only explore subagent when the runtime has one, and confirm its symbol claims with the language server or code index.
+- Delegate a wide read to a read-only explore subagent and a docs lookup to `devkit:researcher` when the runtime has them, and confirm their symbol claims with the language server or code index.
 - Name the technologies and versions the change touches, and take each fact the design needs from their official docs at that version.
 - When the request or a rejection points to an earlier session, search the session files yourself.
 
@@ -40,6 +40,8 @@ Done when you can name the construct to extend, the helper to reuse, the files t
 - When existing behaviour or configuration already meets the request, say so with the evidence and stop.
 - Design the smallest change that extends the precedent from step 2, naming what it reuses, and a one-line design for a trivial change.
 - List its impact: callers, tests, docs, config, generated files, and each new file, move or copy with its reason.
+- Split the build into a few pieces by responsibility, each holding the files that change together and its check with its expected result.
+- Mark each piece `devkit:executor` when the plan writes out its exact edits, or `devkit:implementer` otherwise.
 - Present one design, with options only for a trade-off the user hasn't decided.
 - Ask every open question in one turn, each with a recommended answer.
 - Always ask about a new dependency, a public rename or removal or a changed public contract.
@@ -60,6 +62,14 @@ Done when the user approved or gave the go, or the change is trivial and raised 
 
 ## 5. Build
 
+- Hand each piece to the agent it is marked with, given the plan file, the piece, the user's constraints, the project's checks and this file's path for the rules below.
+- When the runtime's agent call takes a model, start `devkit:executor` on its fastest one and `devkit:implementer` on its mid tier, since one started without a model may run on yours.
+- Build the piece yourself when the change is trivial or the runtime lacks these agents.
+- Settle a `blocked` or `needs context` report against its evidence: resume the agent with your decision or your counter-evidence, and ask the user only what is theirs to decide.
+- Resume a stuck agent with something changed (the missing context, a corrected piece, or `devkit:implementer` in place of `devkit:executor`), never with the same brief.
+- After the last piece, start `devkit:verifier` once, on the fastest model, or on the mid tier when a `devkit:implementer` piece ran, given the plan, its pieces and each report.
+- Resume the agent that built a piece once with every finding whose fix restores the approved plan, and take each finding whose fix would change the plan to the user.
+- Read the findings and `git diff --stat` before reporting the build done, and reread a file only for a finding you doubt.
 - Run the checks the project declares (tests, lint, build) once before the first edit, as the baseline.
 - Write the test first where the repository tests such code, after its closest sibling test.
 - Build to these rules, each named after the `code-review` criterion that checks it:
@@ -80,11 +90,11 @@ Done when the user approved or gave the go, or the change is trivial and raised 
 - Regenerate a generated file through its generator.
 - After 3 failed attempts to turn a check green, stop and report what each showed.
 
-Done when every check green in the baseline is still green, or the report says the project declares none.
+Done when every piece is built, every report is settled and every check green in the baseline is still green, or the report says the project declares none.
 
 ## 6. Check
 
-- Reread the diff against the request and the instruction files, and fix each mismatch.
+- Reread the diff against the request and the instruction files, or read the verifier's findings when it ran, and fix each mismatch.
 - Unless the change is trivial, offer one review.
 - On the user's go, run `code-review` in a fresh read-only subagent given the touched files, the request and the user's constraints.
 - Run it as `devkit:code-review` on **Claude Code**, since the built-in `/code-review` can write.

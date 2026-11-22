@@ -4,7 +4,7 @@ name: devkit
 version: 0.1.0
 
 author: Kilian PAQUIER
-description: AI-powered skills for software development, code review, and documentation
+description: AI-powered skills and agents for software development, code review, and documentation
 license: MIT
 
 dependencies:

@@ -107,7 +107,7 @@ Only the following files and directories are required (everything else depends o
 ├── .plugin/
 │   └── plugin.json               # only with hooks (VS Code Copilot agent host)
 ├── com.github.copilot/           # client extension directory (**Agent Plugins** specification)
-│   ├── agents/
+│   ├── agents/                   # symlink to ../.apm/agents, unless an agent needs its own frontmatter (e.g. model)
 │   │   └── agent-name.agent.md   # copy of .apm/agent/*.agent.md with custom frontmatter
 │   └── hooks/
 │       └── hooks.json
