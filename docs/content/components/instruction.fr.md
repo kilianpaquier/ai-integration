@@ -21,7 +21,7 @@ dans les instructions pour charger des fichiers spécifiques (par exemple `@READ
 > Standard neutre de l'[Agentic AI Foundation](https://aaif.io/).
 
 - **Format** : [**AGENTS.md**](https://agents.md/)
-- **Lu par** : **Codex**, **Copilot**, **Claude Code**, **Cursor**, **Mistral Vibe**, **Devin**, **Antigravity**
+- **Lu par** : **Codex**, **Copilot**, **Claude Code**, **Cursor**, **Mistral Vibe**, **Devin**, **Antigravity**, **OpenCode**, **Pi**, **Hermes Agent**
 
 ```tree
 repository/
@@ -34,11 +34,18 @@ repository/
 
 ```tree
 repository/
+├── AGENTS.md
 ├── CLAUDE.md
 └── .claude/
     └── rules/
         └── code-style.md
+~/.claude/
+├── CLAUDE.md
+└── rules/
+    └── code-style.md
 ```
+
+**Claude Code** ne lit `AGENTS.md` qu'en l'absence de `CLAUDE.md`.
 
 ```yaml
 ---
@@ -55,6 +62,7 @@ List of rules to respect for TypeScript API files
 ```tree
 repository/
 ├── AGENTS.md
+├── AGENTS.override.md
 └── src/
     └── api/
         └── AGENTS.md
@@ -75,6 +83,10 @@ repository/
     ├── copilot-instructions.md
     └── instructions/
         └── ruby-models.instructions.md
+~/.copilot/
+├── copilot-instructions.md
+└── instructions/
+    └── ruby-models.instructions.md
 ```
 
 ```yaml
@@ -93,9 +105,12 @@ Handle Ruby model files matching this pattern with the project's ActiveRecord co
 ```tree
 repository/
 ├── AGENTS.md
-└── .cursor/
-    └── rules/
-        └── code-style.mdc
+├── .cursor/
+│   └── rules/
+│       └── code-style.mdc
+└── src/
+    └── api/
+        └── AGENTS.md
 ```
 
 ```yaml
@@ -110,7 +125,7 @@ List of rules to respect for TypeScript API files
 {{< /tab >}}
 
 {{< tab name="Mistral Vibe" >}}
-- **Format** : [**Mistral Vibe**](https://github.com/mistralai/mistral-vibe/blob/main/README.md#custom-system-prompts)
+- **Format** : [**Mistral Vibe**](https://docs.mistral.ai/vibe/code/cli/agents)
 
 ```tree
 repository/
@@ -124,7 +139,7 @@ repository/
 {{< /tab >}}
 
 {{< tab name="Antigravity" >}}
-- **Format** : [**Antigravity**](https://antigravity.google/docs/rules-workflows/)
+- **Format** : [**Antigravity**](https://antigravity.google/docs/rules)
 
 ```tree
 repository/
@@ -134,7 +149,11 @@ repository/
     └── rules/
         └── code-style.md
 ~/.gemini/
-└── GEMINI.md
+├── AGENTS.md
+├── GEMINI.md
+└── config/
+    ├── AGENTS.md
+    └── GEMINI.md
 ```
 {{< /tab >}}
 
@@ -165,6 +184,41 @@ repository/
 ```
 
 Priorité : `.hermes.md` > `AGENTS.override.md` > `AGENTS.md` > `CLAUDE.md` > `.cursorrules`.
+{{< /tab >}}
+
+{{< tab name="OpenCode" >}}
+- **Format** : [**OpenCode**](https://opencode.ai/docs/instructions)
+
+```tree
+repository/
+├── AGENTS.md
+└── src/
+    └── api/
+        └── AGENTS.md
+~/.config/opencode/
+└── AGENTS.md
+```
+
+Dans un répertoire sans `AGENTS.md`, **OpenCode** lit `CLAUDE.md`, et sans `AGENTS.md` global, il lit `~/.claude/CLAUDE.md`.
+{{< /tab >}}
+
+{{< tab name="Pi" >}}
+- **Format** : [**Pi**](https://github.com/earendil-works/pi/blob/main/packages/coding-agent/docs/configuration.md#context-files)
+
+```tree
+repository/
+├── AGENTS.md
+├── CLAUDE.md
+└── .pi/
+    ├── SYSTEM.md
+    └── APPEND_SYSTEM.md
+~/.pi/agent/
+├── AGENTS.md
+├── SYSTEM.md
+└── APPEND_SYSTEM.md
+```
+
+Le fichier `SYSTEM.md` remplace le *prompt* système par défaut de **Pi**, tandis que `APPEND_SYSTEM.md` le complète.
 {{< /tab >}}
 
 {{< /tabs >}}

@@ -75,7 +75,7 @@ repository/
 {{< /tab >}}
 
 {{< tab name="Codex" >}}
-- **Format** : [**Codex**](https://learn.chatgpt.com/codex/build-plugins)
+- **Format** : [**Codex**](https://developers.openai.com/plugins/build/plugins)
 - **Variables d'environnement** :
   - `PLUGIN_ROOT` (répertoire racine du plugin)
   - `PLUGIN_DATA` (répertoire de données du plugin)
@@ -99,23 +99,32 @@ repository/
 - **Format** : [**Copilot**](https://docs.github.com/en/copilot/how-tos/copilot-cli/customize-copilot/plugins-creating)
 - **Variables d'environnement** :
   - `PLUGIN_ROOT` (répertoire du plugin)
-  - `COPILOT_PLUGIN_DATA` (répertoire de données du plugin, aliasé en `CLAUDE_PLUGIN_DATA`)
+  - `PLUGIN_DATA` (répertoire de données du plugin, aliasé en `COPILOT_PLUGIN_DATA` et `CLAUDE_PLUGIN_DATA`)
 
 ```tree
 repository/
 ├── plugin.json
-├── agents/
-│   └── reviewer.agent.md
 ├── skills/
 │   └── skill-name/
 │       └── SKILL.md
-├── hooks.json
-└── .mcp.json
+├── mcp.json
+└── com.github.copilot/
+    ├── agents/
+    │   └── reviewer.agent.md
+    ├── commands/
+    │   └── special.md
+    ├── hooks/
+    │   └── hooks.json
+    ├── lsp.json
+    └── rules/
 ```
 {{< /tab >}}
 
 {{< tab name="Cursor" >}}
 - **Format** : [**Cursor**](https://cursor.com/docs/plugins)
+- **Variables** :
+  - `CURSOR_PLUGIN_ROOT` (répertoire du plugin, résolu dans `mcp.json`)
+  - `CLAUDE_PLUGIN_ROOT` (alias de `CURSOR_PLUGIN_ROOT`)
 
 ```tree
 repository/
@@ -132,8 +141,33 @@ repository/
 ```
 {{< /tab >}}
 
+{{< tab name="Mistral Vibe" >}}
+- **Format** : [**Mistral Vibe**](https://docs.mistral.ai/vibe/code/cli/plugins)
+
+```tree
+repository/
+├── plugin.json
+├── mcp.json
+├── libraries.json
+├── connectors.json
+├── skills/
+│   └── skill-name/
+│       └── SKILL.md
+└── ai.mistral.vibe/
+    ├── agents/
+    │   └── reviewer.toml
+    ├── hooks.toml
+    └── knowledge/
+        └── knowledge-name/
+            └── KNOWLEDGE.md
+```
+
+Seul `plugin.json` est requis.
+Sans l'extension `ai.mistral.vibe` dans le manifeste, **Mistral Vibe** ne charge que `skills/` et `mcp.json`.
+{{< /tab >}}
+
 {{< tab name="Antigravity" >}}
-- **Format** : [**Antigravity**](https://antigravity.google/docs/cli/plugins)
+- **Format** : [**Antigravity**](https://antigravity.google/docs/plugins?tab=cli)
 
 ```tree
 repository/
@@ -148,6 +182,8 @@ repository/
 └── rules/
     └── rule-name.md
 ```
+
+Le manifeste est soit `plugin.json`, soit `.antigravity-plugin/plugin.json`.
 {{< /tab >}}
 
 {{< tab name="Devin" >}}
@@ -197,6 +233,44 @@ def register(ctx):
     # `register_context_engine`, `register_image_gen_provider`
     # `register_slack_action_handler`, `register_middleware`
 ```
+{{< /tab >}}
+
+{{< tab name="OpenCode" >}}
+- **Format** : [**OpenCode**](https://opencode.ai/docs/build/plugins)
+
+```tree
+repository/
+├── package.json
+└── src/
+    ├── index.ts # partie serveur (outils, hooks, commandes, agents)
+    └── tui.tsx # partie interface terminal
+```
+
+Les plugins locaux sous `.opencode/plugins/` sont chargés automatiquement, les autres sont listés dans le tableau `plugins` de `opencode.json`.
+{{< /tab >}}
+
+{{< tab name="Pi" >}}
+- **Format** : [**Pi**](https://github.com/earendil-works/pi/blob/main/packages/coding-agent/docs/packages.md)
+
+```tree
+repository/
+├── package.json
+├── extensions/
+├── skills/
+│   └── skill-name/
+│       └── SKILL.md
+├── prompts/
+└── themes/
+```
+
+```json
+{
+    "name": "my-pi-package",
+    "keywords": ["pi-package"]
+}
+```
+
+Sans clé `pi` dans le `package.json`, **Pi** découvre les extensions, skills, prompts et thèmes depuis ces répertoires.
 {{< /tab >}}
 
 {{< /tabs >}}

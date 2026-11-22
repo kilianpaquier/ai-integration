@@ -8,7 +8,7 @@ Les marketplaces sont (aussi) des dépôts Git ayant pour seul but de publier et
 
 Les plugins fournis peuvent être des références locales au même dépôt Git ou
 des références distantes vers d'autres plugins (utile pour regrouper des plugins au sein d'un seul marketplace
-*qui les gouverne tous*, mais présente quelques [limitations](#limitations)).
+*qui les gouverne tous*).
 
 ## Structure
 
@@ -32,7 +32,7 @@ repository/
 {{< /tab >}}
 
 {{< tab name="Codex" >}}
-- **Format** : [**Codex**](https://learn.chatgpt.com/codex/build-plugins)
+- **Format** : [**Codex**](https://developers.openai.com/plugins/build/plugins)
 
 ```tree
 repository/
@@ -42,7 +42,12 @@ repository/
 └── plugins/
     └── plugin-name/
         └── ...
+~/.agents/
+└── plugins/
+    └── marketplace.json
 ```
+
+Le fichier `~/.agents/plugins/marketplace.json` est un marketplace personnel.
 {{< /tab >}}
 
 {{< tab name="Copilot" >}}
@@ -98,9 +103,9 @@ claude plugin uninstall <plugin-name>@<marketplace-name>
 ```
 
 L'installation des plugins et leur suivi (quels plugins, quels marketplaces) sont gérés sous les emplacements suivants :
-- `~/.claude/plugins` (niveau utilisateur, par défaut) : disponible pour vous-même, sur tous les projets.
-- `.claude/settings.json` (niveau projet) : disponible pour chaque collaborateur de ce dépôt, une fois commité.
-- `.claude/settings.local.json` (niveau local) : disponible pour vous-même uniquement, sur ce dépôt.
+- `~/.claude/settings.json` : niveau utilisateur (par défaut), active le plugin pour vous-même sur tous les projets, avec des copies sous `~/.claude/plugins/`.
+- `.claude/settings.json` : niveau projet, l'active pour chaque collaborateur une fois commité, et chacun l'installe toujours.
+- `.claude/settings.local.json` : niveau local, l'active pour vous-même uniquement, sur ce dépôt.
 {{< /tab >}}
 
 {{< tab name="Codex" >}}
@@ -117,7 +122,7 @@ L'installation des plugins et leur suivi (quels plugins, quels marketplaces) son
 ```sh
 copilot plugin marketplace add <owner>/<repo>
 copilot plugin install <plugin-name>@<marketplace-name>
-copilot plugin uninstall <plugin-name>@<marketplace-name>
+copilot plugin uninstall <plugin-name>
 ```
 
 L'installation des plugins et leur suivi (quels plugins, quels marketplaces) sont gérés sous `~/.copilot/installed-plugins`.
@@ -130,7 +135,10 @@ en important un dépôt **GitHub** en direct.
 
 {{< tab name="Antigravity" >}}
 ```sh
+agy plugin install <url>
+agy plugin install <plugin-name>@antigravity-plugins-official
 agy plugin install /path/to/local/plugin
+agy plugin list
 agy plugin uninstall <plugin-name>
 ```
 {{< /tab >}}
@@ -138,8 +146,9 @@ agy plugin uninstall <plugin-name>
 {{< tab name="Devin" >}}
 ```sh
 devin plugins install <owner>/<repo>
-devin plugins install <git-url>
-devin plugins install ./path/to/local/plugin
+devin plugins install <url>
+devin plugins install --local /path/to/local/plugin
+devin plugins list
 devin plugins remove <plugin-name>
 ```
 {{< /tab >}}
@@ -153,16 +162,32 @@ hermes plugins remove <plugin-name>
 ```
 
 L'installation des plugins et leur suivi (quels plugins) sont gérés sous les emplacements suivants :
-- `~/.hermes/plugins/` (niveau utilisateur, par défaut) : disponible pour vous-même, sur tous les projets.
-- `.hermes/plugins/` (niveau projet) : disponible pour chaque collaborateur de ce dépôt, une fois commité.
+- `~/.hermes/plugins/` : niveau utilisateur (par défaut), disponible pour vous-même, sur tous les projets.
+- `.hermes/plugins/` : niveau projet, disponible pour chaque collaborateur de ce dépôt, une fois commité.
+{{< /tab >}}
+
+{{< tab name="OpenCode" >}}
+```sh
+opencode plugin add <package>[@<version>]
+opencode plugin add github:<owner>/<repo>
+opencode plugin list
+opencode plugin remove <package>
+```
+
+Le CLI gère les plugins *packages* globaux, tandis qu'un dépôt liste les siens dans le tableau `plugins` de `opencode.json`.
+{{< /tab >}}
+
+{{< tab name="Pi" >}}
+```sh
+pi install npm:<package>[@<version>]
+pi install git:github.com/<owner>/<repo>[@<ref>]
+pi install /path/to/local/package
+pi list
+pi remove <source>
+```
+
+Les *packages* s'installent dans `~/.pi/agent/settings.json`, ou dans `.pi/settings.json` avec `--local`,
+et la [galerie de *packages* **Pi**](https://pi.dev/packages) liste les *packages* npm marqués `pi-package`.
 {{< /tab >}}
 
 {{< /tabs >}}
-
-## Limitations
-
-> [!warning]Plugins distants
-> Les plugins distants référencés via une source `git-subdir` ne sont pas encore supportés par **Copilot**
-> ([github/copilot-cli#3376](https://github.com/github/copilot-cli/issues/3376)).
->
-> Tout marketplace contenant un plugin `git-subdir` sera rejeté par **Copilot**.

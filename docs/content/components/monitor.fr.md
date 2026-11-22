@@ -15,9 +15,10 @@ avec chaque ligne de sortie standard qu'elle produit renvoyée sous forme de not
 
 {{< tab name="Claude Code" >}}
 - **Format** : [**Claude Code**](https://code.claude.com/docs/en/plugins-reference#monitors)
+- **Déclaré dans** : `experimental.monitors` de `plugin.json`, par défaut `monitors/monitors.json`
 
 ```tree
-~/.claude/plugins/cache/<marketplace>/<plugin>/
+~/.claude/plugins/cache/<marketplace>/<plugin>/<version>/
 └── monitors/
     └── monitors.json
 ```
@@ -26,7 +27,7 @@ avec chaque ligne de sortie standard qu'elle produit renvoyée sous forme de not
 [
     {
         "name": "deploy-status",
-        "command": "\"${CLAUDE_PLUGIN_ROOT}\"/scripts/poll-deploy.sh ${user_config.api_endpoint}",
+        "command": "\"${CLAUDE_PLUGIN_ROOT}\"/scripts/poll-deploy.sh",
         "description": "Deployment status changes"
     },
     {

@@ -84,5 +84,6 @@ repository/
 ## Limitations
 
 > [!warning]Espace de nommage
-> Les composants de type *slash* installés avec APM n'ont pas de *namespace* (par exemple `/plugin:skill-name`)
-> et sont donc susceptibles aux [conflits de nommage](https://github.com/microsoft/apm/issues/739).
+> Les composants de type *slash* installés avec APM n'ont pas de *namespace* (par exemple `/plugin:skill-name`),
+> car [APM conserve le nom déclaré de chaque skill](https://github.com/microsoft/apm/issues/739).
+> Ils sont donc susceptibles aux conflits de nommage.

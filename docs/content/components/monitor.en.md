@@ -15,9 +15,10 @@ with every stdout line it produces delivered back as a notification during the s
 
 {{< tab name="Claude Code" >}}
 - **Format**: [**Claude Code**](https://code.claude.com/docs/en/plugins-reference#monitors)
+- **Declared in**: `experimental.monitors` of `plugin.json`, defaulting to `monitors/monitors.json`
 
 ```tree
-~/.claude/plugins/cache/<marketplace>/<plugin>/
+~/.claude/plugins/cache/<marketplace>/<plugin>/<version>/
 └── monitors/
     └── monitors.json
 ```
@@ -26,7 +27,7 @@ with every stdout line it produces delivered back as a notification during the s
 [
     {
         "name": "deploy-status",
-        "command": "\"${CLAUDE_PLUGIN_ROOT}\"/scripts/poll-deploy.sh ${user_config.api_endpoint}",
+        "command": "\"${CLAUDE_PLUGIN_ROOT}\"/scripts/poll-deploy.sh",
         "description": "Deployment status changes"
     },
     {

@@ -29,8 +29,8 @@ skill-name/
 
 ```yaml
 ---
-name: schema-to-go
-description: A skill that converts JSON Schema to Go struct definitions.
+name: skill-name
+description: What this skill does and when the agent should use it.
 # other frontmatter properties
 ---
 
@@ -40,7 +40,7 @@ Skill instructions body (the prompt the agent follows when invoked).
 
 {{< tab name="Claude Code" >}}
 - **Format**: [**Claude Code**](https://code.claude.com/docs/en/skills#frontmatter-reference)
-- **Compatibility**: **Copilot** (only repository level)
+- **Also read by**: **Copilot** and **Devin** (only repository level), **Cursor**, **OpenCode**
 
 ```tree
 repository/
@@ -54,7 +54,7 @@ repository/
 └── skills/
     └── skill-name/
         └── SKILL.md
-~/.claude/plugins/cache/<marketplace>/<plugin>/
+~/.claude/plugins/cache/<marketplace>/<plugin>/<version>/
 └── skills/
     └── skill-name/
         └── SKILL.md
@@ -62,8 +62,8 @@ repository/
 
 ```yaml
 ---
-name: schema-to-go
-description: A skill that converts JSON Schema to Go struct definitions.
+name: skill-name
+description: What this skill does and when the agent should use it.
 # many other frontmatter properties
 ---
 
@@ -94,8 +94,8 @@ repository/
 
 ```yaml
 ---
-name: schema-to-go
-description: A skill that converts JSON Schema to Go struct definitions.
+name: skill-name
+description: What this skill does and when the agent should use it.
 ---
 
 Skill instructions body (the prompt the agent follows when invoked).
@@ -131,8 +131,8 @@ repository/
 
 ```yaml
 ---
-name: schema-to-go
-description: A skill that converts JSON Schema to Go struct definitions.
+name: skill-name
+description: What this skill does and when the agent should use it.
 # many other frontmatter properties
 ---
 
@@ -153,6 +153,14 @@ repository/
     └── skills/
         └── skill-name/
             └── SKILL.md
+~/.agents/
+└── skills/
+    └── skill-name/
+        └── SKILL.md
+~/.cursor/
+└── skills/
+    └── skill-name/
+        └── SKILL.md
 <plugin>/
 └── skills/
     └── skill-name/
@@ -161,8 +169,8 @@ repository/
 
 ```yaml
 ---
-name: schema-to-go
-description: A skill that converts JSON Schema to Go struct definitions.
+name: skill-name
+description: What this skill does and when the agent should use it.
 ---
 
 Skill instructions body (the prompt the agent follows when invoked).
@@ -182,6 +190,10 @@ repository/
     └── skills/
         └── skill-name/
             └── SKILL.md
+~/.agents/
+└── skills/
+    └── skill-name/
+        └── SKILL.md
 ~/.vibe/
 └── skills/
     └── skill-name/
@@ -190,8 +202,8 @@ repository/
 
 ```yaml
 ---
-name: schema-to-go
-description: A skill that converts JSON Schema to Go struct definitions.
+name: skill-name
+description: What this skill does and when the agent should use it.
 # many other frontmatter properties
 ---
 
@@ -212,12 +224,16 @@ repository/
 └── skills/
     └── skill-name/
         └── SKILL.md
+~/.gemini/config/plugins/<plugin>/
+└── skills/
+    └── skill-name/
+        └── SKILL.md
 ```
 
 ```yaml
 ---
-name: schema-to-go
-description: A skill that converts JSON Schema to Go struct definitions.
+name: skill-name
+description: What this skill does and when the agent should use it.
 ---
 
 Skill instructions body (the prompt the agent follows when invoked).
@@ -229,7 +245,11 @@ Skill instructions body (the prompt the agent follows when invoked).
 
 ```tree
 repository/
-└── .agents/
+├── .agents/
+│   └── skills/
+│       └── skill-name/
+│           └── SKILL.md
+└── .devin/
     └── skills/
         └── skill-name/
             └── SKILL.md
@@ -241,8 +261,8 @@ repository/
 
 ```yaml
 ---
-name: schema-to-go
-description: A skill that converts JSON Schema to Go struct definitions.
+name: skill-name
+description: What this skill does and when the agent should use it.
 ---
 
 Skill instructions body (the prompt the agent follows when invoked).
@@ -271,8 +291,74 @@ repository/
 
 ```yaml
 ---
-name: schema-to-go
-description: A skill that converts JSON Schema to Go struct definitions.
+name: skill-name
+description: What this skill does and when the agent should use it.
+---
+
+Skill instructions body (the prompt the agent follows when invoked).
+```
+{{< /tab >}}
+
+{{< tab name="OpenCode" >}}
+- **Format**: [**OpenCode**](https://opencode.ai/docs/skills)
+
+```tree
+repository/
+├── .agents/
+│   └── skills/
+│       └── skill-name/
+│           └── SKILL.md
+└── .opencode/
+    └── skills/
+        └── skill-name/
+            └── SKILL.md
+~/.agents/
+└── skills/
+    └── skill-name/
+        └── SKILL.md
+~/.config/opencode/
+└── skills/
+    └── skill-name/
+        └── SKILL.md
+```
+
+```yaml
+---
+name: skill-name
+description: What this skill does and when the agent should use it.
+---
+
+Skill instructions body (the prompt the agent follows when invoked).
+```
+{{< /tab >}}
+
+{{< tab name="Pi" >}}
+- **Format**: [**Pi**](https://github.com/earendil-works/pi/blob/main/packages/coding-agent/docs/skills.md)
+
+```tree
+repository/
+├── .agents/
+│   └── skills/
+│       └── skill-name/
+│           └── SKILL.md
+└── .pi/
+    └── skills/
+        └── skill-name/
+            └── SKILL.md
+~/.agents/
+└── skills/
+    └── skill-name/
+        └── SKILL.md
+~/.pi/agent/
+└── skills/
+    └── skill-name/
+        └── SKILL.md
+```
+
+```yaml
+---
+name: skill-name
+description: What this skill does and when the agent should use it.
 ---
 
 Skill instructions body (the prompt the agent follows when invoked).

@@ -83,5 +83,6 @@ repository/
 ## Limitations
 
 > [!warning]Namespacing
-> Slash-like components installed through APM aren't namespaced (e.g. `/plugin:skill-name`)
-> and can be subject to [naming conflicts](https://github.com/microsoft/apm/issues/739).
+> Slash-like components installed through APM aren't namespaced (e.g. `/plugin:skill-name`),
+> since [APM keeps each skill's declared name](https://github.com/microsoft/apm/issues/739),
+> and can be subject to naming conflicts.

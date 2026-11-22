@@ -20,12 +20,12 @@ et trouver ce dont il a besoin pour accomplir sa (ou ses) tâche(s).
 {{< tabs >}}
 
 {{< tab name="Claude Code" >}}
-- **Format** : [**Claude Code**](https://code.claude.com/docs/en/plugins-reference#lsp-servers)
+- **Format** : [**Claude Code**](https://code.claude.com/docs/en/plugins-reference#lspservers)
 
 ```tree
 repository/
 └── .lsp.json
-~/.claude/plugins/cache/<marketplace>/<plugin>/
+~/.claude/plugins/cache/<marketplace>/<plugin>/<version>/
 └── .lsp.json
 ```
 
@@ -50,7 +50,8 @@ repository/
 ~/.copilot/
 └── lsp-config.json
 ~/.copilot/installed-plugins/<marketplace>/<plugin>/
-└── lsp.json
+└── com.github.copilot/
+    └── lsp.json
 ```
 
 ```json

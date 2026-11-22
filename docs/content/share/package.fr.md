@@ -52,7 +52,7 @@ apm pack
 
 {{< tab name="Plugin" >}}
 > [!warning]Limitation
-> Actuellement, seuls les formats **Claude Code** et **Copilot** sont supportés pour la distribution de plugins.
+> Actuellement, seuls les formats **Claude Code**, **Codex** et **Copilot** sont supportés pour la distribution de plugins.
 > Mais cela ne signifie pas que les autres agent *runtimes* ne peuvent pas consommer de plugins, ils ont juste besoin de [supporter ces formats](/share/plugin).
 
 En fournissant la propriété `target(s)` dans le `apm.yml`, un fichier `plugin.json` est automatiquement généré.
@@ -71,7 +71,7 @@ targets: [claude, codex, copilot, gemini, kiro, opencode, windsurf]
 
 {{< tab name="Marketplace" >}}
 > [!warning]Limitation
-> Actuellement, seuls les formats **Claude Code** et **Codex** sont supportés pour la création des manifestes des marketplaces.
+> Actuellement, seuls les formats **Claude Code**, **Codex** et **Copilot** sont supportés pour la création des manifestes des marketplaces.
 > Mais cela ne signifie pas que les autres agent *runtimes* ne peuvent pas les utiliser, ils ont juste besoin de [supporter ces formats](/share/marketplace).
 
 En fournissant une définition `marketplace` dans le `apm.yml`, un fichier `marketplace.json` est automatiquement généré.
@@ -88,6 +88,7 @@ marketplace:
   outputs:
     claude: {}
     codex: {}
+    copilot: {}
   packages:
     - category: <CATEGORY> # needed when generating a codex marketplace.json
       name: example-package

@@ -44,7 +44,8 @@ repository/
 ```tree
 repository/
 └── .mcp.json
-~/.claude/plugins/cache/<marketplace>/<plugin>/
+~/.claude.json
+~/.claude/plugins/cache/<marketplace>/<plugin>/<version>/
 └── .mcp.json
 ```
 
@@ -67,6 +68,8 @@ repository/
 repository/
 └── .codex/
     └── config.toml
+~/.codex/
+└── config.toml
 ~/.codex/plugins/cache/<marketplace>/<plugin>/<version>/
 └── .mcp.json
 ```
@@ -82,10 +85,14 @@ args = ["-y", "@upstash/context7-mcp"]
 - **Format** : [**Copilot**](https://docs.github.com/en/copilot/how-tos/copilot-cli/customize-copilot/add-mcp-servers#editing-the-configuration-file)
 
 ```tree
+repository/
+├── .github/
+│   └── mcp.json
+└── .mcp.json
 ~/.copilot/
 └── mcp-config.json
 ~/.copilot/installed-plugins/<marketplace>/<plugin>/
-└── .mcp.json
+└── mcp.json
 ```
 
 ```json
@@ -112,6 +119,8 @@ args = ["-y", "@upstash/context7-mcp"]
 repository/
 └── .vibe/
     └── config.toml
+~/.vibe/
+└── config.toml
 ```
 
 ```toml
@@ -152,7 +161,7 @@ repository/
 {{< /tab >}}
 
 {{< tab name="Antigravity" >}}
-- **Format** : [**Antigravity**](https://antigravity.google/docs/cli/mcp/)
+- **Format** : [**Antigravity**](https://antigravity.google/docs/mcp?tab=cli)
 
 ```tree
 repository/
@@ -160,7 +169,7 @@ repository/
     └── mcp_config.json
 ~/.gemini/config/
 └── mcp_config.json
-~/.gemini/antigravity-cli/plugins/<plugin>/
+~/.gemini/config/plugins/<plugin>/
 └── mcp_config.json
 ```
 
@@ -187,7 +196,7 @@ repository/
 ~/.config/devin/
 └── mcp_config.json
 ~/path/to/locally/installed/plugins/<name>/
-└── mcp.json
+└── .mcp.json
 ```
 
 ```json
@@ -215,6 +224,56 @@ mcp_servers:
   context7:
     command: npx
     args: ["-y", "@upstash/context7-mcp"]
+```
+{{< /tab >}}
+
+{{< tab name="OpenCode" >}}
+- **Format** : [**OpenCode**](https://opencode.ai/docs/mcp-servers)
+
+```tree
+repository/
+├── opencode.json
+└── .opencode/
+    └── opencode.json
+~/.config/opencode/
+└── opencode.json
+```
+
+```json
+{
+    "$schema": "https://opencode.ai/config.json",
+    "mcp": {
+        "servers": {
+            "context7": {
+                "type": "local",
+                "command": ["npx", "-y", "@upstash/context7-mcp"]
+            }
+        }
+    }
+}
+```
+{{< /tab >}}
+
+{{< tab name="Pi" >}}
+- **Format** : [**Pi**](https://github.com/earendil-works/pi/blob/main/packages/coding-agent/docs/mcp.md)
+
+```tree
+repository/
+└── .pi/
+    └── mcp.json
+~/.pi/agent/
+└── mcp.json
+```
+
+```json
+{
+    "mcpServers": {
+        "context7": {
+            "command": "npx",
+            "args": ["-y", "@upstash/context7-mcp"]
+        }
+    }
+}
 ```
 {{< /tab >}}
 

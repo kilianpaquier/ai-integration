@@ -15,6 +15,7 @@ sans avoir à démarrer une nouvelle session avec un agent préconfiguré.
 
 {{< tab name="Claude Code" >}}
 - **Format** : [**Claude Code**](https://code.claude.com/docs/en/sub-agents#supported-frontmatter-fields)
+- **Aussi lu par** : **Cursor**
 
 ```tree
 repository/
@@ -24,7 +25,7 @@ repository/
 ~/.claude/
 └── agents/
     └── agent-name.md
-~/.claude/plugins/cache/<marketplace>/<plugin>/
+~/.claude/plugins/cache/<marketplace>/<plugin>/<version>/
 └── agents/
     └── agent-name.md
 ```
@@ -33,7 +34,7 @@ repository/
 ---
 name: agent-name
 description: What this agent specializes in and when it should be invoked
-model: opus # "opus", "sonnet", "haiku", "inherit" ou un ID de modèle précis
+model: opus # "opus", "sonnet", "haiku", "fable", "inherit" ou un ID de modèle précis
 tools: Glob, Grep, Read
 # many other frontmatter properties
 ---
@@ -44,6 +45,7 @@ Detailed system prompt for the agent describing its role, expertise and behavior
 
 {{< tab name="Codex" >}}
 - **Format** : [**Codex**](https://learn.chatgpt.com/docs/agent-configuration/subagents?surface=app#app-custom-agent-file-schema)
+- **Aussi lu par** : **Cursor**
 
 ```tree
 repository/
@@ -76,8 +78,9 @@ repository/
 └── agents/
     └── agent-name.agent.md
 ~/.copilot/installed-plugins/<marketplace>/<plugin>/
-└── agents/
-    └── agent-name.agent.md
+└── com.github.copilot/
+    └── agents/
+        └── agent-name.agent.md
 ```
 
 ```yaml
@@ -159,7 +162,7 @@ repository/
     ├── reviewer.md
     └── developer/
         └── agent.md
-~/.gemini/antigravity-cli/plugins/<plugin>/
+~/.gemini/config/plugins/<plugin>/
 └── agents/
     └── reviewer.md
 ```
@@ -183,6 +186,9 @@ Detailed system prompt for the agent describing its role, expertise and behavior
 
 ```tree
 repository/
+├── .agents/
+│   └── agents/
+│       └── reviewer.md
 └── .devin/
     └── agents/
         ├── reviewer.md
@@ -204,6 +210,59 @@ name: reviewer
 description: What this agent specializes in and when it should be invoked
 model: sonnet
 allowed-tools: [glob, grep, read]
+---
+
+Detailed system prompt for the agent describing its role, expertise and behavior.
+```
+{{< /tab >}}
+
+{{< tab name="OpenCode" >}}
+- **Format** : [**OpenCode**](https://opencode.ai/docs/agents)
+
+```tree
+repository/
+└── .opencode/
+    └── agents/
+        └── reviewer.md
+~/.config/opencode/
+└── agents/
+    └── reviewer.md
+```
+
+```yaml
+---
+description: What this agent specializes in and when it should be invoked
+mode: subagent # "primary", "subagent" ou "all"
+model: anthropic/claude-sonnet-5-5 # "provider/model" avec un "#variant" optionnel
+---
+
+Detailed system prompt for the agent describing its role, expertise and behavior.
+```
+{{< /tab >}}
+
+{{< tab name="Pi" >}}
+> [!note]
+> **Pi** ne fournit pas de sous-agents, ils viennent donc de son [extension d'exemple `subagent`](https://github.com/earendil-works/pi/tree/main/packages/coding-agent/examples/extensions/subagent).
+> Cette extension ne charge les agents du projet que sur activation explicite.
+
+- **Format** : [**Pi**](https://github.com/earendil-works/pi/tree/main/packages/coding-agent/examples/extensions/subagent)
+
+```tree
+repository/
+└── .pi/
+    └── agents/
+        └── reviewer.md
+~/.pi/agent/
+└── agents/
+    └── reviewer.md
+```
+
+```yaml
+---
+name: reviewer
+description: What this agent specializes in and when it should be invoked
+tools: read, grep, find, ls
+model: claude-haiku-4-5
 ---
 
 Detailed system prompt for the agent describing its role, expertise and behavior.
