@@ -3,13 +3,13 @@
     "hooks": {
         "beforeSubmitPrompt": [
             {
-                "command": "node ${PLUGIN_ROOT}/scripts/caveman-mode.js",
+                "command": "node ${CURSOR_PLUGIN_ROOT}/scripts/caveman-mode.js",
                 "timeout": 10
             }
         ],
         "sessionStart": [
             {
-                "command": "node ${PLUGIN_ROOT}/scripts/caveman-activate.js SessionStart"
+                "command": "node ${CURSOR_PLUGIN_ROOT}/scripts/caveman-activate.js SessionStart"
             }
         ]
     }

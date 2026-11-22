@@ -13,6 +13,7 @@ marketplace:
   outputs:
     claude: {}
     codex: {}
+    copilot: {}
 
   owner:
     name: Kilian PAQUIER

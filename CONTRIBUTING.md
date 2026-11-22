@@ -103,7 +103,9 @@ Only the following files and directories are required (everything else depends o
 ├── .claude-plugin/
 │   └── plugin.json
 ├── .cursor-plugin/
-│   └── plugin.json               # only with hooks (Cursor)
+│   ├── agents/                   # only when an agent needs its own frontmatter (e.g. model), else Cursor reads the root agents
+│   │   └── agent-name.agent.md   # copy of .apm/agent/*.agent.md with custom frontmatter
+│   └── plugin.json               # only with hooks or agents (Cursor)
 ├── .plugin/
 │   └── plugin.json               # only with hooks (VS Code Copilot agent host)
 ├── com.github.copilot/           # client extension directory (**Agent Plugins** specification)
@@ -114,7 +116,7 @@ Only the following files and directories are required (everything else depends o
 ├── hooks/
 │   ├── claude.json
 │   └── cursor.json
-├── scripts/                      # hook executables, resolved as ${PLUGIN_ROOT}/scripts/<name> or {CLAUDE_PLUGIN_ROOT}/scripts/<name>
+├── scripts/                      # hook executables, resolved as ${PLUGIN_ROOT}/scripts/<name>, ${CLAUDE_PLUGIN_ROOT}/scripts/<name> or ${CURSOR_PLUGIN_ROOT}/scripts/<name>
 │   └── vendor/                   # only when vendored, keeps the LICENSE scoped to upstream files
 │       ├── LICENSE
 │       └── module.js
@@ -137,7 +139,7 @@ Only the following files and directories are required (everything else depends o
 | **Claude Code** | `.claude-plugin/plugin.json` | `agents/*.agent.md`                    | `hooks/claude.json`                                         |
 | **Codex**       | `.claude-plugin/plugin.json` | (no plugin mode)                       | `hooks/claude.json`                                         |
 | **Copilot**     | `plugin.json`                | `com.github.copilot/agents/*.agent.md` | `com.github.copilot/hooks/hooks.json`                       |
-| **Cursor**      | `.cursor-plugin/plugin.json` | (no plugin mode)                       | `hooks/cursor.json`                                         |
+| **Cursor**      | `.cursor-plugin/plugin.json` | `agents/*.agent.md`                    | `hooks/cursor.json`                                         |
 | **Devin**       | `.claude-plugin/plugin.json` | `agents/*.agent.md`                    | (same `hooks.json` path as **Antigravity**, so not shipped) |
 | **VS Code**     | `.plugin/plugin.json`        | (hooks only)                           | `com.github.copilot/hooks/hooks.json`                       |
 

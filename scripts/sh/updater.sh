@@ -89,9 +89,12 @@ sync_body "$claude_plugins_official_tmp/plugins/code-simplifier/agents/code-simp
 sync_body "$claude_plugins_official_tmp/plugins/code-simplifier/agents/code-simplifier.md" \
   "$code_simplifier_dir/com.github.copilot/agents/code-simplifier.agent.md"
 sync_body "$claude_plugins_official_tmp/plugins/code-simplifier/agents/code-simplifier.md" \
+  "$code_simplifier_dir/.cursor-plugin/agents/code-simplifier.agent.md"
+sync_body "$claude_plugins_official_tmp/plugins/code-simplifier/agents/code-simplifier.md" \
   "$code_simplifier_dir/.apm/skills/code-simplifier/SKILL.md"
 copy_file "$claude_plugins_official_tmp/LICENSE" "$code_simplifier_dir/.apm/agents/LICENSE"
 copy_file "$claude_plugins_official_tmp/LICENSE" "$code_simplifier_dir/com.github.copilot/agents/LICENSE"
+copy_file "$claude_plugins_official_tmp/LICENSE" "$code_simplifier_dir/.cursor-plugin/agents/LICENSE"
 copy_file "$claude_plugins_official_tmp/LICENSE" "$code_simplifier_dir/.apm/skills/code-simplifier/LICENSE"
 
 # feature-dev
@@ -101,11 +104,14 @@ for agent in code-architect code-explorer code-reviewer; do
   sync_body "$claude_plugins_official_tmp/plugins/feature-dev/agents/$agent.md" "$feature_dev_apm_dir/agents/$agent.agent.md"
   sync_body "$claude_plugins_official_tmp/plugins/feature-dev/agents/$agent.md" \
     "$feature_dev_dir/com.github.copilot/agents/$agent.agent.md"
+  sync_body "$claude_plugins_official_tmp/plugins/feature-dev/agents/$agent.md" \
+    "$feature_dev_dir/.cursor-plugin/agents/$agent.agent.md"
 done
 sync_body "$claude_plugins_official_tmp/plugins/feature-dev/commands/feature-dev.md" "$feature_dev_apm_dir/skills/feature-dev/SKILL.md"
 copy_file "$claude_plugins_official_tmp/LICENSE" "$feature_dev_apm_dir/agents/LICENSE"
 copy_file "$claude_plugins_official_tmp/LICENSE" "$feature_dev_apm_dir/skills/feature-dev/LICENSE"
 copy_file "$claude_plugins_official_tmp/LICENSE" "$feature_dev_dir/com.github.copilot/agents/LICENSE"
+copy_file "$claude_plugins_official_tmp/LICENSE" "$feature_dev_dir/.cursor-plugin/agents/LICENSE"
 
 ################################################################
 #

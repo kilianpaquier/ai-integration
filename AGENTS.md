@@ -18,7 +18,8 @@ Read the matching page before writing a component or changing how plugins get sh
 
 A plugin keeps one source under `plugins/<plugin>/.apm/`, and a **mirror** per runtime format that changes with it.
 
-- The root `skills` and `agents` entries and `com.github.copilot/agents/` are symlinks to `.apm/`, except a copy for a **Copilot** agent with its own frontmatter (*e.g.* `model`).
+- The root `skills` and `agents` entries and `com.github.copilot/agents/` are symlinks to `.apm/`.
+- An agent with its own frontmatter (*e.g.* `model`) gets a copy in `com.github.copilot/agents/` for **Copilot** and `.cursor-plugin/agents/` for **Cursor**.
 - A hook has four mirrors: `.apm/hooks/hooks.json`, `hooks/claude.json`, `hooks/cursor.json` and `com.github.copilot/hooks/hooks.json`.
 - **Copilot**'s `hooks.json` keeps its own event format with Claude-style matchers, and **VS Code**'s **Copilot** agent host fires hooks only through `.plugin/plugin.json`.
 - A hook executable is a `.js` file in `plugins/<plugin>/scripts/`.
@@ -42,7 +43,7 @@ Done when every mirror carries the change and `just docs::sync` has run after a 
 
 ## Generated files
 
-- Running `apm pack` writes `.claude-plugin/marketplace.json` and `.agents/plugins/marketplace.json` from the root `apm.yml`, which is the file to edit.
+- Running `apm pack` writes the `marketplace.json` of `.claude-plugin/`, `.agents/plugins/` and `.github/plugin/` from the root `apm.yml`, which is the file to edit.
 - The [**kickr**](https://gitlab.com/kickr-dev/kickr) generator owns `Justfile`, `docs/Justfile`, `CODE_OF_CONDUCT.md`, `SECURITY.md` and the `BEGIN_KICKR_*` blocks of the README and CONTRIBUTING.
 
 ## Checks

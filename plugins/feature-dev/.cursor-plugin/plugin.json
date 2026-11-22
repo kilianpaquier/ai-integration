@@ -1,0 +1,11 @@
+{
+    "name": "feature-dev",
+    "description": "Guided feature development with codebase understanding and architecture focus",
+    "version": "0.2.0",
+    "license": "Apache-2.0",
+
+    "repository": "https://gitlab.com/kilianpaquier/ai-integration",
+    "homepage": "https://gitlab.com/kilianpaquier/ai-integration/-/tree/main/plugins/feature-dev",
+
+    "agents": "./.cursor-plugin/agents/"
+}
