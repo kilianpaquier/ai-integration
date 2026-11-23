@@ -56,6 +56,9 @@ const main = (payload) => {
         case 'SessionStart':
         case 'SubagentStart':
             context = statusContext(cwd, event)
+            if (context === null) {
+                break // no status (codegraph missing or failing), a null additionalContext fails Claude Code's hook validation
+            }
             process.stdout.write(JSON.stringify({
                 additionalContext: context,
                 additional_context: context,
