@@ -120,7 +120,7 @@ copy_file "$claude_plugins_official_tmp/LICENSE" "$feature_dev_dir/.cursor-plugi
 ################################################################
 
 # renovate: datasource=github-tags packageName=JuliusBrussee/caveman depName=caveman
-caveman_version=1e91f1306d602d4ca23618701b1185575ae1869b # v4.1.0
+caveman_version=70f4f34e834893ea9af9f4fc6022266bd56d18b1 # v4.2.0
 
 caveman_tmp="$("$dir/helpers/git-clone.sh" https://github.com/JuliusBrussee/caveman.git "$caveman_version")"
 caveman_dir="$dir/../../plugins/cave-talk"
